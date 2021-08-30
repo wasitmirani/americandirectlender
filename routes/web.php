@@ -14,9 +14,13 @@ use App\Http\Controllers\FrontendController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 
 Route::get('/',[FrontendController::class,'index'])->name('index');
+Route::get('/refinance',[FrontendController::class,'refinance'])->name('refinance');
+
+
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

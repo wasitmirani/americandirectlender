@@ -13,4 +13,10 @@ class FrontendController extends Controller
 
         return view('frontend.pages.index');
     }
+
+    public function refinance(){
+
+
+        return view('frontend.pages.refinance');
+    }
 }

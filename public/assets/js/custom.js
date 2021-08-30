@@ -105,15 +105,13 @@ $('#slider-id').slick({
 dots: false,
 arrows: true,
 infinite: true,
-speed: 1000,
+speed: 2000,
 slidesToShow: 1,
 loop: true,
 slidesToScroll: 1,
 autoplay: true,
 autoplaySpeed: 4000,
 pauseOnHover: true,
-fade: true,
-cssEase: 'ease-in-out',
 responsive: [
 {
 breakpoint: 1024,
