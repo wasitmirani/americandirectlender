@@ -18,9 +18,9 @@
                     <a class="nav-link {{ request()->routeIs('refinance') ? 'active' : '' }}" href="{{route('refinance')}}">Refinance</a>
                   </li>
 
-                  <li class="nav-item">
+                  {{-- <li class="nav-item">
                     <a class="nav-link" href="#">Learning Center</a>
-                  </li>
+                  </li> --}}
 
                   <li class="nav-item">
                     <a class="nav-link" href="#">Rate</a>
@@ -28,6 +28,10 @@
 
                   <li class="nav-item">
                     <a class="nav-link" href="#">Contact Us</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">Login</a>
                   </li>
 
                 </ul>
