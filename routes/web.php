@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\backend\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,9 @@ Route::get('/refinance',[FrontendController::class,'refinance'])->name('refinanc
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('admin')->group(function(){
+
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
+
+});

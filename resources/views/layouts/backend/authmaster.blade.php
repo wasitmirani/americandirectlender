@@ -45,26 +45,26 @@
 		</div>
 
 		<!-- Jquery js-->
-		<script src="../../assets/js/jquery.min.js"></script>
+		<script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>
 
 		<!-- Bootstrap5 js-->
-		<script src="../../assets/plugins/bootstrap/popper.min.js"></script>
-		<script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="{{ asset('backend/assets/plugins/bootstrap/popper.min.js') }}"></script>
+		<script src="{{ asset('backend/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
 		<!--Othercharts js-->
-		<script src="../../assets/plugins/othercharts/jquery.sparkline.min.js"></script>
+		<script src="{{ asset('backend/assets/plugins/othercharts/jquery.sparkline.min.js') }}"></script>
 
 		<!-- Circle-progress js-->
-		<script src="../../assets/js/circle-progress.min.js"></script>
+		<script src="{{ asset('backend/assets/js/circle-progress.min.js') }}"></script>
 
 		<!-- Jquery-rating js-->
-		<script src="../../assets/plugins/rating/jquery.rating-stars.js"></script>
+		<script src="{{ asset('backend/assets/plugins/rating/jquery.rating-stars.js') }}"></script>
 
 		<!-- Show Password -->
-		<script src="../../assets/js/bootstrap-show-password.min.js"></script>
+		<script src="{{ asset('backend/assets/js/bootstrap-show-password.min.js') }}"></script>
 
 		<!-- Custom js-->
-		<script src="../../assets/js/custom.js"></script>
+		<script src="{{ asset('backend/assets/js/custom.js') }}"></script>
 
 	</body>
 </html>
