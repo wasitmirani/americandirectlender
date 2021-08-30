@@ -14,7 +14,7 @@
                                         <img src="{{ asset('backend/assets/images/brand/logo1.png') }}" class="header-brand-img desktop-lgo" alt="Azea logo">
                                     </div>
                                     <div class="ms-5">
-                                        <div class="fs-18 mb-6 font-weight-bold text-white">Welcome Back To Azea !</div>
+                                        <div class="fs-18 mb-6 font-weight-bold text-white">Welcome Back To American Direct Lender!</div>
                                         <div class="mb-6 text-white-50">
                                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem et esse in velit deleniti facilis quo!
                                         </div>

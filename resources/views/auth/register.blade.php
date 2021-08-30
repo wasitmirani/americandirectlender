@@ -13,7 +13,7 @@
                                     <img src="{{ asset('backend/assets/images/brand/logo1.png') }}" class="header-brand-img desktop-lgo" alt="Azea logo">
                                 </div>
                                 <div class="ms-5">
-                                    <div class="fs-16 mb-6 font-weight-bold text-white">Welcome Back To Azea !</div>
+                                    <div class="fs-16 mb-6 font-weight-bold text-white">Welcome Back To American Direct Lender  !</div>
                                     <div class="mb-6 text-white-50">
                                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem et esse in velit deleniti facilis quo, placeat totam aliquam veniam, quis rerum itaque, incidunt sequi quidem magni error est! Provident!
                                     </div>
@@ -88,9 +88,9 @@
                                 <div class="form-group text-center mb-3">
                                     <button class="btn btn-primary btn-lg w-100 br-7">Sign Up</button>
                                 </div>
-                                <div class="form-group fs-12 text-center">
+                                {{-- <div class="form-group fs-12 text-center">
                                     By Clicking Sign up,Your agree to our  <a href="javascript:void0;" class="font-weight-bold">Terms & Conditions</a> and have read and acknowledge our  <a href="javascript:void0;" class="font-weight-bold">Privacy & Services.</a>
-                                </div>
+                                </div> --}}
                             </form>
                         </div>
                     </div>
