@@ -18,7 +18,7 @@
                                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem deleniti facilis quo!
                                     </div>
                                     <h6 class="text-white-50">Subscribe For More .</h6>
-                                    <a href="login-1.html" class="btn btn-white text-primary font-weight-bold ">Visit Page</a>
+                                    <a href="{{ route('index') }}" class="btn btn-white text-primary font-weight-bold ">Visit Page</a>
                                 </div>
                             </div>
                         </div>
