@@ -59,6 +59,8 @@
 
 	<body class="app sidebar-mini dark-menu">
 
+        <div id="app">
+
 
 		<!-- Switcher -->
             @include('layouts.backend.components.switcher')
@@ -103,7 +105,7 @@
 			</div>
 		</div>
 		<!-- End Page -->
-
+    </div>
 		<!-- Back to top -->
 		<a href="#top" id="back-to-top"><i class="fe fe-chevron-up"></i></a>
 
