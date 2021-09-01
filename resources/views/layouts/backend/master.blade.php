@@ -42,12 +42,9 @@
 		<!-- INTERNAL Morris Charts css -->
 		<link href="{{ asset('backend/assets/plugins/morris/morris.css') }}" rel="stylesheet">
 
-		<!-- INTERNAL Select2 css -->
-		<link href="{{ asset('backend/assets/plugins/select2/select2.min.css') }}" rel="stylesheet">
 
 		<!-- Data table css -->
-		<link href="{{ asset('backend/assets/plugins/datatables/DataTables/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-		<link href="{{ asset('backend/assets/plugins/datatables/Responsive/css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
+
 
 	    <!-- Color Skin css -->
 		<link id="theme" href="{{ asset('backend/assets/colors/color1.css') }}" rel="stylesheet" type="text/css">
@@ -55,11 +52,11 @@
 	    <!-- INTERNAL Switcher css -->
 		<link href="{{ asset('backend/assets/switcher/css/switcher.css') }}" rel="stylesheet">
 		<link href="{{ asset('backend/assets/switcher/demo.css') }}" rel="stylesheet">
+        @stack('styles')
 	</head>
 
 	<body class="app sidebar-mini dark-menu">
 
-        <div id="app">
 
 
 		<!-- Switcher -->
@@ -71,6 +68,7 @@
 			<img src="{{ asset('backend/assets/images/svgs/loader.svg') }}" alt="loader">
 		</div>
 		<!--- End Global-loader-->
+        <div id="app">
 
 		<!-- Page -->
 		<div class="page">
@@ -105,7 +103,7 @@
 			</div>
 		</div>
 		<!-- End Page -->
-    </div>
+        </div>
 		<!-- Back to top -->
 		<a href="#top" id="back-to-top"><i class="fe fe-chevron-up"></i></a>
 
