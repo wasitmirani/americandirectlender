@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\backend\DashboardController;
 
@@ -24,10 +25,10 @@ Route::get('/refinance',[FrontendController::class,'refinance'])->name('refinanc
 
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::middleware('auth')->prefix('admin')->group(function(){
+Route::middleware('auth')->prefix('dashboard')->group(function(){
 
-    Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
+    Route::get('/',[DashboardController::class,'index'])->name('dashboard');
 
 });

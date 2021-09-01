@@ -11,7 +11,7 @@
 		<meta name="keywords" content="admin, admin template, dashboard, admin dashboard, responsive, bootstrap, bootstrap 5, admin theme, admin themes, bootstrap admin template, scss, ui, crm, modern, flat">
 
 		<!-- Title -->
-		<title>Azea - Admin Panel HTML template</title>
+		<title>{{config('app.name')}} - Admin Panel </title>
 
 		<!--Favicon -->
 		<link rel="icon" href="{{ asset('backend/assets/images/brand/favicon.ico') }}" type="image/x-icon">
@@ -57,144 +57,11 @@
 		<link href="{{ asset('backend/assets/switcher/demo.css') }}" rel="stylesheet">
 	</head>
 
-	<body class="app sidebar-mini">
+	<body class="app sidebar-mini dark-menu">
 
 
 		<!-- Switcher -->
-		<div class="switcher-wrapper">
-			<div class="demo_changer ">
-				<div class="form_holder sidebar-right1">
-					<div class="row">
-						<div class="predefined_styles">
-							<div class="swichermainleft text-center">
-								<div class="p-3 d-grid gap-2">
-									<a href="../../../index.html" class="btn ripple btn-primary mt-0">View Demo</a>
-									<a href="../../../../../user/spruko/portfolio.html" class="btn ripple btn-secondary">Buy Now</a>
-									<a href="../../../../../user/spruko/portfolio.html" class="btn ripple btn-red">Our Portfolio</a>
-								</div>
-							</div>
-							<div class="swichermainleft mb-4">
-								<h4>Navigation Style</h4>
-								<div class="ps-3 pe-3 pt-3 d-grid gap-2">
-									<a class="btn btn-success " href="index.html"> Leftmenu</a>
-									<a class="btn btn-danger" href="../../LTR/Horizantal-Light/index.html"> Horizontal </a>
-								</div>
-							</div>
-							<div class="swichermainleft">
-								<h4>Theme Layout</h4>
-								<div class="switch_section d-flex my-4">
-									<ul class="switch-buttons row">
-										<li class="col-md-6 mb-0">
-											<button type="button" id="background-left1" class="bg-left1 wscolorcode1 button-image"></button>
-											<span class="d-block">Light Theme</span>
-										</li>
-										<li class="col-md-6 mb-0">
-											<button type="button" id="background-left2" class="bg-left2 wscolorcode1 button-image"></button>
-											<span class="d-block">Dark Theme</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="swichermainleft">
-								<h4>Header Styles Mode</h4>
-								<div class="switch_section d-flex my-4">
-									<ul class="switch-buttons row">
-										<li class="col-md-6 light-bg">
-											<button type="button" id="background1" class="bg1 wscolorcode1 button-image"></button>
-											<span class="d-block">Light Header</span>
-										</li>
-										<li class="col-md-6">
-											<button type="button" id="background2" class="bg2 wscolorcode1 button-image"></button>
-											<span class="d-block">Color Header</span>
-										</li>
-										<li class="col-md-6 d-block mx-auto dark-bg">
-											<button type="button" id="background3" class="bg3 wscolorcode1 button-image"></button>
-											<span class="d-block">Dark Header</span>
-										</li>
-										<li class="col-md-6 d-block mx-auto">
-											<button type="button" id="background11" class="bg8 wscolorcode1 button-image"></button>
-											<span class="d-block">Gradient Header</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="swichermainleft">
-								<h4>Leftmenu Styles Mode</h4>
-								<div class="switch_section d-flex my-4">
-									<ul class="switch-buttons row">
-										<li class="col-md-6 mb-4">
-											<button type="button" id="background4" class="bg4 wscolorcode1 button-image"></button>
-											<span class="d-block">Light Menu</span>
-										</li>
-										<li class="col-md-6 mb-4">
-											<button type="button" id="background5" class="bg5 wscolorcode1 button-image"></button>
-											<span class="d-block">Color Menu</span>
-										</li>
-										<li class="col-md-6 mb-0 d-block mx-auto dark-bgmenu">
-											<button type="button" id="background6" class="bg6 wscolorcode1 button-image"></button>
-											<span class="d-block">Dark Menu</span>
-										</li>
-										<li class="col-md-6 mb-0 d-block mx-auto">
-											<button type="button" id="background10" class="bg7 wscolorcode1 button-image"></button>
-											<span class="d-block">Gradient Menu</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="swichermainleft">
-								<h4>Layout-width Styles Mode</h4>
-								<div class="switch_section d-flex my-4">
-									<ul class="switch-buttons row">
-										<li class="col-md-6 mb-4">
-											<button type="button" id="background14" class="bg-layf wscolorcode1 button-image"></button>
-											<span class="d-block">Full-Width</span>
-										</li>
-										<li class="col-md-6 mb-4">
-											<button type="button" id="background15" class="bg-laybx wscolorcode1 button-image"></button>
-											<span class="d-block">Boxed</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="swichermainleft">
-								<h4>Side-menu layout Styles Mode</h4>
-								<div class="switch_section d-flex my-4">
-									<ul class="switch-buttons row">
-										<li class="col-md-6 mb-4">
-											<button type="button" id="background18" class="bg-sided button-image wscolorcode1 default-menu" data-sidetheme="../../assets/css/sidemenu.css"></button>
-											<span class="d-block">Default</span>
-										</li>
-										<li class="col-md-6 mb-4">
-											<button type="button" id="background19" class="bg-sideictxt button-image wscolorcode1 icontext-menu" data-sidetheme="../../assets/css/sidemenu-icontext.css"></button>
-											<span class="d-block">Icon-with Text</span>
-										</li>
-										<li class="col-md-6 d-block mx-auto">
-											<button type="button" id="background20" class="bg-sideicon button-image wscolorcode1 sideicon-menu" data-sidetheme="../../assets/css/sidemenu-icon.css"></button>
-											<span class="d-block">Icon</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="swichermainleft">
-								<h4>Layout Positions Mode</h4>
-								<div class="switch_section d-flex my-4">
-									<ul class="switch-buttons row">
-										<li class="col-md-6 mb-4">
-											<button type="button" id="background16" class="bg-left1 wscolorcode1 button-image"></button>
-											<span class="d-block">Fixed</span>
-										</li>
-										<li class="col-md-6 mb-4">
-											<button type="button" id="background17" class="bg-left1 wscolorcode1 button-image"></button>
-											<span class="d-block">Scrollable</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+            @include('layouts.backend.components.switcher')
 		<!-- End Switcher -->
 
 		<!---Global-loader-->
@@ -246,7 +113,7 @@
 		<!-- Bootstrap5 js-->
 		<script src="{{ asset('backend/assets/plugins/bootstrap/popper.min.js') }}"></script>
 		<script src="{{ asset('backend/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-
+        <script src="{{ asset('js/app.js') }}" ></script>
 		<!--Othercharts js-->
 		<script src="{{ asset('backend/assets/plugins/othercharts/jquery.sparkline.min.js') }}"></script>
 
@@ -285,14 +152,10 @@
 		<script src="{{ asset('backend/assets/js/index1.js') }}"></script>
 
 		<!-- INTERNAL Data tables -->
-		<script src="{{ asset('backend/assets/plugins/datatables/DataTables/js/jquery.dataTables.js') }}"></script>
-		<script src="{{ asset('backend/assets/plugins/datatables/DataTables/js/dataTables.bootstrap5.js') }}"></script>
-		<script src="{{ asset('backend/assets/plugins/datatables/Responsive/js/dataTables.responsive.min.js') }}"></script>
-		<script src="{{ asset('backend/assets/plugins/datatables/Responsive/js/responsive.bootstrap5.min.js') }}"></script>
+
 
 		<!-- INTERNAL Select2 js -->
-		<script src="{{ asset('backend/assets/plugins/select2/select2.full.min.js') }}"></script>
-		<script src="{{ asset('backend/assets/js/select2.js') }}"></script>
+
 
 		<!-- Simplebar JS -->
 		<script src="{{ asset('backend/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>

@@ -11,7 +11,7 @@
 		<meta name="keywords" content="{{config('app.name')}}">
 
 		<!-- Title -->
-		<title> | {{config('app.name')}}</title>
+		<title> Authentication | {{config('app.name')}}</title>
 
 		<!--Favicon -->
 		<link rel="icon" href="{{asset('/backend/assets/images/brand/favicon.ico')}}" type="image/x-icon"/>
