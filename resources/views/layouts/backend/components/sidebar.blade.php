@@ -53,14 +53,11 @@ padding: 8px 22px 8px 15px ;
 
        @if(!empty($menu['single_link']))
        <li class="slide">
-               <router-link class="side-menu__item" data-bs-toggle="slide" to="{{$menu['single_link']['v-route']}}">
-
-                    {{-- <span class="badge bg-secondary side-badge">5</span> --}}
-                    <i class="{{$menu['single_link']['icon']}}"></i>
-                    <span class="side-menu__label">
-                        {{$menu['single_link']['title']}}</span></router-link>
-       </li>
-
+        <router-link class="side-menu__item" data-bs-toggle="slide" to="{{$menu['single_link']['v-route']}}">
+            <i class="{{$menu['single_link']['icon']}}"></i>
+            <span class="side-menu__label">{{$menu['single_link']['title']}}</span>
+        </router-link>
+        </li>
        @endif
        @endforeach
 
