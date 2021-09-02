@@ -7,19 +7,9 @@ class HelperComponent {
         return [
                 [
                     "heading"=>"Main",
-                    "menu"=>[
-                        "title"=>'Dashboards',
-                        "icon"=>"fa fa-linux",
-                        "v-can"=>"",
-                        "sub_menu"=>[
-                            setSubMenu(
-                              "Test",
-                                null,
-                                null,
-                                 "/",
-                            ),
-                        ]
-                    ]
+                ],
+                [
+                    "single_link" => setSingleLink( "Dashboard","fa fa-users",null,"/"),
                 ],
                 [
                     "heading"=>"DIRECTORIES",
