@@ -8,17 +8,17 @@ Vue.use(VueRouter);
 // }
 function setComponent(path_file) {
     const route_path = "./components/backend/pages/" + path_file + "Component.vue";
-    return import (`${route_path}`);
+    return import ("" + route_path);
 }
 
 const routes = [
     { path: "*", component: () => setComponent("error/404") },
     {
         path: "/",
-        redirect: { path: '/dashboard' }
+        redirect: { path: '/home' }
     },
-
-
+    { path: "/home", component: () => setComponent("dashboard/Home") },
+    { path: "/users", component: () => setComponent("management/user/User") },
 
 ];
 

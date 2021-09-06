@@ -16,7 +16,7 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="assets/images/banner.png" class="d-block w-100" alt="...">
+                    <img src="{{asset('frontend/assets/images/banner.png')}}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                       <h2><span>Feeling good</span> about making a difference.</h2>
                       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
@@ -24,7 +24,7 @@
                     </div>
                   </div>
                   <div class="carousel-item">
-                    <img src="assets/images/banner.png" class="d-block w-100" alt="...">
+                    <img src="{{asset('frontend/assets/images/banner.png')}}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                       <h2><span>Feeling good</span> about making a difference.</h2>
                       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
@@ -32,7 +32,7 @@
                     </div>
                   </div>
                   <div class="carousel-item">
-                    <img src="assets/images/banner.png" class="d-block w-100" alt="...">
+                    <img src="{{asset('frontend/assets/images/banner.png')}}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                       <h2><span>Feeling good</span> about making a difference.</h2>
                       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
@@ -86,7 +86,7 @@
             <div class="col-lg-3">
               <div class="box">
                 <div class="bor-left">
-                  <img src="assets/images/Group 66.png">
+                  <img src="{{asset('frontend/assets/images/Group 66.png')}}">
                   <h3>Apply Online</h3>
                   <p class="sec-para">Our streamlined application syncs with your bank to get you accurate numbers, fast.</p>
                 </div>
@@ -95,7 +95,7 @@
             <div class="col-lg-3">
               <div class="box">
                 <div class="bor-left">
-                  <img src="assets/images/Icon feather-check-square.png">
+                  <img src="{{asset('frontend/assets/images/Icon feather-check-square.png')}}">
                   <h3>Get Approved</h3>
                   <p class="sec-para">See how much you’re approved for, then shop for homes or move forward with your refinance.</p>
                 </div>
@@ -104,7 +104,7 @@
             <div class="col-lg-3">
               <div class="box">
                 <div class="bor-left">
-                  <img src="assets/images/Group 67.png">
+                  <img src="{{asset('frontend/assets/images/Group 67.png')}}">
                   <h3>Close Your Loan</h3>
                   <p class="sec-para">Use your to-do list to verify the details and get to closing fast.</p>
                 </div>
@@ -112,7 +112,7 @@
             </div>
             <div class="col-lg-3">
               <div class="box">
-                <img src="assets/images/Group 68.png">
+                <img src="{{asset('frontend/assets/images/Group 68.png')}}">
                 <h3>Manage Your Mortgage</h3>
                 <p class="sec-para">Our streamlined application syncs with your bank to get you accurate numbers, fast.</p>
               </div>
@@ -127,7 +127,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="shake">
-                <img src="assets/images/mortgage-brokers.png">
+                <img src="{{asset('frontend/assets/images/mortgage-brokers.png')}}">
               </div>
             </div>
           </div>
@@ -136,11 +136,11 @@
               <div class="col-lg-6 one">
                 <div class="row">
                   <div class="col-lg-6">
-                    <img src="assets/images/mortgage-broker-750x400.png">
+                    <img src="{{asset('frontend/assets/images/mortgage-broker-750x400.png')}}">
                   </div>
 
                   <div class="col-lg-6">
-                    <img src="assets/images/How-to-Find-a-Good-Mortgage-Broker-in-Sydney.png">
+                    <img src="{{asset('frontend/assets/images/How-to-Find-a-Good-Mortgage-Broker-in-Sydney.png')}}">
                   </div>
                 </div>
               </div>
@@ -177,7 +177,7 @@
 
                   <div class="col-lg-6">
                     <div class="homeimg">
-                    <img src="assets/images/HouseExterior_0.png">
+                    <img src="{{asset('frontend/assets/images/HouseExterior_0.png')}}">
                   </div>
                   </div>
                 </div>
@@ -196,7 +196,7 @@
 
 
                   <div class="col-lg-6">
-                    <img src="assets/images/HouseExterior_0.png">
+                    <img src="{{asset('frontend/assets/images/HouseExterior_0.png')}}">
                   </div>
                 </div>
               </div>
@@ -239,7 +239,7 @@
                   <div class="blue-box">
                     <div class="d-flex align-items-center">
                       <div class="flex-shrink-0">
-                        <img src="assets/images/Ellipse 2.png" class="img-fluid" alt="...">
+                        <img src="{{asset('frontend/assets/images/Ellipse 2.png')}}" class="img-fluid" alt="...">
                       </div>
                       <div class="flex-grow-1 ms-3">
                         <h2>John Doe</h2>
@@ -254,7 +254,7 @@
                   <div class="blue-box">
                     <div class="d-flex align-items-center">
                       <div class="flex-shrink-0">
-                        <img src="assets/images/Ellipse 2.png" class="img-fluid" alt="...">
+                        <img src="{{asset('frontend/assets/images/Ellipse 2.png')}}" class="img-fluid" alt="...">
                       </div>
                       <div class="flex-grow-1 ms-3">
                         <h2>John Doe</h2>
@@ -269,7 +269,7 @@
                   <div class="blue-box">
                     <div class="d-flex align-items-center">
                       <div class="flex-shrink-0">
-                        <img src="assets/images/Ellipse 2.png" class="img-fluid" alt="...">
+                        <img src="{{asset('frontend/assets/images/Ellipse 2.png')}}" class="img-fluid" alt="...">
                       </div>
                       <div class="flex-grow-1 ms-3">
                         <h2>John Doe</h2>
@@ -284,7 +284,7 @@
                   <div class="blue-box">
                     <div class="d-flex align-items-center">
                       <div class="flex-shrink-0">
-                        <img src="assets/images/Ellipse 2.png" class="img-fluid" alt="...">
+                        <img src="{{asset('frontend/assets/images/Ellipse 2.png')}}" class="img-fluid" alt="...">
                       </div>
                       <div class="flex-grow-1 ms-3">
                         <h2>John Doe</h2>

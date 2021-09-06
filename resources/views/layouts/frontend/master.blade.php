@@ -9,9 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" >
-    <link href="{{asset('assets/slick-slider/slick/slick-theme.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/slick-slider/slick/slick.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet" >
+    <link href="{{asset('frontend/assets/slick-slider/slick/slick-theme.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/assets/slick-slider/slick/slick.css')}}" rel="stylesheet">
     <title>American Direct Lender</title>
   </head>
   <body>
@@ -31,7 +31,7 @@
       <div class="row">
         <div class="col-lg-4">
           <div class="footer1">
-            <img src="assets/images/logo.png">
+            <img src="frontend/assets/images/logo.png">
             <p>Knowing how to get a mortgage can help you stay organized during the home buying process. Learn how to navigate the process of getting a mortgage, step by step.</p>
           </div>
         </div>
@@ -63,9 +63,9 @@
               <div class="footer4">
                 <h3 class="footer-heading">Contact Info</h3>
                 <ul>
-                  <li><a class="footer-menu" href="#"><img src="assets/images/Group 73.png">123-456-7890</a></li>
-                  <li><a class="footer-menu" href="#"><img src="assets/images/Group 72.png">Info@company.com</a></li>
-                  <li><a class="footer-menu" href="#"><img src="assets/images/Group 74.png">123 Street Lorem Ipsum Usa</a></li>
+                  <li><a class="footer-menu" href="#"><img src="frontend/assets/images/Group 73.png">123-456-7890</a></li>
+                  <li><a class="footer-menu" href="#"><img src="frontend/assets/images/Group 72.png">Info@company.com</a></li>
+                  <li><a class="footer-menu" href="#"><img src="frontend/assets/images/Group 74.png">123 Street Lorem Ipsum Usa</a></li>
                 </ul>
               </div>
             </div>
@@ -96,8 +96,8 @@
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="{{asset('assets/slick-slider/slick/slick.min.js')}}"></script>
-  <script src="assets/js/custom.js"></script>
+  <script src="{{asset('frontend/assets/slick-slider/slick/slick.min.js')}}"></script>
+  <script src="{{asset('frontend/assets/js/custom.js')}}"></script>
   <!-- Scripts -->
 </body>
 </html>

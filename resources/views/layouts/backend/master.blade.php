@@ -52,10 +52,14 @@
   <!-- Loader ends-->
   <!-- page-wrapper Start-->
   <div class="page-wrapper compact-wrapper" id="pageWrapper">
+
+
+
     <!-- Page Header Start-->
        @include('layouts.backend.components.header')
     <!-- Page Header Ends                              -->
     <!-- Page Body Start-->
+    <div id="app">
     <div class="page-body-wrapper sidebar-icon">
       <!-- Page Sidebar Start-->
       @include('layouts.backend.components.sidebar')
@@ -66,6 +70,9 @@
         @yield('content')
         <!-- Container-fluid Ends-->
       </div>
+    </div>
+    </div>
+
       <!-- footer start-->
       <footer class="footer">
         <div class="container-fluid">
@@ -79,21 +86,26 @@
           </div>
         </div>
       </footer>
-    </div>
   </div>
+
+  <script src="{{ asset('js/app.js') }}" ></script>
     <script src="{{asset('assets/js/jquery-3.5.1.min.js')}}"></script>
+
     <!-- feather icon js-->
     <script src="{{asset('assets/js/icons/feather-icon/feather.min.js')}}"></script>
     <script src="{{asset('assets/js/icons/feather-icon/feather-icon.js')}}"></script>
     <!-- Sidebar jquery-->
     <script src="{{asset('assets/js/sidebar-menu.js')}}"></script>
     <script src="{{asset('assets/js/config.js')}}"></script>
+
     <!-- Bootstrap js-->
     <script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap/bootstrap.min.js')}}"></script>
+
     <!-- Plugins JS start-->
     <script src="{{asset('assets/js/chart/chartjs/chart.min.js')}}"></script>
     <script src="{{asset('assets/js/chart/chartist/chartist.js')}}"></script>
+
     <script src="{{asset('assets/js/chart/chartist/chartist-plugin-tooltip.js')}}"></script>
     <script src="{{asset('assets/js/chart/knob/knob.min.js')}}"></script>
     <script src="{{asset('assets/js/chart/apex-chart/apex-chart.js')}}"></script>
@@ -111,6 +123,8 @@
     <!-- Theme js-->
     <script src="{{asset('assets/js/script.js')}}"></script>
     <script src="{{asset('assets/js/theme-customizer/customizer.js')}}"></script>
+
+
     <!-- login js-->
     <!-- Plugin used-->
   </body>
