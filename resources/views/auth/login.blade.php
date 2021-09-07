@@ -98,14 +98,15 @@
               <div class="form-group">
                 <label>Password</label>
                 <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
-                  <input class="form-control @error('password') is-invalid  @enderror" type="password" name="password" required="" placeholder="*********">
+                  <input class="form-control @error('password') is-invalid  @enderror" type="password" name="login[password]" required="" placeholder="*********">
+                  <div class="show-hide"><span class="show"> </span></div>
                   @error('password')
                   <div class="invalid-tooltip">
                       <strong>{{ $message }}</strong>
                   </div>
                   @enderror
                   <div class="invalid-tooltip">Please enter password.</div>
-                  <div class="show-hide"><span class="show">                         </span></div>
+
                 </div>
               </div>
               <div class="form-group">
