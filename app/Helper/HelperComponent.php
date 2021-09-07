@@ -42,7 +42,7 @@ class HelperComponent {
 
                 ],
                 [
-                    "heading"=>"DIRECTORIES",
+                    "heading"=>"Directories",
                     "menu"=>[
                         "title"=>'Variations',
                         "icon"=>"fa fa-comment",
