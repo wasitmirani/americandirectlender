@@ -1,7 +1,27 @@
 @extends('layouts.backend.authmaster')
 
 @section('content')
-<div class="row">
+<div class="col-12 p-0">
+    <div class="login-card">
+      <form class="theme-form login-form" method="POST" action="{{ route('password.email') }}">
+        {{ csrf_field() }}
+        <h4 class="mb-3">Reset Password</h4>
+
+        <div class="form-group">
+          <label>Enter</label>
+          <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
+            <input class="form-control" type="email" name="email" required="" placeholder="Enter Email">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" type="submit">Send</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+{{-- <div class="row">
     <div class="col mx-auto">
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-12">
@@ -67,7 +87,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 {{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
