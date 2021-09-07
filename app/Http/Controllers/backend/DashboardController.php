@@ -2,12 +2,23 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Spatie\Activitylog\Models\Activity;
 
 class DashboardController extends Controller
 {
     public function index(){
-        return view('backend.pages.dashboard');
+        $activities =  Activity::all();
+
+        return view('backend.pages.dashboard',compact('activities'));
+    }
+
+    public function activityLogs(){
+        $activities =  Activity::all();
+
+        return response()->json($activities);
+
+
     }
 }

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Activitylog\Models\Activity;
 
 class BackendController extends Controller
 {
     //
     public function index(){
-        return view('backend.pages.dashboard');
+        $activityLog =  Activity::all()->last();
+        return view('backend.pages.dashboard',['activities'=>$activityLog]);
     }
 }

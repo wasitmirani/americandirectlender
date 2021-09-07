@@ -31,7 +31,7 @@ class User extends Authenticatable
 
     public function getDescriptionForEvent(string $eventName): string
     {
-        return "You Have User {$eventName}";
+        return "Register Successfully";
     }
     /**
      * The attributes that should be hidden for arrays.

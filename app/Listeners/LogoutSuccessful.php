@@ -30,7 +30,7 @@ class LogoutSuccessful
     public function handle(Logout $event)
     {
         $event->subject = "Logout";
-        $event->description = "Logout Successfully";
+        $event->description = $event->user->name." Logout Successfully";
 
         Session::flash("Logout Successfully ","you Are Loged Out");
         activity($event->subject)

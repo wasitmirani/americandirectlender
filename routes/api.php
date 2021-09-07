@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\Backend\role\RoleController;
 use App\Http\Controllers\Backend\user\UserController;
 use App\Http\Controllers\Backend\permission\PermissionController;
@@ -36,6 +37,7 @@ Route::resource('role', RoleController::class);
 //     Route::post("/store", [RoleController::class, 'store'])->name('store');
 
 // });
+Route::get('/activities',[DashboardController::class,'activityLogs']);
 Route::resource('permission', PermissionController::class);
 // ->only('index', 'destroy');
 // Route::prefix('permission')->name('permission.')->group(function () {

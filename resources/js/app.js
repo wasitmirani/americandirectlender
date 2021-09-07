@@ -10,6 +10,7 @@ window.Vue = require('vue').default;
 import router from "./router";
 import VueProgressBar from 'vue-progressbar'
 import VModal from 'vue-js-modal'
+import VueMomentsAgo from 'vue-moments-ago'
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -27,6 +28,7 @@ Vue.use(VueProgressBar, {
     height: '6px'
 })
 Vue.use(VModal)
+Vue.component('vue-moments-ago', VueMomentsAgo)
 
 
 /**

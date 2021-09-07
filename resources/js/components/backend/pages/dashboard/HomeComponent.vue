@@ -57,7 +57,8 @@
           </div>
           <div class="card-body">
             <div class="owl-carousel owl-theme" id="owl-carousel-14">
-              <div class="item">
+
+              <div class="item" >
                 <div class="row">
                   <div class="col-12">
                     <div class="owl-carousel-16 owl-carousel owl-theme">
@@ -527,58 +528,21 @@
           </div>
           <div class="card-body">
             <div class="chart-main activity-timeline update-line">
-              <div class="media">
+              <div class="media"  v-for="log in logs">
                 <div class="activity-line"></div>
                 <div class="activity-dot-primary"></div>
                 <div class="media-body d-block">
-                  <h6> <span class="font-primary">20-04-2021</span>Today </h6>
-                  <h5>Updated Product<i class="fa fa-circle circle-dot-primary pull-right"></i></h5>
-                  <p>Quisque a consequat ante Sit amet magna at volutapt.</p>
+
+                  <h6> <span class="font-primary"> <vue-moments-ago prefix="" suffix="ago" date=log.created_at  lang="en" /></span> </h6>
+                  <h5>{{log.log_name}}<i class="fa fa-circle circle-dot-primary pull-right"></i></h5>
+                  <p>{{log.description}}</p>
                 </div>
               </div>
-              <div class="media">
-                <div class="activity-dot-primary"></div>
-                <div class="media-body d-block">
-                  <h6> <span class="font-primary">20-04-20121</span>Today<span class="badge pill-badge-primary m-l-10">new                                           </span></h6>
-                  <h5>James just like your product     <i class="fa fa-circle circle-dot-primary pull-right"></i></h5>
-                  <p>Quisque a consequat ante Sit amet magna at volutapt.</p>
-                  <ul class="timeline-pro">
-                    <li>                                            <img class="img-fluid" src="assets/images/dashboard-2/11.png" alt="Product-1"></li>
-                    <li>                                        <img class="img-fluid" src="assets/images/dashboard-2/10.png" alt="Product-2"></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="media">
-                <div class="activity-dot-primary"></div>
-                <div class="media-body d-block">
-                  <h6> <span class="font-primary">20-04-20121</span>Today</h6>
-                  <h5>Jihan Doe just like your product<i class="fa fa-circle circle-dot-primary pull-right"></i></h5>
-                  <p>Vestibulum nec mi suscipit, dapibus purus ane.</p>
-                </div>
-              </div>
-              <div class="media">
-                <div class="media-body d-block">
-                  <div class="tomorrow-sec">
-                    <p>Tomorrow</p>
-                  </div>
-                </div>
-              </div>
-              <div class="media">
-                <div class="activity-dot-primary"></div>
-                <div class="media-body d-block">
-                  <h6> <span class="font-primary">20-04-20121</span>Tomorrow</h6>
-                  <h5>Today Total  Revenue<i class="fa fa-circle circle-dot-primary pull-right"></i></h5>
-                  <p>Quisque a consequat ante Sit amet magna at volutapt.</p>
-                </div>
-              </div>
-              <div class="media">
-                <div class="activity-dot-primary"></div>
-                <div class="media-body d-block">
-                  <div class="hospital-small-chart">
-                    <div id="column-chart">                                        </div>
-                  </div>
-                </div>
-              </div>
+
+
+
+
+
             </div>
             <div class="code-box-copy">
               <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#activity-timeline" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
@@ -625,6 +589,36 @@
 
 <script>
     export default {
+
+          data(){
+              return{
+                 logs:[],
+                 test:"name"
+
+        }
+    },
+
+
+
+        created(){
+              axios.get('api/activities').then((response)=>{
+
+
+                 console.log(response)
+                 this.logs = response.data
+
+                }).catch((error)=>{
+    // handle error
+       console.log(error);
+  })
+
+
+
+
+
+        }
+
+
 
     }
 </script>

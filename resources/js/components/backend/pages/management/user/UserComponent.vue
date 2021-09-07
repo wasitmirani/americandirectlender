@@ -222,7 +222,11 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 export default {
     components:{
         Breadcrumb,
-    }
+
+        
+    },
+
+
 
 }
 </script>

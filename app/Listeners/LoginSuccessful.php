@@ -29,7 +29,7 @@ class LoginSuccessful
     public function handle(Login $event)
     {
         $event->subject = "Login";
-        $event->description = "Login Successfully";
+        $event->description = $event->user->name." Login Successfully ";
 
         Session::flash("Login Successfully ","Hey ".$event->user->name." ,Welcome Back" );
         activity($event->subject)
