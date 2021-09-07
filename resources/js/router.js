@@ -19,6 +19,8 @@ const routes = [
     },
     { path: "/home", component: () => setComponent("dashboard/Home") },
     { path: "/users", component: () => setComponent("management/user/User") },
+    { path: "/roles", component: () => setComponent("management/role/Role") },
+    { path: "/permissions", component: () => setComponent("management/permission/Permission") },
 
 ];
 
