@@ -7,7 +7,6 @@
                     <li class="breadcrumb-item active" v-for="item in previous" :key="item.id" >
                         <router-link :to="item.link">{{item.name}}</router-link>
                     </li>
-
                     <li class="breadcrumb-item active"><a href="javascript:void(0)">{{activename}}</a></li>
                   </ol>
      </div>
