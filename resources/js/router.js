@@ -34,6 +34,6 @@ router.beforeResolve((to, from, next) => {
 });
 
 router.afterEach((to, from) => {
-    // setTimeout(function () { $('.page-loader-wrapper').fadeOut(); }, 50);
+    setTimeout(function () { $('.page-loader-wrapper').fadeOut(); }, 50);
 });
 export default router;
