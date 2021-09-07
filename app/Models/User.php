@@ -33,6 +33,8 @@ class User extends Authenticatable
     {
         return "Register Successfully";
     }
+
+ 
     /**
      * The attributes that should be hidden for arrays.
      *
