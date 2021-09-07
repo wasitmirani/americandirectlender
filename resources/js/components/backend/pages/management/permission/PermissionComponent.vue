@@ -16,9 +16,9 @@
                       <thead class="table-primary">
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">First Name</th>
-                          <th scope="col">Last Name</th>
-                          <th scope="col">Username</th>
+                          <th scope="col">Permission</th>
+                          <th scope="col">Roles</th>
+                          <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>

@@ -3126,6 +3126,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -45374,14 +45378,12 @@ var staticRenderFns = [
                     _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
                     _vm._v(" "),
                     _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("First Name")
+                      _vm._v("Permission")
                     ]),
                     _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("Last Name")
-                    ]),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Roles")]),
                     _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Username")])
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
                   ])
                 ]),
                 _vm._v(" "),
@@ -45466,7 +45468,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header pb-0" }, [
             _c("h5", [_vm._v("Roles")]),
-            _c("span", [_vm._v("List of permissions opend by customers")])
+            _c("span", [_vm._v("List of roles opend by customers")])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -45476,15 +45478,9 @@ var staticRenderFns = [
                   _c("tr", [
                     _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
                     _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("First Name")
-                    ]),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Roles")]),
                     _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("Last Name")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Username")])
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
                   ])
                 ]),
                 _vm._v(" "),
@@ -45494,8 +45490,6 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("td", [_vm._v("Mark")]),
                     _vm._v(" "),
-                    _c("td", [_vm._v("Otto")]),
-                    _vm._v(" "),
                     _c("td", [_vm._v("@mdo")])
                   ]),
                   _vm._v(" "),
@@ -45504,8 +45498,6 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("td", [_vm._v("Mark")]),
                     _vm._v(" "),
-                    _c("td", [_vm._v("Otto")]),
-                    _vm._v(" "),
                     _c("td", [_vm._v("@TwBootstrap")])
                   ]),
                   _vm._v(" "),
@@ -45513,8 +45505,6 @@ var staticRenderFns = [
                     _c("th", { attrs: { scope: "row" } }, [_vm._v("3")]),
                     _vm._v(" "),
                     _c("td", [_vm._v("Jacob")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Thornton")]),
                     _vm._v(" "),
                     _c("td", [_vm._v("@fat")])
                   ])
@@ -45990,15 +45980,15 @@ var staticRenderFns = [
                   _c("tr", [
                     _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
                     _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("First Name")
-                    ]),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("User")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Roles")]),
                     _vm._v(" "),
                     _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("Last Name")
+                      _vm._v("Permissions")
                     ]),
                     _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Username")])
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
                   ])
                 ]),
                 _vm._v(" "),
@@ -46010,6 +46000,8 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("td", [_vm._v("Otto")]),
                     _vm._v(" "),
+                    _c("td", [_vm._v("@mdo")]),
+                    _vm._v(" "),
                     _c("td", [_vm._v("@mdo")])
                   ]),
                   _vm._v(" "),
@@ -46020,6 +46012,8 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("td", [_vm._v("Otto")]),
                     _vm._v(" "),
+                    _c("td", [_vm._v("@TwBootstrap")]),
+                    _vm._v(" "),
                     _c("td", [_vm._v("@TwBootstrap")])
                   ]),
                   _vm._v(" "),
@@ -46029,6 +46023,8 @@ var staticRenderFns = [
                     _c("td", [_vm._v("Jacob")]),
                     _vm._v(" "),
                     _c("td", [_vm._v("Thornton")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("@fat")]),
                     _vm._v(" "),
                     _c("td", [_vm._v("@fat")])
                   ])
