@@ -5,26 +5,34 @@ namespace App\Models;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,HasRoles;
+    use HasApiTokens, HasFactory, Notifiable,HasRoles, LogsActivity;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected static $logName = 'AmericanDirectLender';
+    protected static $submitEmptyLogs = false;
     protected $fillable = [
         'name',
         'email',
         'password',
         'role'
     ];
+    protected static $logAttributes = ['title', 'description', 'status'];
 
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return "You Have User {$eventName}";
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

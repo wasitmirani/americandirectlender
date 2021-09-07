@@ -1,6 +1,7 @@
 @extends('layouts.backend.authmaster')
 
 @section('content')
+
 <div class="row">
     <div class="col mx-auto">
         <div class="row justify-content-center">

@@ -16,8 +16,11 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         Registered::class => [
-            SendEmailVerificationNotification::class,
+            // SendEmailVerificationNotification::class,
+
         ],
+        'Illuminate\Auth\Events\Login' => ['App\Listeners\LoginSuccessful'],
+        'Illuminate\Auth\Events\Logout' => ['App\Listeners\LogoutSuccessful']
     ];
 
     /**
@@ -27,6 +30,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        parent::boot();
+
     }
 }
