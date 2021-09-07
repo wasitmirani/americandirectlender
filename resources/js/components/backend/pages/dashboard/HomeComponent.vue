@@ -528,7 +528,7 @@
           </div>
           <div class="card-body">
             <div class="chart-main activity-timeline update-line">
-              <div class="media"  v-for="log in logs">
+              <div class="media"  v-for="log in logs.slice(0, 5)">
                 <div class="activity-line"></div>
                 <div class="activity-dot-primary"></div>
                 <div class="media-body d-block">

@@ -43139,7 +43139,7 @@ var render = function() {
                 _c(
                   "div",
                   { staticClass: "chart-main activity-timeline update-line" },
-                  _vm._l(_vm.logs, function(log) {
+                  _vm._l(_vm.logs.slice(0, 5), function(log) {
                     return _c("div", { staticClass: "media" }, [
                       _c("div", { staticClass: "activity-line" }),
                       _vm._v(" "),

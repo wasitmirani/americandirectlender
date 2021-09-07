@@ -15,7 +15,7 @@ class DashboardController extends Controller
     }
 
     public function activityLogs(){
-        $activities =  Activity::all();
+        $activities =  Activity::latest()->get();
 
         return response()->json($activities);
 
