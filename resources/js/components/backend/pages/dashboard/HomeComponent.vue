@@ -533,7 +533,7 @@
                 <div class="activity-dot-primary"></div>
                 <div class="media-body d-block">
 
-                  <h6> <span class="font-primary"> <vue-moments-ago prefix="" suffix="ago" date=log.created_at  lang="en" /></span> </h6>
+                  <h6> <span class="font-primary"> <vue-moments-ago prefix="" suffix="" date='log.created_at'  lang="en" /></span> </h6>
                   <h5>{{log.log_name}}<i class="fa fa-circle circle-dot-primary pull-right"></i></h5>
                   <p>{{log.description}}</p>
                 </div>

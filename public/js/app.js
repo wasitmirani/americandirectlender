@@ -43154,7 +43154,7 @@ var render = function() {
                               _c("vue-moments-ago", {
                                 attrs: {
                                   prefix: "",
-                                  suffix: "ago",
+                                  suffix: "",
                                   date: "log.created_at",
                                   lang: "en"
                                 }
