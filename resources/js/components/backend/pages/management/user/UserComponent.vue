@@ -172,7 +172,9 @@
                    <div class="card">
                   <div class="card-header pb-0">
                     <h5>Ticket List</h5><span>List of ticket opend by customers</span>
+
                   </div>
+
                   <div class="card-body">
                     <div class="table-responsive">
                     <table class="table table-bordered">
@@ -210,6 +212,7 @@
             </div>
         </div>
         </div>
+
   </div>
 
 </template>
