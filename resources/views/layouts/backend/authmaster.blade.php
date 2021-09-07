@@ -1,70 +1,71 @@
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-	<head>
-
-		<!-- Meta data -->
-		<meta charset="UTF-8">
-		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
-		<meta content="{{config('app.name')}}" name="description">
-		<meta content="{{config('app.name')}}" name="author">
-		<meta name="keywords" content="{{config('app.name')}}">
-
-		<!-- Title -->
-		<title> Authentication | {{config('app.name')}}</title>
-
-		<!--Favicon -->
-		<link rel="icon" href="{{asset('/backend/assets/images/brand/favicon.ico')}}" type="image/x-icon"/>
-
-		<!--Bootstrap css -->
-		<link href="{{asset('/backend/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-
-		<!-- Style css -->
-		<link href="{{asset('/backend/assets/css/style.css')}}" rel="stylesheet" />
-		<link href="{{asset('/backend/assets/css/dark.css')}}" rel="stylesheet" />
-		<link href="{{asset('/backend/assets/css/skin-modes.css')}}" rel="stylesheet" />
-
-		<!-- Animate css -->
-		<link href="{{asset('/backend/assets/css/animated.css')}}" rel="stylesheet" />
-
-		<!---Icons css-->
-		<link href="{{asset('/backend/assets/css/icons.css')}}" rel="stylesheet" />
-
-	    <!-- Color Skin css -->
-		<link id="theme" href="{{asset('/backend/assets/colors/color1.css')}}" rel="stylesheet" type="text/css"/>
-
-	</head>
-
-	<body class="register1">
-		<div class="page">
-			<div class="page-single">
-				<div class="container">
-                    @yield('content')
-				</div>
-			</div>
-		</div>
-
-		<!-- Jquery js-->
-		<script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>
-
-		<!-- Bootstrap5 js-->
-		<script src="{{ asset('backend/assets/plugins/bootstrap/popper.min.js') }}"></script>
-		<script src="{{ asset('backend/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-
-		<!--Othercharts js-->
-		<script src="{{ asset('backend/assets/plugins/othercharts/jquery.sparkline.min.js') }}"></script>
-
-		<!-- Circle-progress js-->
-		<script src="{{ asset('backend/assets/js/circle-progress.min.js') }}"></script>
-
-		<!-- Jquery-rating js-->
-		<script src="{{ asset('backend/assets/plugins/rating/jquery.rating-stars.js') }}"></script>
-
-		<!-- Show Password -->
-		<script src="{{ asset('backend/assets/js/bootstrap-show-password.min.js') }}"></script>
-
-		<!-- Custom js-->
-		<script src="{{ asset('backend/assets/js/custom.js') }}"></script>
-
-	</body>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="viho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, viho admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <title>viho - Premium Admin Template</title>
+    <!-- Google font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/fontawesome.css')}}">
+    <!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/icofont.css')}}">
+    <!-- Themify icon-->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/themify.css')}}">
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/flag-icon.css')}}">
+    <!-- Feather icon-->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/feather-icon.css')}}">
+    <!-- Plugins css start-->
+    <!-- Plugins css Ends-->
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.css')}}">
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+    <link id="color" rel="stylesheet" href="{{asset('assets/css/color-1.css')}}" media="screen">
+    <!-- Responsive css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive.css')}}">
+  </head>
+  <body>
+    <!-- Loader starts-->
+    <div class="loader-wrapper">
+      <div class="theme-loader">
+        <div class="loader-p"></div>
+      </div>
+    </div>
+    <!-- Loader ends-->
+    <!-- page-wrapper Start-->
+    <div class="container-fluid">
+        @yield('content')
+      
+    </div>
+    @stack('scripts')
+    <!-- latest jquery-->
+    <script src="{{asset('assets/js/jquery-3.5.1.min.js')}}"></script>
+    <!-- feather icon js-->
+    <script src="{{asset('assets/js/icons/feather-icon/feather.min.js')}}"></script>
+    <script src="{{asset('assets/js/icons/feather-icon/feather-icon.js')}}"></script>
+    <!-- Sidebar jquery-->
+    <script src="{{asset('assets/js/sidebar-menu.js')}}"></script>
+    <script src="{{asset('assets/js/config.js')}}"></script>
+    <!-- Bootstrap js-->
+    <script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap/bootstrap.min.js')}}"></script>
+    <!-- Plugins JS start-->
+    <!-- Plugins JS Ends-->
+    <!-- Theme js-->
+    <script src="../assets/js/script.js"></script>
+    <!-- login js-->
+    <!-- Plugin used-->
+  </body>
 </html>
