@@ -98,7 +98,7 @@
               <div class="form-group">
                 <label>Password</label>
                 <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
-                  <input class="form-control @error('password') is-invalid  @enderror" type="password" name="login[password]" required="" placeholder="*********">
+                  <input class="form-control @error('password') is-invalid  @enderror" type="password" name="password" required="" placeholder="*********">
                   <div class="show-hide"><span class="show"> </span></div>
                   @error('password')
                   <div class="invalid-tooltip">
@@ -129,7 +129,7 @@
                   <li><a href="https://www.instagram.com/login" target="_blank"><i data-feather="instagram">                  </i></a></li>
                 </ul>
               </div>
-              <p>Don't have account?<a class="ms-2" href="sign-up.html">Create Account</a></p>
+              <p>Don't have account?<a class="ms-2" href="{{ route('register') }}">Create Account</a></p>
             </form>
           </div>
         </div>
