@@ -23,24 +23,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('user', UserController::class);
-// Route::prefix('user')->name('user.')->group(function () {
-//     Route::post("/update", [UserController::class, 'update'])->name('update');
-//     Route::post("/store", [UserController::class, 'store'])->name('store');
 
-// });
-
-Route::resource('role', RoleController::class);
-// ->only('index', 'destroy');
-// Route::prefix('role')->name('role.')->group(function () {
-//     Route::post("/update", [RoleController::class, 'update'])->name('update');
-//     Route::post("/store", [RoleController::class, 'store'])->name('store');
-
-// });
 Route::get('/activities',[DashboardController::class,'activityLogs']);
-Route::resource('permission', PermissionController::class);
-// ->only('index', 'destroy');
-// Route::prefix('permission')->name('permission.')->group(function () {
-//     Route::post("/update", [PermissionController::class, 'update'])->name('update');
-//     Route::post("/store", [PermissionController::class, 'store'])->name('store');
-// });
+
+Route::prefix('management')->group(function () {
+
+    Route::resource('user', UserController::class);
+    Route::resource('role', RoleController::class);
+    Route::resource('permission', PermissionController::class);
+
+});

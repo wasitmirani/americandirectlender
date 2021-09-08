@@ -5,160 +5,25 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header pb-0">
-                    <h5>Ticket List</h5><span>List of ticket opend by customers</span>
+                    <h5>Users Listing</h5><span>List of users opend by Admin</span>
+
+
                   </div>
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-xl-4 col-sm-6">
-                        <div class="card ecommerce-widget pro-gress">
-                          <div class="card-body support-ticket-font">
-                            <div class="row">
-                              <div class="col-5">
-                                <h6>Order</h6>
-                                <h4 class="total-num counter">2563</h4>
-                              </div>
-                              <div class="col-7">
-                                <div class="text-md-end">
-                                  <ul>
-                                    <li>Profit<span class="product-stts txt-primary ms-2">8989<i class="icon-angle-up f-12"></i></span></li>
-                                    <li>Loss<span class="product-stts txt-danger ms-2">2560<i class="icon-angle-down f-12"></i></span></li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="progress-showcase">
-                              <div class="progress">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div>
-                          </div>
+                        <div class="col-xl-4 col-sm-6">
+                            <div class="card o-hidden border-0">
+                            <div class="bg-primary b-r-4 card-body">
+                        <div class="media static-top-widget">
+                        <div class="align-self-center text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg></div>
+                        <div class="media-body"><span class="m-0">New Users</span>
+                            <h4 class="mb-0 counter">4531</h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus icon-bg"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
                         </div>
-                      </div>
-                      <div class="col-xl-4 col-sm-6">
-                        <div class="card ecommerce-widget pro-gress">
-                          <div class="card-body support-ticket-font">
-                            <div class="row">
-                              <div class="col-5">
-                                <h6>Pending</h6>
-                                <h4 class="total-num counter">8943</h4>
-                              </div>
-                              <div class="col-7">
-                                <div class="text-md-end">
-                                  <ul>
-                                    <li>Profit<span class="product-stts txt-primary ms-2">8989<i class="icon-angle-up f-12"></i></span></li>
-                                    <li>Loss<span class="product-stts txt-danger ms-2">2560<i class="icon-angle-down f-12"></i></span></li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="progress-showcase">
-                              <div class="progress">
-                                <div class="progress-bar bg-secondary" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div>
-                          </div>
                         </div>
-                      </div>
-                      <div class="col-xl-4 col-sm-6">
-                        <div class="card ecommerce-widget pro-gress">
-                          <div class="card-body support-ticket-font">
-                            <div class="row">
-                              <div class="col-5">
-                                <h6>Running</h6>
-                                <h4 class="total-num counter">2500</h4>
-                              </div>
-                              <div class="col-7">
-                                <div class="text-md-end">
-                                  <ul>
-                                    <li>Profit<span class="product-stts txt-primary ms-2">8989<i class="icon-angle-up f-12"></i></span></li>
-                                    <li>Loss<span class="product-stts txt-danger ms-2">2560<i class="icon-angle-down f-12"></i></span></li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="progress-showcase mt-4">
-                              <div class="progress">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div>
-                          </div>
+                    </div>
+                    </div>
                         </div>
-                      </div>
-                      <div class="col-xl-4 col-sm-6">
-                        <div class="card ecommerce-widget pro-gress">
-                          <div class="card-body support-ticket-font">
-                            <div class="row">
-                              <div class="col-5">
-                                <h6>Smooth</h6>
-                                <h4 class="total-num counter">2060</h4>
-                              </div>
-                              <div class="col-7">
-                                <div class="text-md-end">
-                                  <ul>
-                                    <li>Profit<span class="product-stts txt-primary ms-2">8989<i class="icon-angle-up f-12"></i></span></li>
-                                    <li>Loss<span class="product-stts txt-danger ms-2">2560<i class="icon-angle-down f-12"></i></span></li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="progress-showcase mt-4">
-                              <div class="progress">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-4 col-sm-6">
-                        <div class="card ecommerce-widget pro-gress">
-                          <div class="card-body support-ticket-font">
-                            <div class="row">
-                              <div class="col-5">
-                                <h6>Done</h6>
-                                <h4 class="total-num counter">5600</h4>
-                              </div>
-                              <div class="col-7">
-                                <div class="text-md-end">
-                                  <ul>
-                                    <li>Profit<span class="product-stts txt-primary ms-2">8989<i class="icon-angle-up f-12"></i></span></li>
-                                    <li>Loss<span class="product-stts txt-danger ms-2">2560<i class="icon-angle-down f-12"></i></span></li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="progress-showcase mt-4">
-                              <div class="progress">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-4 col-sm-6">
-                        <div class="card ecommerce-widget pro-gress">
-                          <div class="card-body support-ticket-font">
-                            <div class="row">
-                              <div class="col-5">
-                                <h6>Cancle</h6>
-                                <h4 class="total-num counter">2560</h4>
-                              </div>
-                              <div class="col-7">
-                                <div class="text-md-end">
-                                  <ul>
-                                    <li>Profit<span class="product-stts txt-primary ms-2">8989<i class="icon-angle-up f-12"></i></span></li>
-                                    <li>Loss<span class="product-stts txt-danger ms-2">2560<i class="icon-angle-down f-12"></i></span></li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="progress-showcase">
-                              <div class="progress">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+
                     </div>
 
                   <!-- List  -->
@@ -171,47 +36,56 @@
             <div class="col-12">
                    <div class="card">
                   <div class="card-header pb-0">
-                    <h5>Ticket List</h5><span>List of ticket opend by customers</span>
+                    <h5>
+                      <div class="mb-3 col-4">
+                        <vs-input success v-model="query" placeholder="Search Users" />
+                    </div>
+                    </h5>
 
                   </div>
 
+
                   <div class="card-body">
                     <div class="table-responsive">
-                    <table class="table table-bordered">
-                      <thead class="table-primary">
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">User</th>
-                          <th scope="col">Roles</th>
-                          <th scope="col">Permissions</th>
-                           <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                           <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@TwBootstrap</td>
-                          <td>@TwBootstrap</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                          <td>@fat</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                        <table class="table table-bordernone">
+                        <thead >
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Create By</th>
+                            <th scope="col">Created</th>
+                            <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="user in users.data" :key="user.id">
+                                <td>#</td>
+
+                                <td class="bd-t-none u-s-tb">
+                                <Avatar :name="user.name" thumbnail=""></Avatar>
+                                <div class="align-middle image-sm-size">
+                                    <div class="d-inline-block">
+                                    <h6>{{user.name}} <span class="text-muted"></span></h6>
+                                    </div>
+                                </div>
+                                </td>
+                            <td>{{user.email}}</td>
+                                <td>{{user.phone}}</td>
+                                <td>Admin</td>
+                                <td>{{user.created_at | timeformat}}</td>
+
+                                <td><a role="button"><i class="fa  fa-edit text-primary"></i></a> |  <a role="button"><i class="fa  fa-trash text-danger"></i></a></td>
+                            </tr>
+
+                        </tbody>
+                        </table>
                     </div>
+
+                    <ul class="pagination pagination-primary">
+                        <pagination :data="users" :limit="2" @pagination-change-page="getUsers"></pagination>
+                    </ul>
                   </div>
             </div>
         </div>
@@ -223,18 +97,49 @@
 
 <script>
 import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
+import Avatar from "../../../components/AvatarComponent.vue";
 export default {
     components:{
         Breadcrumb,
-
-
+        Avatar,
     },
+    data(){
+        return {
+            users:{},
+            query:"",
+            form:{
+                name:"",
+            },
+            page_num:1,
+        };
+    },
+    mounted(){
+        this.getUsers();
+    },
+    methods:{
+           async getUsers(){
+                 const url="/management/user?page=" + page + "&query=" + this.query;
+                 this.page_num = page;
+               await axios.get(url).then((res)=>{
+                   this.users = res.data.users;
+               }).catch((err)=>{
+                     this.$root.alertErrorMessage(err.response.status,err.response.data);
+                //    console.log("erro",err.response.data.message);
 
+               });
+            }
+    }
 
 
 }
 </script>
 
 <style>
-
+.dashboard-2-main .card-body .table-bordernone .u-s-tb {
+    display: inline-flex;
+    align-items: center;
+}
+.dashboard-2-main .card-body .d-inline-block h6 {
+    padding: 0 0 0 15px;
+}
 </style>

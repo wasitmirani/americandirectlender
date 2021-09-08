@@ -17,10 +17,13 @@ const routes = [
         path: "/",
         redirect: { path: '/home' }
     },
-    { path: "/home", component: () => setComponent("dashboard/Home") },
-    { path: "/users", component: () => setComponent("management/user/User") },
-    { path: "/roles", component: () => setComponent("management/role/Role") },
-    { path: "/permissions", component: () => setComponent("management/permission/Permission") },
+    { path: "/home", component: () => setComponent("dashboard/Home"), name: "Home" },
+    {
+        path: "/users",
+        component: () => setComponent("management/user/User"),
+        name: "Users",
+    }, { path: "/roles", component: () => setComponent("management/role/Role"), name: "Roles" },
+    { path: "/permissions", component: () => setComponent("management/permission/Permission"), name: "permissions", },
 
 ];
 
@@ -36,6 +39,6 @@ router.beforeResolve((to, from, next) => {
 });
 
 router.afterEach((to, from) => {
-    setTimeout(function () { $('.page-loader-wrapper').fadeOut(); }, 50);
+    setTimeout(function() { $('.page-loader-wrapper').fadeOut(); }, 50);
 });
 export default router;

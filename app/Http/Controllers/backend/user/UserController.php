@@ -13,25 +13,15 @@ class UserController extends Controller
     //
     public function index()
     {
+
         $q=request('query');
         $users=User::where('name', 'like', '%' . $q . '%')
         ->Orwhere('email', 'like', '%' . $q. '%')
         ->Orwhere('created_at', 'like', '%' . $q. '%')
         ->latest()->paginate(env('PER_PAGE'));
-
-
        return response()->json(['users'=>$users]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -59,27 +49,6 @@ class UserController extends Controller
         return response()->json($user,200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
