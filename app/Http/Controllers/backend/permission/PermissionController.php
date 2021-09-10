@@ -14,10 +14,13 @@ class PermissionController extends Controller
     {
         //
         $q=request('query');
+
         $permissions=Permission::where('name', 'like', '%' .$q. '%')
         ->orderBy('name','ASC')
         ->with('roles')->paginate(env('PAR_PAGE'));
+
         $roles=Role::orderBy('name','ASC')->get();
+
         return response()->json(['permissions'=>$permissions,'roles'=>$roles]);
     }
 
@@ -31,7 +34,7 @@ class PermissionController extends Controller
         $role_collection=Role::WhereIn('id',  $roles)->get();
         $permission = Permission::create(['name' => $request->name]);
         $permission->syncRoles($role_collection);
-        
+
 
         return response()->json();
     }
