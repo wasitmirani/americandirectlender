@@ -22,7 +22,13 @@ const routes = [
         path: "/users",
         component: () => setComponent("management/user/User"),
         name: "Users",
-    }, { path: "/roles", component: () => setComponent("management/role/Role"), name: "Roles" },
+    },
+    {
+        path: "/user/:id",
+        component: () => setComponent("management/user/UserForm"),
+        name: "User Update",
+    },
+    { path: "/roles", component: () => setComponent("management/role/Role"), name: "Roles" },
     { path: "/permissions", component: () => setComponent("management/permission/Permission"), name: "permissions", },
 
 ];
@@ -39,6 +45,6 @@ router.beforeResolve((to, from, next) => {
 });
 
 router.afterEach((to, from) => {
-    setTimeout(function() { $('.page-loader-wrapper').fadeOut(); }, 50);
+    // setTimeout(function() { $('.page-loader-wrapper').fadeOut(); }, 50);
 });
 export default router;

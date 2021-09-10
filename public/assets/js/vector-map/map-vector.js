@@ -11,7 +11,7 @@
             hoverColor: !1,
             regionStyle: {
                 initial: {
-                    fill: "#24695c"
+                    fill: "#665ed"
                 }
             },
             backgroundColor: "transparent",
@@ -21,7 +21,7 @@
             regionStyle: {
                 initial: {
                     fill: "#ba895d"
-                } 
+                }
             }
         }), maps("#india").vectorMap({
             map: "in_mill",
@@ -55,7 +55,7 @@
                     fill: "#22af47"
                 }
             }
-        }),maps("#chicago").vectorMap({
+        }), maps("#chicago").vectorMap({
             map: "us-il-chicago_mill_en",
             backgroundColor: "transparent",
             regionStyle: {
@@ -63,7 +63,7 @@
                     fill: "#fb6d9d"
                 }
             }
-        }),maps("#australia").vectorMap({
+        }), maps("#australia").vectorMap({
             map: "au_mill",
             backgroundColor: "transparent",
             regionStyle: {
