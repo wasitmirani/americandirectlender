@@ -390,7 +390,7 @@
               <div class="card-body">
                 <div class="round-progress knob-block text-center">
                   <div class="progress-circle">
-                    <input class="knob1" data-width="50" data-height="70" data-thickness=".3" data-fgcolor="#24695c" data-linecap="round" data-angleoffset="0" value="60">
+                    <input class="knob1" data-width="50" data-height="70" data-thickness=".3" data-fgcolor="#665ed" data-linecap="round" data-angleoffset="0" value="60">
                   </div>
                   <h5>$4,55,462</h5>
                   <p>Our Annual Income</p>
@@ -528,12 +528,12 @@
           </div>
           <div class="card-body">
             <div class="chart-main activity-timeline update-line">
-              <div class="media"  v-for="log in logs.slice(0, 5)">
+              <div class="media"  v-for="log in logs" :key="log.id">
                 <div class="activity-line"></div>
                 <div class="activity-dot-primary"></div>
                 <div class="media-body d-block">
 
-                  <h6> <span class="font-primary"> <vue-moments-ago prefix="" suffix="" date='log.created_at'  lang="en" /></span> </h6>
+                  <h6> <span class="font-primary"> {{log.created_at  | timeformat}} </span> </h6>
                   <h5>{{log.log_name}}<i class="fa fa-circle circle-dot-primary pull-right"></i></h5>
                   <p>{{log.description}}</p>
                 </div>
@@ -593,7 +593,6 @@
           data(){
               return{
                  logs:[],
-                 test:"name"
 
         }
     },
@@ -601,19 +600,10 @@
 
 
         created(){
-              axios.get('api/activities').then((response)=>{
-
-
+              axios.get('/activities').then((response)=>{
                  console.log(response)
                  this.logs = response.data
-
-                }).catch((error)=>{
-    // handle error
-       console.log(error);
-  })
-
-
-
+                }).catch((error)=>{})
 
 
         }

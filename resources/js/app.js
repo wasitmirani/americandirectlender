@@ -9,8 +9,10 @@ require('./bootstrap');
 window.Vue = require('vue').default;
 import router from "./router";
 import VueProgressBar from 'vue-progressbar'
-import VModal from 'vue-js-modal'
-import VueMomentsAgo from 'vue-moments-ago'
+import Vuesax from 'vuesax'
+import 'vuesax/dist/vuesax.css'
+import moment from "moment";
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -19,27 +21,52 @@ import VueMomentsAgo from 'vue-moments-ago'
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-const files = require.context('./', true, /\.vue$/i)
-files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+Vue.use(Vuesax);
+Vue.component("pagination", require("laravel-vue-pagination"));
+window.moment = moment;
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
     height: '6px'
 })
-Vue.use(VModal)
-Vue.component('vue-moments-ago', VueMomentsAgo)
 
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
+
+Vue.filter("timeformat", function(value) {
+    if (value) {
+        return moment
+            .utc(String(value))
+            .local()
+            .fromNow();
+    }
+});
 const app = new Vue({
     el: '#app',
     router,
+    methods: {
+        alertNotification(position = 'top-right', color, title, description) {
+            const noti = this.$vs.notification({
+                progress: 'auto',
+                color,
+                position,
+                title: title,
+                text: `${description}`
+            })
+        },
+        alertErrorMessage(status, res) {
+            switch (status) {
+                case 500:
+                    this.alertNotification('top-right', 'danger', `${status} Error! `, res.message);
+                    break;
+
+                default:
+                    break;
+            }
+        },
+    },
     created() {
         this.$Progress.start()
             //  hook the progress bar to start before we move router-view

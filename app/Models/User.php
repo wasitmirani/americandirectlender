@@ -19,7 +19,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected static $logName = 'AmericanDirectLender';
+    // protected static $logName = '';
     protected static $submitEmptyLogs = false;
     protected $fillable = [
         'name',
@@ -31,10 +31,10 @@ class User extends Authenticatable
 
     public function getDescriptionForEvent(string $eventName): string
     {
-        return "Register Successfully";
+        return $eventName;
     }
 
- 
+
     /**
      * The attributes that should be hidden for arrays.
      *

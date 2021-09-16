@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
 <!-- Mirrored from admin.pixelstrap.com/viho/theme/dashboard-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 Sep 2021 16:33:46 GMT -->
 <head>
@@ -41,8 +41,10 @@
     <link id="color" rel="stylesheet" href="{{asset('assets/css/color-1.css')}}" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   </head>
-  <body>
+  <body style="--theme-deafult:#665ed5; --theme-secondary:#d1d1e9;">
   <!-- Loader starts-->
   <div class="loader-wrapper">
     <div class="theme-loader">
@@ -87,9 +89,35 @@
         </div>
       </footer>
   </div>
+  <script>
+    window.appname={!! json_encode(config('app.name'),true)!!};
+     @auth
 
+         window.user = {!! json_encode(Auth::user(), true) !!};
+         console.log(user);
+     @else
+         window.user = [];
+         window.Permissions = [];
+     @endauth
+     @if(session('login')=="true" || session('login')==true)
+     setTimeout(function() {
+     // toastr['success'](
+     // 'You have successfully logged in to {{config('app.name')}}.',
+     // '👋 Welcome {{Auth::user()->name}}!', {
+     //     closeButton: true,
+     //      tapToDismiss: false
+     // }
+     // );
+     }, 1000);
+     @php
+     session(['login' => '']);
+     @endphp
+     @endif
+</script>
   <script src="{{ asset('js/app.js') }}" ></script>
     <script src="{{asset('assets/js/jquery-3.5.1.min.js')}}"></script>
+
+
 
     <!-- feather icon js-->
     <script src="{{asset('assets/js/icons/feather-icon/feather.min.js')}}"></script>
@@ -123,7 +151,6 @@
     <!-- Theme js-->
     <script src="{{asset('assets/js/script.js')}}"></script>
     <script src="{{asset('assets/js/theme-customizer/customizer.js')}}"></script>
-
 
     <!-- login js-->
     <!-- Plugin used-->

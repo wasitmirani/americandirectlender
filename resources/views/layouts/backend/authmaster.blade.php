@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="--theme-deafult:#665ed5; --theme-secondary:#d1d1e9;">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,7 +47,7 @@
     <!-- page-wrapper Start-->
     <div class="container-fluid">
         @yield('content')
-      
+
     </div>
     @stack('scripts')
     <!-- latest jquery-->
