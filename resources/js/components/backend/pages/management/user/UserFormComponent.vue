@@ -46,7 +46,7 @@
                   </div>
                 </div>
                 <div :class="edit_mode ? 'col-xl-8' : 'col-xl-12'">
-                  <form class="card" v-on:submit.prevent="addUser">
+                  <form class="card"  >
                     <div class="card-header pb-0">
                       <h4 class="card-title mb-0" v-if="edit_mode">Edit Profile</h4>
                        <h4 class="card-title mb-0" v-else>Create Profile</h4>
@@ -54,45 +54,71 @@
                     </div>
                     <div class="card-body">
                       <div class="row">
-                            <div class="col-sm-6 col-md-6">
+                            <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
                             <label class="form-label">First Name</label>
-                            <input class="form-control" type="text" placeholder="First Name" v-model="user.name">
+                            <input :class="errors.name && user.name.length<1 ? 'is-invalid form-control' : 'form-control'"  type="text" placeholder="First Name" v-model="user.name" >
+                            <span class="text-danger" v-if="errors.name && user.name.length<1">{{errors.name[0]}}</span>
                           </div>
                         </div>
-                       <div class="col-sm-6 col-md-6">
+                       <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
                             <label class="form-label">Last Name</label>
                             <input class="form-control" type="text" placeholder="Last Name" v-model="user.last_name">
                           </div>
                         </div>
-                          <div class="col-md-12">
+                        <div class="col-sm-6 col-md-4">
+                          <div class="mb-3">
+                            <label class="form-label">Email address</label>
+                            <input :class="errors.email && user.email.length<1 ? 'is-invalid form-control' : 'form-control'"  type="email" placeholder="Email Address" v-model="user.email" >
+                            <span class="text-danger" v-if="(errors.email && user.email.length<1 || errors.email)">{{errors.email[0]}}</span>
+                            <!-- <span class="text-danger" v-else> <p v-if="errors.email">{{errors.email[0]}}</p> </span> -->
+
+                          </div>
+                        </div>
+
+
+                          <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
                             <label class="form-label">Password</label>
                             <input class="form-control" type="password" placeholder="Password" v-model="user.password">
                           </div>
                         </div>
-                          <div class="col-md-5">
+                         <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
-                            <label class="form-label">Role</label>
-                            <select class="form-control btn-square" v-model="user.role">
-                              <option value="0">--Select--</option>
-                              <option value="1">Admin</option>
-                              <option value="2">User</option>
-
-                            </select>
+                            <label class="form-label">Phone Number</label>
+                            <input class="form-control" type="text" placeholder="Phone Number" v-model="user.phone">
                           </div>
                         </div>
-                        <div class="col-sm-6 col-md-3">
+                          <div class="col-sm-6 col-md-4">
+                          <div class="mb-3">
+                            <label class="form-label">Role</label>
+                           <vs-select filter multiple collapse-chips placeholder="Roles" v-model="user.roles">
+                                <vs-option label="Admin" value="1">
+                                Admin
+                                </vs-option>
+                                <vs-option label="Manager" value="2">
+                                Manger
+                                </vs-option>
+                                <vs-option label="Javascript" value="3">
+                                Javascript
+                                </vs-option>
+                                <vs-option label="Sass" value="4">
+                                Sass
+                                </vs-option>
+                                <vs-option label="Typescript" value="5">
+                                Typescript
+                                </vs-option>
+                                <vs-option label="Webpack" value="6">
+                                Webpack
+                                </vs-option>
+                             </vs-select>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4" v-if="edit_mode">
                           <div class="mb-3">
                             <label class="form-label">Username</label>
                             <input class="form-control" type="text" placeholder="Username"  v-model="user.first_name">
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                          <div class="mb-3">
-                            <label class="form-label">Email address</label>
-                            <input class="form-control" type="email" placeholder="Email"  v-model="user.email">
                           </div>
                         </div>
 
@@ -116,14 +142,27 @@
                         </div>
                         <div class="col-md-5">
                           <div class="mb-3">
-                            <label class="form-label">Country</label>
-                            <select class="form-control btn-square" v-model="user.country">
-                              <option value="0">--Select--</option>
-                              <option value="1">Germany</option>
-                              <option value="2">Canada</option>
-                              <option value="3">Usa</option>
-                              <option value="4">Aus</option>
-                            </select>
+                               <label class="form-label">Country</label>
+                             <vs-select filter multiple collapse-chips placeholder="Collapse chips" v-model="user.country">
+                                <vs-option label="Vuesax" value="1">
+                                Vuesax
+                                </vs-option>
+                                <vs-option label="Vue" value="2">
+                                Vue
+                                </vs-option>
+                                <vs-option label="Javascript" value="3">
+                                Javascript
+                                </vs-option>
+                                <vs-option label="Sass" value="4">
+                                Sass
+                                </vs-option>
+                                <vs-option label="Typescript" value="5">
+                                Typescript
+                                </vs-option>
+                                <vs-option label="Webpack" value="6">
+                                Webpack
+                                </vs-option>
+                             </vs-select>
                           </div>
                         </div>
                         <div class="col-md-12">
@@ -135,8 +174,15 @@
                       </div>
                     </div>
                     <div class="card-footer text-end">
-                      <button class="btn btn-primary" type="submit">Update Profile</button>
+                  <!-- <vs-checkbox v-model="checkbox1">Remember me</vs-checkbox> -->
+                        <vs-button color="rgb(121, 81, 170)" gradient  type="submit"  v-if="!edit_mode" @click="onSubmit">
+                            Submit
+                        </vs-button>
+                        <vs-button  color="rgb(59,222,200)" gradient  type="submit"  v-else>
+                            Update
+                        </vs-button>
                     </div>
+
                   </form>
                 </div>
               </div>
@@ -150,54 +196,52 @@
 import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 export default {
     components:{ Breadcrumb},
+
     data(){ return{
         edit_mode:false,
         user:{
-          first_name:"",
-          last_name:"",
-          email:"",
-          role:"",
-          name:"",
-          password:"",
-          address:"",
-          postalcode:"",
-          city:"",
-          country:"",
-          bio:""
-
-
-
+            name:"",
+            email:"",
+            phone:"",
+            last_name:"",
+            password:"",
+            address:"",
+            postalcode:"",
+            city:"",
+            country:[],
+            bio:"",
+            roles:[],
         },
+        errors:{},
     }},
+     computed: {
+    checkError: function () {
+      console.log("hello");
+    },
+     },
      methods:{
-          addUser(){
-              var formData = new FormData();
-                formData.append("f_name",this.user.first_name);
-                formData.append('l_name',this.user.last_name)
+          onSubmit(){
+              let formData = new FormData();
+                formData.append("name",this.user.name);
+                formData.append('last_name',this.user.last_name);
                 formData.append('email',this.user.email)
-                formData.append('role',this.user.email)
-                formData.append('name',this.user.name)
                 formData.append('password',this.user.password)
+                formData.append('phone',this.user.phone)
                 formData.append('address',this.user.address)
                 formData.append('postalcode',this.user.postalcode)
                 formData.append('city',this.user.city)
                 formData.append('country',this.user.country)
                 formData.append('bio',this.user.bio)
 
-//                 for (var pair of formData.entries()) {
-//     console.log(pair[0]+ ', ' + pair[1]);
-// }
+                axios.post('/management/user',formData).then((response)=>{
+                }).catch((err)=>{
+                     if(err.response.status==422){
+                       this.errors=err.response.data.errors;
+                        }
+                 this.$root.alertNotificationMessage(err.response.status,err.response.data);
+                   //    console.log("erro",err.response.data.message);
 
-     axios.post('/management/user',formData)
-      .then((response)=>{
-
-
-
-      })
-      .catch((error)=>{
-        console.log(error)
-
-      })
+                  });
       }
 
 
@@ -219,11 +263,22 @@ export default {
         else {
             this.edit_mode=false;
         }
-        console.log(this.$route.params.id);
+
     },
 }
 </script>
 
 <style>
+.vs-button__content {
+    width: 130px;
+    height: 49px;
+}
 
+  .vs-input {
+   width: 100%;
+   }
+   .vs-select-content {
+   width: 100%;
+   max-width: 100%;
+   }
 </style>

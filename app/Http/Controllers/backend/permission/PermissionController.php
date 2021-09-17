@@ -14,13 +14,11 @@ class PermissionController extends Controller
     {
         //
         $q=request('query');
-
         $permissions=Permission::where('name', 'like', '%' .$q. '%')
         ->orderBy('name','ASC')
         ->with('roles')->paginate(env('PAR_PAGE'));
 
         $roles=Role::orderBy('name','ASC')->get();
-
         return response()->json(['permissions'=>$permissions,'roles'=>$roles]);
     }
 

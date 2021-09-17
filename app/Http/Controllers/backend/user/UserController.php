@@ -39,35 +39,20 @@ class UserController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'min:3','max:50'],
-            'l_name' => ['required', 'string', 'min:3','max:50'],
-            'f_name' => ['required', 'string', 'min:3','max:50'],
-            'role' => ['required'],
-            'postalcode' => ['required'],
-            'city' => ['required'],
-            'country' => ['required'],
-            'bio' => ['required'],
-            'address' => ['required'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // 'phone' => ['required',  'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
+            'email' => ['required',  'email', 'unique:users'],
+            'phone' => ['required',  'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:255', 'unique:users'],
         ]);
 
-        $user = User::create([
-
-            'name'=>$request->name,
+        return $request->all();
+        $user=new User();
+        $request_array=[
+            'name'=>$request->first_name,
+            'last_name'=>$request->last_name,
             'email'=>$request->email,
-            'password' => Hash::make($request->password),
-            'l_name' => $request->l_name,
-            'f_name' => $request->f_name,
-            'role' => $request->role,
-            'postal_code' => $request->postalcode,
-            'city' => $request->city,
-            'country' => $request->country,
-            'bio' => $request->bio,
-            'address' => $request->address,
-
-
-        ]);
+            'password'=>Hash::make($request->password),
+        ];
+        $new_user=$user->userCreateOrUpdate($request_array);
+        $user->userInfoCreateOrUpdate($new_user);
 
         return response()->json($user,200);
     }
@@ -86,7 +71,7 @@ class UserController extends Controller
     }
     public function update(Request $request)
     {
-        dd($request->email);
+
 
         $request->validate([
             'name' => ['required', 'string', 'min:3','max:50'],

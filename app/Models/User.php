@@ -21,20 +21,7 @@ class User extends Authenticatable
      */
     // protected static $logName = '';
     protected static $submitEmptyLogs = false;
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role',
-        'l_name',
-        'f_name',
-        'postalcode',
-        'city',
-        'country',
-        'bio',
-        'address'
-
-    ];
+    protected $guarded = [];
     protected static $logAttributes = ['title', 'description', 'status'];
 
     public function getDescriptionForEvent(string $eventName): string
@@ -61,4 +48,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userCreateOrUpdate($request,$type="create"){
+
+        if($type == 'create'){
+            return User::create($request);
+        }
+        else {
+            return User::where('id',$request->id)->update($request);
+        }
+    }
+
+    public function userInfoCreateOrUpdate($user,$request){
+        $isuser=User::where('id',$user->id)->first();
+        if(!empty($isuser)){
+            UserInfo::create($request);
+        }
+        else {
+            UserInfo::where('user_id',$user->id)->update($request);
+        }
+    }
 }

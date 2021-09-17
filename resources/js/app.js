@@ -48,28 +48,39 @@ Vue.filter("timeformat", function(value) {
 const app = new Vue({
     el: '#app',
     router,
+    data() {
+        return {
+            primary_color: "",
+        };
+    },
     methods: {
-        alertNotification(position = 'top-right', color, title, description) {
+        alertNotification(position = 'top-right', border, title, description) {
             const noti = this.$vs.notification({
                 progress: 'auto',
-                color,
+                border,
                 position,
                 title: title,
-                text: `${description}`
+                text: ` ${description} `
             })
         },
-        alertErrorMessage(status, res) {
+        alertNotificationMessage(status, res) {
             switch (status) {
                 case 500:
-                    this.alertNotification('top-right', 'danger', `${status} Error! `, res.message);
+                    this.alertNotification('top-right', 'danger', `Oops, Something Went Wrong ${status} Error! `, res.message);
                     break;
-
+                case 422:
+                    this.alertNotification('top-right', 'danger', `Oops, Unprocessable Entity ${status} Error! `, res.message);
+                    break;
+                case 200:
+                    this.alertNotification('top-right', 'success', `response ${status} successfully! `, res);
+                    break;
                 default:
                     break;
             }
         },
     },
     created() {
+        this.primary_color = primarycolor;
         this.$Progress.start()
             //  hook the progress bar to start before we move router-view
         this.$router.beforeEach((to, from, next) => {
@@ -94,7 +105,7 @@ const app = new Vue({
             group: 'succes',
             title: 'Important message',
             text: 'Hello user! This is a notification!'
-          });
+        });
 
     }
 
