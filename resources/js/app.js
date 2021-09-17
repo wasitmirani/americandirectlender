@@ -35,7 +35,7 @@ Vue.use(VueProgressBar, {
 })
 Vue.component('multiselect', Multiselect)
 Vue.use(Notifications)
-Vue.use(Toast, options);
+
 
 Vue.filter("timeformat", function(value) {
     if (value) {

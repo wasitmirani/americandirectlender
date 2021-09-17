@@ -1342,22 +1342,34 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(role.name))]),
             _vm._v(" "),
-            _c("td", [
-              _vm._m(1, true),
-              _vm._v(" | "),
-              _c(
-                "a",
-                {
-                  attrs: { role: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.dltRole(role.id)
+            _c(
+              "td",
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      to: { name: "EditRoles", params: { id: role.id } }
                     }
-                  }
-                },
-                [_c("i", { staticClass: "fa  fa-trash text-danger" })]
-              )
-            ])
+                  },
+                  [_c("i", { staticClass: "fa  fa-edit text-primary" })]
+                ),
+                _vm._v(" | "),
+                _c(
+                  "a",
+                  {
+                    attrs: { role: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.dltRole(role.id)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa  fa-trash text-danger" })]
+                )
+              ],
+              1
+            )
           ])
         }),
         0
@@ -1379,12 +1391,6 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", [_c("i", { staticClass: "fa  fa-edit text-primary" })])
   }
 ]
 render._withStripped = true

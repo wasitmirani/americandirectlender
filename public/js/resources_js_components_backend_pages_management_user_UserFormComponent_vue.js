@@ -218,8 +218,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addUser: function addUser() {
-      var _this = this;
-
       var formData = new FormData();
       formData.append("f_name", this.user.first_name);
       formData.append('l_name', this.user.last_name);
@@ -235,25 +233,21 @@ __webpack_require__.r(__webpack_exports__);
       //     console.log(pair[0]+ ', ' + pair[1]);
       // }
 
-      axios.post('/management/user', formData).then(function (response) {
-        _this.$toast("My toast content", {
-          timeout: 2000
-        });
-      })["catch"](function (error) {
+      axios.post('/management/user', formData).then(function (response) {})["catch"](function (error) {
         console.log(error);
       });
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this = this;
 
     if (this.$route.params.id) {
       var url = "/management/user/" + this.$route.params.id;
       axios.get(url).then(function (res) {
-        _this2.user = res.data.user;
-        _this2.edit_mode = true;
+        _this.user = res.data.user;
+        _this.edit_mode = true;
       })["catch"](function (err) {
-        _this2.$root.alertErrorMessage(err.response.status, err.response.data);
+        _this.$root.alertErrorMessage(err.response.status, err.response.data);
       });
     } else {
       this.edit_mode = false;

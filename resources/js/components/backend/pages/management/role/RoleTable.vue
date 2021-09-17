@@ -13,7 +13,7 @@
                           <th scope="row">{{role.id}}</th>
                           <td>{{role.name}}</td>
                           <td>
-                            <a><i class="fa  fa-edit text-primary"></i></a> | <a role="button" v-on:click="dltRole(role.id)"><i class="fa  fa-trash text-danger"></i></a>
+                            <router-link :to="{name: 'EditRoles', params: { id: role.id }}"><i class="fa  fa-edit text-primary" ></i></router-link> | <a role="button" v-on:click="dltRole(role.id)"><i class="fa  fa-trash text-danger"></i></a>
                           </td>
                         </tr>
 

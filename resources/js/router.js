@@ -40,6 +40,7 @@ const routes = [
     },
     { path: "/roles", component: () => setComponent("management/role/Role"), name: "Roles" },
     { path: "/create/roles", component: () => setComponent("management/role/CreateRole"), name: "CreateRoles" },
+    { path: "/edit/roles/:id", component: () => setComponent("management/role/CreateRole"), name: "EditRoles" },
 
     { path: "/permissions", component: () => setComponent("management/permission/Permission"), name: "permissions", },
     { path: "/create/permissions", component: () => setComponent("management/permission/CreatePermission"), name: "createpermissions", },

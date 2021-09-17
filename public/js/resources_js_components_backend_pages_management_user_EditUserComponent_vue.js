@@ -45,6 +45,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _components_BreadcrumbComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/BreadcrumbComponent.vue */ "./resources/js/components/backend/components/BreadcrumbComponent.vue");
+var _components$data$meth;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -194,7 +198,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_components$data$meth = {
   components: {
     Breadcrumb: _components_BreadcrumbComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -224,18 +228,19 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     }
-  },
-  created: function created() {
-    var _this = this;
-
-    axios.get('management/user/' + this.$route.params.id).then(function (response) {
-      _this.user = response.data.user;
-      console.log(response);
-    })["catch"](function (error) {
-      console.log(error);
-    });
   }
-});
+}, _defineProperty(_components$data$meth, "methods", {
+  getRole: function getRole() {}
+}), _defineProperty(_components$data$meth, "created", function created() {
+  var _this = this;
+
+  axios.get('management/user/' + this.$route.params.id).then(function (response) {
+    _this.user = response.data.user;
+    console.log(response);
+  })["catch"](function (error) {
+    console.log(error);
+  });
+}), _components$data$meth);
 
 /***/ }),
 

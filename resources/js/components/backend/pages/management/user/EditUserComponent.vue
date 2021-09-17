@@ -173,9 +173,9 @@ export default {
                 formData.append('bio',this.user.bio)
 
  
-  axios.put('/management/user/'+this.$route.params.id,formData)
+     axios.put('/management/user/'+this.$route.params.id,formData)
       .then((response)=>{
-console.log(response)
+    console.log(response)
      
 
       })
@@ -191,11 +191,18 @@ console.log(response)
 
        
      },
+     methods:{
+
+         getRole(){
+
+         }
+
+     },
     created(){
              axios.get('management/user/'+this.$route.params.id).then((response)=>{
               
                 this.user = response.data.user
-        console.log(response)
+                   console.log(response)
 
             }).catch((error)=>{
                 console.log(error)

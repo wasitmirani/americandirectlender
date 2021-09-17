@@ -191,9 +191,7 @@ export default {
      axios.post('/management/user',formData)
       .then((response)=>{
 
-      this.$toast("My toast content", {
-    timeout: 2000
-});
+
 
       })
       .catch((error)=>{
