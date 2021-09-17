@@ -14,27 +14,31 @@ class RoleController extends Controller
     public function index()
     {
         //
-        $q=request('query');
-        $roles=Role::where('name', 'like', '%' . $q . '%')
-        ->orderBy('name','ASC')
-        ->with('users')
-        ->paginate(env('PER_PAGE'));
-        $users=User::orderBy('name','ASC')->get();
+        // $q=request('query');
+        // $roles=Role::where('name', 'like', '%' . $q . '%')
+        // ->orderBy('name','ASC')
+        // 
+        // ->paginate(env('PER_PAGE'));
+        // $users=User::orderBy('name','ASC')->get();
+        $roles = Role::orderBy('name','ASC')->paginate(6);
 
 
-       return response()->json(['users'=>$users,'roles'=>$roles]);
+       return response()->json(['roles'=>$roles]);
     }
 
 
     public function store(Request $request)
     {
+        
         $request->validate([
-            'name' => ['required', 'string', 'max:255','unique:roles'],
+            'role' => ['required'],
         ]);
-        $users=explode(",",$request->users);
-        $user_collection=User::WhereIn('id',  $users)->get();
-        $role = Role::create(['name' => $request->name]);
-        $role->users()->attach($user_collection);
+
+        $role = Role::create([
+            'name' => $request->role
+        ]);
+
+        return response()->json($role);
 
 
     }
@@ -64,6 +68,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
+      
 
       Role::destroy($id);
     }

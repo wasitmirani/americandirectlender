@@ -46,7 +46,7 @@
                   </div>
                 </div>
                 <div :class="edit_mode ? 'col-xl-8' : 'col-xl-12'">
-                  <form class="card" v-on:submit.prevent="addUser">
+                  <form class="card" v-on:submit.prevent="updateUser">
                     <div class="card-header pb-0">
                       <h4 class="card-title mb-0" v-if="edit_mode">Edit Profile</h4>
                        <h4 class="card-title mb-0" v-else>Create Profile</h4>
@@ -57,13 +57,13 @@
                             <div class="col-sm-6 col-md-6">
                           <div class="mb-3">
                             <label class="form-label">First Name</label>
-                            <input class="form-control" type="text" placeholder="First Name" v-model="user.name">
+                            <input class="form-control" type="text" placeholder="First Name" v-model="user.f_name">
                           </div>
                         </div>
                        <div class="col-sm-6 col-md-6">
                           <div class="mb-3">
                             <label class="form-label">Last Name</label>
-                            <input class="form-control" type="text" placeholder="Last Name" v-model="user.last_name">
+                            <input class="form-control" type="text" placeholder="Last Name" v-model="user.l_name">
                           </div>
                         </div>
                           <div class="col-md-12">
@@ -79,14 +79,14 @@
                               <option value="0">--Select--</option>
                               <option value="1">Admin</option>
                               <option value="2">User</option>
-
+                         
                             </select>
                           </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                           <div class="mb-3">
                             <label class="form-label">Username</label>
-                            <input class="form-control" type="text" placeholder="Username"  v-model="user.first_name">
+                            <input class="form-control" type="text" placeholder="Username"  v-model="user.name">
                           </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
@@ -95,7 +95,7 @@
                             <input class="form-control" type="email" placeholder="Email"  v-model="user.email">
                           </div>
                         </div>
-
+                
                         <div class="col-md-12">
                           <div class="mb-3">
                             <label class="form-label">Address</label>
@@ -111,7 +111,7 @@
                         <div class="col-sm-6 col-md-3">
                           <div class="mb-3">
                             <label class="form-label">Postal Code</label>
-                            <input class="form-control" type="number" placeholder="ZIP Code" v-model="user.postalcode">
+                            <input class="form-control" type="number" placeholder="ZIP Code" v-model="user.postal_code">
                           </div>
                         </div>
                         <div class="col-md-5">
@@ -152,76 +152,57 @@ export default {
     components:{ Breadcrumb},
     data(){ return{
         edit_mode:false,
-        user:{
-          first_name:"",
-          last_name:"",
-          email:"",
-          role:"",
-          name:"",
-          password:"",
-          address:"",
-          postalcode:"",
-          city:"",
-          country:"",
-          bio:""
-
-
-
-        },
+        user:[],
+      
     }},
      methods:{
-          addUser(){
-              var formData = new FormData();
-                formData.append("f_name",this.user.first_name);
-                formData.append('l_name',this.user.last_name)
+         
+         updateUser(){
+
+                var formData = new FormData();
+                formData.append("f_name",this.user.f_name);
+                formData.append('l_name',this.user.l_name)
                 formData.append('email',this.user.email)
                 formData.append('role',this.user.email)
                 formData.append('name',this.user.name)
                 formData.append('password',this.user.password)
                 formData.append('address',this.user.address)
-                formData.append('postalcode',this.user.postalcode)
+                formData.append('postalcode',this.user.postal_code)
                 formData.append('city',this.user.city)
                 formData.append('country',this.user.country)
                 formData.append('bio',this.user.bio)
 
-//                 for (var pair of formData.entries()) {
-//     console.log(pair[0]+ ', ' + pair[1]);
-// }
-
-     axios.post('/management/user',formData)
+ 
+  axios.put('/management/user/'+this.$route.params.id,formData)
       .then((response)=>{
-
-      this.$toast("My toast content", {
-    timeout: 2000
-});
+console.log(response)
+     
 
       })
       .catch((error)=>{
         console.log(error)
 
       })
-      }
+
+         }
+        
 
 
 
-
-
-
+       
      },
-    mounted(){
-          if(this.$route.params.id){
-            let url="/management/user/"+this.$route.params.id;
-            axios.get(url).then((res)=>{
-                this.user=res.data.user;
-                this.edit_mode=true;
-            }).catch((err)=>{
-                this.$root.alertErrorMessage(err.response.status,err.response.data);
-            });
-        }
-        else {
-            this.edit_mode=false;
-        }
-        console.log(this.$route.params.id);
+    created(){
+             axios.get('management/user/'+this.$route.params.id).then((response)=>{
+              
+                this.user = response.data.user
+        console.log(response)
+
+            }).catch((error)=>{
+                console.log(error)
+
+            })
+          
+    
     },
 }
 </script>

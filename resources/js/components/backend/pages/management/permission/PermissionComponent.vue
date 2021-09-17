@@ -9,40 +9,12 @@
                     <h5>Permission</h5><span>List of Permissions opend by customers</span>
 
                   </div>
-
+ <div class="float-right">
+     <router-link to="/create/permissions" class="btn btn-primary">Add Permission</router-link>
+ </div>
                   <div class="card-body">
-                    <div class="table-responsive">
-                    <table class="table table-bordered">
-                      <thead class="table-primary">
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Permission</th>
-                          <th scope="col">Roles</th>
-                          <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@TwBootstrap</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    </div>
+                   <Permissiontable :getPermissions="getPermissions" :permissions="permissions"></Permissiontable>
+
                   </div>
             </div>
         </div>
@@ -54,12 +26,43 @@
 
 <script>
 import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
+import Permissiontable from "./PermissionTable";
 export default {
     components:{
         Breadcrumb,
+        Permissiontable
 
 
     },
+    data(){ return{
+          permissions:{},
+            query:"",
+            form:{
+                name:"",
+            },
+            page_num:1,
+
+    }},
+      mounted(){
+        this.getPermissions();
+
+
+    },
+     methods:{
+           async getPermissions(page=1){
+                 const url="/management/permission?page=" + page + "&query=" + this.query;
+                 this.page_num = page;
+               await axios.get(url).then((res)=>{
+                   this.permissions = res.data.permissions.data;
+               }).catch((err)=>{
+                     this.$root.alertErrorMessage(err.response.status,err.response.data);
+                //    console.log("erro",err.response.data.message);
+
+               });
+            },
+
+
+    }
 
 
 

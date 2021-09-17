@@ -25,7 +25,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'l_name',
+        'f_name',
+        'postalcode',
+        'city',
+        'country',
+        'bio',
+        'address'
+
     ];
     protected static $logAttributes = ['title', 'description', 'status'];
 

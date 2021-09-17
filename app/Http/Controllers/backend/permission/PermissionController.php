@@ -27,6 +27,7 @@ class PermissionController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255','unique:permissions'],
         ]);
@@ -36,12 +37,8 @@ class PermissionController extends Controller
         $permission->syncRoles($role_collection);
 
 
-        return response()->json();
+        return response()->json($permission);
     }
-
-
-
-
 
     public function update(Request $request)
     {

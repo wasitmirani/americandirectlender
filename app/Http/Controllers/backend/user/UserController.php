@@ -14,12 +14,17 @@ class UserController extends Controller
     public function index()
     {
 
+
         $q=request('query');
         $users=User::where('name', 'like', '%' . $q . '%')
         ->Orwhere('email', 'like', '%' . $q. '%')
         ->Orwhere('created_at', 'like', '%' . $q. '%')
         ->latest()->paginate(env('PER_PAGE'));
        return response()->json(['users'=>$users]);
+
+    // $users = User::all();
+    // $allusers = User::with('roles')->latest()->paginate(env('PER_PAGE'));
+    // return response()->json(['users'=>$users, 'allusers'=>$allusers]);
     }
 
 
@@ -31,19 +36,37 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'min:3','max:50'],
+            'l_name' => ['required', 'string', 'min:3','max:50'],
+            'f_name' => ['required', 'string', 'min:3','max:50'],
+            'role' => ['required'],
+            'postalcode' => ['required'],
+            'city' => ['required'],
+            'country' => ['required'],
+            'bio' => ['required'],
+            'address' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required',  'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:255', 'unique:users'],
+            // 'phone' => ['required',  'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
         ]);
 
-        $user=User::create([
+        $user = User::create([
+
             'name'=>$request->name,
             'email'=>$request->email,
-            'phone'=>$request->phone,
             'password' => Hash::make($request->password),
-            'role_id'=>2,
+            'l_name' => $request->l_name,
+            'f_name' => $request->f_name,
+            'role' => $request->role,
+            'postal_code' => $request->postalcode,
+            'city' => $request->city,
+            'country' => $request->country,
+            'bio' => $request->bio,
+            'address' => $request->address,
+
+
         ]);
 
         return response()->json($user,200);
@@ -63,6 +86,7 @@ class UserController extends Controller
     }
     public function update(Request $request)
     {
+        dd($request->email);
 
         $request->validate([
             'name' => ['required', 'string', 'min:3','max:50'],
@@ -82,6 +106,14 @@ class UserController extends Controller
             'name'=>$request->name,
             'email'=>$request->email,
             'phone'=>$request->phone,
+            'l_name' => $request->l_name,
+            'f_name' => $request->f_name,
+            'role' => $request->role,
+            'postalcode' => $request->postalcode,
+            'city' => $request->city,
+            'country' => $request->country,
+            'bio' => $request->bio,
+            'address' => $request->address,
         ]);
 
         return response()->json();
@@ -95,7 +127,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
-        //
+
+       $user =  User::destroy($id);
+       return response()->json($user);
+
     }
 }

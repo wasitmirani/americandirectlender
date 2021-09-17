@@ -91,6 +91,13 @@ __webpack_require__.r(__webpack_exports__);
   props: ['users', 'getUsers'],
   components: {
     Avatar: _components_AvatarComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    dltUser: function dltUser(id) {
+      axios["delete"]('management/user/' + id).then(function (response) {})["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -333,7 +340,34 @@ var render = function() {
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm._f("timeformat")(user.created_at)))]),
               _vm._v(" "),
-              _vm._m(1, true)
+              _c(
+                "td",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      attrs: {
+                        to: { name: "edituser", params: { id: user.id } }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa  fa-edit text-primary" })]
+                  ),
+                  _vm._v(" |  "),
+                  _c(
+                    "a",
+                    {
+                      attrs: { role: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.dltUser(user.id)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa  fa-trash text-danger" })]
+                  )
+                ],
+                1
+              )
             ])
           }),
           0
@@ -374,20 +408,6 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Created")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { role: "button" } }, [
-        _c("i", { staticClass: "fa  fa-edit text-primary" })
-      ]),
-      _vm._v(" |  "),
-      _c("a", { attrs: { role: "button" } }, [
-        _c("i", { staticClass: "fa  fa-trash text-danger" })
       ])
     ])
   }

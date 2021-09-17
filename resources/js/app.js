@@ -12,7 +12,9 @@ import VueProgressBar from 'vue-progressbar'
 import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css'
 import moment from "moment";
-
+import Notifications from 'vue-notification'
+import Multiselect from 'vue-multiselect'
+import "vue-toastification/dist/index.css";
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -24,16 +26,16 @@ import moment from "moment";
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.use(Vuesax);
-Vue.component("pagination", require("laravel-vue-pagination"));
+// Vue.component("pagination", require("laravel-vue-pagination"));
 window.moment = moment;
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
     height: '6px'
 })
-
-
-
+Vue.component('multiselect', Multiselect)
+Vue.use(Notifications)
+Vue.use(Toast, options);
 
 Vue.filter("timeformat", function(value) {
     if (value) {
@@ -87,6 +89,13 @@ const app = new Vue({
             //  finish the progress bar
             this.$Progress.finish()
         })
+
+        this.$notify({
+            group: 'succes',
+            title: 'Important message',
+            text: 'Hello user! This is a notification!'
+          });
+
     }
 
 });

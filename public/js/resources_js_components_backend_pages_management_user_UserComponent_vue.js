@@ -153,6 +153,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -270,6 +273,13 @@ __webpack_require__.r(__webpack_exports__);
   props: ['users', 'getUsers'],
   components: {
     Avatar: _components_AvatarComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    dltUser: function dltUser(id) {
+      axios["delete"]('management/user/' + id).then(function (response) {})["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -292,7 +302,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.dashboard-2-main .card-body .table-bordernone .u-s-tb {\n    display: inline-flex;\n    align-items: center;\n}\n.dashboard-2-main .card-body .d-inline-block h6 {\n    padding: 0 0 0 15px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.dashboard-2-main .card-body .table-bordernone .u-s-tb {\r\n    display: inline-flex;\r\n    align-items: center;\n}\n.dashboard-2-main .card-body .d-inline-block h6 {\r\n    padding: 0 0 0 15px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1528,7 +1538,56 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-12" }, [
           _c("div", { staticClass: "card" }, [
-            _vm._m(0),
+            _c(
+              "div",
+              { staticClass: "card-header pb-0" },
+              [
+                _c("h5", [_vm._v("Users Listing")]),
+                _c("span", [_vm._v("List of users opend by Admin")]),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-primary align-right",
+                    attrs: { to: "/create/users" }
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "feather feather-user-plus",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "24",
+                          height: "24",
+                          viewBox: "0 0 24 24",
+                          fill: "none",
+                          stroke: "currentColor",
+                          "stroke-width": "2",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d: "M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                          }
+                        }),
+                        _c("circle", { attrs: { cx: "8.5", cy: "7", r: "4" } }),
+                        _c("line", {
+                          attrs: { x1: "20", y1: "8", x2: "20", y2: "14" }
+                        }),
+                        _c("line", {
+                          attrs: { x1: "23", y1: "11", x2: "17", y2: "11" }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _c("div", { staticClass: "row" }, [
@@ -1686,17 +1745,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header pb-0" }, [
-      _c("h5", [_vm._v("Users Listing")]),
-      _c("span", [_vm._v("List of users opend by Admin")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -1756,7 +1805,34 @@ var render = function() {
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(_vm._f("timeformat")(user.created_at)))]),
               _vm._v(" "),
-              _vm._m(1, true)
+              _c(
+                "td",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      attrs: {
+                        to: { name: "edituser", params: { id: user.id } }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa  fa-edit text-primary" })]
+                  ),
+                  _vm._v(" |  "),
+                  _c(
+                    "a",
+                    {
+                      attrs: { role: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.dltUser(user.id)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa  fa-trash text-danger" })]
+                  )
+                ],
+                1
+              )
             ])
           }),
           0
@@ -1797,20 +1873,6 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Created")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { role: "button" } }, [
-        _c("i", { staticClass: "fa  fa-edit text-primary" })
-      ]),
-      _vm._v(" |  "),
-      _c("a", { attrs: { role: "button" } }, [
-        _c("i", { staticClass: "fa  fa-trash text-danger" })
       ])
     ])
   }

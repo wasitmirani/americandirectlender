@@ -9,40 +9,12 @@
                     <h5>Roles</h5><span>List of roles opend by customers</span>
 
                   </div>
+                  <div class="float-left">
+                    <router-link class="btn btn-primary" to="/create/roles">Add Role</router-link>
+                  </div>
 
                   <div class="card-body">
-                    <div class="table-responsive">
-                    <table class="table table-bordered">
-                      <thead class="table-primary">
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Roles</th>
-
-                          <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Mark</td>
-
-                          <td>@TwBootstrap</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Jacob</td>
-
-                          <td>@fat</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    </div>
+                   <RoleTable :getRoles="getRoles" :roles="roles"></RoleTable>
                   </div>
             </div>
         </div>
@@ -54,12 +26,43 @@
 
 <script>
 import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
+import RoleTable from "./RoleTable.vue";
 export default {
+
     components:{
         Breadcrumb,
+        RoleTable
 
 
     },
+     data(){
+            return {
+            roles:{},
+            }
+
+     },
+     mounted(){
+       this.getRoles();
+     
+
+     },
+        methods:{
+           async getRoles(){
+                 const url="/management/role";
+           
+               await axios.get(url).then((res)=>{
+                   this.roles = res.data.roles.data;
+                   console.log(res.data.roles.data);
+               
+               }).catch((err)=>{
+                     this.$root.alertErrorMessage(err.response.status,err.response.data);
+                //    console.log("erro",err.response.data.message);
+
+               });
+            },
+
+       
+    }
 
 
 

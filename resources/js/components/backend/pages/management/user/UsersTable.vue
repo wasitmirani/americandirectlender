@@ -30,7 +30,7 @@
                                 <td>Admin</td>
                                 <td>{{user.created_at | timeformat}}</td>
 
-                                <td><a role="button"><i class="fa  fa-edit text-primary"></i></a> |  <a role="button"><i class="fa  fa-trash text-danger"></i></a></td>
+                                <td><router-link :to="{name: 'edituser', params: { id: user.id }}"><i class="fa  fa-edit text-primary"></i></router-link> |  <a role="button"  v-on:click="dltUser(user.id)"><i class="fa  fa-trash text-danger"></i></a></td>
                             </tr>
 
                         </tbody>
@@ -51,6 +51,20 @@ export default {
      components:{
         Avatar,
     },
+    methods:{
+        dltUser(id){
+
+         axios.delete('management/user/'+id)
+                  .then((response)=>{
+
+  
+                  })
+                  .catch((error)=>{
+                      console.log(error)
+                  })
+        }
+
+    }
 
 }
 </script>
