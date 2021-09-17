@@ -62,7 +62,8 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        Permission::destroy($id);
+        $permission = Permission::destroy($id);
+        return response()->json($permission);
         //
     }
 }
