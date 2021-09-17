@@ -14,22 +14,18 @@ class RoleController extends Controller
     public function index()
     {
         //
-        // $q=request('query');
-        // $roles=Role::where('name', 'like', '%' . $q . '%')
-        // ->orderBy('name','ASC')
-        // 
-        // ->paginate(env('PER_PAGE'));
-        // $users=User::orderBy('name','ASC')->get();
-        $roles = Role::orderBy('name','ASC')->paginate(6);
-
-
-       return response()->json(['roles'=>$roles]);
+        $q=request('query');
+        $roles=Role::where('name', 'like', '%' . $q . '%')
+        ->orderBy('name','ASC')
+        ->paginate(env('PER_PAGE'));
+        $users=User::orderBy('name','ASC')->get();
+        return response()->json(['roles'=>$roles]);
     }
 
 
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'role' => ['required'],
         ]);
@@ -68,7 +64,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-      
+
 
       Role::destroy($id);
     }

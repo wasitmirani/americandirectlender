@@ -1,32 +1,27 @@
 <template>
    <div>
        <div class="card">
-                      <div class="card-header pb-0">
-                        <h5>Add Permissions</h5>
-                      </div>
-                      <div class="card-body">
-                        <form class="theme-form mega-form" v-on:submit.prevent="addPermission">
-                          <h6>Account Information</h6>
-                          <div class="mb-3">
+            <div class="card-header pb-0">
+                <h5>Add Permissions</h5>
+            </div>
+            <div class="card-body">
+                <form class="theme-form mega-form" v-on:submit.prevent="addPermission">
+                             <h6>Account Information</h6>
+                        <div class="mb-3">
                             <label class="col-form-label">Permission</label>
                             <input class="form-control" type="text" placeholder="your Name" v-model="permission.name">
-                          </div>
-                          <div class="mb-3">
+                        </div>
+                        <div class="mb-3">
                             <label class="col-form-label">Roles</label>
-          <multiselect v-model="selectedRole" :options="roles" label="name" track-by="id" :searchable="false" :close-on-select="false" :show-labels="true" placeholder="Select Roles" :multiple="true" :preselect-first="true"> </multiselect>
+                            <multiselect v-model="selectedRole" :options="roles" label="name" track-by="id" :searchable="false" :close-on-select="false" :show-labels="true" placeholder="Select Roles" :multiple="true" :preselect-first="true"> </multiselect>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+
+                </form>
+            </div>
+
+        </div>
     </div>
-
-
- <button class="btn btn-primary" type="submit">Submit</button>
-
-                        </form>
-
-
-                      </div>
-
-                    </div>
-
-   </div>
 </template>
 <script>
 export default{
