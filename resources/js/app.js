@@ -7,34 +7,30 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+
 import router from "./router";
 import VueProgressBar from 'vue-progressbar'
 import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css'
 import moment from "moment";
-import Notifications from 'vue-notification'
 import Multiselect from 'vue-multiselect'
 import "vue-toastification/dist/index.css";
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import VueContentPlaceholders from 'vue-content-placeholders'
+import Swal from 'sweetalert2'
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+window.Swal = Swal;
+Vue.use(VueContentPlaceholders)
+
+
 Vue.use(Vuesax);
-// Vue.component("pagination", require("laravel-vue-pagination"));
+Vue.component("pagination", require("laravel-vue-pagination"));
 window.moment = moment;
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
-    height: '6px'
+    height: '10px'
 })
 Vue.component('multiselect', Multiselect)
-Vue.use(Notifications)
 
 
 Vue.filter("timeformat", function(value) {

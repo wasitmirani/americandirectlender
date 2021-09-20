@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\user;
 
 
 use App\Models\User;
+use App\Models\UserInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -16,10 +17,10 @@ class UserController extends Controller
 
 
         $q=request('query');
+
         $users=User::where('name', 'like', '%' . $q . '%')
         ->Orwhere('email', 'like', '%' . $q. '%')
-        ->Orwhere('created_at', 'like', '%' . $q. '%')
-        ->latest()->paginate(env('PER_PAGE'));
+        ->latest()->paginate((int)env('PER_PAGE'));
        return response()->json(['users'=>$users]);
 
     // $users = User::all();
@@ -43,16 +44,16 @@ class UserController extends Controller
             'phone' => ['required',  'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:255', 'unique:users'],
         ]);
 
-        return $request->all();
+
         $user=new User();
         $request_array=[
-            'name'=>$request->first_name,
-            'last_name'=>$request->last_name,
+            'name'=>$request->name." ".$request->last_name,
             'email'=>$request->email,
+            'phone'=>$request->phone,
             'password'=>Hash::make($request->password),
         ];
         $new_user=$user->userCreateOrUpdate($request_array);
-        $user->userInfoCreateOrUpdate($new_user);
+        $user->userInfoCreateOrUpdate($new_user,$request);
 
         return response()->json($user,200);
     }
@@ -66,7 +67,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        $user=User::find($id);
+        $user=User::where('id',$id)->with('userInfo')->first();
         return response()->json(['user'=>$user]);
     }
     public function update(Request $request)
@@ -112,7 +113,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-
+       $user_info=UserInfo::where('user_id',$id)->delete();
        $user =  User::destroy($id);
        return response()->json($user);
 

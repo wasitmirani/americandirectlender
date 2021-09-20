@@ -48,6 +48,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /**
+     * Get the user that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function userInfo()
+    {
+        return $this->belongsTo(UserInfo::class, 'id', 'user_id');
+    }
+
 
     public function userCreateOrUpdate($request,$type="create"){
 
@@ -61,11 +71,18 @@ class User extends Authenticatable
 
     public function userInfoCreateOrUpdate($user,$request){
         $isuser=User::where('id',$user->id)->first();
+        $request_input=[
+            'user_id'=>$user->id,
+            'address'=>$request->address,
+            'city'=>$request->city,
+            'country'=>$request->country,
+            'about_me'=>$request->about_me,
+        ];
         if(!empty($isuser)){
-            UserInfo::create($request);
+            UserInfo::create($request_input);
         }
         else {
-            UserInfo::where('user_id',$user->id)->update($request);
+            UserInfo::where('user_id',$user->id)->update($request_input);
         }
     }
 }

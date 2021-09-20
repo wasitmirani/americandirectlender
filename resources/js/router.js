@@ -21,22 +21,18 @@ const routes = [
     {
         path: "/users",
         component: () => setComponent("management/user/User"),
-        name: "Users",
+        name: "users",
     },
     {
-        path: "/create/users",
+        path: "/create/user",
         component: () => setComponent("management/user/UserForm"),
-        name: "CreateUsers",
+        name: "Create User",
     },
+
     {
-        path: "/edit/users/:id",
-        component: () => setComponent("management/user/EditUser"),
-        name: "edituser",
-    },
-    {
-        path: "/user/:id",
+        path: "/edit/user/:id",
         component: () => setComponent("management/user/UserForm"),
-        name: "User Update",
+        name: "update-user",
     },
     { path: "/roles", component: () => setComponent("management/role/Role"), name: "Roles" },
     { path: "/create/roles", component: () => setComponent("management/role/CreateRole"), name: "CreateRoles" },

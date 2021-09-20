@@ -258,7 +258,8 @@ __webpack_require__.r(__webpack_exports__);
         city: "",
         country: [],
         bio: "",
-        roles: []
+        roles: [],
+        previous: []
       },
       errors: {}
     };
@@ -282,10 +283,19 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('postalcode', this.user.postalcode);
       formData.append('city', this.user.city);
       formData.append('country', this.user.country);
-      formData.append('bio', this.user.bio);
-      axios.post('/management/user', formData).then(function (response) {})["catch"](function (err) {
+      formData.append('about_me', this.user.bio);
+      axios.post('/management/user', formData).then(function (res) {
+        _this.$root.alertNotificationMessage(res.status, "New user has been created successfully");
+
+        setTimeout(function () {
+          _this.$router.push({
+            name: 'users'
+          });
+        }, 1000);
+      })["catch"](function (err) {
         if (err.response.status == 422) {
           _this.errors = err.response.data.errors;
+          return _this.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
         }
 
         _this.$root.alertNotificationMessage(err.response.status, err.response.data); //    console.log("erro",err.response.data.message);
@@ -601,7 +611,12 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("Breadcrumb", { attrs: { activename: "Update User" } }),
+      _c("Breadcrumb", {
+        attrs: {
+          activename: _vm.edit_mode ? "Updat User" : "Create  User",
+          previous: [{ name: "Users", link: "/users" }]
+        }
+      }),
       _vm._v(" "),
       _c("div", { staticClass: "edit-profile" }, [
         _c("div", { staticClass: "row" }, [
@@ -655,7 +670,10 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { placeholder: "your-email@domain.com" },
+                          attrs: {
+                            placeholder: "your-email@domain.com",
+                            required: ""
+                          },
                           domProps: { value: _vm.user.email },
                           on: {
                             input: function($event) {
@@ -744,7 +762,11 @@ var render = function() {
                           _vm.errors.name && _vm.user.name.length < 1
                             ? "is-invalid form-control"
                             : "form-control",
-                        attrs: { type: "text", placeholder: "First Name" },
+                        attrs: {
+                          type: "text",
+                          placeholder: "First Name",
+                          required: ""
+                        },
                         domProps: { value: _vm.user.name },
                         on: {
                           input: function($event) {
@@ -813,7 +835,11 @@ var render = function() {
                           _vm.errors.email && _vm.user.email.length < 1
                             ? "is-invalid form-control"
                             : "form-control",
-                        attrs: { type: "email", placeholder: "Email Address" },
+                        attrs: {
+                          type: "email",
+                          placeholder: "Email Address",
+                          required: ""
+                        },
                         domProps: { value: _vm.user.email },
                         on: {
                           input: function($event) {
@@ -850,7 +876,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "password", placeholder: "Password" },
+                        attrs: {
+                          type: "password",
+                          placeholder: "Password",
+                          required: ""
+                        },
                         domProps: { value: _vm.user.password },
                         on: {
                           input: function($event) {
@@ -880,7 +910,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Phone Number" },
+                        attrs: {
+                          type: "text",
+                          placeholder: "Phone Number",
+                          required: ""
+                        },
                         domProps: { value: _vm.user.phone },
                         on: {
                           input: function($event) {
@@ -1040,7 +1074,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Home Address" },
+                        attrs: {
+                          type: "text",
+                          placeholder: "Home Address",
+                          required: ""
+                        },
                         domProps: { value: _vm.user.address },
                         on: {
                           input: function($event) {
@@ -1070,7 +1108,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "City" },
+                        attrs: {
+                          type: "text",
+                          placeholder: "City",
+                          required: ""
+                        },
                         domProps: { value: _vm.user.city },
                         on: {
                           input: function($event) {
@@ -1100,7 +1142,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "number", placeholder: "ZIP Code" },
+                        attrs: {
+                          type: "number",
+                          placeholder: "ZIP Code",
+                          required: ""
+                        },
                         domProps: { value: _vm.user.postalcode },
                         on: {
                           input: function($event) {

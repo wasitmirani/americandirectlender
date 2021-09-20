@@ -1,6 +1,6 @@
 <template>
   <div>
-     <Breadcrumb activename="Update User" ></Breadcrumb>
+     <Breadcrumb :activename="edit_mode ? 'Updat User' : 'Create  User'" :previous="[{name:'Users',link:'/users'}]"></Breadcrumb>
       <div class="edit-profile">
               <div class="row">
 
@@ -28,7 +28,7 @@
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Email-Address</label>
-                          <input class="form-control" placeholder="your-email@domain.com" v-model="user.email">
+                          <input class="form-control" placeholder="your-email@domain.com" v-model="user.email" required>
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Password</label>
@@ -57,7 +57,7 @@
                             <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
                             <label class="form-label">First Name</label>
-                            <input :class="errors.name && user.name.length<1 ? 'is-invalid form-control' : 'form-control'"  type="text" placeholder="First Name" v-model="user.name" >
+                            <input :class="errors.name && user.name.length<1 ? 'is-invalid form-control' : 'form-control'"  type="text" placeholder="First Name" v-model="user.name" required >
                             <span class="text-danger" v-if="errors.name && user.name.length<1">{{errors.name[0]}}</span>
                           </div>
                         </div>
@@ -70,7 +70,7 @@
                         <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
                             <label class="form-label">Email address</label>
-                            <input :class="errors.email && user.email.length<1 ? 'is-invalid form-control' : 'form-control'"  type="email" placeholder="Email Address" v-model="user.email" >
+                            <input :class="errors.email && user.email.length<1 ? 'is-invalid form-control' : 'form-control'"  type="email" placeholder="Email Address" v-model="user.email"  required>
                             <span class="text-danger" v-if="(errors.email && user.email.length<1 || errors.email)">{{errors.email[0]}}</span>
                             <!-- <span class="text-danger" v-else> <p v-if="errors.email">{{errors.email[0]}}</p> </span> -->
 
@@ -81,13 +81,13 @@
                           <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input class="form-control" type="password" placeholder="Password" v-model="user.password">
+                            <input class="form-control" type="password" placeholder="Password" v-model="user.password" required>
                           </div>
                         </div>
                          <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
                             <label class="form-label">Phone Number</label>
-                            <input class="form-control" type="text" placeholder="Phone Number" v-model="user.phone">
+                            <input class="form-control" type="text" placeholder="Phone Number" v-model="user.phone" required>
                           </div>
                         </div>
                           <div class="col-sm-6 col-md-4">
@@ -125,25 +125,25 @@
                         <div class="col-md-12">
                           <div class="mb-3">
                             <label class="form-label">Address</label>
-                            <input class="form-control" type="text" placeholder="Home Address" v-model="user.address">
+                            <input class="form-control" type="text" placeholder="Home Address" v-model="user.address" required>
                           </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
                             <label class="form-label">City</label>
-                            <input class="form-control" type="text" placeholder="City" v-model="user.city">
+                            <input class="form-control" type="text" placeholder="City" v-model="user.city" required>
                           </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                           <div class="mb-3">
                             <label class="form-label">Postal Code</label>
-                            <input class="form-control" type="number" placeholder="ZIP Code" v-model="user.postalcode">
+                            <input class="form-control" type="number" placeholder="ZIP Code" v-model="user.postalcode" required>
                           </div>
                         </div>
                         <div class="col-md-5">
                           <div class="mb-3">
                                <label class="form-label">Country</label>
-                             <vs-select filter multiple collapse-chips placeholder="Collapse chips" v-model="user.country">
+                             <vs-select filter multiple collapse-chips placeholder="Collapse chips" v-model="user.country" >
                                 <vs-option label="Vuesax" value="1">
                                 Vuesax
                                 </vs-option>
@@ -211,6 +211,7 @@ export default {
             country:[],
             bio:"",
             roles:[],
+            previous:[],
         },
         errors:{},
     }},
@@ -231,13 +232,18 @@ export default {
                 formData.append('postalcode',this.user.postalcode)
                 formData.append('city',this.user.city)
                 formData.append('country',this.user.country)
-                formData.append('bio',this.user.bio)
+                formData.append('about_me',this.user.bio)
 
-                axios.post('/management/user',formData).then((response)=>{
+                axios.post('/management/user',formData).then((res)=>{
+                      this.$root.alertNotificationMessage(res.status,"New user has been created successfully");
+                      setTimeout(() => {
+                          this.$router.push({ name: 'users' })
+                      }, 1000);
                 }).catch((err)=>{
                      if(err.response.status==422){
-                       this.errors=err.response.data.errors;
-                        }
+                         this.errors=err.response.data.errors;
+                        return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
+                    }
                  this.$root.alertNotificationMessage(err.response.status,err.response.data);
                    //    console.log("erro",err.response.data.message);
 
@@ -269,6 +275,7 @@ export default {
 </script>
 
 <style>
+
 .vs-button__content {
     width: 130px;
     height: 49px;
