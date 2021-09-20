@@ -34,5 +34,4 @@ class RoleLitener
              ->log($event->description);
 
     }
-    }
 }
