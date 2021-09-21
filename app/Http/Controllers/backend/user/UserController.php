@@ -39,6 +39,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
+
         $request->validate([
             'name' => ['required', 'string', 'min:3','max:50'],
             'email' => ['required',  'email', 'unique:users'],
@@ -46,7 +47,7 @@ class UserController extends Controller
             'phone' => ['required',  'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:255', 'unique:users'],
         ]);
 
-
+        $request=(object)$request;
         $user=new User();
         $user_name=preg_replace('/\s+/', '',Str::lower($request->name));
         $user_name=  $user_name.rand(10,400000);
@@ -57,7 +58,9 @@ class UserController extends Controller
             'password'=>Hash::make($request->password),
             'user_name'=> $user_name,
         ];
+
         $new_user=$user->userCreateOrUpdate($request_array);
+
         $user->userInfoCreateOrUpdate($new_user,$request);
 
         return response()->json($user,200);
@@ -78,11 +81,9 @@ class UserController extends Controller
     public function update(Request $request)
     {
 
-
         $request->validate([
             'name' => ['required', 'string', 'min:3','max:50'],
             'email' => ['required',  'email', 'unique:users,email,'.$request->id],
-            'user_name' => ['required', 'unique:users,user_name,'.$request->id],
             'phone' => ['required',  'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:255', 'unique:users,phone,'.$request->id],
         ]);
 

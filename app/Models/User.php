@@ -78,11 +78,12 @@ class User extends Authenticatable
 
     public function userInfoCreateOrUpdate($user,$request){
         $isuser=User::where('id',$user->id)->first();
+
         $request_input=[
             'user_id'=>$user->id,
             'address'=>$request->address,
             'city'=>$request->city,
-            'country'=>$request->country,
+            'country'=>1,
             'about_me'=>$request->about_me,
         ];
         if(!empty($isuser)){

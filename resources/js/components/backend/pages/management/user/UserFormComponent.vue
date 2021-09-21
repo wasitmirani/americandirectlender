@@ -220,16 +220,8 @@ export default {
      methods:{
           onSubmit(){
               let formData = new FormData();
-                formData.append("name",this.user.name);
-                formData.append('last_name',this.user.last_name);
-                formData.append('email',this.user.email)
-                formData.append('password',this.user.password)
-                formData.append('phone',this.user.phone)
-                formData.append('address',this.user.address)
-                formData.append('postal_code',this.user.postal_code)
-                formData.append('city',this.user.city)
-                formData.append('country',this.user.country)
-                formData.append('about_me',this.user.about_me)
+                formData=Object.assign(this.user,formData);
+
                 axios.post('/management/user',formData).then((res)=>{
                       this.$root.alertNotificationMessage(res.status,"New user has been created successfully");
                       setTimeout(() => {
@@ -241,7 +233,6 @@ export default {
                         return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
                     }
                  this.$root.alertNotificationMessage(err.response.status,err.response.data);
-                   //    console.log("erro",err.response.data.message);
 
                   });
       }

@@ -47,7 +47,17 @@
                                 </div>
                                 </router-link>
                                 </td>
-                                <td>{{user.email}}</td>
+                                <td>
+                                <div class="row">
+                                    <div class="col">
+                                        <a :href="`mailto:${user.email}`" target="_blank"> {{user.email}}
+                                        <vs-avatar class="btn-plane">
+                                        <i class=" far fa-paper-plane"></i>
+                                        </vs-avatar>
+                                        </a>
+                                    </div>
+                                </div>
+                                </td>
                                 <td>{{user.user_name}}</td>
                                 <td>{{user.phone}}</td>
                                 <td>Admin</td>
@@ -132,5 +142,10 @@ export default {
 </script>
 
 <style>
+.vs-avatar-content.btn-plane.vs-change-color-badge{
+    margin-left: auto;
+    position: relative;
+    top: -30px;
+}
 
 </style>
