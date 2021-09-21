@@ -87,7 +87,6 @@ class User extends Authenticatable
             'about_me'=>$request->about_me,
         ];
         if(!empty($isuser)){
-
             UserInfo::create($request_input);
         }
         else {
