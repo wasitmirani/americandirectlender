@@ -27,8 +27,6 @@ class RoleLitener
     {
         $event->subject = "Role Creation";
         $event->description = "Role Created";
-
-
         activity($event->subject)
              ->by($event->user)
              ->log($event->description);

@@ -53,6 +53,13 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function getThumbnailAttribute($value)
+    {
+        if(!empty($value))
+        return asset('/img/users/'.$value);
+        else
+        return asset('/img/users/default-profile.png');
+    }
     public function userInfo()
     {
         return $this->belongsTo(UserInfo::class, 'id', 'user_id');
@@ -79,6 +86,7 @@ class User extends Authenticatable
             'about_me'=>$request->about_me,
         ];
         if(!empty($isuser)){
+
             UserInfo::create($request_input);
         }
         else {

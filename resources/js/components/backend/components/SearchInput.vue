@@ -25,12 +25,12 @@ props:['label','name','apiurl'],
         this.$emit("loading", true);
         setTimeout(() => {
             this.search();
-        }, 1000);
+        }, 700);
       },
       500 // 500 milliseconds
     ),
    async search() {
-      if (this.query.length > 1) {
+      if (this.query.length > 2) {
        await axios.get(this.apiurl + "&query=" + this.query)
           .then((response) => {
             this.$emit("loading", false);

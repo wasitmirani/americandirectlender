@@ -57,7 +57,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$emit("loading", true);
       setTimeout(function () {
         _this.search();
-      }, 1000);
+      }, 700);
     }, 500 // 500 milliseconds
     ),
     search: function search() {
@@ -68,7 +68,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!(_this2.query.length > 1)) {
+                if (!(_this2.query.length > 2)) {
                   _context.next = 5;
                   break;
                 }

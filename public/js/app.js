@@ -2175,11 +2175,6 @@ var app = new Vue({
       //  finish the progress bar
       _this.$Progress.finish();
     });
-    this.$notify({
-      group: 'succes',
-      title: 'Important message',
-      text: 'Hello user! This is a notification!'
-    });
   }
 });
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserinfoToUsersTable extends Migration
+class UsernameToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class AddUserinfoToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $ta
+            // $table->string('user_name')->unique();
         });
     }
 
@@ -28,6 +28,7 @@ class AddUserinfoToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+
         });
     }
 }

@@ -29,6 +29,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -120,7 +125,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$emit("loading", true);
       setTimeout(function () {
         _this.search();
-      }, 1000);
+      }, 700);
     }, 500 // 500 milliseconds
     ),
     search: function search() {
@@ -131,7 +136,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!(_this2.query.length > 1)) {
+                if (!(_this2.query.length > 2)) {
                   _context.next = 5;
                   break;
                 }
@@ -361,6 +366,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _components_AvatarComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/AvatarComponent.vue */ "./resources/js/components/backend/components/AvatarComponent.vue");
+//
+//
 //
 //
 //
@@ -1777,10 +1784,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return !_vm.thumbnail
     ? _c("avatar", { attrs: { username: _vm.name } })
-    : _c("img", {
-        staticClass: "img-radius align-top m-r-15 rounded-circle",
-        attrs: { src: _vm.thumbnail, alt: "" }
-      })
+    : _c("vs-avatar", { attrs: { badge: "", "badge-color": "primary" } }, [
+        _c("img", { attrs: { src: _vm.thumbnail, alt: "" } })
+      ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -2122,6 +2128,8 @@ var render = function() {
             _vm._v(" "),
             _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
             _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("User Name")]),
+            _vm._v(" "),
             _c("th", { attrs: { scope: "col" } }, [_vm._v("Phone")]),
             _vm._v(" "),
             _c("th", { attrs: { scope: "col" } }, [_vm._v("Create By")]),
@@ -2161,7 +2169,7 @@ var render = function() {
                       { staticClass: "bd-t-none u-s-tb" },
                       [
                         _c("Avatar", {
-                          attrs: { name: user.name, thumbnail: "" }
+                          attrs: { name: user.name, thumbnail: user.thumbnail }
                         }),
                         _vm._v(" "),
                         _c(
@@ -2194,6 +2202,8 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(user.email))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(user.user_name))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(user.phone))]),
                     _vm._v(" "),

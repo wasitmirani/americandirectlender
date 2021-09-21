@@ -24,7 +24,7 @@
                         </div>
                         <div class="mb-3">
                           <h6 class="form-label">Bio</h6>
-                          <textarea class="form-control" rows="5">On the other hand, we denounce with righteous indignation</textarea>
+                          <textarea class="form-control" rows="5" v-model="user.about_me"></textarea>
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Email-Address</label>
@@ -38,9 +38,10 @@
                           <label class="form-label">Website</label>
                           <input class="form-control" placeholder="http://Uplor .com">
                         </div>
-                        <div class="form-footer">
-                          <button class="btn btn-primary btn-block">Save</button>
-                        </div>
+
+                        <vs-button color="rgb(121, 81, 170)" gradient  type="submit"  v-if="!edit_mode" @click="onSubmit">
+                            Submit
+                        </vs-button>
                       </form>
                     </div>
                   </div>
@@ -56,22 +57,22 @@
                       <div class="row">
                             <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
-                            <label class="form-label">First Name</label>
-                            <input :class="errors.name && user.name.length<1 ? 'is-invalid form-control' : 'form-control'"  type="text" placeholder="First Name" v-model="user.name" required >
-                            <span class="text-danger" v-if="errors.name && user.name.length<1">{{errors.name[0]}}</span>
+                            <label class="form-label">Full Name</label>
+                            <input :class="errors.name ? 'is-invalid form-control' : 'form-control'"  type="text" placeholder="Full Name" v-model="user.name" required >
+                            <span class="text-danger" v-if="errors.name">{{errors.name[0]}}</span>
                           </div>
                         </div>
-                       <div class="col-sm-6 col-md-4">
+                       <div class="col-sm-6 col-md-4" v-if="edit_mode">
                           <div class="mb-3">
-                            <label class="form-label">Last Name</label>
-                            <input class="form-control" type="text" placeholder="Last Name" v-model="user.last_name">
+                            <label class="form-label">Username</label>
+                            <input class="form-control" type="text" placeholder="Username"  v-model="user.first_name">
                           </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
                             <label class="form-label">Email address</label>
-                            <input :class="errors.email && user.email.length<1 ? 'is-invalid form-control' : 'form-control'"  type="email" placeholder="Email Address" v-model="user.email"  required>
-                            <span class="text-danger" v-if="(errors.email && user.email.length<1 || errors.email)">{{errors.email[0]}}</span>
+                            <input :class="errors.email  ? 'is-invalid form-control' : 'form-control'"  type="email" placeholder="Email Address" v-model="user.email"  required>
+                            <span class="text-danger" v-if="errors.email ">{{errors.email[0]}}</span>
                             <!-- <span class="text-danger" v-else> <p v-if="errors.email">{{errors.email[0]}}</p> </span> -->
 
                           </div>
@@ -81,7 +82,8 @@
                           <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input class="form-control" type="password" placeholder="Password" v-model="user.password" required>
+                            <input  :class="errors.password  ? 'is-invalid form-control' : 'form-control'" type="password" placeholder="Password" v-model="user.password" >
+                             <span class="text-danger" v-if="errors.password ">{{errors.password[0]}}</span>
                           </div>
                         </div>
                          <div class="col-sm-6 col-md-4">
@@ -115,12 +117,7 @@
                              </vs-select>
                           </div>
                         </div>
-                        <div class="col-sm-6 col-md-4" v-if="edit_mode">
-                          <div class="mb-3">
-                            <label class="form-label">Username</label>
-                            <input class="form-control" type="text" placeholder="Username"  v-model="user.first_name">
-                          </div>
-                        </div>
+
 
                         <div class="col-md-12">
                           <div class="mb-3">
@@ -137,7 +134,7 @@
                         <div class="col-sm-6 col-md-3">
                           <div class="mb-3">
                             <label class="form-label">Postal Code</label>
-                            <input class="form-control" type="number" placeholder="ZIP Code" v-model="user.postalcode" required>
+                            <input class="form-control" type="number" placeholder="ZIP Code" v-model="user.postal_code" required>
                           </div>
                         </div>
                         <div class="col-md-5">
@@ -168,7 +165,7 @@
                         <div class="col-md-12">
                           <div>
                             <label class="form-label">About Me</label>
-                            <textarea class="form-control" rows="5" placeholder="Enter About your description" v-model="user.bio"></textarea>
+                            <textarea class="form-control" rows="5" placeholder="Enter About your description" v-model="user.about_me"></textarea>
                           </div>
                         </div>
                       </div>
@@ -178,7 +175,7 @@
                         <vs-button color="rgb(121, 81, 170)" gradient  type="submit"  v-if="!edit_mode" @click="onSubmit">
                             Submit
                         </vs-button>
-                        <vs-button  color="rgb(59,222,200)" gradient  type="submit"  v-else>
+                        <vs-button   color="rgb(59,222,200)" :active="true" gradient  type="submit"  @click="onSubmit"  v-else>
                             Update
                         </vs-button>
                     </div>
@@ -206,7 +203,7 @@ export default {
             last_name:"",
             password:"",
             address:"",
-            postalcode:"",
+            postal_code:"",
             city:"",
             country:[],
             bio:"",
@@ -229,11 +226,10 @@ export default {
                 formData.append('password',this.user.password)
                 formData.append('phone',this.user.phone)
                 formData.append('address',this.user.address)
-                formData.append('postalcode',this.user.postalcode)
+                formData.append('postal_code',this.user.postal_code)
                 formData.append('city',this.user.city)
                 formData.append('country',this.user.country)
-                formData.append('about_me',this.user.bio)
-
+                formData.append('about_me',this.user.about_me)
                 axios.post('/management/user',formData).then((res)=>{
                       this.$root.alertNotificationMessage(res.status,"New user has been created successfully");
                       setTimeout(() => {
@@ -260,8 +256,10 @@ export default {
           if(this.$route.params.id){
             let url="/management/user/"+this.$route.params.id;
             axios.get(url).then((res)=>{
-                this.user=res.data.user;
+                // this.user=res.data.user;
                 this.edit_mode=true;
+                this.user= {...res.data.user, ...res.data.user.user_info};
+
             }).catch((err)=>{
                 this.$root.alertErrorMessage(err.response.status,err.response.data);
             });

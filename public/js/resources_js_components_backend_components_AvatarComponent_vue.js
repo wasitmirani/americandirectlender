@@ -18,6 +18,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -129,10 +134,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return !_vm.thumbnail
     ? _c("avatar", { attrs: { username: _vm.name } })
-    : _c("img", {
-        staticClass: "img-radius align-top m-r-15 rounded-circle",
-        attrs: { src: _vm.thumbnail, alt: "" }
-      })
+    : _c("vs-avatar", { attrs: { badge: "", "badge-color": "primary" } }, [
+        _c("img", { attrs: { src: _vm.thumbnail, alt: "" } })
+      ])
 }
 var staticRenderFns = []
 render._withStripped = true

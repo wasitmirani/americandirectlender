@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\user;
 
 use App\Models\User;
 use App\Models\UserInfo;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -41,16 +42,20 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'min:3','max:50'],
             'email' => ['required',  'email', 'unique:users'],
+            'password' => ['required', 'string', 'min:6','max:50'],
             'phone' => ['required',  'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:255', 'unique:users'],
         ]);
 
 
         $user=new User();
+        $user_name=preg_replace('/\s+/', '',Str::lower($request->name));
+        $user_name=  $user_name.rand(10,400000);
         $request_array=[
-            'name'=>$request->name." ".$request->last_name,
+            'name'=>$request->name,
             'email'=>$request->email,
             'phone'=>$request->phone,
             'password'=>Hash::make($request->password),
+            'user_name'=> $user_name,
         ];
         $new_user=$user->userCreateOrUpdate($request_array);
         $user->userInfoCreateOrUpdate($new_user,$request);
@@ -67,7 +72,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        $user=User::where('id',$id)->with('userInfo')->first();
+        $user=User::where('id',$id)->with('userInfo:about_me,address,city,country,postal_code,user_id')->first();
         return response()->json(['user'=>$user]);
     }
     public function update(Request $request)
@@ -77,6 +82,7 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'min:3','max:50'],
             'email' => ['required',  'email', 'unique:users,email,'.$request->id],
+            'user_name' => ['required', 'unique:users,user_name,'.$request->id],
             'phone' => ['required',  'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:255', 'unique:users,phone,'.$request->id],
         ]);
 

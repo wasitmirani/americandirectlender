@@ -19,6 +19,7 @@
                             </th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                             <th scope="col">User Name</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Create By</th>
                             <th scope="col">Created</th>
@@ -37,7 +38,7 @@
                                 </vs-checkbox>
                                 </td>
                                 <td class="bd-t-none u-s-tb">
-                                <Avatar :name="user.name" thumbnail=""></Avatar>
+                                <Avatar :name="user.name" :thumbnail="user.thumbnail"></Avatar>
                                 <router-link :to="{name: 'update-user', params: { id: user.id }}">
                                 <div class="align-middle image-sm-size">
                                     <div class="d-inline-block">
@@ -46,7 +47,8 @@
                                 </div>
                                 </router-link>
                                 </td>
-                            <td>{{user.email}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.user_name}}</td>
                                 <td>{{user.phone}}</td>
                                 <td>Admin</td>
                                 <td>{{user.created_at | timeformat}}</td>
