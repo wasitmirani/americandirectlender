@@ -15,12 +15,17 @@ import 'vuesax/dist/vuesax.css'
 import moment from "moment";
 import Multiselect from 'vue-multiselect'
 import "vue-toastification/dist/index.css";
+import 'vue-multiselect/dist/vue-multiselect.min.css';
+
 import VueContentPlaceholders from 'vue-content-placeholders'
 import Swal from 'sweetalert2'
 
+
+
 window.Swal = Swal;
 Vue.use(VueContentPlaceholders)
-
+    // register globally
+Vue.component('multiselect', Multiselect)
 
 Vue.use(Vuesax);
 Vue.component("pagination", require("laravel-vue-pagination"));
@@ -30,7 +35,6 @@ Vue.use(VueProgressBar, {
     failedColor: 'red',
     height: '10px'
 })
-Vue.component('multiselect', Multiselect)
 
 
 Vue.filter("timeformat", function(value) {

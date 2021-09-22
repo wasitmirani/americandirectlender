@@ -18,9 +18,7 @@ class RoleController extends Controller
         $roles=Role::where('name', 'like', '%' . $q . '%')
         ->orderBy('name','ASC')
         ->paginate(env('PER_PAGE'));
-        $users=User::orderBy('name','ASC')->get();
-
-
+        $users=User::select('id','name')->orderBy('name','ASC')->get();
 
        return response()->json(['roles'=>$roles,'users'=>$users]);
     }
@@ -29,16 +27,18 @@ class RoleController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'role' => ['required'],
-        ]);
 
-        $role = Role::create([
-            'name' => $request->role
+        $request->validate([
+            'name' => ['required', 'string', 'max:255','unique:roles'],
         ]);
+        // $users=explode(",",$request->selected_users);
+
+        $user_collection=User::WhereIn('id',  $request->selected_users)->get();
+
+        $role = Role::create(['name' => $request->name]);
+        $role->users()->attach($user_collection);
 
         return response()->json($role);
-
 
     }
 
