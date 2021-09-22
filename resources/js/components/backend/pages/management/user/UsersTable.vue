@@ -123,7 +123,6 @@ export default {
              this.selected_items=[];
          }
          else {
-
               this.selected_items=this.users.data.map(x=>x.id);
          }
      },

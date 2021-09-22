@@ -2151,10 +2151,32 @@ var app = new Vue({
         default:
           break;
       }
+    },
+    deleteItem: function deleteItem(url) {
+      var _this = this;
+
+      sweetalert2__WEBPACK_IMPORTED_MODULE_9___default().fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          axios["delete"](url).then(function (res) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_9___default().fire("Deleted!", "Your file has been deleted.", "success");
+          })["catch"](function (err) {
+            _this.$root.alertNotificationMessage(err.response.status, err.response.data); //    console.log("erro",err.response.data.message);
+
+          });
+        }
+      });
     }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     this.primary_color = primarycolor;
     this.$Progress.start(); //  hook the progress bar to start before we move router-view
@@ -2164,11 +2186,11 @@ var app = new Vue({
       if (to.meta.progress !== undefined) {
         var meta = to.meta.progress; // parse meta tags
 
-        _this.$Progress.parseMeta(meta);
+        _this2.$Progress.parseMeta(meta);
       } //  start the progress bar
 
 
-      _this.$Progress.start(); //  continue to next page
+      _this2.$Progress.start(); //  continue to next page
 
 
       next();
@@ -2176,7 +2198,7 @@ var app = new Vue({
 
     this.$router.afterEach(function (to, from) {
       //  finish the progress bar
-      _this.$Progress.finish();
+      _this2.$Progress.finish();
     });
   }
 });
