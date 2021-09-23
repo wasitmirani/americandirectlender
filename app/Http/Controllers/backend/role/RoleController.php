@@ -17,6 +17,7 @@ class RoleController extends Controller
         $q=request('query');
         $roles=Role::where('name', 'like', '%' . $q . '%')
         ->orderBy('name','ASC')
+        ->with('users:id,name','permissions:id,name')
         ->paginate(env('PER_PAGE'));
         $users=User::select('id','name')->orderBy('name','ASC')->get();
 

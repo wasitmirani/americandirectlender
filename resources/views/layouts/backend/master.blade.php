@@ -42,7 +42,15 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <style>
+        .dashboard-2-main .card-body .table-bordernone .u-s-tb {
+    display: inline-flex;
+    align-items: center;
+}
+.dashboard-2-main .card-body .d-inline-block h6 {
+    padding: 0 0 0 15px;
+}
+    </style>
   </head>
   <body style="--theme-deafult:#665ed5; --theme-secondary:#d1d1e9;">
   <!-- Loader starts-->
@@ -90,7 +98,7 @@
       </footer>
   </div>
   <script>
-          window.primarycolor="#7951aa";
+          window.primarycolor="#665ed5";
     window.appname={!! json_encode(config('app.name'),true)!!};
      @auth
 

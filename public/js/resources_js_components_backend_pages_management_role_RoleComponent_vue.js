@@ -371,12 +371,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['roles', 'getroles'],
@@ -2212,7 +2206,7 @@ var render = function() {
             _vm._v(" "),
             _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
             _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("roles")]),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Users")]),
             _vm._v(" "),
             _c("th", { attrs: { scope: "col" } }, [_vm._v("Permissions")]),
             _vm._v(" "),
@@ -2287,34 +2281,15 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [
                       _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col" }, [
-                          _c(
-                            "a",
-                            {
-                              attrs: {
-                                href: "mailto:" + role.email,
-                                target: "_blank"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                " " +
-                                  _vm._s(role.email) +
-                                  "\n                                    "
-                              ),
-                              _c("vs-avatar", { staticClass: "btn-plane" }, [
-                                _c("i", { staticClass: " far fa-paper-plane" })
-                              ])
-                            ],
-                            1
-                          )
-                        ])
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(role.users.length) +
+                            "\n                            "
+                        )
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(role.role_name))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(role.phone))]),
+                    _c("td", [_vm._v(_vm._s(role.permissions.length))]),
                     _vm._v(" "),
                     _c("td", [_vm._v("Admin")]),
                     _vm._v(" "),

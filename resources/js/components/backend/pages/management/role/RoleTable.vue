@@ -18,7 +18,7 @@
                             </vs-checkbox>
                             </th>
                             <th scope="col">Name</th>
-                             <th scope="col">roles</th>
+                             <th scope="col">Users</th>
                             <th scope="col">Permissions</th>
                             <th scope="col">Create By</th>
                             <th scope="col">Created</th>
@@ -48,17 +48,11 @@
                                 </td>
                                 <td>
                                 <div class="row">
-                                    <div class="col">
-                                        <a :href="`mailto:${role.email}`" target="_blank"> {{role.email}}
-                                        <vs-avatar class="btn-plane">
-                                        <i class=" far fa-paper-plane"></i>
-                                        </vs-avatar>
-                                        </a>
-                                    </div>
+                                    {{role.users.length}}
                                 </div>
                                 </td>
-                                <td>{{role.role_name}}</td>
-                                <td>{{role.phone}}</td>
+                                <td>{{role.permissions.length}}</td>
+
                                 <td>Admin</td>
                                 <td>{{role.created_at | timeformat}}</td>
 
