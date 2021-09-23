@@ -7,34 +7,30 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+
 import router from "./router";
 import VueProgressBar from 'vue-progressbar'
 import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css'
 import moment from "moment";
-import Notifications from 'vue-notification'
 import Multiselect from 'vue-multiselect'
 import "vue-toastification/dist/index.css";
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import VueContentPlaceholders from 'vue-content-placeholders'
+import Swal from 'sweetalert2'
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+window.Swal = Swal;
+Vue.use(VueContentPlaceholders)
+
+
 Vue.use(Vuesax);
-// Vue.component("pagination", require("laravel-vue-pagination"));
+Vue.component("pagination", require("laravel-vue-pagination"));
 window.moment = moment;
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
-    height: '6px'
+    height: '10px'
 })
 Vue.component('multiselect', Multiselect)
-Vue.use(Notifications)
 
 
 Vue.filter("timeformat", function(value) {
@@ -48,28 +44,39 @@ Vue.filter("timeformat", function(value) {
 const app = new Vue({
     el: '#app',
     router,
+    data() {
+        return {
+            primary_color: "",
+        };
+    },
     methods: {
-        alertNotification(position = 'top-right', color, title, description) {
+        alertNotification(position = 'top-right', border, title, description) {
             const noti = this.$vs.notification({
                 progress: 'auto',
-                color,
+                border,
                 position,
                 title: title,
-                text: `${description}`
+                text: ` ${description} `
             })
         },
-        alertErrorMessage(status, res) {
+        alertNotificationMessage(status, res) {
             switch (status) {
                 case 500:
-                    this.alertNotification('top-right', 'danger', `${status} Error! `, res.message);
+                    this.alertNotification('top-right', 'danger', `Oops, Something Went Wrong ${status} Error! `, res.message);
                     break;
-
+                case 422:
+                    this.alertNotification('top-right', 'danger', `Oops, Unprocessable Entity ${status} Error! `, res.message);
+                    break;
+                case 200:
+                    this.alertNotification('top-right', 'success', `response ${status} successfully! `, res);
+                    break;
                 default:
                     break;
             }
         },
     },
     created() {
+        this.primary_color = primarycolor;
         this.$Progress.start()
             //  hook the progress bar to start before we move router-view
         this.$router.beforeEach((to, from, next) => {
@@ -90,11 +97,7 @@ const app = new Vue({
             this.$Progress.finish()
         })
 
-        this.$notify({
-            group: 'succes',
-            title: 'Important message',
-            text: 'Hello user! This is a notification!'
-          });
+
 
     }
 

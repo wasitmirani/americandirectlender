@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend\user;
 
 
 use App\Models\User;
+use App\Models\UserInfo;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -16,10 +18,10 @@ class UserController extends Controller
 
 
         $q=request('query');
+
         $users=User::where('name', 'like', '%' . $q . '%')
         ->Orwhere('email', 'like', '%' . $q. '%')
-        ->Orwhere('created_at', 'like', '%' . $q. '%')
-        ->latest()->paginate(env('PER_PAGE'));
+        ->latest()->paginate((int)env('PER_PAGE'));
        return response()->json(['users'=>$users]);
 
     // $users = User::all();
@@ -37,37 +39,29 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
+
         $request->validate([
             'name' => ['required', 'string', 'min:3','max:50'],
-            'l_name' => ['required', 'string', 'min:3','max:50'],
-            'f_name' => ['required', 'string', 'min:3','max:50'],
-            'role' => ['required'],
-            'postalcode' => ['required'],
-            'city' => ['required'],
-            'country' => ['required'],
-            'bio' => ['required'],
-            'address' => ['required'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // 'phone' => ['required',  'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
+            'email' => ['required',  'email', 'unique:users'],
+            'password' => ['required', 'string', 'min:6','max:50'],
+            'phone' => ['required',  'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:255', 'unique:users'],
         ]);
 
-        $user = User::create([
-
+        $request=(object)$request;
+        $user=new User();
+        $user_name=preg_replace('/\s+/', '',Str::lower($request->name));
+        $user_name=  $user_name.rand(10,400000);
+        $request_array=[
             'name'=>$request->name,
             'email'=>$request->email,
-            'password' => Hash::make($request->password),
-            'l_name' => $request->l_name,
-            'f_name' => $request->f_name,
-            'role' => $request->role,
-            'postal_code' => $request->postalcode,
-            'city' => $request->city,
-            'country' => $request->country,
-            'bio' => $request->bio,
-            'address' => $request->address,
+            'phone'=>$request->phone,
+            'password'=>Hash::make($request->password),
+            'user_name'=> $user_name,
+        ];
 
+        $new_user=$user->userCreateOrUpdate($request_array);
 
-        ]);
+        $user->userInfoCreateOrUpdate($new_user,$request);
 
         return response()->json($user,200);
     }
@@ -81,12 +75,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        $user=User::find($id);
+        $user=User::where('id',$id)->with('userInfo:about_me,address,city,country,postal_code,user_id')->first();
         return response()->json(['user'=>$user]);
     }
     public function update(Request $request)
     {
-        dd($request->email);
 
         $request->validate([
             'name' => ['required', 'string', 'min:3','max:50'],
@@ -127,7 +120,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-
+       $user_info=UserInfo::where('user_id',$id)->delete();
        $user =  User::destroy($id);
        return response()->json($user);
 

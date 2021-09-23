@@ -41,32 +41,10 @@ class HelperComponent {
                     ],
 
                 ],
-                [
-                    "heading"=>"Directories",
-                    "menu"=>[
-                        "title"=>'Variations',
-                        "icon"=>"fa fa-comment",
-                        "sub_menu"=>[
-                            setSubMenu(
-                              "Dashboard",
-                                null,
-                                null,
-                                 "/",
-                            ),
-                            setSubMenu(
-                                "Dashboard",
-                                  null,
-                                  null,
-                                   "/",
-                              ),
-                        ]
 
-                    ],
-
-                ],
-                [
-                    "single_link" => setSingleLink( "Dashboard","fa fa-users",null,"/"),
-                ],
+                // [
+                //     "single_link" => setSingleLink( "Dashboard","fa fa-users",null,"/"),
+                // ],
 
      ];
     }
