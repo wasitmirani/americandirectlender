@@ -118,9 +118,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['roles', 'getroles'],
+  props: ['roles', 'getRoles'],
   components: {
     Avatar: _components_AvatarComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -130,6 +139,39 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    getColor: function getColor() {
+      var val = Math.floor(Math.random() * 7);
+
+      switch (val) {
+        case 1:
+          return "primary";
+          break;
+
+        case 2:
+          return "dark";
+          break;
+
+        case 3:
+          return "success";
+          break;
+
+        case 4:
+          return "warn";
+          break;
+
+        case 5:
+          return "#7d33ff";
+          break;
+
+        case 6:
+          return "rgb(59,222,200)";
+          break;
+
+        default:
+          return "primary";
+          break;
+      }
+    },
     alldeleteItems: function alldeleteItems() {
       var _this = this;
 
@@ -158,7 +200,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     selectAllItems: function selectAllItems() {
-      if (this.selected_items.length > 1) {
+      if (this.selected_items.length > 0) {
         this.selected_items = [];
       } else {
         this.selected_items = this.roles.data.map(function (x) {
@@ -527,12 +569,12 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c(
-                          "router-link",
+                          "a",
                           {
-                            attrs: {
-                              to: {
-                                name: "update-role",
-                                params: { id: role.id }
+                            attrs: { role: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.editItem(role)
                               }
                             }
                           },
@@ -555,17 +597,63 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _c("td", [
-                      _c("div", { staticClass: "row" }, [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(role.users.length) +
-                            "\n                            "
-                        )
-                      ])
-                    ]),
+                    _c(
+                      "td",
+                      [
+                        _c("vs-avatar", {
+                          attrs: { color: _vm.getColor() },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "text",
+                                fn: function() {
+                                  return [
+                                    _vm._v(
+                                      "\n                                 " +
+                                        _vm._s(role.users.length) +
+                                        "\n                                "
+                                    )
+                                  ]
+                                },
+                                proxy: true
+                              }
+                            ],
+                            null,
+                            true
+                          )
+                        })
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(role.permissions.length))]),
+                    _c(
+                      "td",
+                      [
+                        _c("vs-avatar", {
+                          attrs: { color: _vm.getColor() },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "text",
+                                fn: function() {
+                                  return [
+                                    _vm._v(
+                                      "\n                                 " +
+                                        _vm._s(role.permissions.length) +
+                                        "\n                                "
+                                    )
+                                  ]
+                                },
+                                proxy: true
+                              }
+                            ],
+                            null,
+                            true
+                          )
+                        })
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
                     _c("td", [_vm._v("Admin")]),
                     _vm._v(" "),
@@ -573,37 +661,33 @@ var render = function() {
                       _vm._v(_vm._s(_vm._f("timeformat")(role.created_at)))
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "td",
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              to: {
-                                name: "update-role",
-                                params: { id: role.id }
-                              }
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: { role: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.editItem(role)
                             }
-                          },
-                          [_c("i", { staticClass: "fa  fa-edit text-primary" })]
-                        ),
-                        _vm._v(" |  "),
-                        _c(
-                          "a",
-                          {
-                            attrs: { role: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.deleteItem(role)
-                              }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa  fa-edit text-primary" })]
+                      ),
+                      _vm._v(" |  "),
+                      _c(
+                        "a",
+                        {
+                          attrs: { role: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteItem(role)
                             }
-                          },
-                          [_c("i", { staticClass: "fa  fa-trash text-danger" })]
-                        )
-                      ],
-                      1
-                    )
+                          }
+                        },
+                        [_c("i", { staticClass: "fa  fa-trash text-danger" })]
+                      )
+                    ])
                   ])
                 })
           ],
@@ -618,7 +702,7 @@ var render = function() {
       [
         _c("pagination", {
           attrs: { data: _vm.roles, limit: 5 },
-          on: { "pagination-change-page": _vm.getroles }
+          on: { "pagination-change-page": _vm.getRoles }
         })
       ],
       1

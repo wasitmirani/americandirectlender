@@ -14,11 +14,19 @@
 
                     </h5>
 
+                  <div class="mb-3 col-4 mt-3">
 
+                        <SearchInput :apiurl="'/management/role?page=' +this.page_num"
+                        v-on:query="isquery($event)"
+                        v-on:loading="loadingStart($event)"
+                        v-on:reload="getRoles()"
+                        v-on:filterList="filterdata($event)"
+                        label="Search Users"></SearchInput>
+                    </div>
                   </div>
 
                   <div class="card-body">
-                   <RoleTable :getRoles="getRoles" :roles="roles"></RoleTable>
+                   <RoleTable :getRoles="getRoles" :roles="roles" v-on:editItem="editItem($event)" v-on:deleteItem="deleteItem($event)"></RoleTable>
                   </div>
             </div>
         </div>
@@ -29,7 +37,7 @@
                Create New <b>Role</b>
             </h4>
             <h4 class="not-margin" v-else>
-               Update <b>{{brand.name}}</b> Role
+               Update <b>{{role.name}}</b> Role
             </h4>
          </template>
          <div class="con-form">
@@ -41,7 +49,7 @@
                   </div>
                <div class="mb-3">
                 <label class="col-form-label" for="recipient-name">Users:</label>
-                      <vs-select  filter placeholder="Select Users"  :color="this.$root.primary_color"   collapse-chips multiple  v-model="role.selected_users" v-if="users">
+                      <vs-select  filter placeholder="Select Users"  :color="this.$root.primary_color"   collapse-chips multiple  v-model="selected_users" v-if="users.length > 0">
                       <vs-option v-for="item in users" :key="item.id"
                                 :label="item.name" :value="item.id">
                                  {{ item.name }}
@@ -50,10 +58,10 @@
                </div>
                <div class="flex">
                   <!-- <vs-checkbox v-model="checkbox1">Remember me</vs-checkbox> -->
-                  <vs-button color="rgb(121, 81, 170)" gradient  type="submit" @click="onSubmit"  v-if="!edit_mode">
+                  <vs-button color="rgb(121, 81, 170)" gradient  type="submit" @click="onSubmit"  v-if="!this.edit_mode">
                      Submit
                   </vs-button>
-                   <vs-button  color="rgb(59,222,200)" gradient  type="submit"  v-else>
+                   <vs-button  color="rgb(59,222,200)" gradient  type="submit"  @click="onSubmit" v-if="this.edit_mode">
                      Update
                   </vs-button>
                </div>
@@ -68,23 +76,26 @@
 import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 import PrimaryButton from "../../../components/PrimaryButton";
 import RoleTable from "./RoleTable.vue";
+import SearchInput from "../../../components/SearchInput.vue";
 export default {
 
     components:{
         Breadcrumb,
         RoleTable,
         PrimaryButton,
+        SearchInput,
     },
      data(){
             return {
             roles:{},
-            role:{
-                selected_users:[],
-            },
+            role:{},
             active_modal:false,
             edit_mode:false,
+            selected_users:[],
             users:[],
             errors:[],
+            page_num:1,
+            query:"",
             }
 
      },
@@ -94,33 +105,71 @@ export default {
 
      },
         methods:{
-            test(event) {
-            console.log(event);
+            editItem(item) {
+            this.resetForm();
+
+            this.edit_mode=true;
+            this.active_modal=true;
+            this.role=item;
+            this.selected_users=item.users.map(x=> x.id)
+            },
+            deleteItem(item){
+            const url=`/management/role/${item.id}`;
+            Swal.fire({
+              title: "Are you sure?",
+              text: "You won't be able to revert this!",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                axios.delete(url).then((res) => {
+                    Swal.fire("Deleted!", "Your file has been deleted.", "success");
+                        this.getRoles();
+
+                  }).catch((err)=>{
+                        this.$root.alertNotificationMessage(err.response.status,err.response.data);
+                   //    console.log("erro",err.response.data.message);
+
+                  });
+              }
+            });
             },
             openModal(val){
              this.resetForm();
-                return this.active_modal=val;
+             return this.active_modal=val;
             },
             resetForm(){
+            this.edit_mode=false;
+            this.active_modal=false;
+            this.role={};
+            this.selected_users=[];
 
             },
-           async getRoles(){
-             const url="/management/role";
+           async getRoles(page=1){
+             this.page_num=page;
+             const url="/management/role?page=" + page + "&query=" + this.query;
                await axios.get(url).then((res)=>{
                    this.roles = res.data.roles;
                    this.users=res.data.users;
 
                }).catch((err)=>{
                      this.$root.alertErrorMessage(err.response.status,err.response.data);
-                //    console.log("erro",err.response.data.message);
-
                });
             },
+            createItem(){
+
+            },
+
             onSubmit(){
                 let formData = new FormData();
                 formData=Object.assign(this.role,formData);
+                formData=Object.assign({users:this.selected_users},formData)
                 const url="/management/role";
-                axios.post(url,formData).then((res)=>{
+                if(!this.edit_mode){
+                     axios.post(url,formData).then((res)=>{
                      this.$root.alertNotificationMessage(res.status,"New role has been created successfully");
                      this.active_modal=false;
                      this.resetForm();
@@ -132,7 +181,25 @@ export default {
                         return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
                     }
                     this.$root.alertNotificationMessage(err.response.status,err.response.data);
-                  });
+                });
+                }
+                else {
+                    axios.put(url+"/"+this.role.id,formData).then((res)=>{
+                     this.$root.alertNotificationMessage(res.status,"New role has been updated successfully");
+                     this.getRoles();
+
+                     this.active_modal=false;
+                     this.resetForm();
+
+                }).catch((err)=>{
+                     if(err.response.status==422){
+                        this.errors=err.response.data.errors;
+                        return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
+                    }
+                    this.$root.alertNotificationMessage(err.response.status,err.response.data);
+                });
+                }
+
             },
 
 
@@ -143,53 +210,3 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-.vs-select-content {
-    width: 100%;
-    max-width: 100%;
-}
-    getColor(vsColor, alpha = 1)
-        unquote("rgba(var(--vs-"+vsColor+"), "+alpha+")")
-    getVar(var)
-        unquote("var(--vs-"+var+")")
-    .not-margin
-      margin 0px
-      font-weight normal
-      padding 10px
-    .con-form
-      width 100%
-      .flex
-        display flex
-        align-items center
-        justify-content space-between
-        a
-          font-size .8rem
-          opacity .7
-          &:hover
-            opacity 1
-      .vs-checkbox-label
-        font-size .8rem
-      .vs-input-content
-        margin 10px 0px
-        width calc(100%)
-        .vs-input
-          width 100%
-    .footer-dialog
-      display flex
-      align-items center
-      justify-content center
-      flex-direction column
-      width calc(100%)
-      .new
-        margin 0px
-        margin-top 20px
-        padding: 0px
-        font-size .7rem
-        a
-          color getColor('primary') !important
-          margin-left 6px
-          &:hover
-            text-decoration underline
-      .vs-button
-        margin 0px
-</style>

@@ -2148,6 +2148,10 @@ var app = new Vue({
           this.alertNotification('top-right', 'success', "response ".concat(status, " successfully! "), res);
           break;
 
+        case 301:
+          this.alertNotification('top-right', 'success', "Oops, Unprocessable Entity ".concat(status, " Error! "), res);
+          break;
+
         default:
           break;
       }
@@ -2167,6 +2171,7 @@ var app = new Vue({
         if (result.isConfirmed) {
           axios["delete"](url).then(function (res) {
             sweetalert2__WEBPACK_IMPORTED_MODULE_9___default().fire("Deleted!", "Your file has been deleted.", "success");
+            return true;
           })["catch"](function (err) {
             _this.$root.alertNotificationMessage(err.response.status, err.response.data); //    console.log("erro",err.response.data.message);
 
@@ -87374,26 +87379,6 @@ var map = {
 		9,
 		"resources_js_components_backend_pages_management_permission_PermissionTable_vue"
 	],
-	"./components/backend/pages/management/role/CreateRoleComponent": [
-		"./resources/js/components/backend/pages/management/role/CreateRoleComponent.vue",
-		9,
-		"resources_js_components_backend_pages_management_role_CreateRoleComponent_vue"
-	],
-	"./components/backend/pages/management/role/CreateRoleComponent.vue": [
-		"./resources/js/components/backend/pages/management/role/CreateRoleComponent.vue",
-		9,
-		"resources_js_components_backend_pages_management_role_CreateRoleComponent_vue"
-	],
-	"./components/backend/pages/management/role/EditRoleComponent": [
-		"./resources/js/components/backend/pages/management/role/EditRoleComponent.vue",
-		9,
-		"resources_js_components_backend_pages_management_role_EditRoleComponent_vue"
-	],
-	"./components/backend/pages/management/role/EditRoleComponent.vue": [
-		"./resources/js/components/backend/pages/management/role/EditRoleComponent.vue",
-		9,
-		"resources_js_components_backend_pages_management_role_EditRoleComponent_vue"
-	],
 	"./components/backend/pages/management/role/RoleComponent": [
 		"./resources/js/components/backend/pages/management/role/RoleComponent.vue",
 		9,
@@ -87621,7 +87606,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\laragon\\\\www\\\\
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_ExampleComponent_vue":1,"resources_js_components_backend_components_AvatarComponent_vue":1,"resources_js_components_backend_components_BreadcrumbComponent_vue":1,"resources_js_components_backend_components_PrimaryButton_vue":1,"resources_js_components_backend_components_SearchInput_vue":1,"resources_js_components_backend_pages_dashboard_HomeComponent_vue":1,"resources_js_components_backend_pages_management_permission_CreatePermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionTable_vue":1,"resources_js_components_backend_pages_management_role_CreateRoleComponent_vue":1,"resources_js_components_backend_pages_management_role_EditRoleComponent_vue":1,"resources_js_components_backend_pages_management_role_RoleComponent_vue":1,"resources_js_components_backend_pages_management_role_RoleTable_vue":1,"resources_js_components_backend_pages_management_user_UserComponent_vue":1,"resources_js_components_backend_pages_management_user_UserFormComponent_vue":1,"resources_js_components_backend_pages_management_user_UsersTable_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_ExampleComponent_vue":1,"resources_js_components_backend_components_AvatarComponent_vue":1,"resources_js_components_backend_components_BreadcrumbComponent_vue":1,"resources_js_components_backend_components_PrimaryButton_vue":1,"resources_js_components_backend_components_SearchInput_vue":1,"resources_js_components_backend_pages_dashboard_HomeComponent_vue":1,"resources_js_components_backend_pages_management_permission_CreatePermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionTable_vue":1,"resources_js_components_backend_pages_management_role_RoleComponent_vue":1,"resources_js_components_backend_pages_management_role_RoleTable_vue":1,"resources_js_components_backend_pages_management_user_UserComponent_vue":1,"resources_js_components_backend_pages_management_user_UserFormComponent_vue":1,"resources_js_components_backend_pages_management_user_UsersTable_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

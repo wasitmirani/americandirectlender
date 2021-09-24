@@ -60,7 +60,7 @@
                                 </td>
                                 <td>{{user.user_name}}</td>
                                 <td>{{user.phone}}</td>
-                                <td>Admin</td>
+                                <td>{{user.user ? user.user.name : "N/A"}}</td>
                                 <td>{{user.created_at | timeformat}}</td>
 
                                 <td><router-link :to="{name: 'update-user', params: { id: user.id }}"><i class="fa  fa-edit text-primary"></i></router-link> |  <a role="button"  @click="deleteItem(user)"><i class="fa  fa-trash text-danger"></i></a></td>
@@ -118,7 +118,7 @@ export default {
      },
      selectAllItems(){
 
-         if(this.selected_items.length>1)
+         if(this.selected_items.length>0)
          {
              this.selected_items=[];
          }

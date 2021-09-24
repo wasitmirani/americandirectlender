@@ -21,7 +21,7 @@ class UserController extends Controller
 
         $users=User::where('name', 'like', '%' . $q . '%')
         ->Orwhere('email', 'like', '%' . $q. '%')
-        ->latest()->paginate((int)env('PER_PAGE'));
+        ->latest()->with('user:id,name','roles')->paginate((int)env('PER_PAGE'));
        return response()->json(['users'=>$users]);
 
     // $users = User::all();

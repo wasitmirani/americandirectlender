@@ -38,25 +38,34 @@
                                 </td>
                                 <td class="bd-t-none u-s-tb">
                                 <Avatar :name="role.name" :thumbnail="role.thumbnail"></Avatar>
-                                <router-link :to="{name: 'update-role', params: { id: role.id }}">
+                                <a  role="button" @click="editItem(role)">
                                 <div class="align-middle image-sm-size">
                                     <div class="d-inline-block">
                                     <h6>{{role.name}} <span class="text-muted"></span></h6>
                                     </div>
                                 </div>
-                                </router-link>
+                                </a>
                                 </td>
                                 <td>
-                                <div class="row">
-                                    {{role.users.length}}
-                                </div>
+                               <vs-avatar :color="getColor()">
+                                    <template #text>
+                                     {{role.users.length}}
+                                    </template>
+                                </vs-avatar>
+
                                 </td>
-                                <td>{{role.permissions.length}}</td>
+                                <td>
+                                      <vs-avatar :color="getColor()">
+                                    <template #text>
+                                     {{role.permissions.length}}
+                                    </template>
+                                </vs-avatar>
+                                </td>
 
                                 <td>Admin</td>
                                 <td>{{role.created_at | timeformat}}</td>
 
-                                <td><router-link :to="{name: 'update-role', params: { id: role.id }}"><i class="fa  fa-edit text-primary"></i></router-link> |  <a role="button"  @click="deleteItem(role)"><i class="fa  fa-trash text-danger"></i></a></td>
+                                <td><a  role="button" @click="editItem(role)"> <i class="fa  fa-edit text-primary"></i></a> |  <a role="button"  @click="deleteItem(role)"><i class="fa  fa-trash text-danger"></i></a></td>
                             </tr>
 
                         </tbody>
@@ -64,7 +73,7 @@
                     </div>
 
                     <ul class="pagination pagination-primary mt-4">
-                        <pagination :data="roles" :limit="5" @pagination-change-page="getroles"></pagination>
+                        <pagination :data="roles" :limit="5" @pagination-change-page="getRoles"></pagination>
                     </ul>
 
     </div>
@@ -74,7 +83,7 @@
 import Avatar from "../../../components/AvatarComponent.vue";
 
 export default {
-    props:['roles','getroles'],
+    props:['roles','getRoles'],
      components:{
         Avatar,
     },
@@ -83,6 +92,32 @@ export default {
     };
     },
     methods:{
+        getColor(){
+            const val =Math.floor(Math.random() * 7);
+      switch (val) {
+          case 1:
+              return "primary";
+              break;
+          case 2:
+              return "dark";
+              break;
+          case 3:
+              return "success";
+              break;
+          case 4:
+              return "warn";
+              break;
+         case 5:
+              return "#7d33ff";
+              break;
+          case 6:
+              return "rgb(59,222,200)";
+              break;
+          default:
+                return "primary";
+              break;
+      }
+        },
      alldeleteItems(){
           Swal.fire({
               title: "Are you sure?",
@@ -111,7 +146,7 @@ export default {
      },
      selectAllItems(){
 
-         if(this.selected_items.length>1)
+         if(this.selected_items.length>0)
          {
              this.selected_items=[];
          }
@@ -124,7 +159,7 @@ export default {
             },
         editItem: function (item) {
                   return this.$emit("editItem", item);
-              }
+            }
 
 
         }

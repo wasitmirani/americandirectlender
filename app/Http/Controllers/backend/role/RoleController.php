@@ -34,7 +34,7 @@ class RoleController extends Controller
         ]);
         // $users=explode(",",$request->selected_users);
 
-        $user_collection=User::WhereIn('id',  $request->selected_users)->get();
+        $user_collection=User::WhereIn('id',  $request->users)->get();
 
         $role = Role::create(['name' => $request->name]);
         $role->users()->attach($user_collection);
@@ -53,11 +53,13 @@ class RoleController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255','unique:roles,name,'.$request->id],
         ]);
-        $users=explode(",",$request->users);
+
+        $user_collection=User::WhereIn('id',  $request->users)->get();
+
         $role = Role::find($request->id);
         $role->name=$request->name;
         $role->save();
-        $role->users()->sync($users);
+        $role->users()->sync($user_collection);
     }
 
     /**

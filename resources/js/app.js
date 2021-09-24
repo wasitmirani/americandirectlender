@@ -74,6 +74,9 @@ const app = new Vue({
                 case 200:
                     this.alertNotification('top-right', 'success', `response ${status} successfully! `, res);
                     break;
+                case 301:
+                    this.alertNotification('top-right', 'success', `Oops, Unprocessable Entity ${status} Error! `, res);
+                    break;
                 default:
                     break;
             }
@@ -91,8 +94,7 @@ const app = new Vue({
                 if (result.isConfirmed) {
                     axios.delete(url).then((res) => {
                         Swal.fire("Deleted!", "Your file has been deleted.", "success");
-
-
+                        return true;
                     }).catch((err) => {
                         this.$root.alertNotificationMessage(err.response.status, err.response.data);
                         //    console.log("erro",err.response.data.message);
