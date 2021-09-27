@@ -103,10 +103,10 @@ export default {
               if (result.isConfirmed) {
                   let form_data= new FormData();
                   let ids=JSON.stringify(this.selected_items)
-                  form_data.append("brand_ids",ids);
+                  form_data.append("user_ids",ids);
                 axios.post("/management/remove-all/users",form_data).then((res) => {
                     Swal.fire("Deleted!", "Your file has been deleted.", "success");
-                      this.getBrands();
+                      this.getUsers();
 
                   }).catch((err)=>{
                         this.$root.alertNotificationMessage(err.response.status,err.response.data);

@@ -178,69 +178,69 @@
     chartlinechart3.render();
 
     // column chart
-    
+
     var options = {
         series: [{
-        name: 'Net Profit',
-        data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-      }, {
-        name: 'Revenue',
-        data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-      } ],
+            name: 'Net Profit',
+            data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+        }, {
+            name: 'Revenue',
+            data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+        }],
         chart: {
-        type: 'bar',
-        height: 360
-      },
-      plotOptions: {
-        bar: {
-          horizontal: false,
-          columnWidth: '55%',
-          endingShape: 'rounded'
+            type: 'bar',
+            height: 360
         },
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        show: true,
-        width: 2,
-        colors: ['transparent']
-      },
-      xaxis: {
-        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-      },
-      yaxis: {
-        title: {
-          text: '$ (thousands)'
-        }
-      },
- 
-      fill: {
-        opacity: 1,
-        colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary],
-        type: 'gradient',
-        gradient: {
-            shade: 'light',
-            type: 'vertical',
-            shadeIntensity: 0.4,
-            inverseColors: false,
-            opacityFrom: 0.9,
-            opacityTo: 0.8,
-            stops: [0, 100]
-        }
-    },  
-    colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary],
-      tooltip: {
-        y: {
-          formatter: function (val) {
-            return "$ " + val + " thousands"
-          }
-        }
-      }
-      };
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                endingShape: 'rounded'
+            },
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+        },
+        xaxis: {
+            categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        },
+        yaxis: {
+            title: {
+                text: '$ (thousands)'
+            }
+        },
 
-      var chartlinechart4 = new ApexCharts(document.querySelector("#chart-widget4"), options);
-      chartlinechart4.render();
+        fill: {
+            opacity: 1,
+            colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary],
+            type: 'gradient',
+            gradient: {
+                shade: 'light',
+                type: 'vertical',
+                shadeIntensity: 0.4,
+                inverseColors: false,
+                opacityFrom: 0.9,
+                opacityTo: 0.8,
+                stops: [0, 100]
+            }
+        },
+        colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary],
+        tooltip: {
+            y: {
+                formatter: function(val) {
+                    return "$ " + val + " thousands"
+                }
+            }
+        }
+    };
+
+    var chartlinechart4 = new ApexCharts(document.querySelector("#chart-widget4"), options);
+    chartlinechart4.render();
 
     // earning chart
     var optionsearningchart = {
@@ -322,7 +322,7 @@
     };
     var chart = new ApexCharts(document.querySelector("#chart-widget5"), options);
     chart.render();
-    
+
     // product chart
     var optionsproductchart = {
         chart: {
@@ -333,7 +333,7 @@
             curve: 'smooth'
         },
         series: [{
-            name: 'TEAM A',
+            name: '665ed',
             type: 'area',
             data: [44, 55, 31, 47, 31, 43, 26, 41, 31, 47, 33]
         }, {
@@ -416,7 +416,7 @@
         series: [{
             name: "STOCK ABC",
             data: series.monthDataSeries1.prices
-        }],   
+        }],
         colors: [vihoAdminConfig.primary],
         labels: series.monthDataSeries1.dates,
         xaxis: {
@@ -467,7 +467,7 @@
             name: 'Series 3',
             data: [44, 76, 78, 13, 43, 10],
         }],
-   
+
         stroke: {
             width: 0
         },
@@ -552,7 +552,7 @@
     }
     var chartuserchart = new ApexCharts(document.querySelector("#chart-widget9"), optionsuserchart);
     chartuserchart.render();
-    
+
     // browser-candlestick chart
     var optionscandlestickchart = {
         chart: {
@@ -772,6 +772,3 @@
     }
     var chartcandlestickchart = new ApexCharts(document.querySelector("#chart-widget13"), optionscandlestickchart);
     chartcandlestickchart.render();
-    
-    
-    

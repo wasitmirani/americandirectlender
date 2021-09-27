@@ -1,6 +1,6 @@
 <template>
   <div>
-      <Breadcrumb activename="Users Management" ></Breadcrumb>
+      <Breadcrumb activename="Roles Management"  :previous="[{name:'Users',link:'/users'}]"></Breadcrumb>
 
         <div class="row">
             <div class="col-12">
@@ -21,12 +21,22 @@
                         v-on:loading="loadingStart($event)"
                         v-on:reload="getRoles()"
                         v-on:filterList="filterdata($event)"
-                        label="Search Users"></SearchInput>
+                        label="Search Roles"></SearchInput>
                     </div>
                   </div>
 
                   <div class="card-body">
-                   <RoleTable :getRoles="getRoles" :roles="roles" v-on:editItem="editItem($event)" v-on:deleteItem="deleteItem($event)"></RoleTable>
+                       <content-placeholders v-if="loading">
+                     <content-placeholders-heading :img="true" />
+                     <content-placeholders-text :lines="1" />
+                     <content-placeholders-heading :img="true" />
+                     <content-placeholders-text :lines="1" />
+                     <content-placeholders-heading :img="true" />
+                     <content-placeholders-text :lines="1" />
+                     <content-placeholders-heading :img="true" />
+                     <content-placeholders-text :lines="1" />
+                  </content-placeholders>
+                   <RoleTable :getRoles="getRoles" :roles="roles" v-on:editItem="editItem($event)" v-on:deleteItem="deleteItem($event)" v-else></RoleTable>
                   </div>
             </div>
         </div>
@@ -41,20 +51,24 @@
             </h4>
          </template>
          <div class="con-form">
-            <form>
+
                   <div class="mb-3">
                    <label class="col-form-label" for="recipient-name">Role Name:</label>
                    <vs-input   :color="this.$root.primary_color" v-model="role.name" placeholder="Role Name"  required/>
-                   <span class="mt-1 text-danger">{{ this.errors.name}}</span>
+                   <span class="mt-1 text-danger" v-if="this.errors.name">{{ this.errors.name[0]}}</span>
                   </div>
                <div class="mb-3">
                 <label class="col-form-label" for="recipient-name">Users:</label>
-                      <vs-select  filter placeholder="Select Users"  :color="this.$root.primary_color"   collapse-chips multiple  v-model="selected_users" v-if="users.length > 0">
+                      <vs-select  filter placeholder="Select Users"  :color="this.$root.primary_color" required   collapse-chips :multiple="true"  v-model="selected_users" v-if="users.length > 0">
                       <vs-option v-for="item in users" :key="item.id"
                                 :label="item.name" :value="item.id">
                                  {{ item.name }}
                         </vs-option>
                      </vs-select>
+
+                    <!-- <multiselect v-model="selected_users" placeholder="Search Users" limit="" label="name" track-by="id" :options="users" :multiple="true"  :taggable="true" >
+                      <span slot="noResult">Oops! No elements found. Consider changing the search query.</span>
+                    </multiselect> -->
                </div>
                <div class="flex">
                   <!-- <vs-checkbox v-model="checkbox1">Remember me</vs-checkbox> -->
@@ -65,7 +79,7 @@
                      Update
                   </vs-button>
                </div>
-            </form>
+
          </div>
       </vs-dialog>
   </div>
@@ -92,10 +106,11 @@ export default {
             active_modal:false,
             edit_mode:false,
             selected_users:[],
-            users:[],
+            users:{},
             errors:[],
             page_num:1,
             query:"",
+            loading:false,
             }
 
      },
@@ -105,6 +120,9 @@ export default {
 
      },
         methods:{
+          onChange(event){
+            console.log("log",event);
+          },
             editItem(item) {
             this.resetForm();
 
@@ -149,19 +167,29 @@ export default {
 
             },
            async getRoles(page=1){
+             this.loading=true;
              this.page_num=page;
              const url="/management/role?page=" + page + "&query=" + this.query;
                await axios.get(url).then((res)=>{
                    this.roles = res.data.roles;
                    this.users=res.data.users;
+                   this.loading=false;
 
                }).catch((err)=>{
                      this.$root.alertErrorMessage(err.response.status,err.response.data);
                });
             },
-            createItem(){
+           isquery(query) {
+            return (this.query = query);
+          },
 
-            },
+          filterdata(data){
+            this.roles=data.roles;
+          },
+        loadingStart(value) {
+
+            this.loading = value;
+          },
 
             onSubmit(){
                 let formData = new FormData();
@@ -170,8 +198,7 @@ export default {
                 const url="/management/role";
                 if(!this.edit_mode){
                      axios.post(url,formData).then((res)=>{
-                     this.$root.alertNotificationMessage(res.status,"New role has been created successfully");
-                     this.active_modal=false;
+                     this.$root.alertNotificationMessage(res.status,"New role has been created successfully")
                      this.resetForm();
                      this.getRoles();
 
@@ -184,12 +211,12 @@ export default {
                 });
                 }
                 else {
-                    axios.put(url+"/"+this.role.id,formData).then((res)=>{
-                     this.$root.alertNotificationMessage(res.status,"New role has been updated successfully");
-                     this.getRoles();
+                    let data={id:this.role.id,name:this.role.name,users:this.selected_users};
+                    axios.put(url+"/"+this.role.id,data).then((res)=>{
 
-                     this.active_modal=false;
+                     this.getRoles();
                      this.resetForm();
+                    this.$root.alertNotificationMessage(res.status,"New role has been updated successfully");
 
                 }).catch((err)=>{
                      if(err.response.status==422){
@@ -209,4 +236,13 @@ export default {
 
 }
 </script>
+<style scoped>
 
+  .vs-input {
+   width: 100%;
+   }
+   .vs-select-content {
+   width: 100%;
+   max-width: 100%;
+   }
+</style>

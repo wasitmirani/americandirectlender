@@ -7,8 +7,10 @@ use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
@@ -29,7 +31,11 @@ class UserController extends Controller
     // return response()->json(['users'=>$users, 'allusers'=>$allusers]);
     }
 
-
+    public function getRolesPermissions(){
+        $roles=Role::orderBy('name','ASC')->select('id','name')->get();
+        $permissions=Permission::orderBy('name','ASC')->select('id','name')->get();
+        return response()->json(['roles'=>$roles,'permissions'=>$permissions]);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -50,7 +56,7 @@ class UserController extends Controller
         $request=(object)$request;
         $user=new User();
         $user_name=preg_replace('/\s+/', '',Str::lower($request->name));
-        $user_name=  $user_name.rand(10,400000);
+        $user_name=  $user_name.rand(10,600000);
         $request_array=[
             'name'=>$request->name,
             'email'=>$request->email,
@@ -60,9 +66,11 @@ class UserController extends Controller
         ];
 
         $new_user=$user->userCreateOrUpdate($request_array);
-
         $user->userInfoCreateOrUpdate($new_user,$request);
-
+        // $permission_collection=Permission::WhereIn('id',  json_decode($request->selected_permissions))->get();
+        $roles_collection=Role::WhereIn('id', $request->roles)->get();
+        // $new_user->permissions()->attach($permission_collection);
+        $new_user->roles()->attach($roles_collection);
         return response()->json($user,200);
     }
 
@@ -124,5 +132,12 @@ class UserController extends Controller
        $user =  User::destroy($id);
        return response()->json($user);
 
+    }
+
+    public function removeAllUsers(Request $request){
+
+        $user_info=UserInfo::whereIn('user_id',json_decode($request->user_ids))->delete();
+        $delete=User::whereIn('id',json_decode($request->user_ids))->delete();
+        return response()->json(['message'=>$delete]);
     }
 }

@@ -225,390 +225,140 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      logs: []
+      logs: [],
+      user: {}
     };
   },
-  created: function created() {
+  methods: {
+    dashboardChart: function dashboardChart() {
+      $(".knob1").knob({
+        'width': 65,
+        'height': 65,
+        'max': 100,
+        change: function change(value) {//console.log("change : " + value);
+        },
+        release: function release(value) {
+          //console.log(this.$.attr('value'));
+          console.log("release : " + value);
+        },
+        cancel: function cancel() {
+          console.log("cancel : ", this);
+        },
+        format: function format(value) {
+          return value + '%';
+        },
+        draw: function draw() {
+          // "tron" case
+          if (this.$.data('skin') == 'tron') {
+            this.cursorExt = 1;
+            var a = this.arc(this.cv) // Arc
+            ,
+                pa // Previous arc
+            ,
+                r = 1;
+            this.g.lineWidth = this.lineWidth;
+
+            if (this.o.displayPrevious) {
+              pa = this.arc(this.v);
+              this.g.beginPath();
+              this.g.strokeStyle = this.pColor;
+              this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+              this.g.stroke();
+            }
+
+            this.g.beginPath();
+            this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+            this.g.stroke();
+            this.g.lineWidth = 2;
+            this.g.beginPath();
+            this.g.strokeStyle = this.o.fgColor;
+            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+            this.g.stroke();
+            return false;
+          }
+        }
+      });
+      var charttimeline = new ApexCharts(document.querySelector("#chart-timeline-dashbord"), options);
+      charttimeline.render(); // second chart dashbord dafault
+
+      var options17 = {
+        series: [100, 67, 61, 90],
+        chart: {
+          height: 380,
+          type: 'radialBar'
+        },
+        plotOptions: {
+          radialBar: {
+            offsetY: 0,
+            startAngle: 0,
+            endAngle: 270,
+            hollow: {
+              margin: 5,
+              size: '30%',
+              background: 'transparent',
+              image: undefined
+            },
+            dataLabels: {
+              name: {
+                show: false
+              },
+              value: {
+                show: false
+              }
+            }
+          }
+        },
+        colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary, vihoAdminConfig.primary, vihoAdminConfig.secondary],
+        labels: ['Total order', 'Total product', 'Quantity', 'Page views'],
+        legend: {
+          show: true,
+          floating: true,
+          fontSize: '14px',
+          position: 'left',
+          fontFamily: 'Roboto',
+          fontweight: 400,
+          // offsetX:30,
+          offsetY: 20,
+          labels: {
+            useSeriesColors: true
+          },
+          markers: {
+            size: 0,
+            show: false
+          },
+          formatter: function formatter(seriesName, opts) {
+            return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex];
+          },
+          itemMargin: {
+            vertical: 5,
+            horizontal: 2
+          }
+        },
+        stroke: {
+          lineCap: 'round'
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            legend: {
+              show: true,
+              fontSize: '10px'
+            }
+          }
+        }]
+      };
+    }
+  },
+  mounted: function mounted() {
     var _this = this;
 
+    console.log("userss", user);
+    this.user = user;
+    this.dashboardChart();
     axios.get('/activities').then(function (response) {
       console.log(response);
       _this.logs = response.data;
@@ -705,11 +455,31 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "container-fluid" }, [
       _c("div", { staticClass: "row" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._m(1),
+        _c("div", { staticClass: "col-xl-6 col-md-6 box-col-6 des-xl-50" }, [
+          _c("div", { staticClass: "card profile-greeting" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body text-center p-t-0" }, [
+              _c("h3", { staticClass: "font-light" }, [
+                _vm._v("Wellcome Back, " + _vm._s(_vm.user.name) + "!!")
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Welcome to the " +
+                    _vm._s(_vm.appname) +
+                    " Family! we are glad that you are visite this dashboard. we will be happy to help you grow your business."
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ]),
         _vm._v(" "),
         _vm._m(2),
+        _vm._v(" "),
+        _vm._m(3),
         _vm._v(" "),
         _c(
           "div",
@@ -719,7 +489,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "card" }, [
-              _vm._m(3),
+              _vm._m(4),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c(
@@ -755,15 +525,11 @@ var render = function() {
                     ])
                   }),
                   0
-                ),
-                _vm._v(" "),
-                _vm._m(4)
+                )
               ])
             ])
           ]
-        ),
-        _vm._v(" "),
-        _vm._m(5)
+        )
       ])
     ])
   ])
@@ -773,30 +539,109 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("div", { staticClass: "header-top" }, [
+        _c("div", { staticClass: "setting-list bg-primary position-unset" }, [
+          _c("ul", { staticClass: "list-unstyled setting-option" }, [
+            _c("li", [
+              _c("div", { staticClass: "setting-white" }, [
+                _c("i", { staticClass: "icon-settings" })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("i", { staticClass: "view-html fa fa-code font-white" })
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("i", {
+                staticClass: "icofont icofont-maximize full-card font-white"
+              })
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("i", {
+                staticClass: "icofont icofont-minus minimize-card font-white"
+              })
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("i", {
+                staticClass: "icofont icofont-refresh reload-card font-white"
+              })
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("i", {
+                staticClass: "icofont icofont-error close-card font-white"
+              })
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "confetti" }, [
+      _c("div", { staticClass: "confetti-piece" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "confetti-piece" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "confetti-piece" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "confetti-piece" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "confetti-piece" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "confetti-piece" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "confetti-piece" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "confetti-piece" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "confetti-piece" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "confetti-piece" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "confetti-piece" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "confetti-piece" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "confetti-piece" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
       { staticClass: "col-xl-6 box-col-12 des-xl-100 invoice-sec" },
       [
-        _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card income-card" }, [
           _c("div", { staticClass: "card-header" }, [
             _c(
               "div",
-              {
-                staticClass:
-                  "header-top d-sm-flex justify-content-between align-items-center"
-              },
+              { staticClass: "header-top d-sm-flex align-items-center" },
               [
-                _c("h5", [_vm._v("Invoice Overview    ")]),
+                _c("h5", [_vm._v(" yearly overview  ")]),
                 _vm._v(" "),
                 _c("div", { staticClass: "center-content" }, [
-                  _c("p", { staticClass: "d-sm-flex align-items-center" }, [
-                    _c("span", { staticClass: "m-r-10" }, [
-                      _vm._v("$5,56548k")
+                  _c("p", [
+                    _c("span", { staticClass: "font-primary fontbold-600" }, [
+                      _vm._v(" $859.25k ")
                     ]),
+                    _vm._v(" "),
                     _c("i", {
-                      staticClass: "toprightarrow-primary fa fa-arrow-up m-r-10"
+                      staticClass:
+                        "toprightarrow-primary fa fa-arrow-up m-l-10 m-r-10"
                     }),
-                    _vm._v("94% More Than Last Year")
+                    _vm._v(
+                      "\n                        86% More than last year\n                    "
+                    )
                   ])
                 ]),
                 _vm._v(" "),
@@ -848,1190 +693,7 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body p-0" }, [
-            _c("div", { attrs: { id: "timeline-chart" } }),
-            _vm._v(" "),
-            _c("div", { staticClass: "code-box-copy" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "code-box-copy__btn btn-clipboard",
-                  attrs: {
-                    "data-clipboard-target": "#invoice-overview",
-                    title: "Copy"
-                  }
-                },
-                [_c("i", { staticClass: "icofont icofont-copy-alt" })]
-              ),
-              _vm._v(" "),
-              _c("pre", [
-                _c("code", {
-                  staticClass: "language-html",
-                  attrs: { id: "invoice-overview" }
-                })
-              ])
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-xl-6 box-col-12 des-xl-100 top-dealer-sec" },
-      [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header pb-0" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "header-top d-sm-flex justify-content-between align-items-center"
-              },
-              [
-                _c("h5", [_vm._v("Top Dealer")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "center-content" }, [
-                  _c("p", { staticClass: "d-sm-flex align-items-center" }, [
-                    _c("span", { staticClass: "m-r-10" }, [
-                      _vm._v("845 Dealer")
-                    ]),
-                    _c("i", {
-                      staticClass: "toprightarrow-primary fa fa-arrow-up m-r-10"
-                    }),
-                    _vm._v("86% More Than Last Year")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "setting-list" }, [
-                  _c("ul", { staticClass: "list-unstyled setting-option" }, [
-                    _c("li", [
-                      _c("div", { staticClass: "setting-primary" }, [
-                        _c("i", { staticClass: "icon-settings" })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", {
-                        staticClass: "view-html fa fa-code font-primary"
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", {
-                        staticClass:
-                          "icofont icofont-maximize full-card font-primary"
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", {
-                        staticClass:
-                          "icofont icofont-minus minimize-card font-primary"
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", {
-                        staticClass:
-                          "icofont icofont-refresh reload-card font-primary"
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", {
-                        staticClass:
-                          "icofont icofont-error close-card font-primary"
-                      })
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "div",
-              {
-                staticClass: "owl-carousel owl-theme",
-                attrs: { id: "owl-carousel-14" }
-              },
-              [
-                _c("div", { staticClass: "item" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "owl-carousel-16 owl-carousel owl-theme"
-                        },
-                        [
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/1.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Thompson lee")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Malasiya")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/8.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Johnson allon")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Bangladesh")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/3.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("williams reed")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Belgium")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/4.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v(" Jones king")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Canada")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "owl-carousel-16 owl-carousel owl-theme"
-                        },
-                        [
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/5.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Brown davis")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("China")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/6.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Wilson Hill")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Denmark")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/7.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Anderson ban")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Japan")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/8.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Thompson lee")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Malasiya")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ])
-                        ]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "item" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "owl-carousel-16 owl-carousel owl-theme"
-                        },
-                        [
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/1.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Thompson lee")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Malasiya")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/8.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Johnson allon")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Bangladesh")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/3.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("williams reed")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Belgium")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/4.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v(" Jones king")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Canada")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "owl-carousel-16 owl-carousel owl-theme"
-                        },
-                        [
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/5.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Brown davis")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("China")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/6.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Wilson Hill")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Denmark")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/7.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Anderson ban")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Japan")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/8.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Thompson lee")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Malasiya")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ])
-                        ]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "item" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "owl-carousel-16 owl-carousel owl-theme"
-                        },
-                        [
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/1.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Thompson lee")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Malasiya")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/8.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Johnson allon")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Bangladesh")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/3.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("williams reed")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Belgium")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/4.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v(" Jones king")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Canada")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "owl-carousel-16 owl-carousel owl-theme"
-                        },
-                        [
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/5.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Brown davis")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("China")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/6.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Wilson Hill")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Denmark")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/7.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Anderson ban")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Japan")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/8.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Thompson lee")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Malasiya")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ])
-                        ]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "item" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "owl-carousel-16 owl-carousel owl-theme"
-                        },
-                        [
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/1.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Thompson lee")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Malasiya")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/8.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Johnson allon")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Bangladesh")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/3.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("williams reed")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Belgium")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/4.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v(" Jones king")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Canada")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "owl-carousel-16 owl-carousel owl-theme"
-                        },
-                        [
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/5.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Brown davis")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("China")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/6.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Wilson Hill")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Denmark")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/7.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Anderson ban")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Japan")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "item" }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c(
-                                "div",
-                                { staticClass: "top-dealerbox text-center" },
-                                [
-                                  _c("img", {
-                                    staticClass: "card-img-top",
-                                    attrs: {
-                                      src: "assets/images/dashboard-2/8.png",
-                                      alt: "..."
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("h6", [_vm._v("Thompson lee")]),
-                                  _vm._v(" "),
-                                  _c("p", [_vm._v("Malasiya")]),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-rounded",
-                                      attrs: { href: "social-app.html" }
-                                    },
-                                    [_vm._v("View More")]
-                                  )
-                                ]
-                              )
-                            ])
-                          ])
-                        ]
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "code-box-copy" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "code-box-copy__btn btn-clipboard",
-                  attrs: {
-                    "data-clipboard-target": "#top-dealer",
-                    title: "Copy"
-                  }
-                },
-                [_c("i", { staticClass: "icofont icofont-copy-alt" })]
-              )
-            ])
+            _c("div", { attrs: { id: "chart-timeline-dashbord" } })
           ])
         ])
       ]
@@ -2118,139 +780,6 @@ var staticRenderFns = [
               ])
             ]
           ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-xl-6 box-col-6 top-sell-sec" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-header pb-0" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "header-top d-sm-flex justify-content-between align-items-center"
-                  },
-                  [
-                    _c("h5", [_vm._v("Top Selling Product")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "center-content" }, [
-                      _c("ul", { staticClass: "week-date" }, [
-                        _c("li", { staticClass: "font-primary" }, [
-                          _vm._v("Today")
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [_vm._v("Month")])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "setting-list" }, [
-                      _c(
-                        "ul",
-                        { staticClass: "list-unstyled setting-option" },
-                        [
-                          _c("li", [
-                            _c("div", { staticClass: "setting-primary" }, [
-                              _c("i", { staticClass: "icon-settings" })
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("li", [
-                            _c("i", {
-                              staticClass: "view-html fa fa-code font-primary"
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("li", [
-                            _c("i", {
-                              staticClass:
-                                "icofont icofont-maximize full-card font-primary"
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("li", [
-                            _c("i", {
-                              staticClass:
-                                "icofont icofont-minus minimize-card font-primary"
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("li", [
-                            _c("i", {
-                              staticClass:
-                                "icofont icofont-refresh reload-card font-primary"
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("li", [
-                            _c("i", {
-                              staticClass:
-                                "icofont icofont-error close-card font-primary"
-                            })
-                          ])
-                        ]
-                      )
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "media" }, [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    attrs: { src: "assets/images/dashboard-2/9.png", alt: "" }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "media-body" }, [
-                    _c("a", { attrs: { href: "product-page.html" } }, [
-                      _c("h6", [_vm._v("Trending Nike shoes")])
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("New Offer Only $126.00")]),
-                    _vm._v(" "),
-                    _c("ul", { staticClass: "rating-star" }, [
-                      _c("li", [_c("i", { staticClass: "fa fa-star" })]),
-                      _vm._v(" "),
-                      _c("li", [_c("i", { staticClass: "fa fa-star" })]),
-                      _vm._v(" "),
-                      _c("li", [_c("i", { staticClass: "fa fa-star" })]),
-                      _vm._v(" "),
-                      _c("li", [_c("i", { staticClass: "fa fa-star" })]),
-                      _vm._v(" "),
-                      _c("li", [_c("i", { staticClass: "fa fa-star" })])
-                    ])
-                  ]),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-iconsolid",
-                      attrs: { href: "cart.html" }
-                    },
-                    [_c("i", { staticClass: "icon-bag" })]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "code-box-copy" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "code-box-copy__btn btn-clipboard",
-                      attrs: {
-                        "data-clipboard-target": "#top-selling-product",
-                        title: "Copy"
-                      }
-                    },
-                    [_c("i", { staticClass: "icofont icofont-copy-alt" })]
-                  ),
-                  _vm._v(" "),
-                  _c("pre", [
-                    _c("code", {
-                      staticClass: "language-html",
-                      attrs: { id: "top-selling-product" }
-                    })
-                  ])
-                ])
-              ])
-            ])
-          ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-xl-6 box-col-6" }, [
             _c("div", { staticClass: "card" }, [
@@ -2460,138 +989,6 @@ var staticRenderFns = [
           ])
         ]
       )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "code-box-copy" }, [
-      _c(
-        "button",
-        {
-          staticClass: "code-box-copy__btn btn-clipboard",
-          attrs: {
-            "data-clipboard-target": "#activity-timeline",
-            title: "Copy"
-          }
-        },
-        [_c("i", { staticClass: "icofont icofont-copy-alt" })]
-      ),
-      _vm._v(" "),
-      _c("pre", [
-        _c(
-          "code",
-          { staticClass: "language-html", attrs: { id: "activity-timeline" } },
-          [_vm._v("   ")]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xl-12 des-xl-50 yearly-growth-sec" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "header-top d-sm-flex justify-content-between align-items-center"
-            },
-            [
-              _c("h5", [_vm._v("Yearly growth")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "center-content" }, [
-                _c("p", { staticClass: "d-sm-flex align-items-center" }, [
-                  _c("span", { staticClass: "m-r-10" }, [
-                    _c("i", {
-                      staticClass: "toprightarrow-primary fa fa-arrow-up m-r-10"
-                    }),
-                    _vm._v("$9657.55k ")
-                  ]),
-                  _vm._v("86% more then last year")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "setting-list" }, [
-                _c("ul", { staticClass: "list-unstyled setting-option" }, [
-                  _c("li", [
-                    _c("div", { staticClass: "setting-primary" }, [
-                      _c("i", { staticClass: "icon-settings" })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("i", {
-                      staticClass: "view-html fa fa-code font-primary"
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("i", {
-                      staticClass:
-                        "icofont icofont-maximize full-card font-primary"
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("i", {
-                      staticClass:
-                        "icofont icofont-minus minimize-card font-primary"
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("i", {
-                      staticClass:
-                        "icofont icofont-refresh reload-card font-primary"
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("i", {
-                      staticClass:
-                        "icofont icofont-error close-card font-primary"
-                    })
-                  ])
-                ])
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body p-0 chart-block" }, [
-          _c("div", { attrs: { id: "chart-yearly-growth-dash-2" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "code-box-copy" }, [
-            _c(
-              "button",
-              {
-                staticClass: "code-box-copy__btn btn-clipboard",
-                attrs: {
-                  "data-clipboard-target": "#yearly-growth",
-                  title: "Copy"
-                }
-              },
-              [_c("i", { staticClass: "icofont icofont-copy-alt" })]
-            ),
-            _vm._v(" "),
-            _c("pre", [
-              _c(
-                "code",
-                {
-                  staticClass: "language-html",
-                  attrs: { id: "yearly-growth" }
-                },
-                [_vm._v("       ")]
-              )
-            ])
-          ])
-        ])
-      ])
     ])
   }
 ]

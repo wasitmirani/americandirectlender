@@ -472,11 +472,11 @@ __webpack_require__.r(__webpack_exports__);
         if (result.isConfirmed) {
           var form_data = new FormData();
           var ids = JSON.stringify(_this.selected_items);
-          form_data.append("brand_ids", ids);
+          form_data.append("user_ids", ids);
           axios.post("/management/remove-all/users", form_data).then(function (res) {
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
 
-            _this.getBrands();
+            _this.getUsers();
           })["catch"](function (err) {
             _this.$root.alertNotificationMessage(err.response.status, err.response.data); //    console.log("erro",err.response.data.message);
 
