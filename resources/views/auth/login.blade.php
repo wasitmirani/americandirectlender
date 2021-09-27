@@ -79,8 +79,8 @@
         <div class="col-xl-5"><img class="bg-img-cover bg-center" src="{{asset('/assets/images/login/3.jpg')}}" alt="looginpage"></div>
         <div class="col-xl-7 p-0">
           <div class="login-card">
-            <form method="POST" class="theme-form login-form needs-validation" novalidate="" action="{{ route('login') }}">
-                {{ csrf_field() }}
+            <form method="post" class="theme-form login-form needs-validation" novalidate="" action="{{ route('login') }}">
+              @csrf
                 <h4>Login</h4>
               <h6>Welcome back! Log in to your account.</h6>
               <div class="form-group">
