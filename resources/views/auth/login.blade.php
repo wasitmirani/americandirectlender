@@ -80,7 +80,7 @@
         <div class="col-xl-7 p-0">
           <div class="login-card">
             <form method="POST" class="theme-form login-form needs-validation" novalidate="" action="{{ route('login') }}">
-              @csrf
+                {{ csrf_field() }}
                 <h4>Login</h4>
               <h6>Welcome back! Log in to your account.</h6>
               <div class="form-group">
