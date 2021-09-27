@@ -31,6 +31,7 @@ Route::prefix('management')->group(function () {
     Route::resource('user', UserController::class);
     Route::post('remove-all/users',[UserController::class,'removeAllUsers']);
     Route::get('/roles-perimissions',[UserController::class,'getRolesPermissions']);
+
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
 

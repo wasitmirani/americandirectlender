@@ -101,7 +101,7 @@
               </div>
             </div>
           </div>
-    
+
           <div class="col-xl-6 box-col-6">
             <div class="card">
               <div class="card-header">
