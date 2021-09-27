@@ -60,7 +60,7 @@
                                 </td>
                                 <td>{{user.user_name}}</td>
                                 <td>{{user.phone}}</td>
-                                <td>Admin</td>
+                                <td>{{user.user ? user.user.name : "N/A"}}</td>
                                 <td>{{user.created_at | timeformat}}</td>
 
                                 <td><router-link :to="{name: 'update-user', params: { id: user.id }}"><i class="fa  fa-edit text-primary"></i></router-link> |  <a role="button"  @click="deleteItem(user)"><i class="fa  fa-trash text-danger"></i></a></td>
@@ -103,10 +103,10 @@ export default {
               if (result.isConfirmed) {
                   let form_data= new FormData();
                   let ids=JSON.stringify(this.selected_items)
-                  form_data.append("brand_ids",ids);
+                  form_data.append("user_ids",ids);
                 axios.post("/management/remove-all/users",form_data).then((res) => {
                     Swal.fire("Deleted!", "Your file has been deleted.", "success");
-                      this.getBrands();
+                      this.getUsers();
 
                   }).catch((err)=>{
                         this.$root.alertNotificationMessage(err.response.status,err.response.data);
@@ -118,12 +118,11 @@ export default {
      },
      selectAllItems(){
 
-         if(this.selected_items.length>1)
+         if(this.selected_items.length>0)
          {
              this.selected_items=[];
          }
          else {
-
               this.selected_items=this.users.data.map(x=>x.id);
          }
      },

@@ -15,12 +15,17 @@ import 'vuesax/dist/vuesax.css'
 import moment from "moment";
 import Multiselect from 'vue-multiselect'
 import "vue-toastification/dist/index.css";
+import 'vue-multiselect/dist/vue-multiselect.min.css';
+
 import VueContentPlaceholders from 'vue-content-placeholders'
 import Swal from 'sweetalert2'
 
+
+
 window.Swal = Swal;
 Vue.use(VueContentPlaceholders)
-
+    // register globally
+Vue.component('multiselect', Multiselect)
 
 Vue.use(Vuesax);
 Vue.component("pagination", require("laravel-vue-pagination"));
@@ -30,7 +35,6 @@ Vue.use(VueProgressBar, {
     failedColor: 'red',
     height: '10px'
 })
-Vue.component('multiselect', Multiselect)
 
 
 Vue.filter("timeformat", function(value) {
@@ -70,9 +74,34 @@ const app = new Vue({
                 case 200:
                     this.alertNotification('top-right', 'success', `response ${status} successfully! `, res);
                     break;
+                case 301:
+                    this.alertNotification('top-right', 'success', `Oops, Unprocessable Entity ${status} Error! `, res);
+                    break;
                 default:
                     break;
             }
+        },
+        deleteItem(url) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.delete(url).then((res) => {
+                        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+                        return true;
+                    }).catch((err) => {
+                        this.$root.alertNotificationMessage(err.response.status, err.response.data);
+                        //    console.log("erro",err.response.data.message);
+
+                    });
+                }
+            });
         },
     },
     created() {

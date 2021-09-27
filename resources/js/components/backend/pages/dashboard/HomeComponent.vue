@@ -2,374 +2,77 @@
     <div>
         <div class="container-fluid">
     <div class="row">
+              <div class="col-xl-6 col-md-6 box-col-6 des-xl-50">
+                    <div class="card profile-greeting">
+                      <div class="card-header">
+                        <div class="header-top">
+                          <div class="setting-list bg-primary position-unset">
+                            <ul class="list-unstyled setting-option">
+                              <li>
+                                <div class="setting-white"><i class="icon-settings"></i></div>
+                              </li>
+                              <li><i class="view-html fa fa-code font-white"></i></li>
+                              <li><i class="icofont icofont-maximize full-card font-white"></i></li>
+                              <li><i class="icofont icofont-minus minimize-card font-white"></i></li>
+                              <li><i class="icofont icofont-refresh reload-card font-white"></i></li>
+                              <li><i class="icofont icofont-error close-card font-white"> </i></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body text-center p-t-0">
+                        <h3 class="font-light">Wellcome Back, {{user.name}}!!</h3>
+                        <p>Welcome to the {{appname}} Family! we are glad that you are visite this dashboard. we will be happy to help you grow your business.</p>
+
+                      </div>
+                      <div class="confetti">
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+
+                      </div>
+                    </div>
+                  </div>
       <div class="col-xl-6 box-col-12 des-xl-100 invoice-sec">
-        <div class="card">
-          <div class="card-header">
-            <div class="header-top d-sm-flex justify-content-between align-items-center">
-              <h5>Invoice Overview    </h5>
-              <div class="center-content">
-                <p class="d-sm-flex align-items-center"><span class="m-r-10">$5,56548k</span><i class="toprightarrow-primary fa fa-arrow-up m-r-10"></i>94% More Than Last Year</p>
-              </div>
-              <div class="setting-list">
-                <ul class="list-unstyled setting-option">
-                  <li>
-                    <div class="setting-primary"><i class="icon-settings"></i></div>
-                  </li>
-                  <li><i class="view-html fa fa-code font-primary"></i></li>
-                  <li><i class="icofont icofont-maximize full-card font-primary"></i></li>
-                  <li><i class="icofont icofont-minus minimize-card font-primary"></i></li>
-                  <li><i class="icofont icofont-refresh reload-card font-primary"></i></li>
-                  <li><i class="icofont icofont-error close-card font-primary"> </i></li>
-                </ul>
-              </div>
+          <div class="card income-card">
+            <div class="card-header">
+                <div class="header-top d-sm-flex align-items-center">
+                <h5> yearly overview  </h5>
+                <div class="center-content" >
+                    <p>
+                    <span class="font-primary fontbold-600" > $859.25k </span>
+                    <i class="toprightarrow-primary fa fa-arrow-up m-l-10 m-r-10" > </i>
+                        86% More than last year
+                    </p>
+                </div>
+                <div class="setting-list">
+                    <ul class="list-unstyled setting-option">
+                    <li><div class="setting-primary"><i class="icon-settings"></i></div></li>
+                    <li><i class="view-html fa fa-code font-primary"></i></li>
+                    <li><i class="icofont icofont-maximize full-card font-primary"></i></li>
+                    <li><i class="icofont icofont-minus minimize-card font-primary"></i></li>
+                    <li><i class="icofont icofont-refresh reload-card font-primary"></i></li>
+                    <li><i class="icofont icofont-error close-card font-primary"> </i></li>
+                    </ul>
+                </div>
+                </div>
             </div>
-          </div>
-          <div class="card-body p-0">
-            <div id="timeline-chart"></div>
-            <div class="code-box-copy">
-              <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#invoice-overview" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
-              <pre><code class="language-html" id="invoice-overview"></code></pre>
+            <div class="card-body p-0">
+                <div id="chart-timeline-dashbord"></div>
             </div>
-          </div>
-        </div>
+</div>
       </div>
-      <div class="col-xl-6 box-col-12 des-xl-100 top-dealer-sec">
-        <div class="card">
-          <div class="card-header pb-0">
-            <div class="header-top d-sm-flex justify-content-between align-items-center">
-              <h5>Top Dealer</h5>
-              <div class="center-content">
-                <p class="d-sm-flex align-items-center"><span class="m-r-10">845 Dealer</span><i class="toprightarrow-primary fa fa-arrow-up m-r-10"></i>86% More Than Last Year</p>
-              </div>
-              <div class="setting-list">
-                <ul class="list-unstyled setting-option">
-                  <li>
-                    <div class="setting-primary"><i class="icon-settings"></i></div>
-                  </li>
-                  <li><i class="view-html fa fa-code font-primary"></i></li>
-                  <li><i class="icofont icofont-maximize full-card font-primary"></i></li>
-                  <li><i class="icofont icofont-minus minimize-card font-primary"></i></li>
-                  <li><i class="icofont icofont-refresh reload-card font-primary"></i></li>
-                  <li><i class="icofont icofont-error close-card font-primary"> </i></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="owl-carousel owl-theme" id="owl-carousel-14">
 
-              <div class="item" >
-                <div class="row">
-                  <div class="col-12">
-                    <div class="owl-carousel-16 owl-carousel owl-theme">
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/1.png" alt="...">
-                            <h6>Thompson lee</h6>
-                            <p>Malasiya</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/8.png" alt="...">
-                            <h6>Johnson allon</h6>
-                            <p>Bangladesh</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/3.png" alt="...">
-                            <h6>williams reed</h6>
-                            <p>Belgium</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/4.png" alt="...">
-                            <h6> Jones king</h6>
-                            <p>Canada</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="owl-carousel-16 owl-carousel owl-theme">
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/5.png" alt="...">
-                            <h6>Brown davis</h6>
-                            <p>China</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/6.png" alt="...">
-                            <h6>Wilson Hill</h6>
-                            <p>Denmark</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/7.png" alt="...">
-                            <h6>Anderson ban</h6>
-                            <p>Japan</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/8.png" alt="...">
-                            <h6>Thompson lee</h6>
-                            <p>Malasiya</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="owl-carousel-16 owl-carousel owl-theme">
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/1.png" alt="...">
-                            <h6>Thompson lee</h6>
-                            <p>Malasiya</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/8.png" alt="...">
-                            <h6>Johnson allon</h6>
-                            <p>Bangladesh</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/3.png" alt="...">
-                            <h6>williams reed</h6>
-                            <p>Belgium</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/4.png" alt="...">
-                            <h6> Jones king</h6>
-                            <p>Canada</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="owl-carousel-16 owl-carousel owl-theme">
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/5.png" alt="...">
-                            <h6>Brown davis</h6>
-                            <p>China</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/6.png" alt="...">
-                            <h6>Wilson Hill</h6>
-                            <p>Denmark</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/7.png" alt="...">
-                            <h6>Anderson ban</h6>
-                            <p>Japan</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/8.png" alt="...">
-                            <h6>Thompson lee</h6>
-                            <p>Malasiya</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="owl-carousel-16 owl-carousel owl-theme">
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/1.png" alt="...">
-                            <h6>Thompson lee</h6>
-                            <p>Malasiya</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/8.png" alt="...">
-                            <h6>Johnson allon</h6>
-                            <p>Bangladesh</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/3.png" alt="...">
-                            <h6>williams reed</h6>
-                            <p>Belgium</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/4.png" alt="...">
-                            <h6> Jones king</h6>
-                            <p>Canada</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="owl-carousel-16 owl-carousel owl-theme">
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/5.png" alt="...">
-                            <h6>Brown davis</h6>
-                            <p>China</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/6.png" alt="...">
-                            <h6>Wilson Hill</h6>
-                            <p>Denmark</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/7.png" alt="...">
-                            <h6>Anderson ban</h6>
-                            <p>Japan</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/8.png" alt="...">
-                            <h6>Thompson lee</h6>
-                            <p>Malasiya</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="owl-carousel-16 owl-carousel owl-theme">
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/1.png" alt="...">
-                            <h6>Thompson lee</h6>
-                            <p>Malasiya</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/8.png" alt="...">
-                            <h6>Johnson allon</h6>
-                            <p>Bangladesh</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/3.png" alt="...">
-                            <h6>williams reed</h6>
-                            <p>Belgium</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/4.png" alt="...">
-                            <h6> Jones king</h6>
-                            <p>Canada</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="owl-carousel-16 owl-carousel owl-theme">
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/5.png" alt="...">
-                            <h6>Brown davis</h6>
-                            <p>China</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/6.png" alt="...">
-                            <h6>Wilson Hill</h6>
-                            <p>Denmark</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/7.png" alt="...">
-                            <h6>Anderson ban</h6>
-                            <p>Japan</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="card">
-                          <div class="top-dealerbox text-center"><img class="card-img-top" src="assets/images/dashboard-2/8.png" alt="...">
-                            <h6>Thompson lee</h6>
-                            <p>Malasiya</p><a class="btn btn-rounded" href="social-app.html">View More</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="code-box-copy">
-              <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#top-dealer" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
-
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="col-xl-8 col-md- des-xl-100 box-col-12">
         <div class="row">
           <div class="col-xl-3 col-sm-6 box-col-3 chart_data_right">
@@ -398,52 +101,7 @@
               </div>
             </div>
           </div>
-          <div class="col-xl-6 box-col-6 top-sell-sec">
-            <div class="card">
-              <div class="card-header pb-0">
-                <div class="header-top d-sm-flex justify-content-between align-items-center">
-                  <h5>Top Selling Product</h5>
-                  <div class="center-content">
-                    <ul class="week-date">
-                      <li class="font-primary">Today</li>
-                      <li>Month</li>
-                    </ul>
-                  </div>
-                  <div class="setting-list">
-                    <ul class="list-unstyled setting-option">
-                      <li>
-                        <div class="setting-primary"><i class="icon-settings"></i></div>
-                      </li>
-                      <li><i class="view-html fa fa-code font-primary"></i></li>
-                      <li><i class="icofont icofont-maximize full-card font-primary"></i></li>
-                      <li><i class="icofont icofont-minus minimize-card font-primary"></i></li>
-                      <li><i class="icofont icofont-refresh reload-card font-primary"></i></li>
-                      <li><i class="icofont icofont-error close-card font-primary"></i></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="media"><img class="img-fluid" src="assets/images/dashboard-2/9.png" alt="">
-                  <div class="media-body"><a href="product-page.html">
-                      <h6>Trending Nike shoes</h6></a>
-                    <p>New Offer Only $126.00</p>
-                    <ul class="rating-star">
-                      <li>                                      <i class="fa fa-star"></i></li>
-                      <li>                                      <i class="fa fa-star"></i></li>
-                      <li>                                      <i class="fa fa-star"></i></li>
-                      <li>                                      <i class="fa fa-star"></i></li>
-                      <li>                                      <i class="fa fa-star"></i></li>
-                    </ul>
-                  </div><a class="btn btn-iconsolid" href="cart.html"><i class="icon-bag"></i></a>
-                </div>
-                <div class="code-box-copy">
-                  <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#top-selling-product" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
-                  <pre><code class="language-html" id="top-selling-product"></code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
+
           <div class="col-xl-6 box-col-6">
             <div class="card">
               <div class="card-header">
@@ -544,44 +202,11 @@
 
 
             </div>
-            <div class="code-box-copy">
-              <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#activity-timeline" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
-              <pre><code class="language-html" id="activity-timeline">   </code></pre>
-            </div>
+
           </div>
         </div>
       </div>
-      <div class="col-xl-12 des-xl-50 yearly-growth-sec">
-        <div class="card">
-          <div class="card-header">
-            <div class="header-top d-sm-flex justify-content-between align-items-center">
-              <h5>Yearly growth</h5>
-              <div class="center-content">
-                <p class="d-sm-flex align-items-center"><span class="m-r-10"><i class="toprightarrow-primary fa fa-arrow-up m-r-10"></i>$9657.55k </span>86% more then last year</p>
-              </div>
-              <div class="setting-list">
-                <ul class="list-unstyled setting-option">
-                  <li>
-                    <div class="setting-primary"><i class="icon-settings"></i></div>
-                  </li>
-                  <li><i class="view-html fa fa-code font-primary"></i></li>
-                  <li><i class="icofont icofont-maximize full-card font-primary"></i></li>
-                  <li><i class="icofont icofont-minus minimize-card font-primary"></i></li>
-                  <li><i class="icofont icofont-refresh reload-card font-primary"></i></li>
-                  <li><i class="icofont icofont-error close-card font-primary"></i></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="card-body p-0 chart-block">
-            <div id="chart-yearly-growth-dash-2"></div>
-            <div class="code-box-copy">
-              <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#yearly-growth" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
-              <pre><code class="language-html" id="yearly-growth">       </code></pre>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
     </div>
@@ -593,13 +218,145 @@
           data(){
               return{
                  logs:[],
+                 user:{},
 
         }
     },
 
+    methods:{
+        dashboardChart(){
+            $(".knob1").knob({
 
+        'width': 65,
+        'height': 65,
+        'max': 100,
 
-        created(){
+        change: function(value) {
+            //console.log("change : " + value);
+        },
+        release: function(value) {
+            //console.log(this.$.attr('value'));
+            console.log("release : " + value);
+        },
+        cancel: function() {
+            console.log("cancel : ", this);
+        },
+        format: function(value) {
+            return value + '%';
+        },
+        draw: function() {
+
+            // "tron" case
+            if (this.$.data('skin') == 'tron') {
+
+                this.cursorExt = 1;
+
+                var a = this.arc(this.cv) // Arc
+                    ,
+                    pa // Previous arc
+                    , r = 1;
+
+                this.g.lineWidth = this.lineWidth;
+
+                if (this.o.displayPrevious) {
+                    pa = this.arc(this.v);
+                    this.g.beginPath();
+                    this.g.strokeStyle = this.pColor;
+                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+                    this.g.stroke();
+                }
+
+                this.g.beginPath();
+                this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                this.g.stroke();
+
+                this.g.lineWidth = 2;
+                this.g.beginPath();
+                this.g.strokeStyle = this.o.fgColor;
+                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                this.g.stroke();
+
+                return false;
+            }
+        }
+    });
+            var charttimeline = new ApexCharts(document.querySelector("#chart-timeline-dashbord"), options);
+charttimeline.render();
+// second chart dashbord dafault
+var options17 = {
+  series: [100, 67, 61, 90],
+  chart: {
+      height: 380,
+      type: 'radialBar',
+  },
+  plotOptions: {
+      radialBar: {
+          offsetY: 0,
+          startAngle: 0,
+          endAngle: 270,
+          hollow: {
+              margin: 5,
+              size: '30%',
+              background: 'transparent',
+              image: undefined,
+          },
+          dataLabels: {
+              name: {
+                  show: false,
+              },
+              value: {
+                  show: false,
+              }
+          }
+      }
+  },
+  colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary, vihoAdminConfig.primary, vihoAdminConfig.secondary],
+  labels: ['Total order', 'Total product', 'Quantity', 'Page views'],
+  legend: {
+      show: true,
+      floating: true,
+      fontSize: '14px',
+      position: 'left',
+      fontFamily: 'Roboto',
+      fontweight: 400,
+      // offsetX:30,
+      offsetY: 20,
+      labels: {
+          useSeriesColors: true,
+      },
+      markers: {
+          size: 0,
+          show: false,
+      },
+      formatter: function(seriesName, opts) {
+          return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+      },
+      itemMargin: {
+          vertical: 5,
+          horizontal: 2
+      }
+  },
+  stroke: {
+      lineCap: 'round'
+  },
+  responsive: [{
+      breakpoint: 480,
+      options: {
+          legend: {
+              show: true,
+              fontSize: '10px',
+          }
+      }
+  }]
+};
+        },
+    },
+
+        mounted(){
+            console.log("userss",user);
+            this.user=user;
+            this.dashboardChart();
               axios.get('/activities').then((response)=>{
                  console.log(response)
                  this.logs = response.data

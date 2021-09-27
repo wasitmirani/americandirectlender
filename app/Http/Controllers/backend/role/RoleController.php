@@ -17,13 +17,18 @@ class RoleController extends Controller
         $q=request('query');
         $roles=Role::where('name', 'like', '%' . $q . '%')
         ->orderBy('name','ASC')
+        ->with('users:id,name','permissions:id,name')
         ->paginate(env('PER_PAGE'));
+<<<<<<< HEAD
         $users=User::orderBy('name','ASC')->get();
 <<<<<<< HEAD
         return response()->json(['roles'=>$roles]);
 =======
 
 
+=======
+        $users=User::select('id','name')->orderBy('name','ASC')->get();
+>>>>>>> 583ebb7ba11f0086cf782c2a15580d47e52cbf8a
 
        return response()->json(['roles'=>$roles,'users'=>$users]);
 >>>>>>> 4abe652bceb24c536b3d93b27432cf445ab61b89
@@ -33,16 +38,18 @@ class RoleController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'role' => ['required'],
-        ]);
 
-        $role = Role::create([
-            'name' => $request->role
+        $request->validate([
+            'name' => ['required', 'string', 'max:255','unique:roles'],
         ]);
+        // $users=explode(",",$request->selected_users);
+
+        $user_collection=User::WhereIn('id',  $request->users)->get();
+
+        $role = Role::create(['name' => $request->name]);
+        $role->users()->attach($user_collection);
 
         return response()->json($role);
-
 
     }
 
@@ -56,11 +63,13 @@ class RoleController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255','unique:roles,name,'.$request->id],
         ]);
-        $users=explode(",",$request->users);
+
+        $user_collection=User::WhereIn('id',  $request->users)->get();
+
         $role = Role::find($request->id);
         $role->name=$request->name;
         $role->save();
-        $role->users()->sync($users);
+        $role->users()->sync($user_collection);
     }
 
     /**

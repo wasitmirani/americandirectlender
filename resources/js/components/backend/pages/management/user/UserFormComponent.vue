@@ -11,7 +11,7 @@
                       <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
                     </div>
                     <div class="card-body">
-                      <form >
+
                         <div class="row mb-2">
                           <div class="profile-title">
                             <div class="media">      <img class="img-70 rounded-circle" alt="" src="/assets/images/user/7.jpg">
@@ -42,7 +42,7 @@
                         <vs-button color="rgb(121, 81, 170)" gradient  type="submit"  v-if="!edit_mode" @click="onSubmit">
                             Submit
                         </vs-button>
-                      </form>
+
                     </div>
                   </div>
                 </div>
@@ -89,31 +89,19 @@
                          <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
                             <label class="form-label">Phone Number</label>
-                            <input class="form-control" type="text" placeholder="Phone Number" v-model="user.phone" required>
+
+                            <input  :class="errors.phone  ? 'is-invalid form-control' : 'form-control'" type="text" placeholder="Phone Number" v-model="user.phone" >
+                             <span class="text-danger" v-if="errors.phone ">{{errors.phone[0]}}</span>
                           </div>
                         </div>
                           <div class="col-sm-6 col-md-4">
                           <div class="mb-3">
-                            <label class="form-label">Role</label>
-                           <vs-select filter multiple collapse-chips placeholder="Roles" v-model="user.roles">
-                                <vs-option label="Admin" value="1">
-                                Admin
-                                </vs-option>
-                                <vs-option label="Manager" value="2">
-                                Manger
-                                </vs-option>
-                                <vs-option label="Javascript" value="3">
-                                Javascript
-                                </vs-option>
-                                <vs-option label="Sass" value="4">
-                                Sass
-                                </vs-option>
-                                <vs-option label="Typescript" value="5">
-                                Typescript
-                                </vs-option>
-                                <vs-option label="Webpack" value="6">
-                                Webpack
-                                </vs-option>
+                            <label class="form-label">Roles</label>
+                           <vs-select filter multiple collapse-chips placeholder="Roles" v-model="user.roles" v-if="roles.length>0">
+                              <vs-option v-for="item in roles" :key="item.id"
+                                :label="item.name" :value="item.id">
+                                 {{ item.name }}
+                                 </vs-option>
                              </vs-select>
                           </div>
                         </div>
@@ -141,24 +129,16 @@
                           <div class="mb-3">
                                <label class="form-label">Country</label>
                              <vs-select filter multiple collapse-chips placeholder="Collapse chips" v-model="user.country" >
-                                <vs-option label="Vuesax" value="1">
-                                Vuesax
+                                <vs-option label="USA" value="usa">
+                                USA
                                 </vs-option>
-                                <vs-option label="Vue" value="2">
-                                Vue
+                                <vs-option label="UK" value="uk">
+                                UK
                                 </vs-option>
-                                <vs-option label="Javascript" value="3">
-                                Javascript
+                                <vs-option label="canada" value="canada">
+                                Canada
                                 </vs-option>
-                                <vs-option label="Sass" value="4">
-                                Sass
-                                </vs-option>
-                                <vs-option label="Typescript" value="5">
-                                Typescript
-                                </vs-option>
-                                <vs-option label="Webpack" value="6">
-                                Webpack
-                                </vs-option>
+
                              </vs-select>
                           </div>
                         </div>
@@ -196,6 +176,7 @@ export default {
 
     data(){ return{
         edit_mode:false,
+        roles:{},
         user:{
             name:"",
             email:"",
@@ -208,8 +189,10 @@ export default {
             country:[],
             bio:"",
             roles:[],
-            previous:[],
+            permissions:[],
+
         },
+        previous:[],
         errors:{},
     }},
      computed: {
@@ -218,10 +201,15 @@ export default {
     },
      },
      methods:{
+        async getRolesPerimissions(){
+            await axios.get('/management/roles-perimissions').then((res)=>{
+                 this.roles=res.data.roles;
+             });
+         },
           onSubmit(){
               let formData = new FormData();
                 formData=Object.assign(this.user,formData);
-
+                //  formData=Object.assign({selected_roles:this.selected_roles},formData)
                 axios.post('/management/user',formData).then((res)=>{
                       this.$root.alertNotificationMessage(res.status,"New user has been created successfully");
                       setTimeout(() => {
@@ -244,6 +232,7 @@ export default {
 
      },
     mounted(){
+        this.getRolesPerimissions();
           if(this.$route.params.id){
             let url="/management/user/"+this.$route.params.id;
             axios.get(url).then((res)=>{

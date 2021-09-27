@@ -472,11 +472,11 @@ __webpack_require__.r(__webpack_exports__);
         if (result.isConfirmed) {
           var form_data = new FormData();
           var ids = JSON.stringify(_this.selected_items);
-          form_data.append("brand_ids", ids);
+          form_data.append("user_ids", ids);
           axios.post("/management/remove-all/users", form_data).then(function (res) {
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
 
-            _this.getBrands();
+            _this.getUsers();
           })["catch"](function (err) {
             _this.$root.alertNotificationMessage(err.response.status, err.response.data); //    console.log("erro",err.response.data.message);
 
@@ -485,7 +485,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     selectAllItems: function selectAllItems() {
-      if (this.selected_items.length > 1) {
+      if (this.selected_items.length > 0) {
         this.selected_items = [];
       } else {
         this.selected_items = this.users.data.map(function (x) {
@@ -2311,7 +2311,9 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(user.phone))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v("Admin")]),
+                    _c("td", [
+                      _vm._v(_vm._s(user.user ? user.user.name : "N/A"))
+                    ]),
                     _vm._v(" "),
                     _c("td", [
                       _vm._v(_vm._s(_vm._f("timeformat")(user.created_at)))
