@@ -24,6 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
+Route::middleware('auth:sanctum')->group(function () {
+
+
 Route::get('/activities',[DashboardController::class,'activityLogs']);
 
 Route::prefix('management')->group(function () {
@@ -35,4 +38,5 @@ Route::prefix('management')->group(function () {
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
 
+});
 });

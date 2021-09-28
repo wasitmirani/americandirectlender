@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 
@@ -63,6 +64,7 @@ class UserController extends Controller
             'phone'=>$request->phone,
             'password'=>Hash::make($request->password),
             'user_name'=> $user_name,
+            'user_id'=>$request->user()->id,
         ];
 
         $new_user=$user->userCreateOrUpdate($request_array);
@@ -139,5 +141,11 @@ class UserController extends Controller
         $user_info=UserInfo::whereIn('user_id',json_decode($request->user_ids))->delete();
         $delete=User::whereIn('id',json_decode($request->user_ids))->delete();
         return response()->json(['message'=>$delete]);
+    }
+
+    public function logout(){
+        Auth::logout();
+        $url=route('login');
+        return response()->json( $url);
     }
 }

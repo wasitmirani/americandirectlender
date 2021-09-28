@@ -220,7 +220,7 @@ export default {
                          this.errors=err.response.data.errors;
                         return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
                     }
-                 this.$root.alertNotificationMessage(err.response.status,err.response.data);
+                  this.$root.alertNotificationMessage(err.response.status,err.response.data);
 
                   });
       }
@@ -238,10 +238,16 @@ export default {
             axios.get(url).then((res)=>{
                 // this.user=res.data.user;
                 this.edit_mode=true;
-                this.user= {...res.data.user, ...res.data.user.user_info};
+                let data=  {...res.data.user, ...res.data.user.user_info};
+                this.user={...this.user,...data};
 
             }).catch((err)=>{
-                this.$root.alertErrorMessage(err.response.status,err.response.data);
+                     if(err.response.status==422){
+                         this.errors=err.response.data.errors;
+                        return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
+                    }
+                  this.$root.alertNotificationMessage(err.response.status,err.response.data);
+
             });
         }
         else {
