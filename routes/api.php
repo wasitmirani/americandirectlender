@@ -3,9 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\DashboardController;
-use App\Http\Controllers\Backend\role\RoleController;
-use App\Http\Controllers\Backend\user\UserController;
-use App\Http\Controllers\Backend\permission\PermissionController;
+use App\Http\Controllers\backend\role\RoleController;
+use App\Http\Controllers\backend\user\UserController;
+use App\Http\Controllers\backend\permission\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
