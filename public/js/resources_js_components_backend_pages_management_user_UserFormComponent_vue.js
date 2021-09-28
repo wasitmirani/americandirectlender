@@ -302,22 +302,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var formData = new FormData();
       formData = Object.assign(this.user, formData); //  formData=Object.assign({selected_roles:this.selected_roles},formData)
 
-      axios.post('/management/user', formData).then(function (res) {
-        _this2.$root.alertNotificationMessage(res.status, "New user has been created successfully");
+      if (!this.edit_mode) {
+        axios.post('/management/user', formData).then(function (res) {
+          _this2.$root.alertNotificationMessage(res.status, "New user has been created successfully");
 
-        setTimeout(function () {
-          _this2.$router.push({
-            name: 'users'
-          });
-        }, 1000);
-      })["catch"](function (err) {
-        if (err.response.status == 422) {
-          _this2.errors = err.response.data.errors;
-          return _this2.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
-        }
+          setTimeout(function () {
+            _this2.$router.push({
+              name: 'users'
+            });
+          }, 1000);
+        })["catch"](function (err) {
+          if (err.response.status == 422) {
+            _this2.errors = err.response.data.errors;
+            return _this2.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+          }
 
-        _this2.$root.alertNotificationMessage(err.response.status, err.response.data);
-      });
+          _this2.$root.alertNotificationMessage(err.response.status, err.response.data);
+        });
+      } else {
+        axios.put('/management/user/' + this.user.id, formData).then(function (res) {
+          _this2.$root.alertNotificationMessage(res.status, "User has been updated successfully");
+
+          setTimeout(function () {
+            _this2.$router.push({
+              name: 'users'
+            });
+          }, 1000);
+        })["catch"](function (err) {
+          if (err.response.status == 422) {
+            _this2.errors = err.response.data.errors;
+            return _this2.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+          }
+
+          _this2.$root.alertNotificationMessage(err.response.status, err.response.data);
+        });
+      }
     }
   },
   mounted: function mounted() {
@@ -1581,7 +1600,7 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _c("div", { class: _vm.edit_mode ? "col-xl-8" : "col-xl-12" }, [
-            _c("form", { staticClass: "card" }, [
+            _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-header pb-0" }, [
                 _vm.edit_mode
                   ? _c("h4", { staticClass: "card-title mb-0" }, [
@@ -1963,9 +1982,8 @@ var render = function() {
                           {
                             attrs: {
                               filter: "",
-                              multiple: "",
                               "collapse-chips": "",
-                              placeholder: "Collapse chips"
+                              placeholder: "Select Country"
                             },
                             model: {
                               value: _vm.user.country,

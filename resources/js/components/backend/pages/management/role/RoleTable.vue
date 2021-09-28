@@ -20,7 +20,7 @@
                             <th scope="col">Name</th>
                              <th scope="col">Users</th>
                             <th scope="col">Permissions</th>
-                            <th scope="col">Create By</th>
+
                             <th scope="col">Created</th>
                             <th scope="col">Action</th>
                             </tr>
@@ -62,7 +62,7 @@
                                 </vs-avatar>
                                 </td>
 
-                                <td>Admin</td>
+
                                 <td>{{role.created_at | timeformat}}</td>
 
                                 <td><a  role="button" @click="editItem(role)"> <i class="fa  fa-edit text-primary"></i></a> |  <a role="button"  @click="deleteItem(role)"><i class="fa  fa-trash text-danger"></i></a></td>

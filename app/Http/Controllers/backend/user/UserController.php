@@ -104,20 +104,30 @@ class UserController extends Controller
             User::where('id',$request->id)->update(['password'=>Hash::make($request->password)]);
         }
 
-        //   $user=User::where('id',$request->id)->first();
-          User::where('id',$request->id)->update([
+          $user=User::where('id',$request->id)->first();
+        //   User::where('id',$request->id)->update([
+        //     'name'=>$request->name,
+        //     'email'=>$request->email,
+        //     'phone'=>$request->phone,
+        //     'postalcode' => $request->postalcode,
+        //     'city' => $request->city,
+        //     'country' => $request->country,
+        //     'bio' => $request->bio,
+        //     'address' => $request->address,
+        // ]);
+        $request_array=[
+            'id'=>$request->id,
             'name'=>$request->name,
             'email'=>$request->email,
             'phone'=>$request->phone,
-            'l_name' => $request->l_name,
-            'f_name' => $request->f_name,
-            'role' => $request->role,
-            'postalcode' => $request->postalcode,
-            'city' => $request->city,
-            'country' => $request->country,
-            'bio' => $request->bio,
-            'address' => $request->address,
-        ]);
+            'user_id'=>$request->user()->id,
+        ];
+        $new_user=$user->userCreateOrUpdate($request_array,"update");
+        $user->userInfoCreateOrUpdate($user,$request);
+        // $permission_collection=Permission::WhereIn('id',  json_decode($request->selected_permissions))->get();
+        $roles_collection=Role::WhereIn('id', $request->roles)->get();
+        // $new_user->permissions()->attach($permission_collection);
+        $user->roles()->attach($roles_collection);
 
         return response()->json();
     }

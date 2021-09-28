@@ -229,7 +229,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       logs: [],
-      user: {}
+      user: {},
+      app_name: ""
     };
   },
   methods: {
@@ -354,15 +355,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var _this = this;
-
     console.log("userss", user);
     this.user = user;
+    this.app_name = appname;
     this.dashboardChart();
-    axios.get('/activities').then(function (response) {
-      console.log(response);
-      _this.logs = response.data;
-    })["catch"](function (error) {});
   }
 });
 

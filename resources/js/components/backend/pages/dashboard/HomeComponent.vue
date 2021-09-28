@@ -219,6 +219,7 @@
               return{
                  logs:[],
                  user:{},
+                 app_name:"",
 
         }
     },
@@ -356,11 +357,8 @@ var options17 = {
         mounted(){
             console.log("userss",user);
             this.user=user;
+            this.app_name=appname;
             this.dashboardChart();
-              axios.get('/activities').then((response)=>{
-                 console.log(response)
-                 this.logs = response.data
-                }).catch((error)=>{})
 
 
         }

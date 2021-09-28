@@ -478,7 +478,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
           _this3.resetForm();
 
-          _this3.$root.alertNotificationMessage(res.status, "New role has been updated successfully");
+          _this3.$root.alertNotificationMessage(res.status, "Role has been updated successfully");
         })["catch"](function (err) {
           if (err.response.status == 422) {
             _this3.errors = err.response.data.errors;
@@ -696,7 +696,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-button__content {\r\n    width: 130px;\r\n    height: 49px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-button__content {\n    width: 130px;\n    height: 49px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -768,7 +768,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-avatar-content.btn-plane.vs-change-color-badge{\r\n    margin-left: auto;\r\n    position: relative;\r\n    top: -30px;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-avatar-content.btn-plane.vs-change-color-badge{\n    margin-left: auto;\n    position: relative;\n    top: -30px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2733,8 +2733,6 @@ var render = function() {
             _vm._v(" "),
             _c("th", { attrs: { scope: "col" } }, [_vm._v("Permissions")]),
             _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Create By")]),
-            _vm._v(" "),
             _c("th", { attrs: { scope: "col" } }, [_vm._v("Created")]),
             _vm._v(" "),
             _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
@@ -2859,8 +2857,6 @@ var render = function() {
                       ],
                       1
                     ),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Admin")]),
                     _vm._v(" "),
                     _c("td", [
                       _vm._v(_vm._s(_vm._f("timeformat")(role.created_at)))

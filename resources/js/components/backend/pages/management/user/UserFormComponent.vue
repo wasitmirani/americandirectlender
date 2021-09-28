@@ -47,7 +47,7 @@
                   </div>
                 </div>
                 <div :class="edit_mode ? 'col-xl-8' : 'col-xl-12'">
-                  <form class="card"  >
+                  <div class="card"  >
                     <div class="card-header pb-0">
                       <h4 class="card-title mb-0" v-if="edit_mode">Edit Profile</h4>
                        <h4 class="card-title mb-0" v-else>Create Profile</h4>
@@ -128,7 +128,7 @@
                         <div class="col-md-5">
                           <div class="mb-3">
                                <label class="form-label">Country</label>
-                             <vs-select filter multiple collapse-chips placeholder="Collapse chips" v-model="user.country" >
+                             <vs-select filter  collapse-chips placeholder="Select Country" v-model="user.country" >
                                 <vs-option label="USA" value="usa">
                                 USA
                                 </vs-option>
@@ -160,7 +160,7 @@
                         </vs-button>
                     </div>
 
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -210,19 +210,38 @@ export default {
               let formData = new FormData();
                 formData=Object.assign(this.user,formData);
                 //  formData=Object.assign({selected_roles:this.selected_roles},formData)
-                axios.post('/management/user',formData).then((res)=>{
-                      this.$root.alertNotificationMessage(res.status,"New user has been created successfully");
-                      setTimeout(() => {
-                          this.$router.push({ name: 'users' })
-                      }, 1000);
-                }).catch((err)=>{
-                     if(err.response.status==422){
-                         this.errors=err.response.data.errors;
-                        return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
-                    }
-                  this.$root.alertNotificationMessage(err.response.status,err.response.data);
 
-                  });
+                if(!this.edit_mode){
+                    axios.post('/management/user',formData).then((res)=>{
+                        this.$root.alertNotificationMessage(res.status,"New user has been created successfully");
+                        setTimeout(() => {
+                            this.$router.push({ name: 'users' })
+                        }, 1000);
+                    }).catch((err)=>{
+                        if(err.response.status==422){
+                            this.errors=err.response.data.errors;
+                            return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
+                        }
+                    this.$root.alertNotificationMessage(err.response.status,err.response.data);
+
+                });
+                }
+                else {
+                    axios.put('/management/user/'+this.user.id,formData).then((res)=>{
+                        this.$root.alertNotificationMessage(res.status,"User has been updated successfully");
+                        setTimeout(() => {
+                            this.$router.push({ name: 'users' })
+                        }, 1000);
+                    }).catch((err)=>{
+                        if(err.response.status==422){
+                            this.errors=err.response.data.errors;
+                            return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
+                        }
+                    this.$root.alertNotificationMessage(err.response.status,err.response.data);
+
+                });
+                }
+
       }
 
 

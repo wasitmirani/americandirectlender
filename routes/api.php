@@ -24,10 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:api')->group(function () {
 
 
-Route::get('/activities',[DashboardController::class,'activityLogs']);
 
 Route::prefix('management')->group(function () {
 
@@ -35,8 +34,12 @@ Route::prefix('management')->group(function () {
     Route::post('remove-all/users',[UserController::class,'removeAllUsers']);
     Route::get('/roles-perimissions',[UserController::class,'getRolesPermissions']);
 
+
     Route::resource('role', RoleController::class);
+    Route::post('remove-all/roles',[UserController::class,'removeAllRoles']);
+
     Route::resource('permission', PermissionController::class);
+    Route::post('remove-all/permissions',[UserController::class,'removeAllPermissions']);
 
 });
 });

@@ -216,7 +216,7 @@ export default {
 
                      this.getRoles();
                      this.resetForm();
-                    this.$root.alertNotificationMessage(res.status,"New role has been updated successfully");
+                    this.$root.alertNotificationMessage(res.status,"Role has been updated successfully");
 
                 }).catch((err)=>{
                      if(err.response.status==422){
