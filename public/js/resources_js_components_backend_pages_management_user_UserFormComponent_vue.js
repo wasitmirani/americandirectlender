@@ -330,7 +330,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       axios.get(url).then(function (res) {
         // this.user=res.data.user;
         _this3.edit_mode = true;
-        _this3.user = _objectSpread(_objectSpread({}, res.data.user), res.data.user.user_info);
+
+        var data = _objectSpread(_objectSpread({}, res.data.user), res.data.user.user_info);
+
+        _this3.user = _objectSpread(_objectSpread({}, _this3.user), data);
       })["catch"](function (err) {
         _this3.$root.alertErrorMessage(err.response.status, err.response.data);
       });

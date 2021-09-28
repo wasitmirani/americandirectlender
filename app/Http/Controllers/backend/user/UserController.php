@@ -63,6 +63,7 @@ class UserController extends Controller
             'phone'=>$request->phone,
             'password'=>Hash::make($request->password),
             'user_name'=> $user_name,
+            'user_id'=>$request->user()->id,
         ];
 
         $new_user=$user->userCreateOrUpdate($request_array);

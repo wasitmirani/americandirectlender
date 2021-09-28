@@ -77,6 +77,9 @@ const app = new Vue({
                 case 301:
                     this.alertNotification('top-right', 'success', `Oops, Unprocessable Entity ${status} Error! `, res);
                     break;
+                case 401:
+                        this.alertNotification('top-right', 'danger', `Unauthorized, Oops Unprocessable Entity  Entity ${status} Error! `, res.message);
+                        break;
                 default:
                     break;
             }
