@@ -70,6 +70,7 @@ const app = new Vue({
                     break;
                 case 422:
                     this.alertNotification('top-right', 'danger', `Oops, Unprocessable Entity ${status} Error! `, res.message);
+
                     break;
                 case 200:
                     this.alertNotification('top-right', 'success', `response ${status} successfully! `, res);
@@ -79,10 +80,16 @@ const app = new Vue({
                     break;
                 case 401:
                         this.alertNotification('top-right', 'danger', `Unauthorized, Oops Unprocessable Entity  Entity ${status} Error! `, res.message);
+                        this.logoutUser();
                         break;
                 default:
                     break;
             }
+        },
+        logoutUser(){
+            axios.post('/logout').then((res)=>{
+                window.location.href="/login";
+            });
         },
         deleteItem(url) {
             Swal.fire({

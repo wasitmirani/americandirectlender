@@ -2154,11 +2154,17 @@ var app = new Vue({
 
         case 401:
           this.alertNotification('top-right', 'danger', "Unauthorized, Oops Unprocessable Entity  Entity ".concat(status, " Error! "), res.message);
+          this.logoutUser();
           break;
 
         default:
           break;
       }
+    },
+    logoutUser: function logoutUser() {
+      axios.post('/logout').then(function (res) {
+        window.location.href = "/login";
+      });
     },
     deleteItem: function deleteItem(url) {
       var _this = this;

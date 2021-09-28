@@ -242,7 +242,12 @@ export default {
                 this.user={...this.user,...data};
 
             }).catch((err)=>{
-                this.$root.alertErrorMessage(err.response.status,err.response.data);
+                     if(err.response.status==422){
+                         this.errors=err.response.data.errors;
+                        return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
+                    }
+                  this.$root.alertNotificationMessage(err.response.status,err.response.data);
+
             });
         }
         else {

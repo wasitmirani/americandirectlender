@@ -335,7 +335,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
         _this3.user = _objectSpread(_objectSpread({}, _this3.user), data);
       })["catch"](function (err) {
-        _this3.$root.alertErrorMessage(err.response.status, err.response.data);
+        if (err.response.status == 422) {
+          _this3.errors = err.response.data.errors;
+          return _this3.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        }
+
+        _this3.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     } else {
       this.edit_mode = false;
