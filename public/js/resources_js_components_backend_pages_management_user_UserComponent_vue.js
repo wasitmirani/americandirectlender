@@ -1965,7 +1965,7 @@ var render = function() {
       [
         _c("vs-input", {
           attrs: {
-            color: "rgb(121, 81, 170)",
+            color: "rgb(30, 32, 79)",
             gradient: "",
             placeholder: _vm.label
           },
@@ -2036,7 +2036,7 @@ var render = function() {
                         "vs-button",
                         {
                           attrs: {
-                            color: "rgb(121, 81, 170)",
+                            color: "rgb(30, 32, 79)",
                             gradient: "",
                             active: true,
                             to: "/create/user"

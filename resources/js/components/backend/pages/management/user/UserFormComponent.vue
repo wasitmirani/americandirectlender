@@ -39,7 +39,7 @@
                           <input class="form-control" placeholder="http://Uplor .com">
                         </div>
 
-                        <vs-button color="rgb(121, 81, 170)" gradient  type="submit"  v-if="!edit_mode" @click="onSubmit">
+                        <vs-button color="rgb(30, 32, 79)" gradient  type="submit"  v-if="!edit_mode" @click="onSubmit">
                             Submit
                         </vs-button>
 
@@ -152,7 +152,7 @@
                     </div>
                     <div class="card-footer text-end">
                   <!-- <vs-checkbox v-model="checkbox1">Remember me</vs-checkbox> -->
-                        <vs-button color="rgb(121, 81, 170)" gradient  type="submit"  v-if="!edit_mode" @click="onSubmit">
+                        <vs-button color="rgb(30, 32, 79)" gradient  type="submit"  v-if="!edit_mode" @click="onSubmit">
                             Submit
                         </vs-button>
                         <vs-button   color="rgb(59,222,200)" :active="true" gradient  type="submit"  @click="onSubmit"  v-else>

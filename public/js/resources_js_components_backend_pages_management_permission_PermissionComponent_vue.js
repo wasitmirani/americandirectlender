@@ -2298,7 +2298,7 @@ var render = function() {
       _c(
         "vs-button",
         {
-          attrs: { color: "rgb(121, 81, 170)", gradient: "", active: true },
+          attrs: { color: "rgb(130, 32, 79)" },
           on: { click: _vm.activemodal }
         },
         [
@@ -2345,7 +2345,7 @@ var render = function() {
       [
         _c("vs-input", {
           attrs: {
-            color: "rgb(121, 81, 170)",
+            color: "rgb(30, 32, 79)",
             gradient: "",
             placeholder: _vm.label
           },
@@ -2712,7 +2712,7 @@ var render = function() {
                       "vs-button",
                       {
                         attrs: {
-                          color: "rgb(121, 81, 170)",
+                          color: "rgb(30, 32, 79)",
                           gradient: "",
                           type: "submit"
                         },

@@ -1,6 +1,6 @@
 <template>
   <div>
-      <vs-button color="rgb(121, 81, 170)" gradient :active="true" @click="activemodal">
+      <vs-button color="rgb(130, 32, 79)"   @click="activemodal">
         <i :class="icon" style="margin-right: 10px;" v-if="icon"></i>
          {{label}}
       </vs-button>

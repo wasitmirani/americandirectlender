@@ -188,7 +188,7 @@ var render = function() {
       _c(
         "vs-button",
         {
-          attrs: { color: "rgb(121, 81, 170)", gradient: "", active: true },
+          attrs: { color: "rgb(130, 32, 79)" },
           on: { click: _vm.activemodal }
         },
         [

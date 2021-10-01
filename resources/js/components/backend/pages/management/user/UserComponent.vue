@@ -9,7 +9,7 @@
                     <h5>
                     <h5>Users Listing
                     <div style="float: right;">
-                            <vs-button color="rgb(121, 81, 170)" gradient :active="true" to="/create/user">
+                            <vs-button color="rgb(30, 32, 79)" gradient :active="true" to="/create/user">
                                 <i class="fas fa-plus" style="margin-right: 10px;" ></i>
                                 Add User
                             </vs-button>

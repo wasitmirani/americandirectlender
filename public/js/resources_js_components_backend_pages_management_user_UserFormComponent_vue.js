@@ -1579,7 +1579,7 @@ var render = function() {
                             "vs-button",
                             {
                               attrs: {
-                                color: "rgb(121, 81, 170)",
+                                color: "rgb(30, 32, 79)",
                                 gradient: "",
                                 type: "submit"
                               },
@@ -2075,7 +2075,7 @@ var render = function() {
                         "vs-button",
                         {
                           attrs: {
-                            color: "rgb(121, 81, 170)",
+                            color: "rgb(30, 32, 79)",
                             gradient: "",
                             type: "submit"
                           },

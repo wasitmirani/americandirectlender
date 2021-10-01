@@ -24,10 +24,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
+
 Route::middleware('auth:api')->group(function () {
 
-
-
+    Route::get('/dashboard',[DashboardController::class,'getDashboard']);
 Route::prefix('management')->group(function () {
 
     Route::resource('user', UserController::class);

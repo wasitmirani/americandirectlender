@@ -408,7 +408,7 @@
   margin-right: auto;
   margin-left: auto;
   padding: 50px;
-  border: 2px dashed #7951aa;
+  border: 2px dashed #1e204f;
   border-radius: 15px;
   -o-border-image: none;
      border-image: none;
@@ -422,7 +422,7 @@
             box-sizing: border-box; }
   .dropzone i {
     font-size: 50px;
-    color: #7951aa; }
+    color: #1e204f; }
   .dropzone .dz-message {
     text-align: center;
     margin: 25px 0; }
@@ -435,8 +435,8 @@
     background-color: #eeeeee;
     width: 120px;
     height: 120px;
-    -webkit-box-shadow: 0px 0px 3px #7951aa;
-            box-shadow: 0px 0px 3px #7951aa; }
+    -webkit-box-shadow: 0px 0px 3px #1e204f;
+            box-shadow: 0px 0px 3px #1e204f; }
     .dropzone .dz-preview .dz-progress {
       display: block;
       height: 10px;
