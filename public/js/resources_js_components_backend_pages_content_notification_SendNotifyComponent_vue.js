@@ -1992,17 +1992,7 @@ var render = function() {
                       ],
                       1
                     )
-                  : _c("RoleTable", {
-                      attrs: { getRoles: _vm.getRoles, roles: _vm.roles },
-                      on: {
-                        editItem: function($event) {
-                          return _vm.editItem($event)
-                        },
-                        deleteItem: function($event) {
-                          return _vm.deleteItem($event)
-                        }
-                      }
-                    })
+                  : _vm._e()
               ],
               1
             )

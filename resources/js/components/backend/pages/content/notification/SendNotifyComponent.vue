@@ -34,7 +34,7 @@
                      <content-placeholders-heading :img="true" />
                      <content-placeholders-text :lines="1" />
                   </content-placeholders>
-                   <RoleTable :getRoles="getRoles" :roles="roles" v-on:editItem="editItem($event)" v-on:deleteItem="deleteItem($event)" v-else></RoleTable>
+                   <!-- <RoleTable :getRoles="getRoles" :roles="roles" v-on:editItem="editItem($event)" v-on:deleteItem="deleteItem($event)" v-else></RoleTable> -->
                   </div>
             </div>
         </div>
@@ -85,7 +85,6 @@ export default {
 
     components:{
         Breadcrumb,
-
         PrimaryButton,
         SearchInput,
     },
@@ -115,7 +114,6 @@ export default {
           },
             editItem(item) {
             this.resetForm();
-
             this.edit_mode=true;
             this.active_modal=true;
             this.role=item;
