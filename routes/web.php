@@ -6,6 +6,7 @@ use App\Http\Controllers\BackendController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\Backend\user\UserController;
+use App\Http\Controllers\backend\notify\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,6 @@ Route::post('/api/logout',[UserController::class,'logout']);
 Route::middleware('auth')->prefix('dashboard')->group(function(){
     Route::get('/',[DashboardController::class,'index'])->name('dashboard');
 });
+
+Route::get('/send/notifications',[NotificationController::class,'sendNotifyUser']);
+

@@ -39,6 +39,7 @@ const routes = [
     { path: "/edit/roles/:id", component: () => setComponent("management/role/CreateRole"), name: "EditRoles" },
 
     { path: "/permissions", component: () => setComponent("management/permission/Permission"), name: "permissions", },
+    { path: "/send/notify", component: () => setComponent("content/notification/SendNotify"), name: "SendNotify", },
 
 
 ];

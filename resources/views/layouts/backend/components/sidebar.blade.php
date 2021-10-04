@@ -40,7 +40,7 @@
               <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"> <i data-feather="{{$menu['menu']['icon']}}" ></i> <span>{{$menu['menu']['title']}}</span></a>
                 <ul class="nav-submenu menu-content">
                     @foreach ($menu['menu']['sub_menu'] as $item)
-                      <li><router-link to="{{$item['v-route']}}" >{{$item['title']}}</router-link></li>
+                      <li><router-link exact to="{{$item['v-route']}}" >{{$item['title']}}</router-link></li>
                     @endforeach
 
                 </ul>
@@ -48,7 +48,7 @@
             @endif
             @if(!empty($menu['single_link']))
 
-            <li class="dropdown"><router-link to="{{$menu['single_link']['v-route']}}" class="nav-link menu-title link-nav" > <i data-feather="{{$menu['single_link']['icon']}}" ></i>   <span>{{$menu['single_link']['title']}}</span></router-link></li>
+            <li class="dropdown"><router-link exact to="{{$menu['single_link']['v-route']}}" class="nav-link menu-title link-nav" > <i data-feather="{{$menu['single_link']['icon']}}" ></i>   <span>{{$menu['single_link']['title']}}</span></router-link></li>
             @endif
             @endforeach
 

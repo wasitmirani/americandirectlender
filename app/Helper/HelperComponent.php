@@ -41,10 +41,17 @@ class HelperComponent {
                     ],
 
                 ],
+                [
+                    "single_link" => setSingleLink( "Notify","bell",null,"/send/notify"),
+                ],
 
-                // [
-                //     "single_link" => setSingleLink( "Dashboard","fa fa-users",null,"/"),
-                // ],
+                [
+                    "heading"=>"Content",
+                ],
+                [
+                    "single_link" => setSingleLink( "Applications","file-minus",null,"/"),
+                ],
+
 
      ];
     }
