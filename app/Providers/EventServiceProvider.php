@@ -19,9 +19,8 @@ class EventServiceProvider extends ServiceProvider
             // SendEmailVerificationNotification::class,
 
         ],
-        'Illuminate\Auth\Events\Login' => ['App\Listeners\LoginSuccessful'],
-        'Illuminate\Auth\Events\Logout' => ['App\Listeners\LogoutSuccessful'],
-       
+
+
     ];
 
     /**

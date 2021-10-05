@@ -302,22 +302,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var formData = new FormData();
       formData = Object.assign(this.user, formData); //  formData=Object.assign({selected_roles:this.selected_roles},formData)
 
-      axios.post('/management/user', formData).then(function (res) {
-        _this2.$root.alertNotificationMessage(res.status, "New user has been created successfully");
+      if (!this.edit_mode) {
+        axios.post('/management/user', formData).then(function (res) {
+          _this2.$root.alertNotificationMessage(res.status, "New user has been created successfully");
 
-        setTimeout(function () {
-          _this2.$router.push({
-            name: 'users'
-          });
-        }, 1000);
-      })["catch"](function (err) {
-        if (err.response.status == 422) {
-          _this2.errors = err.response.data.errors;
-          return _this2.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
-        }
+          setTimeout(function () {
+            _this2.$router.push({
+              name: 'users'
+            });
+          }, 1000);
+        })["catch"](function (err) {
+          if (err.response.status == 422) {
+            _this2.errors = err.response.data.errors;
+            return _this2.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+          }
 
-        _this2.$root.alertNotificationMessage(err.response.status, err.response.data);
-      });
+          _this2.$root.alertNotificationMessage(err.response.status, err.response.data);
+        });
+      } else {
+        axios.put('/management/user/' + this.user.id, formData).then(function (res) {
+          _this2.$root.alertNotificationMessage(res.status, "User has been updated successfully");
+
+          setTimeout(function () {
+            _this2.$router.push({
+              name: 'users'
+            });
+          }, 1000);
+        })["catch"](function (err) {
+          if (err.response.status == 422) {
+            _this2.errors = err.response.data.errors;
+            return _this2.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+          }
+
+          _this2.$root.alertNotificationMessage(err.response.status, err.response.data);
+        });
+      }
     }
   },
   mounted: function mounted() {
@@ -330,9 +349,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       axios.get(url).then(function (res) {
         // this.user=res.data.user;
         _this3.edit_mode = true;
-        _this3.user = _objectSpread(_objectSpread({}, res.data.user), res.data.user.user_info);
+
+        var data = _objectSpread(_objectSpread({}, res.data.user), res.data.user.user_info);
+
+        _this3.user = _objectSpread(_objectSpread({}, _this3.user), data);
       })["catch"](function (err) {
-        _this3.$root.alertErrorMessage(err.response.status, err.response.data);
+        if (err.response.status == 422) {
+          _this3.errors = err.response.data.errors;
+          return _this3.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        }
+
+        _this3.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     } else {
       this.edit_mode = false;
@@ -359,7 +386,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-button__content {\n    width: 130px;\n    height: 49px;\n}\n.vs-input {\n   width: 100%;\n}\n.vs-select-content {\n   width: 100%;\n   max-width: 100%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-button__content {\r\n    width: 130px;\r\n    height: 49px;\n}\n.vs-input {\r\n   width: 100%;\n}\n.vs-select-content {\r\n   width: 100%;\r\n   max-width: 100%;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1552,7 +1579,7 @@ var render = function() {
                             "vs-button",
                             {
                               attrs: {
-                                color: "rgb(121, 81, 170)",
+                                color: "rgb(30, 32, 79)",
                                 gradient: "",
                                 type: "submit"
                               },
@@ -1573,7 +1600,7 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _c("div", { class: _vm.edit_mode ? "col-xl-8" : "col-xl-12" }, [
-            _c("form", { staticClass: "card" }, [
+            _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-header pb-0" }, [
                 _vm.edit_mode
                   ? _c("h4", { staticClass: "card-title mb-0" }, [
@@ -1955,9 +1982,8 @@ var render = function() {
                           {
                             attrs: {
                               filter: "",
-                              multiple: "",
                               "collapse-chips": "",
-                              placeholder: "Collapse chips"
+                              placeholder: "Select Country"
                             },
                             model: {
                               value: _vm.user.country,
@@ -2049,7 +2075,7 @@ var render = function() {
                         "vs-button",
                         {
                           attrs: {
-                            color: "rgb(121, 81, 170)",
+                            color: "rgb(30, 32, 79)",
                             gradient: "",
                             type: "submit"
                           },

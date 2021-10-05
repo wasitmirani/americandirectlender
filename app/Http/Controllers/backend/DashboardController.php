@@ -2,23 +2,24 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
-use Spatie\Activitylog\Models\Activity;
 
 class DashboardController extends Controller
 {
     public function index(){
-        $activities =  Activity::latest()->take(20)->get();
 
-        return view('backend.pages.dashboard',compact('activities'));
+
+        return view('backend.pages.dashboard');
+    }
+    public function getDashboard(Request $request){
+        $users=User::all()->count();
+        $agents=Role::select('name')->withCount('users')->get();
+
+        return response()->json(['users'=>$users,'roles'=>$agents]);
     }
 
-    public function activityLogs(){
-        $activities =  Activity::latest()->take(5)->get();
 
-        return response()->json($activities);
-
-
-    }
 }

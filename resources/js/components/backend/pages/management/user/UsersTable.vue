@@ -58,8 +58,8 @@
                                     </div>
                                 </div>
                                 </td>
-                                <td>{{user.user_name}}</td>
-                                <td>{{user.phone}}</td>
+                                <td>{{user.user_name ? user.user_name : "N/A" }}</td>
+                                <td>{{user.phone ?  user.phone  : "N/A"}}</td>
                                 <td>{{user.user ? user.user.name : "N/A"}}</td>
                                 <td>{{user.created_at | timeformat}}</td>
 

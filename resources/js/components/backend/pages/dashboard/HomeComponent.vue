@@ -1,23 +1,39 @@
 <template>
     <div>
         <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 col-xl-3 col-lg-6">
+                <div class="card o-hidden border-0">
+                  <div class="bg-primary b-r-4 card-body">
+                    <div class="media static-top-widget">
+                      <div class="align-self-center text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg></div>
+                      <div class="media-body"><span class="m-0">Total Users</span>
+                        <h4 class="mb-0 counter">{{total_users}}</h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus icon-bg"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 col-lg-6" v-for="item in roles" :key="item.id" >
+                <div class="card o-hidden border-0">
+                  <div class="bg-primary b-r-4 card-body">
+                    <div class="media static-top-widget">
+                      <div class="align-self-center text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg></div>
+                      <div class="media-body"><span class="m-0"> {{item.name}}s</span>
+                        <h4 class="mb-0 counter">{{item.users_count}}</h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus icon-bg"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
     <div class="row">
-              <div class="col-xl-6 col-md-6 box-col-6 des-xl-50">
+              <div class="col-xl-6 col-md-4 box-col-4 des-xl-50">
                     <div class="card profile-greeting">
                       <div class="card-header">
                         <div class="header-top">
-                          <div class="setting-list bg-primary position-unset">
-                            <ul class="list-unstyled setting-option">
-                              <li>
-                                <div class="setting-white"><i class="icon-settings"></i></div>
-                              </li>
-                              <li><i class="view-html fa fa-code font-white"></i></li>
-                              <li><i class="icofont icofont-maximize full-card font-white"></i></li>
-                              <li><i class="icofont icofont-minus minimize-card font-white"></i></li>
-                              <li><i class="icofont icofont-refresh reload-card font-white"></i></li>
-                              <li><i class="icofont icofont-error close-card font-white"> </i></li>
-                            </ul>
-                          </div>
+
                         </div>
                       </div>
                       <div class="card-body text-center p-t-0">
@@ -42,7 +58,8 @@
 
                       </div>
                     </div>
-                  </div>
+              </div>
+
       <div class="col-xl-6 box-col-12 des-xl-100 invoice-sec">
           <div class="card income-card">
             <div class="card-header">
@@ -73,139 +90,8 @@
 </div>
       </div>
 
-      <div class="col-xl-8 col-md- des-xl-100 box-col-12">
-        <div class="row">
-          <div class="col-xl-3 col-sm-6 box-col-3 chart_data_right">
-            <div class="card income-card card-secondary">
-              <div class="card-body align-items-center">
-                <div class="round-progress knob-block text-center">
-                  <div class="progress-circle">
-                    <input class="knob1" data-width="10" data-height="70" data-thickness=".3" data-angleoffset="0" data-linecap="round" data-fgcolor="#ba895d" data-bgcolor="#e0e9ea" value="60">
-                  </div>
-                  <h5>$9,84,235</h5>
-                  <p>Our Annual Income</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 box-col-3 chart_data_right second">
-            <div class="card income-card card-primary">
-              <div class="card-body">
-                <div class="round-progress knob-block text-center">
-                  <div class="progress-circle">
-                    <input class="knob1" data-width="50" data-height="70" data-thickness=".3" data-fgcolor="#665ed" data-linecap="round" data-angleoffset="0" value="60">
-                  </div>
-                  <h5>$4,55,462</h5>
-                  <p>Our Annual Income</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-6 box-col-6">
-            <div class="card">
-              <div class="card-header">
-                <div class="header-top d-sm-flex justify-content-between align-items-center">
-                  <h5>Total Selling</h5>
-                  <div class="center-content">
-                    <ul class="week-date">
-                      <li class="font-primary">Today</li>
-                      <li>Month                                     </li>
-                    </ul>
-                  </div>
-                  <div class="setting-list">
-                    <ul class="list-unstyled setting-option">
-                      <li>
-                        <div class="setting-primary"><i class="icon-settings"></i></div>
-                      </li>
-                      <li><i class="view-html fa fa-code font-primary"></i></li>
-                      <li><i class="icofont icofont-maximize full-card font-primary"></i></li>
-                      <li><i class="icofont icofont-minus minimize-card font-primary"></i></li>
-                      <li><i class="icofont icofont-refresh reload-card font-primary"></i></li>
-                      <li><i class="icofont icofont-error close-card font-primary"></i></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body chart-block p-0">
-                <div id="chart-dash-2-line"></div>
-                <div class="code-box-copy">
-                  <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#total-selling" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
-                  <pre><code class="language-html" id="total-selling">       </code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-6 box-col-6">
-            <div class="card target-sec">
-              <div class="card-header pb-0">
-                <ul class="target-list">
-                  <li>
-                    <h6>Our Target</h6>
-                    <p>Completed</p><span>$687.780</span>
-                  </li>
-                  <li class="bg-primary">
-                    <h6>We Archieve</h6>
-                    <p>Completed in After 3 Hours</p><span>$687.780k                                     </span>
-                  </li>
-                </ul>
-              </div>
-              <div class="card-body p-0">
-                <div class="traget-img-sec"></div>
-                <div class="animat-block"><i class="fa fa-times close1"></i><i class="fa fa-times close2"></i><i class="fa fa-times close3"></i>
-                  <div class="circle1"></div>
-                  <div class="circle2"></div>
-                  <div class="circle3"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-4 des-xl-50 box-col-12 activity-sec chart_data_left">
-        <div class="card">
-          <div class="card-header">
-            <div class="header-top d-sm-flex justify-content-between align-items-center">
-              <h5 class="m-0">Activity Timeline</h5>
-              <div class="center-content">
-                <p>Yearly User 24.65k</p>
-              </div>
-              <div class="setting-list">
-                <ul class="list-unstyled setting-option">
-                  <li>
-                    <div class="setting-primary"><i class="icon-settings"></i></div>
-                  </li>
-                  <li><i class="view-html fa fa-code font-primary"></i></li>
-                  <li><i class="icofont icofont-maximize full-card font-primary"></i></li>
-                  <li><i class="icofont icofont-minus minimize-card font-primary"></i></li>
-                  <li><i class="icofont icofont-refresh reload-card font-primary"></i></li>
-                  <li><i class="icofont icofont-error close-card font-primary"></i></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="chart-main activity-timeline update-line">
-              <div class="media"  v-for="log in logs" :key="log.id">
-                <div class="activity-line"></div>
-                <div class="activity-dot-primary"></div>
-                <div class="media-body d-block">
-
-                  <h6> <span class="font-primary"> {{log.created_at  | timeformat}} </span> </h6>
-                  <h5>{{log.log_name}}<i class="fa fa-circle circle-dot-primary pull-right"></i></h5>
-                  <p>{{log.description}}</p>
-                </div>
-              </div>
 
 
-
-
-
-            </div>
-
-          </div>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -219,6 +105,9 @@
               return{
                  logs:[],
                  user:{},
+                 app_name:"",
+                 total_users:0,
+                 roles:{},
 
         }
     },
@@ -351,16 +240,24 @@ var options17 = {
   }]
 };
         },
+
+          async  getDashboardData(){
+          await  axios.get('dashboard').then((res)=>{
+              this.total_users=res.data.users;
+             this.roles=res.data.roles;
+            });
+        }
     },
 
+
+
+
         mounted(){
+            this.getDashboardData();
             console.log("userss",user);
             this.user=user;
+            this.app_name=appname;
             this.dashboardChart();
-              axios.get('/activities').then((response)=>{
-                 console.log(response)
-                 this.logs = response.data
-                }).catch((error)=>{})
 
 
         }

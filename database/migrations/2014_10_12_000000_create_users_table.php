@@ -19,10 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('thumbnail')->default('default-profile.png')->nullable();
             $table->string('email')->unique();
-            $table->string('user_name')->unique();
+            $table->string('user_name')->nullable()->unique();
             $table->string('phone')->nullable()->unique();
+            $table->longText('token')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->rememberToken();
             $table->timestamps();
         });

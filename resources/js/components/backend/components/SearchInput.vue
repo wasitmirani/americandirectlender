@@ -2,7 +2,7 @@
 <template>
   <div>
     <div class="input-group search-area">
-     <vs-input color="rgb(121, 81, 170)" gradient :placeholder="label" v-model="query" v-on:keyup="searchQuery" />
+     <vs-input color="rgb(30, 32, 79)" gradient :placeholder="label" v-model="query" v-on:keyup="searchQuery" />
       <span class="input-group-text" v-if="name"><a role="button" @click="searchQuery">
           <i class="fas fa-search"></i></a>
     </span>

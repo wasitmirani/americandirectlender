@@ -2,17 +2,19 @@
 
 namespace App\Models;
 
-use Laravel\Sanctum\HasApiTokens;
+
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Activitylog\Traits\LogsActivity;
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
+
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,HasRoles, LogsActivity;
+    use HasApiTokens, HasFactory, Notifiable,HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -20,14 +22,10 @@ class User extends Authenticatable
      * @var array
      */
     // protected static $logName = '';
-    protected static $submitEmptyLogs = false;
     protected $guarded = [];
-    protected static $logAttributes = ['title', 'description', 'status'];
 
-    public function getDescriptionForEvent(string $eventName): string
-    {
-        return $eventName;
-    }
+
+
 
 
     /**
@@ -66,7 +64,7 @@ class User extends Authenticatable
     }
     public function user()
     {
-        return $this->belongsTo(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
 
@@ -76,7 +74,7 @@ class User extends Authenticatable
             return User::create($request);
         }
         else {
-            return User::where('id',$request->id)->update($request);
+            return User::where('id',$request['id'])->update($request);
         }
     }
 
