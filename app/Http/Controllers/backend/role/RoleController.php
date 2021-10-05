@@ -24,9 +24,6 @@ class RoleController extends Controller
 
         return response()->json(['roles'=>$roles]);
 
-
-
-
         $users=User::select('id','name')->orderBy('name','ASC')->get();
 
 
