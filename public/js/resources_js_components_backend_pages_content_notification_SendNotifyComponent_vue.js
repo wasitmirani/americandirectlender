@@ -281,6 +281,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -292,7 +295,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      roles: {},
+      notifications: {},
       notification: {},
       active_modal: false,
       edit_mode: false,
@@ -305,7 +308,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
-    this.getRoles();
+    this.getNotifications();
   },
   methods: {
     onChange: function onChange(event) {
@@ -315,7 +318,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.resetForm();
       this.edit_mode = true;
       this.active_modal = true;
-      this.role = item;
+      this.notification = item;
       this.selected_users = item.users.map(function (x) {
         return x.id;
       });
@@ -323,7 +326,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     deleteItem: function deleteItem(item) {
       var _this = this;
 
-      var url = "/management/role/".concat(item.id);
+      var url = "/management/notification/".concat(item.id);
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -337,7 +340,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           axios["delete"](url).then(function (res) {
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
 
-            _this.getRoles();
+            _this.getNotifications();
           })["catch"](function (err) {
             _this.$root.alertNotificationMessage(err.response.status, err.response.data); //    console.log("erro",err.response.data.message);
 
@@ -352,10 +355,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     resetForm: function resetForm() {
       this.edit_mode = false;
       this.active_modal = false;
-      this.role = {};
+      this.notification = {};
       this.selected_users = [];
     },
-    getRoles: function getRoles() {
+    getNotifications: function getNotifications() {
       var _arguments = arguments,
           _this2 = this;
 
@@ -368,10 +371,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
                 _this2.loading = true;
                 _this2.page_num = page;
-                url = "/management/role?page=" + page + "&query=" + _this2.query;
+                url = "/management/notification?page=" + page + "&query=" + _this2.query;
                 _context.next = 6;
                 return axios.get(url).then(function (res) {
-                  _this2.roles = res.data.roles;
+                  _this2.notifications = res.data.notifications;
                   _this2.users = res.data.users;
                   _this2.loading = false;
                 })["catch"](function (err) {
@@ -390,7 +393,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.query = query;
     },
     filterdata: function filterdata(data) {
-      this.roles = data.roles;
+      this.notifications = data.notifications;
     },
     loadingStart: function loadingStart(value) {
       this.loading = value;
@@ -398,21 +401,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     onSubmit: function onSubmit() {
       var _this3 = this;
 
-      this.$refs.form.submit();
       var formData = new FormData();
-      formData = Object.assign(this.role, formData);
+      formData = Object.assign(this.notification, formData);
       formData = Object.assign({
         users: this.selected_users
       }, formData);
-      var url = "/management/role";
+      var url = "/management/notification";
 
       if (!this.edit_mode) {
         axios.post(url, formData).then(function (res) {
-          _this3.$root.alertNotificationMessage(res.status, "New role has been created successfully");
+          _this3.$root.alertNotificationMessage(res.status, "New notification has been created successfully");
 
           _this3.resetForm();
 
-          _this3.getRoles();
+          _this3.getNotifications();
         })["catch"](function (err) {
           if (err.response.status == 422) {
             _this3.errors = err.response.data.errors;
@@ -423,16 +425,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         });
       } else {
         var data = {
-          id: this.role.id,
-          name: this.role.name,
+          id: this.notification.id,
+          name: this.notification.name,
           users: this.selected_users
         };
-        axios.put(url + "/" + this.role.id, data).then(function (res) {
-          _this3.getRoles();
+        axios.put(url + "/" + this.notification.id, data).then(function (res) {
+          _this3.getNotifications();
 
           _this3.resetForm();
 
-          _this3.$root.alertNotificationMessage(res.status, "Role has been updated successfully");
+          _this3.$root.alertNotificationMessage(res.status, "notification has been updated successfully");
         })["catch"](function (err) {
           if (err.response.status == 422) {
             _this3.errors = err.response.data.errors;
@@ -1797,7 +1799,7 @@ var render = function() {
       _c(
         "vs-button",
         {
-          attrs: { color: "rgb(130, 32, 79)" },
+          attrs: { color: this.$root.primary_color },
           on: { click: _vm.activemodal }
         },
         [
@@ -1905,7 +1907,7 @@ var render = function() {
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-header pb-0" }, [
               _c("h5", [
-                _vm._v("Roles\n                  "),
+                _vm._v("Notifications\n                  "),
                 _c(
                   "div",
                   { staticStyle: { float: "right" } },
@@ -1923,33 +1925,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "mb-3 col-4 mt-3" },
-                [
-                  _c("SearchInput", {
-                    attrs: {
-                      apiurl: "/management/role?page=" + this.page_num,
-                      label: "Search Roles"
-                    },
-                    on: {
-                      query: function($event) {
-                        return _vm.isquery($event)
-                      },
-                      loading: function($event) {
-                        return _vm.loadingStart($event)
-                      },
-                      reload: function($event) {
-                        return _vm.getRoles()
-                      },
-                      filterList: function($event) {
-                        return _vm.filterdata($event)
-                      }
-                    }
-                  })
-                ],
-                1
-              )
+              _c("div", { staticClass: "mb-3 col-4 mt-3" })
             ]),
             _vm._v(" "),
             _c(
@@ -2016,7 +1992,7 @@ var render = function() {
                       ])
                     : _c("h4", { staticClass: "not-margin" }, [
                         _vm._v("\n             Update "),
-                        _c("b", [_vm._v(_vm._s(_vm.role.name))]),
+                        _c("b", [_vm._v(_vm._s(_vm.notification.name))]),
                         _vm._v(" Notification\n          ")
                       ])
                 ]
@@ -2035,132 +2011,175 @@ var render = function() {
         [
           _vm._v(" "),
           _c("div", { staticClass: "con-form" }, [
-            _c("form", { ref: "form" }, [
-              _c(
-                "div",
-                { staticClass: "mb-3" },
-                [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-form-label",
-                      attrs: { for: "recipient-name" }
-                    },
-                    [_vm._v("Notification Title:")]
-                  ),
-                  _vm._v(" "),
-                  _c("vs-input", {
-                    attrs: {
-                      color: this.$root.primary_color,
-                      placeholder: "Notification Title",
-                      required: ""
-                    },
-                    model: {
-                      value: _vm.notification.title,
-                      callback: function($$v) {
-                        _vm.$set(_vm.notification, "title", $$v)
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.onSubmit.apply(null, arguments)
+                  }
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "mb-3" },
+                  [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-form-label",
+                        attrs: { for: "recipient-name" }
                       },
-                      expression: "notification.title"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "mb-3" },
-                [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-form-label",
-                      attrs: { for: "recipient-name" }
-                    },
-                    [_vm._v("Notification Body:")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "multiselect",
-                    {
+                      [_vm._v("Notification Title:")]
+                    ),
+                    _vm._v(" "),
+                    _c("vs-input", {
                       attrs: {
-                        placeholder: "Search Users",
-                        limit: "",
-                        label: "name",
-                        "track-by": "id",
-                        options: _vm.users,
-                        multiple: true,
-                        taggable: true
+                        color: this.$root.primary_color,
+                        placeholder: "Notification Title",
+                        required: ""
                       },
                       model: {
-                        value: _vm.selected_users,
+                        value: _vm.notification.title,
                         callback: function($$v) {
-                          _vm.selected_users = $$v
+                          _vm.$set(_vm.notification, "title", $$v)
                         },
-                        expression: "selected_users"
+                        expression: "notification.title"
                       }
-                    },
-                    [
-                      _c(
-                        "span",
-                        { attrs: { slot: "noResult" }, slot: "noResult" },
-                        [
-                          _vm._v(
-                            "Oops! No user found. Consider changing the search query."
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "flex" },
-                [
-                  !this.edit_mode
-                    ? _c(
-                        "vs-button",
-                        {
-                          attrs: {
-                            color: "rgb(30, 32, 79)",
-                            gradient: "",
-                            type: "submit"
-                          },
-                          on: { click: _vm.onSubmit }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "mb-3" },
+                  [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-form-label",
+                        attrs: { for: "recipient-name" }
+                      },
+                      [_vm._v("Notification Body:")]
+                    ),
+                    _vm._v(" "),
+                    _c("vs-input", {
+                      attrs: {
+                        color: this.$root.primary_color,
+                        placeholder: "Notification Body",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.notification.body,
+                        callback: function($$v) {
+                          _vm.$set(_vm.notification, "body", $$v)
                         },
-                        [
-                          _vm._v(
-                            "\n                   Submit\n                "
-                          )
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  this.edit_mode
-                    ? _c(
-                        "vs-button",
-                        {
-                          attrs: {
-                            color: "rgb(59,222,200)",
-                            gradient: "",
-                            type: "submit"
-                          },
-                          on: { click: _vm.onSubmit }
+                        expression: "notification.body"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "mb-3" },
+                  [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-form-label",
+                        attrs: { for: "recipient-name" }
+                      },
+                      [_vm._v("Select Users:")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "multiselect",
+                      {
+                        attrs: {
+                          placeholder: "Search Users",
+                          limit: 20,
+                          "group-values": "users",
+                          "group-label": "name",
+                          "group-select": true,
+                          label: "name",
+                          "track-by": "id",
+                          options: _vm.users,
+                          multiple: true,
+                          taggable: true
                         },
-                        [
-                          _vm._v(
-                            "\n                   Update\n                "
-                          )
-                        ]
-                      )
-                    : _vm._e()
-                ],
-                1
-              )
-            ])
+                        model: {
+                          value: _vm.selected_users,
+                          callback: function($$v) {
+                            _vm.selected_users = $$v
+                          },
+                          expression: "selected_users"
+                        }
+                      },
+                      [
+                        _c(
+                          "span",
+                          { attrs: { slot: "noResult" }, slot: "noResult" },
+                          [
+                            _vm._v(
+                              "Oops! No user found. Consider changing the search query."
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "flex" },
+                  [
+                    !this.edit_mode
+                      ? _c(
+                          "vs-button",
+                          {
+                            attrs: {
+                              color: "rgb(30, 32, 79)",
+                              gradient: "",
+                              type: "submit"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                   Send\n                "
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    this.edit_mode
+                      ? _c(
+                          "vs-button",
+                          {
+                            attrs: {
+                              color: "rgb(59,222,200)",
+                              gradient: "",
+                              type: "submit"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                   Update\n                "
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                )
+              ]
+            )
           ])
         ]
       )

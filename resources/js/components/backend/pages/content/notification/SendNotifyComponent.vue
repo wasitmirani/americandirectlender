@@ -5,7 +5,7 @@
             <div class="col-12">
                    <div class="card">
                   <div class="card-header pb-0">
-                    <h5>Roles
+                    <h5>Notifications
                     <div style="float: right;">
                     <PrimaryButton icon="fas fa-plus"  label="New Notification"  v-on:activemodal="openModal($event)"></PrimaryButton>
                     </div>
@@ -14,12 +14,7 @@
 
                   <div class="mb-3 col-4 mt-3">
 
-                        <SearchInput :apiurl="'/management/role?page=' +this.page_num"
-                        v-on:query="isquery($event)"
-                        v-on:loading="loadingStart($event)"
-                        v-on:reload="getRoles()"
-                        v-on:filterList="filterdata($event)"
-                        label="Search Roles"></SearchInput>
+
                     </div>
                   </div>
 
@@ -34,7 +29,7 @@
                      <content-placeholders-heading :img="true" />
                      <content-placeholders-text :lines="1" />
                   </content-placeholders>
-                   <!-- <RoleTable :getRoles="getRoles" :roles="roles" v-on:editItem="editItem($event)" v-on:deleteItem="deleteItem($event)" v-else></RoleTable> -->
+                   <!-- <notificationTable :getNotifications="getNotifications" :notifications="notifications" v-on:editItem="editItem($event)" v-on:deleteItem="deleteItem($event)" v-else></notificationTable> -->
                   </div>
             </div>
         </div>
@@ -45,27 +40,35 @@
                Create New <b>Notification</b>
             </h4>
             <h4 class="not-margin" v-else>
-               Update <b>{{role.name}}</b> Notification
+               Update <b>{{notification.name}}</b> Notification
             </h4>
          </template>
          <div class="con-form">
-            <form ref="form">
-                  <div class="mb-3">
+            <form  v-on:submit.prevent="onSubmit">
+                <div class="mb-3">
                    <label class="col-form-label" for="recipient-name">Notification Title:</label>
                    <vs-input   :color="this.$root.primary_color" v-model="notification.title" placeholder="Notification Title"  required/>
                   </div>
+                <div class="mb-3">
+                   <label class="col-form-label" for="recipient-name">Notification Body:</label>
+                   <vs-input   :color="this.$root.primary_color" v-model="notification.body" placeholder="Notification Body"  required/>
+                </div>
                <div class="mb-3">
-                <label class="col-form-label" for="recipient-name">Notification Body:</label>
-                    <multiselect v-model="selected_users" placeholder="Search Users" limit="" label="name" track-by="id" :options="users" :multiple="true"  :taggable="true" >
+                <label class="col-form-label" for="recipient-name">Select Users:</label>
+                    <multiselect v-model="selected_users" placeholder="Search Users" :limit="20"
+                    group-values="users"
+                    group-label="name"
+                    :group-select="true"
+                    label="name" track-by="id" :options="users" :multiple="true"  :taggable="true" >
                       <span slot="noResult">Oops! No user found. Consider changing the search query.</span>
                     </multiselect>
                </div>
                <div class="flex">
-                  <!-- <vs-checkbox v-model="checkbox1">Remember me</vs-checkbox> -->
-                  <vs-button color="rgb(30, 32, 79)" gradient  type="submit" @click="onSubmit"  v-if="!this.edit_mode">
-                     Submit
+
+                  <vs-button color="rgb(30, 32, 79)" gradient  type="submit"  v-if="!this.edit_mode">
+                     Send
                   </vs-button>
-                   <vs-button  color="rgb(59,222,200)" gradient  type="submit"  @click="onSubmit" v-if="this.edit_mode">
+                   <vs-button  color="rgb(59,222,200)" gradient  type="submit"   v-if="this.edit_mode">
                      Update
                   </vs-button>
                </div>
@@ -90,7 +93,7 @@ export default {
     },
      data(){
             return {
-            roles:{},
+            notifications:{},
             notification:{},
             active_modal:false,
             edit_mode:false,
@@ -104,7 +107,7 @@ export default {
 
      },
      mounted(){
-       this.getRoles();
+       this.getNotifications();
 
 
      },
@@ -116,11 +119,11 @@ export default {
             this.resetForm();
             this.edit_mode=true;
             this.active_modal=true;
-            this.role=item;
+            this.notification=item;
             this.selected_users=item.users.map(x=> x.id)
             },
             deleteItem(item){
-            const url=`/management/role/${item.id}`;
+            const url=`/management/notification/${item.id}`;
             Swal.fire({
               title: "Are you sure?",
               text: "You won't be able to revert this!",
@@ -133,7 +136,7 @@ export default {
               if (result.isConfirmed) {
                 axios.delete(url).then((res) => {
                     Swal.fire("Deleted!", "Your file has been deleted.", "success");
-                        this.getRoles();
+                        this.getNotifications();
 
                   }).catch((err)=>{
                         this.$root.alertNotificationMessage(err.response.status,err.response.data);
@@ -150,16 +153,16 @@ export default {
             resetForm(){
             this.edit_mode=false;
             this.active_modal=false;
-            this.role={};
+            this.notification={};
             this.selected_users=[];
 
             },
-           async getRoles(page=1){
+           async getNotifications(page=1){
              this.loading=true;
              this.page_num=page;
-             const url="/management/role?page=" + page + "&query=" + this.query;
+             const url="/management/notification?page=" + page + "&query=" + this.query;
                await axios.get(url).then((res)=>{
-                   this.roles = res.data.roles;
+                   this.notifications = res.data.notifications;
                    this.users=res.data.users;
                    this.loading=false;
 
@@ -172,7 +175,7 @@ export default {
           },
 
           filterdata(data){
-            this.roles=data.roles;
+            this.notifications=data.notifications;
           },
         loadingStart(value) {
 
@@ -180,16 +183,16 @@ export default {
           },
 
             onSubmit(){
-                 this.$refs.form.submit();
+
                 let formData = new FormData();
-                formData=Object.assign(this.role,formData);
+                formData=Object.assign(this.notification,formData);
                 formData=Object.assign({users:this.selected_users},formData)
-                const url="/management/role";
+                const url="/management/notification";
                 if(!this.edit_mode){
                      axios.post(url,formData).then((res)=>{
-                     this.$root.alertNotificationMessage(res.status,"New role has been created successfully")
+                     this.$root.alertNotificationMessage(res.status,"New notification has been created successfully")
                      this.resetForm();
-                     this.getRoles();
+                     this.getNotifications();
 
                 }).catch((err)=>{
                      if(err.response.status==422){
@@ -200,12 +203,12 @@ export default {
                 });
                 }
                 else {
-                    let data={id:this.role.id,name:this.role.name,users:this.selected_users};
-                    axios.put(url+"/"+this.role.id,data).then((res)=>{
+                    let data={id:this.notification.id,name:this.notification.name,users:this.selected_users};
+                    axios.put(url+"/"+this.notification.id,data).then((res)=>{
 
-                     this.getRoles();
+                     this.getNotifications();
                      this.resetForm();
-                    this.$root.alertNotificationMessage(res.status,"Role has been updated successfully");
+                    this.$root.alertNotificationMessage(res.status,"notification has been updated successfully");
 
                 }).catch((err)=>{
                      if(err.response.status==422){

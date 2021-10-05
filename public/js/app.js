@@ -2352,6 +2352,12 @@ var routes = [{
     return setComponent("content/notification/SendNotify");
   },
   name: "SendNotify"
+}, {
+  path: "/customer/applications",
+  component: function component() {
+    return setComponent("content/application/Applications");
+  },
+  name: "Customer Applications"
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes,

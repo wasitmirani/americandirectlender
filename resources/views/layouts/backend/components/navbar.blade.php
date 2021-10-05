@@ -2,10 +2,10 @@
     <div class="container-fluid">
         <div class="d-flex">
             <a class="header-brand" href="index.html">
-                <img src="{{ asset('backend/assets/images/brand/logo.png') }}" class="header-brand-img desktop-lgo" alt="Azea logo">
-                <img src="{{ asset('backend/assets/images/brand/logo1.png') }}" class="header-brand-img dark-logo" alt="Azea logo">
-                <img src="{{ asset('backend/assets/images/brand/favicon.png') }}" class="header-brand-img mobile-logo" alt="Azea logo">
-                <img src="{{ asset('backend/assets/images/brand/favicon1.png') }}" class="header-brand-img darkmobile-logo" alt="Azea logo">
+                <img src="{{ asset('frontend/assets/images/logo.png') }}" class="header-brand-img desktop-lgo" alt=" logo">
+                <img src="{{ asset('frontend/assets/images/logo1.png') }}" class="header-brand-img dark-logo" alt=" logo">
+                <img src="{{ asset('frontend/assets/images/favicon.png') }}" class="header-brand-img mobile-logo" alt=" logo">
+                <img src="{{ asset('frontend/assets/images/favicon1.png') }}" class="header-brand-img darkmobile-logo" alt=" logo">
             </a>
             <div class="app-sidebar__toggle d-flex" data-bs-toggle="sidebar">
                 <a class="open-toggle" href="javascript:void0;">

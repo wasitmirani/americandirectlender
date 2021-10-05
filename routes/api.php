@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\role\RoleController;
 use App\Http\Controllers\backend\user\UserController;
+use App\Http\Controllers\backend\notify\NotificationController;
 use App\Http\Controllers\backend\permission\PermissionController;
 
 /*
@@ -31,6 +32,7 @@ Route::middleware('auth:api')->group(function () {
 Route::prefix('management')->group(function () {
 
     Route::resource('user', UserController::class);
+    Route::resource('notification', NotificationController::class);
     Route::post('remove-all/users',[UserController::class,'removeAllUsers']);
     Route::get('/roles-perimissions',[UserController::class,'getRolesPermissions']);
 

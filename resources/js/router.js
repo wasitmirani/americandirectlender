@@ -40,6 +40,7 @@ const routes = [
 
     { path: "/permissions", component: () => setComponent("management/permission/Permission"), name: "permissions", },
     { path: "/send/notify", component: () => setComponent("content/notification/SendNotify"), name: "SendNotify", },
+    { path: "/customer/applications", component: () => setComponent("content/application/Applications"), name: "Customer Applications", },
 
 
 ];
