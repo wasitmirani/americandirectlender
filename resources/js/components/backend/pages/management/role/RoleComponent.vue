@@ -72,7 +72,7 @@
                </div>
                <div class="flex">
                   <!-- <vs-checkbox v-model="checkbox1">Remember me</vs-checkbox> -->
-                  <vs-button color="rgb(121, 81, 170)" gradient  type="submit" @click="onSubmit"  v-if="!this.edit_mode">
+                  <vs-button color="rgb(30, 32, 79)" gradient  type="submit" @click="onSubmit"  v-if="!this.edit_mode">
                      Submit
                   </vs-button>
                    <vs-button  color="rgb(59,222,200)" gradient  type="submit"  @click="onSubmit" v-if="this.edit_mode">
@@ -216,7 +216,7 @@ export default {
 
                      this.getRoles();
                      this.resetForm();
-                    this.$root.alertNotificationMessage(res.status,"New role has been updated successfully");
+                    this.$root.alertNotificationMessage(res.status,"Role has been updated successfully");
 
                 }).catch((err)=>{
                      if(err.response.status==422){

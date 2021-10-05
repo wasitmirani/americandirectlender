@@ -3,9 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\DashboardController;
-use App\Http\Controllers\Backend\role\RoleController;
-use App\Http\Controllers\Backend\user\UserController;
-use App\Http\Controllers\Backend\permission\PermissionController;
+use App\Http\Controllers\backend\role\RoleController;
+use App\Http\Controllers\backend\user\UserController;
+use App\Http\Controllers\backend\permission\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,15 +24,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
-Route::get('/activities',[DashboardController::class,'activityLogs']);
 
+Route::middleware('auth:api')->group(function () {
+
+    Route::get('/dashboard',[DashboardController::class,'getDashboard']);
 Route::prefix('management')->group(function () {
 
     Route::resource('user', UserController::class);
     Route::post('remove-all/users',[UserController::class,'removeAllUsers']);
     Route::get('/roles-perimissions',[UserController::class,'getRolesPermissions']);
 
-    Route::resource('role', RoleController::class);
-    Route::resource('permission', PermissionController::class);
 
+    Route::resource('role', RoleController::class);
+    Route::post('remove-all/roles',[UserController::class,'removeAllRoles']);
+
+    Route::resource('permission', PermissionController::class);
+    Route::post('remove-all/permissions',[UserController::class,'removeAllPermissions']);
+
+});
 });

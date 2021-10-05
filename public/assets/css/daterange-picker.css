@@ -27,7 +27,7 @@
     top: -7px;
     border-right: 7px solid transparent;
     border-left: 7px solid transparent;
-    border-bottom: 7px solid #7951aa;
+    border-bottom: 7px solid #1e204f;
 }
 
 .daterangepicker:after {
@@ -144,7 +144,7 @@
 .daterangepicker td.available:hover,
 .daterangepicker th.available:hover {
     border-color: transparent;
-    background-color: #7951aa;
+    background-color: #1e204f;
     color: #fff;
 }
 
@@ -244,7 +244,7 @@
 }
 
 .daterangepicker .input-mini.active {
-    border: 1px solid #7951aa;
+    border: 1px solid #1e204f;
     border-radius: 4px;
 }
 

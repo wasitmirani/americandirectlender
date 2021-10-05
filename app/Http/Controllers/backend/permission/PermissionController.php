@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend\permission;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
@@ -16,10 +17,12 @@ class PermissionController extends Controller
         $q=request('query');
         $permissions=Permission::where('name', 'like', '%' .$q. '%')
         ->orderBy('name','ASC')
-        ->with('roles')->paginate(env('PAR_PAGE'));
+        ->with('roles:id,name','users:id,name')->paginate(env('PAR_PAGE'));
 
-        $roles=Role::orderBy('name','ASC')->get();
-        return response()->json(['permissions'=>$permissions,'roles'=>$roles]);
+        $roles=Role::select('id','name')->orderBy('name','ASC')->get();
+        $users=User::select('id','name')->orderBy('name','ASC')->get();
+
+        return response()->json(['permissions'=>$permissions,'roles'=>$roles,'users'=>$users]);
     }
 
 
@@ -29,10 +32,12 @@ class PermissionController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255','unique:permissions'],
         ]);
-        $roles=explode(",",$request->roles);
-        $role_collection=Role::WhereIn('id',  $roles)->get();
+        $user_collection=User::WhereIn('id',  $request->users)->get();
+        $role_collection=Role::WhereIn('id',  $request->roles)->get();
         $permission = Permission::create(['name' => $request->name]);
         $permission->syncRoles($role_collection);
+        $permission->users()->attach($user_collection);
+        // $permission->roles()->attach($roles_collection);
 
 
         return response()->json($permission);
@@ -44,12 +49,17 @@ class PermissionController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255','unique:permissions,name,'.$request->id],
         ]);
-        $roles=explode(",",$request->roles);
+
+        $user_collection=User::WhereIn('id',  $request->users)->get();
+        $role_collection=Role::WhereIn('id',  $request->roles)->get();
+
 
         $permission = Permission::find($request->id);
         $permission->name=$request->name;
         $permission->save();
-        $permission->roles()->sync($roles);
+        $permission->roles()->sync($role_collection);
+        // $permission->syncRoles($role_collection);
+        $permission->users()->sync($user_collection);
     }
 
     /**

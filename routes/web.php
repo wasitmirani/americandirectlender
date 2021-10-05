@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\Backend\user\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +24,13 @@ use App\Http\Controllers\backend\DashboardController;
 Route::get('/',[FrontendController::class,'index'])->name('index');
 Route::get('/refinance',[FrontendController::class,'refinance'])->name('refinance');
 Route::get('/contact',[FrontendController::class,'contactUs'])->name('contact');
+Route::get('/appform',[FrontendController::class,'appform'])->name('app.form');
+Route::post('/add/appform',[FrontendController::class,'storeAppForm'])->name('store.app.form');
 
 
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+Route::post('/api/logout',[UserController::class,'logout']);
 
 Route::middleware('auth')->prefix('dashboard')->group(function(){
     Route::get('/',[DashboardController::class,'index'])->name('dashboard');

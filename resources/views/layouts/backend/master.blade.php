@@ -98,7 +98,7 @@
       </footer>
   </div>
   <script>
-          window.primarycolor="#665ed5";
+          window.primarycolor="#1e204f";
 window.appname={!! json_encode(config('app.name'),true)!!};
      @auth
 
