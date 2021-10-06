@@ -2112,6 +2112,13 @@ Vue.filter("timeformat", function (value) {
     return moment__WEBPACK_IMPORTED_MODULE_4___default().utc(String(value)).local().fromNow();
   }
 });
+Vue.directive('can', function (el, binding, vnode) {
+  if (permissions.indexOf(binding.value) !== -1) {
+    return vnode.elm.hidden = false;
+  } else {
+    return vnode.elm.hidden = true;
+  }
+});
 var app = new Vue({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -87355,6 +87362,26 @@ var map = {
 		9,
 		"resources_js_components_backend_components_SearchInput_vue"
 	],
+	"./components/backend/pages/content/application/ApplicationsComponent": [
+		"./resources/js/components/backend/pages/content/application/ApplicationsComponent.vue",
+		9,
+		"resources_js_components_backend_pages_content_application_ApplicationsComponent_vue"
+	],
+	"./components/backend/pages/content/application/ApplicationsComponent.vue": [
+		"./resources/js/components/backend/pages/content/application/ApplicationsComponent.vue",
+		9,
+		"resources_js_components_backend_pages_content_application_ApplicationsComponent_vue"
+	],
+	"./components/backend/pages/content/application/components/ApplicationCard": [
+		"./resources/js/components/backend/pages/content/application/components/ApplicationCard.vue",
+		9,
+		"resources_js_components_backend_pages_content_application_components_ApplicationCard_vue"
+	],
+	"./components/backend/pages/content/application/components/ApplicationCard.vue": [
+		"./resources/js/components/backend/pages/content/application/components/ApplicationCard.vue",
+		9,
+		"resources_js_components_backend_pages_content_application_components_ApplicationCard_vue"
+	],
 	"./components/backend/pages/content/notification/SendNotifyComponent": [
 		"./resources/js/components/backend/pages/content/notification/SendNotifyComponent.vue",
 		9,
@@ -87632,7 +87659,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\laragon\\\\www\\\\
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_ExampleComponent_vue":1,"resources_js_components_backend_components_AvatarComponent_vue":1,"resources_js_components_backend_components_BreadcrumbComponent_vue":1,"resources_js_components_backend_components_PrimaryButton_vue":1,"resources_js_components_backend_components_SearchInput_vue":1,"resources_js_components_backend_pages_content_notification_SendNotifyComponent_vue":1,"resources_js_components_backend_pages_dashboard_HomeComponent_vue":1,"resources_js_components_backend_pages_error_404Component_vue":1,"resources_js_components_backend_pages_management_permission_PermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionTable_vue":1,"resources_js_components_backend_pages_management_role_RoleComponent_vue":1,"resources_js_components_backend_pages_management_role_RoleTable_vue":1,"resources_js_components_backend_pages_management_user_UserComponent_vue":1,"resources_js_components_backend_pages_management_user_UserFormComponent_vue":1,"resources_js_components_backend_pages_management_user_UsersTable_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_ExampleComponent_vue":1,"resources_js_components_backend_components_AvatarComponent_vue":1,"resources_js_components_backend_components_BreadcrumbComponent_vue":1,"resources_js_components_backend_components_PrimaryButton_vue":1,"resources_js_components_backend_components_SearchInput_vue":1,"resources_js_components_backend_pages_content_application_ApplicationsComponent_vue":1,"resources_js_components_backend_pages_content_application_components_ApplicationCard_vue":1,"resources_js_components_backend_pages_content_notification_SendNotifyComponent_vue":1,"resources_js_components_backend_pages_dashboard_HomeComponent_vue":1,"resources_js_components_backend_pages_error_404Component_vue":1,"resources_js_components_backend_pages_management_permission_PermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionTable_vue":1,"resources_js_components_backend_pages_management_role_RoleComponent_vue":1,"resources_js_components_backend_pages_management_role_RoleTable_vue":1,"resources_js_components_backend_pages_management_user_UserComponent_vue":1,"resources_js_components_backend_pages_management_user_UserFormComponent_vue":1,"resources_js_components_backend_pages_management_user_UsersTable_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

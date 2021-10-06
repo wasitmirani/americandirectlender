@@ -20,19 +20,19 @@ class HelperComponent {
                             setSubMenu(
                               "Users",
                                 null,
-                                null,
+                                "users-view",
                                  "/users",
                             ),
                             setSubMenu(
                                 "Roles",
                                   null,
-                                  null,
+                                  "roles-view",
                                    "/roles",
                             ),
                             setSubMenu(
                                 "Permissions",
                                   null,
-                                  null,
+                                  "permissions-view",
                                    "/permissions",
                               ),
 
@@ -42,14 +42,14 @@ class HelperComponent {
 
                 ],
                 [
-                    "single_link" => setSingleLink( "Notify","bell",null,"/send/notify"),
+                    "single_link" => setSingleLink( "Notify","bell","notify-view","/send/notify"),
                 ],
 
                 [
                     "heading"=>"Content",
                 ],
                 [
-                    "single_link" => setSingleLink( "Applications","file-minus",null,"/"),
+                    "single_link" => setSingleLink( "Applications","file-minus","app-view","/customer/applications"),
                 ],
 
 

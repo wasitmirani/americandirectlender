@@ -1,8 +1,10 @@
     <div class="page-main-header">
+        {{-- /  <img class="img-fluid" style="    width: 51px;
+            height: 40px;" src="{{asset('frontend/assets/images/logo.png')}}" alt=""> --}}
       <div class="main-header-right row m-0">
         <div class="main-header-left">
-          <div class="logo-wrapper" style="text-align: center;" ><a href="{{route('dashboard')}}"><small><strong><img class="img-fluid" style="    width: 51px;
-            height: 40px;" src="{{asset('frontend/assets/images/logo.png')}}" alt=""></a>{{config('app.name')}}</strong>  </small> </a></div>
+          <div class="logo-wrapper" style="text-align: center; font-size: 16px;" ><a href="{{route('dashboard')}}"><small><strong>
+            </a>{{config('app.name')}}</strong>  </small> </a></div>
           <div class="dark-logo-wrapper"><a href="{{route('dashboard')}}"><img class="img-fluid" src="{{asset('frontend/assets/images/dark-logo.png')}}" alt=""></a></div>
           <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle"></i></div>
         </div>

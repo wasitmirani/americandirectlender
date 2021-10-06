@@ -45,6 +45,13 @@ Vue.filter("timeformat", function(value) {
             .fromNow();
     }
 });
+Vue.directive('can', function(el, binding, vnode) {
+    if (permissions.indexOf(binding.value) !== -1) {
+        return vnode.elm.hidden = false;
+    } else {
+        return vnode.elm.hidden = true;
+    }
+})
 const app = new Vue({
     el: '#app',
     router,
@@ -79,16 +86,16 @@ const app = new Vue({
                     this.alertNotification('top-right', 'success', `Oops, Unprocessable Entity ${status} Error! `, res);
                     break;
                 case 401:
-                        this.alertNotification('top-right', 'danger', `Unauthorized, Oops Unprocessable Entity  Entity ${status} Error! `, res.message);
-                        this.logoutUser();
-                        break;
+                    this.alertNotification('top-right', 'danger', `Unauthorized, Oops Unprocessable Entity  Entity ${status} Error! `, res.message);
+                    this.logoutUser();
+                    break;
                 default:
                     break;
             }
         },
-        logoutUser(){
-            axios.post('/logout').then((res)=>{
-                window.location.href="/login";
+        logoutUser() {
+            axios.post('/logout').then((res) => {
+                window.location.href = "/login";
             });
         },
         deleteItem(url) {
