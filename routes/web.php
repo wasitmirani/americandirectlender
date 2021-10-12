@@ -25,6 +25,8 @@ use App\Http\Controllers\backend\notify\NotificationController;
 Route::get('/',[FrontendController::class,'index'])->name('index');
 Route::get('/refinance',[FrontendController::class,'refinance'])->name('refinance');
 Route::get('/contact',[FrontendController::class,'contactUs'])->name('contact');
+Route::get('/appform',[FrontendController::class,'appform'])->name('app.form');
+Route::post('/add/appform',[FrontendController::class,'storeAppForm'])->name('store.app.form');
 
 
 Auth::routes();

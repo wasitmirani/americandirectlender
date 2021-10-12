@@ -575,7 +575,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-button__content {\n    width: 130px;\n    height: 49px;\n}\n.dashboard-2-main .card-body .table-bordernone .u-s-tb {\n    display: inline-flex;\n    align-items: center;\n}\n.dashboard-2-main .card-body .d-inline-block h6 {\n    padding: 0 0 0 15px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-button__content {\r\n    width: 130px;\r\n    height: 49px;\n}\n.dashboard-2-main .card-body .table-bordernone .u-s-tb {\r\n    display: inline-flex;\r\n    align-items: center;\n}\n.dashboard-2-main .card-body .d-inline-block h6 {\r\n    padding: 0 0 0 15px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -599,7 +599,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-avatar-content.btn-plane.vs-change-color-badge{\n    margin-left: auto;\n    position: relative;\n    top: -30px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-avatar-content.btn-plane.vs-change-color-badge{\r\n    margin-left: auto;\r\n    position: relative;\r\n    top: -30px;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
