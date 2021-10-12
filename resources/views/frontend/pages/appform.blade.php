@@ -36,6 +36,9 @@
     </section>
      <section class="signup-step-container">
         <div class="container">
+            @if(Session::has('message'))
+            <p class="alert alert-success">{{ Session::get('message') }}</p>
+            @endif
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
                     <div class="wizard">
@@ -56,7 +59,7 @@
                                 </li>
                             </ul>
                         </div>
-                        
+
                         <form role="form" method="post" action="{{route('store.app.form')}}" class="login-box">
                         @csrf
                             <div class="tab-content" id="main_form myTabContent">
@@ -96,7 +99,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>02. Property Address (if known, confirm loan limits in Lending Pad, as they are based on city/county and might be jumbo under $822k):</label>
@@ -106,7 +109,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label> 03. Type of Property:</label>
-                                                <select name="country" class="form-control" id="country" name="property_type">
+                                                <select  class="form-control" id="country" name="property_type">
                                                     <option value="" selected="selected">House</option>
                                                     <option value="">Condo</option>
                                                     <option value="">Townhouse</option>
@@ -199,7 +202,7 @@
                                             <div class="form-group">
                                                 <label>Purchase</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" name="purchase">
+                                                    <input class="form-check-input" type="checkbox" value="yes" id="defaultCheck2" name="purchase">
                                                     <label class="form-check-label" for="defaultCheck2">
                                                     </label>
                                                     <div id="emailHelp" class="form-text">(*Closing costs cannot be financed on new purchase)</div>
@@ -210,13 +213,13 @@
                                             <div class="form-group ">
                                                 <label>05. Do You Have a Second Loan? </label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault7" >
+                                                    <input class="form-check-input" type="radio" name="second_loan" value="yes" id="flexRadioDefault7" >
                                                     <label class="form-check-label" for="flexRadioDefault7">
                                                         Yes
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault8">
+                                                    <input class="form-check-input" type="radio" name="second_loan" value="no" id="flexRadioDefault8">
                                                     <label class="form-check-label" for="flexRadioDefault8">
                                                         No
                                                     </label>
@@ -225,23 +228,23 @@
                                             <div class="form-group ">
                                                 <label>If Yes, </label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault9" >
+                                                    <input class="form-check-input" type="radio" name="is_second_loan" value="payoff" id="flexRadioDefault9" >
                                                     <label class="form-check-label" for="flexRadioDefault9">
                                                         Payoff
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault10">
+                                                    <input class="form-check-input" type="radio" name="is_second_loan" value="subordinate" id="flexRadioDefault10">
                                                     <label class="form-check-label" for="flexRadioDefault10">
                                                         Subordinate
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    
-                                    
+
+
                                     <ul class="list-inline pull-right">
                                         <li><button type="button" class="default-btn prev-step">Back</button></li>
                                         <li><button type="button" class="default-btn next-step skip-btn">Skip</button></li>
@@ -255,19 +258,19 @@
                                             <div class="form-group ">
                                                 <label>06. Loan Amount:</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault11" >
+                                                    <input class="form-check-input" type="radio" name="loan_amount" value="0-548k" id="flexRadioDefault11" >
                                                     <label class="form-check-label" for="flexRadioDefault11">
                                                         0-548k
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault12">
+                                                    <input class="form-check-input" type="radio" name="loan_amount"  value="0-548k" id="flexRadioDefault12">
                                                     <label class="form-check-label" for="flexRadioDefault12">
                                                         0-548k
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault13">
+                                                    <input class="form-check-input" type="radio" name="loan_amount"  value="$822k+" id="flexRadioDefault13">
                                                     <label class="form-check-label" for="flexRadioDefault13">
                                                         $822k+
                                                     </label>
@@ -278,16 +281,16 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>07. Cash Reserves</label>
-                                                <input class="form-control" type="number" name="name" placeholder="$" value="$">
+                                                <input class="form-control" type="number" name="cash_reserve"  placeholder="$" value="$">
                                                 <div id="emailHelp" class="form-text">(this can be approximate, not held after escrow close, jumbo/investment loans usually require 6-12 months depending on the program (must be checked later)) </div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>08. FICO Score(s): *</label>
-                                                <input class="form-control" type="text" name="name" placeholder="Experian______">
-                                                <input class="form-control" type="text" name="name" placeholder="Equifax______">
-                                                <input class="form-control" type="text" name="name" placeholder="Transunion______">
+                                                <input class="form-control" type="text" name="fico[]" placeholder="Experian______">
+                                                <input class="form-control" type="text" name="fico[]" placeholder="Equifax______">
+                                                <input class="form-control" type="text" name="fico[]" placeholder="Transunion______">
                                                 <div id="emailHelp" class="form-text">(*we use the middle score) </div>
                                             </div>
                                         </div>
@@ -295,19 +298,19 @@
                                             <div class="form-group ">
                                                 <label>09. Loan Doc Type:</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault14" >
+                                                    <input class="form-check-input" type="radio" name="loan_doc_type" value="full"  id="flexRadioDefault14" >
                                                     <label class="form-check-label" for="flexRadioDefault14">
                                                         Full
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault15">
+                                                    <input class="form-check-input" type="radio" name="loan_doc_type" value="bank_statement" id="flexRadioDefault15">
                                                     <label class="form-check-label" for="flexRadioDefault15">
                                                         Bank Statements
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault16">
+                                                    <input class="form-check-input" type="radio" name="loan_doc_type" value="no_doc" id="flexRadioDefault16">
                                                     <label class="form-check-label" for="flexRadioDefault16">
                                                         No Doc
                                                     </label>
@@ -318,13 +321,13 @@
                                             <div class="form-group ">
                                                 <label>10. Occupant: </label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault6" id="flexRadioDefault17" >
+                                                    <input class="form-check-input" type="radio" name="occupant" value="owner" id="flexRadioDefault17" >
                                                     <label class="form-check-label" for="flexRadioDefault17">
                                                         Owner
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault6" id="flexRadioDefault18">
+                                                    <input class="form-check-input" type="radio" name="occupant" value=investment" id="flexRadioDefault18">
                                                     <label class="form-check-label" for="flexRadioDefault18">
                                                         Investment/Tenant
                                                     </label>
@@ -335,97 +338,97 @@
                                             <div class="form-group ">
                                                 <label>11. Income Type:</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault7" id="flexRadioDefault19" >
+                                                    <input class="form-check-input" type="radio" name="income_type" value="w-2" id="flexRadioDefault19" >
                                                     <label class="form-check-label" for="flexRadioDefault19">
                                                         W-2
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault7" id="flexRadioDefault20">
+                                                    <input class="form-check-input" type="radio" name="income_type" value="1099" id="flexRadioDefault20">
                                                     <label class="form-check-label" for="flexRadioDefault20">
                                                         1099
                                                     </label>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Please explain/clarify any other applicable sources of income:</label>
-                                                    <input class="form-control" type="text" name="name" placeholder="">
+                                                    <input class="form-control" type="text" name="icome_source" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>12. Please Note any Recent Promotions, Changes in Salary, and Whether You are Paying Yourself:</label>
-                                                <input class="form-control" type="text" name="name" placeholder="">
+                                                <input class="form-control" type="text" name="promotion_detail" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group ">
                                                 <label>13. If a Business, which type?</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault21" >
+                                                    <input class="form-check-input" type="radio" name="business_type" value="DBA" id="flexRadioDefault21" >
                                                     <label class="form-check-label" for="flexRadioDefault21">
                                                         DBA
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault22">
+                                                    <input class="form-check-input" type="radio" name="business_type" value="LLC" id="flexRadioDefault22">
                                                     <label class="form-check-label" for="flexRadioDefault22">
                                                         LLC
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault23">
+                                                    <input class="form-check-input" type="radio" name="business_type" value="C-Corp" id="flexRadioDefault23">
                                                     <label class="form-check-label" for="flexRadioDefault23">
                                                         C-Corp
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault24">
+                                                    <input class="form-check-input" type="radio" name="business_type" value="C-Corp" id="flexRadioDefault24">
                                                     <label class="form-check-label" for="flexRadioDefault24">
                                                         C-Corp
                                                     </label>
                                                 </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault25">
+                                                {{-- <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="business_type" value="" id="flexRadioDefault25">
                                                     <label class="form-check-label" for="flexRadioDefault25">
                                                         C-Corp
                                                     </label>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group ">
                                                 <label>14. Is Business Listed Online or on Social Media?</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault9" id="flexRadioDefault26" >
+                                                    <input class="form-check-input" type="radio" name="is_oline" value="yes" id="flexRadioDefault26" >
                                                     <label class="form-check-label" for="flexRadioDefault26">
                                                         Yes
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault9" id="flexRadioDefault27">
+                                                    <input class="form-check-input" type="radio" name="is_oline" value="no" id="flexRadioDefault27">
                                                     <label class="form-check-label" for="flexRadioDefault27">
                                                         No
                                                     </label>
                                                 </div>
                                                 <div class="form-group">
                                                     <label> If not, why?</label>
-                                                    <input class="form-control" type="text" name="name" placeholder="">
+                                                    <input class="form-control" type="text" name="is_online_reason" placeholder="">
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group ">
                                                 <label>15. Tax Returns Provided:</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault10" id="flexRadioDefault28" >
+                                                    <input class="form-check-input" type="radio" name="tax_return_provided" value="yes" id="flexRadioDefault28" >
                                                     <label class="form-check-label" for="flexRadioDefault28">
                                                         Yes
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault10" id="flexRadioDefault29">
+                                                    <input class="form-check-input" type="radio" name="tax_return_provided" value="no" id="flexRadioDefault29">
                                                     <label class="form-check-label" for="flexRadioDefault29">
                                                         No
                                                     </label>
@@ -435,26 +438,26 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>16. List Any Recently Closed/Opened Business(es): </label>
-                                                <input class="form-control" type="text" name="name" placeholder="">
+                                                <input class="form-control" type="text" name="recent_busines" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group ">
                                                 <label> 17. Number of Years in Same Line of Business:</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault11" id="flexRadioDefault30" >
+                                                    <input class="form-check-input" type="radio" name="business_line" value="1-2 Year(s)" id="flexRadioDefault30" >
                                                     <label class="form-check-label" for="flexRadioDefault30">
                                                         1-2 Year(s)
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault11" id="flexRadioDefault31">
+                                                    <input class="form-check-input" type="radio" name="business_line" value="2-5 Years 2-5 Years" id="flexRadioDefault31">
                                                     <label class="form-check-label" for="flexRadioDefault31">
                                                         2-5 Years 2-5 Years
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault11" id="flexRadioDefault32">
+                                                    <input class="form-check-input" type="radio" name="business_line" value="5+ Years" id="flexRadioDefault32">
                                                     <label class="form-check-label" for="flexRadioDefault32">
                                                         5+ Years
                                                     </label>
@@ -462,7 +465,7 @@
                                                 <div id="emailHelp" class="form-text">(*2 years required unless you received a recent degree, certificate, training etc.) </div>
                                                 <div class="form-group">
                                                     <label> Please advise:</label>
-                                                    <input class="form-control" type="text" name="name" placeholder="">
+                                                    <input class="form-control" type="text" name="advice" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
@@ -470,13 +473,13 @@
                                             <div class="form-group ">
                                                 <label>18.  Are any Business Partners a Spouse/Domestic/Civil Partner? </label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault12" id="flexRadioDefault33" >
+                                                    <input class="form-check-input" type="radio" name="is_business_partner" id="flexRadioDefault33" >
                                                     <label class="form-check-label" for="flexRadioDefault33">
                                                         Yes
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault12" id="flexRadioDefault34">
+                                                    <input class="form-check-input" type="radio" name="is_business_partner" id="flexRadioDefault34">
                                                     <label class="form-check-label" for="flexRadioDefault34">
                                                         No
                                                     </label>
@@ -487,25 +490,25 @@
                                             <div class="form-group ">
                                                 <label>19. Credit/Financial History:</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault15" id="flexRadioDefault35" >
+                                                    <input class="form-check-input" type="radio" name="financial_history" value="Foreclosure" id="flexRadioDefault35" >
                                                     <label class="form-check-label" for="flexRadioDefault35">
                                                         Foreclosure
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault15" id="flexRadioDefault36">
+                                                    <input class="form-check-input" type="radio" name="financial_history" value="Bankruptcy" id="flexRadioDefault36">
                                                     <label class="form-check-label" for="flexRadioDefault36">
                                                         Bankruptcy
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault15" id="flexRadioDefault37">
+                                                    <input class="form-check-input" type="radio" name="financial_history" value="Late Payment" id="flexRadioDefault37">
                                                     <label class="form-check-label" for="flexRadioDefault37">
                                                         Late Payment
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault15" id="flexRadioDefault38">
+                                                    <input class="form-check-input" type="radio" name="financial_history" value="Collection" id="flexRadioDefault38">
                                                     <label class="form-check-label" for="flexRadioDefault38">
                                                         Collection
                                                     </label>
@@ -516,30 +519,30 @@
                                             <div class="form-group">
                                                 <label>20. If Investment Property: </label>
                                                 <label>Monthly Rent $ </label>
-                                                <input class="form-control" type="number" name="name" placeholder="$" value="$">
+                                                <input class="form-control" type="number" name="investment_property" placeholder="$" value="$">
                                             </div>
                                             <label>Renovation</label>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault13" id="flexRadioDefault365" >
+                                                <input class="form-check-input" type="radio" name="renovation" value="yes" id="flexRadioDefault365" >
                                                 <label class="form-check-label" for="flexRadioDefault365">
                                                     Yes
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault13" id="flexRadioDefault375">
+                                                <input class="form-check-input" type="radio" name="renovation" value="no" id="flexRadioDefault375">
                                                 <label class="form-check-label" for="flexRadioDefault375">
                                                     No
                                                 </label>
                                             </div>
                                             <label>Mortgage Statement Provided:</label>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault14" id="flexRadioDefault385" >
+                                                <input class="form-check-input" type="radio" name="mortgage" value="yes" id="flexRadioDefault385" >
                                                 <label class="form-check-label" for="flexRadioDefault385">
                                                     Yes
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault14" id="flexRadioDefault395">
+                                                <input class="form-check-input" type="radio" name="mortgage" value="no" id="flexRadioDefault395">
                                                 <label class="form-check-label" for="flexRadioDefault395">
                                                     No
                                                 </label>
@@ -558,13 +561,13 @@
                                         <div class="col-md-12">
                                             <label>21. Is Property Insured:</label>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault13" id="flexRadioDefault365" >
+                                                <input class="form-check-input" type="radio" name="property_insured" value="yes" id="flexRadioDefault365" >
                                                 <label class="form-check-label" for="flexRadioDefault365">
                                                     Yes
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault13" id="flexRadioDefault375">
+                                                <input class="form-check-input" type="radio" name="property_insured" value="no" id="flexRadioDefault375">
                                                 <label class="form-check-label" for="flexRadioDefault375">
                                                     No
                                                 </label>
@@ -573,7 +576,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>22. List all Liabilities/Liens/Loans/Investments/Cosign on Loans: </label>
-                                                <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+                                                <textarea name="" class="form-control" id="" cols="30" rows="10" name="liabilities_loans"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -582,7 +585,7 @@
                                             expectations accordingly!!!</strong>
                                         </div>
                                     </div>
-                                    
+
                                     <ul class="list-inline pull-right">
                                         <li><button type="button" class="default-btn prev-step">Back</button></li>
                                         <li><button type="submit" class="default-btn next-step">Finish</button></li>
@@ -590,7 +593,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>
