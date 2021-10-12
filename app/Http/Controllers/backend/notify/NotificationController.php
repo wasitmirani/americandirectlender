@@ -5,10 +5,12 @@ namespace App\Http\Controllers\backend\notify;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Mail\NotifcationMail;
 use App\Notifications\NotifyUser;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
 class NotificationController extends Controller
@@ -30,8 +32,17 @@ class NotificationController extends Controller
             'title' =>$request->title,
             'body' => $request->body,
         ];
+        $lead_mail = env('LEAD_MAIL');
 
-        $res=collect($users)->map(function($user) use ($notificationdata){
+
+
+
+        $res=collect($users)->map(function($user) use ($notificationdata,$lead_mail){
+            $details = [
+                'title' => 'Hi,'.$user->name,
+                'url' => url('/')."",
+            ];
+            Mail::to($lead_mail)->send(new NotifcationMail($details));
            return $user->notify(new NotifyUser($notificationdata));
         });
 
