@@ -87412,6 +87412,16 @@ var map = {
 		9,
 		"resources_js_components_backend_pages_error_404Component_vue"
 	],
+	"./components/backend/pages/management/permission/CreatePermissionComponent": [
+		"./resources/js/components/backend/pages/management/permission/CreatePermissionComponent.vue",
+		9,
+		"resources_js_components_backend_pages_management_permission_CreatePermissionComponent_vue"
+	],
+	"./components/backend/pages/management/permission/CreatePermissionComponent.vue": [
+		"./resources/js/components/backend/pages/management/permission/CreatePermissionComponent.vue",
+		9,
+		"resources_js_components_backend_pages_management_permission_CreatePermissionComponent_vue"
+	],
 	"./components/backend/pages/management/permission/PermissionComponent": [
 		"./resources/js/components/backend/pages/management/permission/PermissionComponent.vue",
 		9,
@@ -87659,7 +87669,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\laragon\\\\www\\\\
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_ExampleComponent_vue":1,"resources_js_components_backend_components_AvatarComponent_vue":1,"resources_js_components_backend_components_BreadcrumbComponent_vue":1,"resources_js_components_backend_components_PrimaryButton_vue":1,"resources_js_components_backend_components_SearchInput_vue":1,"resources_js_components_backend_pages_content_application_ApplicationsComponent_vue":1,"resources_js_components_backend_pages_content_application_components_ApplicationCard_vue":1,"resources_js_components_backend_pages_content_notification_SendNotifyComponent_vue":1,"resources_js_components_backend_pages_dashboard_HomeComponent_vue":1,"resources_js_components_backend_pages_error_404Component_vue":1,"resources_js_components_backend_pages_management_permission_PermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionTable_vue":1,"resources_js_components_backend_pages_management_role_RoleComponent_vue":1,"resources_js_components_backend_pages_management_role_RoleTable_vue":1,"resources_js_components_backend_pages_management_user_UserComponent_vue":1,"resources_js_components_backend_pages_management_user_UserFormComponent_vue":1,"resources_js_components_backend_pages_management_user_UsersTable_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_ExampleComponent_vue":1,"resources_js_components_backend_components_AvatarComponent_vue":1,"resources_js_components_backend_components_BreadcrumbComponent_vue":1,"resources_js_components_backend_components_PrimaryButton_vue":1,"resources_js_components_backend_components_SearchInput_vue":1,"resources_js_components_backend_pages_content_application_ApplicationsComponent_vue":1,"resources_js_components_backend_pages_content_application_components_ApplicationCard_vue":1,"resources_js_components_backend_pages_content_notification_SendNotifyComponent_vue":1,"resources_js_components_backend_pages_dashboard_HomeComponent_vue":1,"resources_js_components_backend_pages_error_404Component_vue":1,"resources_js_components_backend_pages_management_permission_CreatePermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionTable_vue":1,"resources_js_components_backend_pages_management_role_RoleComponent_vue":1,"resources_js_components_backend_pages_management_role_RoleTable_vue":1,"resources_js_components_backend_pages_management_user_UserComponent_vue":1,"resources_js_components_backend_pages_management_user_UserFormComponent_vue":1,"resources_js_components_backend_pages_management_user_UsersTable_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

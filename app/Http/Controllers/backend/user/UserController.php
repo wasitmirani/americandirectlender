@@ -30,9 +30,7 @@ class UserController extends Controller
         ->latest()->with('user:id,name','roles')->paginate((int)env('PER_PAGE'));
         return response()->json(['users'=>$users,'total_users'=>$total_users,'roles'=>$agents]);
 
-    // $users = User::all();
-    // $allusers = User::with('roles')->latest()->paginate(env('PER_PAGE'));
-    // return response()->json(['users'=>$users, 'allusers'=>$allusers]);
+
     }
 
     public function getRolesPermissions(){

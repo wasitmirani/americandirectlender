@@ -33,7 +33,6 @@ class NotificationController extends Controller
 
         $res=collect($users)->map(function($user) use ($notificationdata){
            return $user->notify(new NotifyUser($notificationdata));
-            // return Notification::send($user, new NotifyUser($notificationdata));
         });
 
         return response()->json(['notifications'=>$res]);
