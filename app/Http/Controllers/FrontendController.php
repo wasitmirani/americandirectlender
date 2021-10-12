@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AppForm;
+use App\Models\Contact;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Mail\ApplicationMail;
@@ -127,6 +128,36 @@ class FrontendController extends Controller
         }
 
 
+
+    }
+
+
+    public function contactUs(){
+  
+        return view('frontend.pages.contact');
+
+    }
+
+    public function contact(Request $request){
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'message' => 'required'
+        ]);
+
+        $message = new Contact;
+        $message->name = $request->name;
+        $message->email = $request->email;
+        $message->phone = $request->phone;
+        $message->message = $request->message;
+        if($message->save()){
+
+            return back()->with('message','Your Details Submited Successfully');
+        }else{
+            return back()->with('message','Faile To Send Message');
+        }    
 
     }
 }

@@ -20,6 +20,7 @@
     <link href="{{asset('frontend/assets/slick-slider/slick/slick-theme.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/assets/slick-slider/slick/slick.css')}}" rel="stylesheet">
     <title>American Direct Lender</title>
+    @yield('style')
   </head>
   <body>
 
