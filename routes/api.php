@@ -36,12 +36,14 @@ Route::prefix('management')->group(function () {
     Route::post('remove-all/users',[UserController::class,'removeAllUsers']);
     Route::get('/roles-perimissions',[UserController::class,'getRolesPermissions']);
 
-
+    Route::resource('application', UserController::class);
     Route::resource('role', RoleController::class);
     Route::post('remove-all/roles',[UserController::class,'removeAllRoles']);
 
     Route::resource('permission', PermissionController::class);
     Route::post('remove-all/permissions',[UserController::class,'removeAllPermissions']);
+
+
 
 });
 });
