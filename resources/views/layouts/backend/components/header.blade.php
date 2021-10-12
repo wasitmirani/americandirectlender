@@ -24,7 +24,7 @@
             <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
 
             <li class="onhover-dropdown">
-              <div class="notification-box"><i data-feather="bell"></i><span class="dot-animated text-danger">{{count(auth()->user()->unreadNotifications )}}</span></div>
+              <div class="notification-box"><router-link to="/send/notify"> <i data-feather="bell"></i><span class="dot-animated text-danger">{{count(auth()->user()->unreadNotifications )}}</span></router-link></div>
               <ul class="notification-dropdown onhover-show-div">
 
                   @foreach (auth()->user()->unreadNotifications as $notification)
