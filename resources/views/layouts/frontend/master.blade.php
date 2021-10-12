@@ -7,8 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" >
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet" >
+    <link href="{{asset('frontend/assets/css/responsive.css')}}" rel="stylesheet" >
+    <link href="{{asset('frontend/assets/slick-slider/slick/slick-theme.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/assets/slick-slider/slick/slick.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet" >
     <link href="{{asset('frontend/assets/slick-slider/slick/slick-theme.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/assets/slick-slider/slick/slick.css')}}" rel="stylesheet">
@@ -31,7 +38,7 @@
       <div class="row">
         <div class="col-lg-4">
           <div class="footer1">
-            <img src="frontend/assets/images/logo.png">
+            <img src="{{asset('frontend/assets/images/logo.png')}}" style="width:165px;">
             <p>Knowing how to get a mortgage can help you stay organized during the home buying process. Learn how to navigate the process of getting a mortgage, step by step.</p>
           </div>
         </div>
@@ -96,8 +103,12 @@
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
   <script src="{{asset('frontend/assets/slick-slider/slick/slick.min.js')}}"></script>
   <script src="{{asset('frontend/assets/js/custom.js')}}"></script>
+
+
   <!-- Scripts -->
 </body>
 </html>

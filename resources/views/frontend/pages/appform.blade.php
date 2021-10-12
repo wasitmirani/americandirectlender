@@ -1,110 +1,604 @@
 @extends('layouts.frontend.master')
 @section('content')
 <section class="banner">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12">
-          <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{{asset('frontend/assets/images/banner.png')}}" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h2><span>Feeling good</span> about making a difference.</h2>
+                                    <p>We are here to remove obstacles that consumers often experience when trying to borrow money from a lender. Our highly trained Customer Care team will review important terms and conditions with you.</p>
+                                    <a href="#">Apply For Home Purchase</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="carousel-inner">
-              {{-- <div class="carousel-item active">
-                <img src="{{asset('frontend/assets/images/banner.png')}}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h2><span>Feeling good</span> about making a difference.</h2>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                  <a href="#">Apply For Home Purchase</a>
-                </div>
-              </div> --}}
-              {{-- <div class="carousel-item">
-                <img src="{{asset('frontend/assets/images/banner.png')}}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h2><span>Feeling good</span> about making a difference.</h2>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                  <a href="#">Apply For Home Purchase</a>
-                </div>
-              </div> --}}
-              {{-- <div class="carousel-item">
-                <img src="{{asset('frontend/assets/images/banner.png')}}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h2><span>Feeling good</span> about making a difference.</h2>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                  <a href="#">Apply For Home Purchase</a>
-                </div>
-              </div>
-            </div> --}}
-            {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-            </button> --}}
-          </div>
+            <div class="social-links">
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="num-links">
+                <ul>
+                    <h3>GET IN TOUCH!</h3>
+                    <li><a href="#">012 - 3456 - 7890</a></li>
+                    <li><a href="#">info@lorem.com</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
-      <div class="social-links">
-        <ul>
-            <li><a href="https://facebook.com/">Facebook</a></li>
-            <li><a href="https://twitter.com/">Twitter</a></li>
-            <li><a href="https://instagram.com/">Instagram</a></li>
+    </section>
+     <section class="signup-step-container">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8">
+                    <div class="wizard">
+                        <div class="wizard-inner">
+                            <div class="connecting-line"></div>
+                            <ul class="nav nav-tabs"  id="myTab" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" aria-expanded="true"><span class="round-tab">1 </span> <i>Step 1</i></a>
+                                </li>
+                                <li role="presentation" class="disabled">
+                                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" aria-expanded="false"><span class="round-tab">2</span> <i>Step 2</i></a>
+                                </li>
+                                <li role="presentation" class="disabled">
+                                    <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab"><span class="round-tab">3</span> <i>Step 3</i></a>
+                                </li>
+                                <li role="presentation" class="disabled">
+                                    <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab"><span class="round-tab">4</span> <i>Step 4</i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <form role="form" method="post" action="{{route('store.app.form')}}" class="login-box">
+                        @csrf
+                            <div class="tab-content" id="main_form myTabContent">
+                                <div class="tab-pane active" role="tabpanel" id="step1">
+                                    <h4 class="text-center">Step 1</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Date *</label>
+                                                <input type="input" class="form-control" name="date" id="inputDate" placeholder="Date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Client Name *</label>
+                                                <input class="form-control" type="text" name="name" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="default-btn next-step">Continue to next step</button></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="step2">
+                                    <h4 class="text-center">Step 2</h4>
+                                    <h5 class="text-center">To get to know our client’s needs better, we would like to ask some questions about your scenario:</h5>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>01. Property Value: $ *</label>
+                                                <input class="form-control" type="text" name="property_value" placeholder="" value="$
+                                                ">
+                                                <div id="emailHelp" class="form-text">(this can be an approximation) </div>
+                                                <div class="form-group">
+                                                    <label>Any updates or changes to the property (*which can change value)?</label>
+                                                    <input class="form-control" type="text" name="propert_update" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>02. Property Address (if known, confirm loan limits in Lending Pad, as they are based on city/county and might be jumbo under $822k):</label>
+                                                <input class="form-control" type="text" name="property_address" placeholder="" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label> 03. Type of Property:</label>
+                                                <select name="country" class="form-control" id="country" name="property_type">
+                                                    <option value="" selected="selected">House</option>
+                                                    <option value="">Condo</option>
+                                                    <option value="">Townhouse</option>
+                                                    <option value="">Gated Community</option>
+                                                    <option value=""> 2–4-Unit Property  </option>
+                                                    <option value="">Norway</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>HOA?</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" value="yes" type="radio" name="hoa" id="flexRadioDefault1" >
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" value="no" name="hoa" id="flexRadioDefault2">
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Any Mello-Roos/Other Fees or Special Taxes</label>
+                                                <input class="form-control" type="number" name="fee" placeholder="$" value="$">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>04. Cash Out</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="cash_out" value="" id="defaultCheck1">
+                                                    <label class="form-check-label" for="defaultCheck1">
+                                                    </label>
+                                                    <div id="emailHelp" class="form-text">(for cash out, your name needs to be on title for 6+ months)  </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Refinance</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="refinance" value="" id="defaultCheck1">
+                                                    <label class="form-check-label" for="defaultCheck1">
+                                                    </label>
+                                                    <div id="emailHelp" class="form-text">(if refinance, closing costs to be included? </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>Have You Made all Your Payments On-Time in the last 12 Months?</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" value="yes" name="payment_assurance" id="flexRadioDefault3" >
+                                                    <label class="form-check-label" for="flexRadioDefault3">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" value="no" name="payment_assurance" id="flexRadioDefault4">
+                                                    <label class="form-check-label" for="flexRadioDefault4">
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>If Payments Have Been Deferred, have you Made Payments on Time in the Last 3 Months?</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="payment_surity" id="flexRadioDefault5" value="yes">
+                                                    <label class="form-check-label" for="flexRadioDefault5">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="payment_surity" id="flexRadioDefault6" value="no">
+                                                    <label class="form-check-label" for="flexRadioDefault6">
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Purchase</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" name="purchase">
+                                                    <label class="form-check-label" for="defaultCheck2">
+                                                    </label>
+                                                    <div id="emailHelp" class="form-text">(*Closing costs cannot be financed on new purchase)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>05. Do You Have a Second Loan? </label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault7" >
+                                                    <label class="form-check-label" for="flexRadioDefault7">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault8">
+                                                    <label class="form-check-label" for="flexRadioDefault8">
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label>If Yes, </label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault9" >
+                                                    <label class="form-check-label" for="flexRadioDefault9">
+                                                        Payoff
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault10">
+                                                    <label class="form-check-label" for="flexRadioDefault10">
+                                                        Subordinate
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="default-btn prev-step">Back</button></li>
+                                        <li><button type="button" class="default-btn next-step skip-btn">Skip</button></li>
+                                        <li><button type="button" class="default-btn next-step">Continue</button></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="step3">
+                                    <h4 class="text-center">Step 3</h4>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>06. Loan Amount:</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault11" >
+                                                    <label class="form-check-label" for="flexRadioDefault11">
+                                                        0-548k
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault12">
+                                                    <label class="form-check-label" for="flexRadioDefault12">
+                                                        0-548k
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault13">
+                                                    <label class="form-check-label" for="flexRadioDefault13">
+                                                        $822k+
+                                                    </label>
+                                                </div>
+                                                <div id="emailHelp" class="form-text">(*category A has lowest rates, then followed by category B and then C)</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>07. Cash Reserves</label>
+                                                <input class="form-control" type="number" name="name" placeholder="$" value="$">
+                                                <div id="emailHelp" class="form-text">(this can be approximate, not held after escrow close, jumbo/investment loans usually require 6-12 months depending on the program (must be checked later)) </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>08. FICO Score(s): *</label>
+                                                <input class="form-control" type="text" name="name" placeholder="Experian______">
+                                                <input class="form-control" type="text" name="name" placeholder="Equifax______">
+                                                <input class="form-control" type="text" name="name" placeholder="Transunion______">
+                                                <div id="emailHelp" class="form-text">(*we use the middle score) </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>09. Loan Doc Type:</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault14" >
+                                                    <label class="form-check-label" for="flexRadioDefault14">
+                                                        Full
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault15">
+                                                    <label class="form-check-label" for="flexRadioDefault15">
+                                                        Bank Statements
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault16">
+                                                    <label class="form-check-label" for="flexRadioDefault16">
+                                                        No Doc
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>10. Occupant: </label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault6" id="flexRadioDefault17" >
+                                                    <label class="form-check-label" for="flexRadioDefault17">
+                                                        Owner
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault6" id="flexRadioDefault18">
+                                                    <label class="form-check-label" for="flexRadioDefault18">
+                                                        Investment/Tenant
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>11. Income Type:</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault7" id="flexRadioDefault19" >
+                                                    <label class="form-check-label" for="flexRadioDefault19">
+                                                        W-2
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault7" id="flexRadioDefault20">
+                                                    <label class="form-check-label" for="flexRadioDefault20">
+                                                        1099
+                                                    </label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Please explain/clarify any other applicable sources of income:</label>
+                                                    <input class="form-control" type="text" name="name" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>12. Please Note any Recent Promotions, Changes in Salary, and Whether You are Paying Yourself:</label>
+                                                <input class="form-control" type="text" name="name" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>13. If a Business, which type?</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault21" >
+                                                    <label class="form-check-label" for="flexRadioDefault21">
+                                                        DBA
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault22">
+                                                    <label class="form-check-label" for="flexRadioDefault22">
+                                                        LLC
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault23">
+                                                    <label class="form-check-label" for="flexRadioDefault23">
+                                                        C-Corp
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault24">
+                                                    <label class="form-check-label" for="flexRadioDefault24">
+                                                        C-Corp
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault25">
+                                                    <label class="form-check-label" for="flexRadioDefault25">
+                                                        C-Corp
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>14. Is Business Listed Online or on Social Media?</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault9" id="flexRadioDefault26" >
+                                                    <label class="form-check-label" for="flexRadioDefault26">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault9" id="flexRadioDefault27">
+                                                    <label class="form-check-label" for="flexRadioDefault27">
+                                                        No
+                                                    </label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label> If not, why?</label>
+                                                    <input class="form-control" type="text" name="name" placeholder="">
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>15. Tax Returns Provided:</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault10" id="flexRadioDefault28" >
+                                                    <label class="form-check-label" for="flexRadioDefault28">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault10" id="flexRadioDefault29">
+                                                    <label class="form-check-label" for="flexRadioDefault29">
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>16. List Any Recently Closed/Opened Business(es): </label>
+                                                <input class="form-control" type="text" name="name" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label> 17. Number of Years in Same Line of Business:</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault11" id="flexRadioDefault30" >
+                                                    <label class="form-check-label" for="flexRadioDefault30">
+                                                        1-2 Year(s)
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault11" id="flexRadioDefault31">
+                                                    <label class="form-check-label" for="flexRadioDefault31">
+                                                        2-5 Years 2-5 Years
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault11" id="flexRadioDefault32">
+                                                    <label class="form-check-label" for="flexRadioDefault32">
+                                                        5+ Years
+                                                    </label>
+                                                </div>
+                                                <div id="emailHelp" class="form-text">(*2 years required unless you received a recent degree, certificate, training etc.) </div>
+                                                <div class="form-group">
+                                                    <label> Please advise:</label>
+                                                    <input class="form-control" type="text" name="name" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>18.  Are any Business Partners a Spouse/Domestic/Civil Partner? </label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault12" id="flexRadioDefault33" >
+                                                    <label class="form-check-label" for="flexRadioDefault33">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault12" id="flexRadioDefault34">
+                                                    <label class="form-check-label" for="flexRadioDefault34">
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group ">
+                                                <label>19. Credit/Financial History:</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault15" id="flexRadioDefault35" >
+                                                    <label class="form-check-label" for="flexRadioDefault35">
+                                                        Foreclosure
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault15" id="flexRadioDefault36">
+                                                    <label class="form-check-label" for="flexRadioDefault36">
+                                                        Bankruptcy
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault15" id="flexRadioDefault37">
+                                                    <label class="form-check-label" for="flexRadioDefault37">
+                                                        Late Payment
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault15" id="flexRadioDefault38">
+                                                    <label class="form-check-label" for="flexRadioDefault38">
+                                                        Collection
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>20. If Investment Property: </label>
+                                                <label>Monthly Rent $ </label>
+                                                <input class="form-control" type="number" name="name" placeholder="$" value="$">
+                                            </div>
+                                            <label>Renovation</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault13" id="flexRadioDefault365" >
+                                                <label class="form-check-label" for="flexRadioDefault365">
+                                                    Yes
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault13" id="flexRadioDefault375">
+                                                <label class="form-check-label" for="flexRadioDefault375">
+                                                    No
+                                                </label>
+                                            </div>
+                                            <label>Mortgage Statement Provided:</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault14" id="flexRadioDefault385" >
+                                                <label class="form-check-label" for="flexRadioDefault385">
+                                                    Yes
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault14" id="flexRadioDefault395">
+                                                <label class="form-check-label" for="flexRadioDefault395">
+                                                    No
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="default-btn prev-step">Back</button></li>
+                                        <li><button type="button" class="default-btn next-step skip-btn">Skip</button></li>
+                                        <li><button type="button" class="default-btn next-step">Continue</button></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="step4">
+                                    <h4 class="text-center">Step 4</h4>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>21. Is Property Insured:</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault13" id="flexRadioDefault365" >
+                                                <label class="form-check-label" for="flexRadioDefault365">
+                                                    Yes
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault13" id="flexRadioDefault375">
+                                                <label class="form-check-label" for="flexRadioDefault375">
+                                                    No
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>22. List all Liabilities/Liens/Loans/Investments/Cosign on Loans: </label>
+                                                <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <strong>*NOTE: Processors, convey to clients that typically it takes 2-4 weeks to close on loans, but
+                                            in cases with subordinations and rapid re-score, it will take longer!!! Please set/manage
+                                            expectations accordingly!!!</strong>
+                                        </div>
+                                    </div>
+                                    
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="default-btn prev-step">Back</button></li>
+                                        <li><button type="submit" class="default-btn next-step">Finish</button></li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          </ul>
-      </div>
 
-         <div class="num-links">
-        <ul>
-            <h3>GET IN TOUCH!</h3>
-            <li><a href="#">012 - 3456 - 7890</a></li>
-            <li><a href="#">info@lorem.com</a></li>
-
-          </ul>
-      </div>
-    </div>
-
-<div class="container">
-    <h5 class="center-content">App Form</h5>
-    @if($errors->any())
-    <ul>
-  @foreach($errors->all() as $error)
-
-        <li class="alert alert-danger"> {{ $error }}</li>
-
-     @endforeach
-    </ul>
-
-    @endif
-    @if (Session::has('message'))
-    <p class="alert alert-danger">{{ Session::get('message') }}</p>
-    @endif
-    <form action="{{ route('store.app.form') }}" method="post" enctype="multipart/formater">
-        @csrf
-        <div class="form-group">
-            <label for="email">Name:</label>
-            <input type="text" class="form-control" id="email" placeholder="Enter Name" name="name">
-          </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-      </div>
-      <div class="form-group">
-        <label for="email">City:</label>
-        <input type="text" class="form-control" id="email" placeholder="Enter City" name="city">
-      </div>
-
-      <div class="form-group">
-        <label for="pwd">Phone:</label>
-        <input type="text" class="form-control" id="pwd" placeholder="Enter Phone" name="phone">
-      </div>
-      <div class="form-group">
-      <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
-  </div>
 
 @endsection
 @section('scripts')

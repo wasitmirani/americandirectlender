@@ -28,6 +28,7 @@ class FrontendController extends Controller
     }
 
     public function storeAppForm(Request $request){
+        dd('dsf');
 
         $request->validate([
             'name' => 'required',
