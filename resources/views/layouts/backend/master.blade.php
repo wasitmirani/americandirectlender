@@ -103,10 +103,20 @@ window.appname={!! json_encode(config('app.name'),true)!!};
      @auth
 
          window.user = {!! json_encode(Auth::user(), true) !!};
-         console.log(user);
+         window.permissions = {!! json_encode(Auth::user()->permissions->pluck('name'), true) !!};
+         let roles_permissions = {!! json_encode(Auth::user()->getPermissionsViaRoles()->pluck('name'), true) !!};
+         roles_permissions.map((item)=>{
+            if(permissions.indexOf(item) === -1) {
+              permissions.push(item);
+            }
+         });
+
+
+
+
      @else
          window.user = [];
-         window.Permissions = [];
+         window.permissions = [];
      @endauth
      @if(session('login')=="true" || session('login')==true)
      setTimeout(function() {

@@ -21,11 +21,14 @@ class UserController extends Controller
 
 
         $q=request('query');
+        $total_users=User::all()->count();
+        $agents=Role::select('name')->withCount('users')->get();
+
 
         $users=User::where('name', 'like', '%' . $q . '%')
         ->Orwhere('email', 'like', '%' . $q. '%')
         ->latest()->with('user:id,name','roles')->paginate((int)env('PER_PAGE'));
-       return response()->json(['users'=>$users]);
+        return response()->json(['users'=>$users,'total_users'=>$total_users,'roles'=>$agents]);
 
     // $users = User::all();
     // $allusers = User::with('roles')->latest()->paginate(env('PER_PAGE'));

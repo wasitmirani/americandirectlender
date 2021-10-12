@@ -257,6 +257,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -271,6 +297,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       users: {},
       query: "",
       loading: false,
+      total_users: 0,
+      roles: {},
       form: {
         name: ""
       },
@@ -312,6 +340,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 6;
                 return axios.get(url).then(function (res) {
                   _this.users = res.data.users;
+                  _this.total_users = res.data.total_users;
+                  _this.roles = res.data.roles;
                   _this.loading = false;
                 })["catch"](function (err) {
                   _this.$root.alertNotificationMessage(err.response.status, err.response.data);
@@ -2020,6 +2050,196 @@ var render = function() {
     "div",
     [
       _c("Breadcrumb", { attrs: { activename: "Users Management" } }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row" },
+        [
+          _c("div", { staticClass: "col-sm-6 col-xl-3 col-lg-6" }, [
+            _c("div", { staticClass: "card o-hidden border-0" }, [
+              _c("div", { staticClass: "bg-primary b-r-4 card-body" }, [
+                _c("div", { staticClass: "media static-top-widget" }, [
+                  _c("div", { staticClass: "align-self-center text-center" }, [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "feather feather-user-plus",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "24",
+                          height: "24",
+                          viewBox: "0 0 24 24",
+                          fill: "none",
+                          stroke: "currentColor",
+                          "stroke-width": "2",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d: "M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                          }
+                        }),
+                        _c("circle", { attrs: { cx: "8.5", cy: "7", r: "4" } }),
+                        _c("line", {
+                          attrs: { x1: "20", y1: "8", x2: "20", y2: "14" }
+                        }),
+                        _c("line", {
+                          attrs: { x1: "23", y1: "11", x2: "17", y2: "11" }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "media-body" }, [
+                    _c("span", { staticClass: "m-0" }, [_vm._v("Total Users")]),
+                    _vm._v(" "),
+                    _c("h4", { staticClass: "mb-0 counter" }, [
+                      _vm._v(_vm._s(_vm.total_users))
+                    ]),
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "feather feather-user-plus icon-bg",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "24",
+                          height: "24",
+                          viewBox: "0 0 24 24",
+                          fill: "none",
+                          stroke: "currentColor",
+                          "stroke-width": "2",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d: "M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                          }
+                        }),
+                        _c("circle", { attrs: { cx: "8.5", cy: "7", r: "4" } }),
+                        _c("line", {
+                          attrs: { x1: "20", y1: "8", x2: "20", y2: "14" }
+                        }),
+                        _c("line", {
+                          attrs: { x1: "23", y1: "11", x2: "17", y2: "11" }
+                        })
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.roles, function(item) {
+            return _c(
+              "div",
+              { key: item.id, staticClass: "col-sm-6 col-xl-3 col-lg-6" },
+              [
+                _c("div", { staticClass: "card o-hidden border-0" }, [
+                  _c("div", { staticClass: "bg-primary b-r-4 card-body" }, [
+                    _c("div", { staticClass: "media static-top-widget" }, [
+                      _c(
+                        "div",
+                        { staticClass: "align-self-center text-center" },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "feather feather-user-plus",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: "24",
+                                height: "24",
+                                viewBox: "0 0 24 24",
+                                fill: "none",
+                                stroke: "currentColor",
+                                "stroke-width": "2",
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d: "M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                                }
+                              }),
+                              _c("circle", {
+                                attrs: { cx: "8.5", cy: "7", r: "4" }
+                              }),
+                              _c("line", {
+                                attrs: { x1: "20", y1: "8", x2: "20", y2: "14" }
+                              }),
+                              _c("line", {
+                                attrs: {
+                                  x1: "23",
+                                  y1: "11",
+                                  x2: "17",
+                                  y2: "11"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "media-body" }, [
+                        _c("span", { staticClass: "m-0" }, [
+                          _vm._v(" " + _vm._s(item.name) + "s")
+                        ]),
+                        _vm._v(" "),
+                        _c("h4", { staticClass: "mb-0 counter" }, [
+                          _vm._v(_vm._s(item.users_count))
+                        ]),
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "feather feather-user-plus icon-bg",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "24",
+                              height: "24",
+                              viewBox: "0 0 24 24",
+                              fill: "none",
+                              stroke: "currentColor",
+                              "stroke-width": "2",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d: "M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                              }
+                            }),
+                            _c("circle", {
+                              attrs: { cx: "8.5", cy: "7", r: "4" }
+                            }),
+                            _c("line", {
+                              attrs: { x1: "20", y1: "8", x2: "20", y2: "14" }
+                            }),
+                            _c("line", {
+                              attrs: { x1: "23", y1: "11", x2: "17", y2: "11" }
+                            })
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              ]
+            )
+          })
+        ],
+        2
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-12" }, [
