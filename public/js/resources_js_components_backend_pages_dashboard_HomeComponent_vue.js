@@ -130,6 +130,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1363,6 +1410,57 @@ var render = function() {
         _vm._v(" "),
         _vm._m(2)
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xl-12 recent-order-sec" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("h5", [_vm._v("Recent Applications")]),
+            _vm._v(" "),
+            _c("table", { staticClass: "table table-bordernone" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(10, function(item) {
+                  return _c("tr", { key: item.id }, [
+                    _c("td", [
+                      _c("div", { staticClass: "media" }, [
+                        _c("img", {
+                          staticClass: "img-fluid rounded-circle",
+                          staticStyle: { width: "50px" },
+                          attrs: {
+                            src: "assets/images/user/" + item + ".jpg",
+                            alt: "",
+                            "data-original-title": "",
+                            title: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(4, true)
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("p", [_vm._v(_vm._s(_vm._f("timeformat")(Date())))])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(5, true),
+                    _vm._v(" "),
+                    _vm._m(6, true),
+                    _vm._v(" "),
+                    _c("td", [_c("p", [_vm._v(_vm._s(item) + "1231")])]),
+                    _vm._v(" "),
+                    _vm._m(7, true)
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ])
+      ])
     ])
   ])
 }
@@ -1492,6 +1590,64 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Value")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Rate")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ref-ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "media-body" }, [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("span", [_vm._v("What is Lorem Ipsum?")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("img", {
+        staticClass: "img-fluid",
+        attrs: {
+          src: "assets/images/dashboard/graph-1.png",
+          alt: "",
+          "data-original-title": "",
+          title: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("p", [_vm._v("$210326")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("p", [_vm._v("Pending")])])
   }
 ]
 render._withStripped = true

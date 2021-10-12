@@ -14,7 +14,10 @@
                       </ul>
                     </div>
                     <div class="col-md-6 p-0">
-                      <div class="form-group mb-0 me-0"></div><a class="btn btn-primary" href="projectcreate.html"> <i data-feather="plus-square"> </i>Create New Application</a>
+
+                      <div class="form-group mb-0 me-0"></div>
+                      <PrimaryButton icon="fas fa-plus"  label="Create Application"  v-on:activemodal="openModal($event)"></PrimaryButton>
+                      <!-- <a class="btn btn-primary" href="projectcreate.html"> <i data-feather="plus-square"> </i>Create New Application</a> -->
                     </div>
                   </div>
                 </div>
@@ -51,11 +54,13 @@
 
 <script>
 import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
+import PrimaryButton from "../../../components/PrimaryButton.vue";
 import ApplicationCard from "./components/ApplicationCard.vue";
 export default {
   components:{
         Breadcrumb,
         ApplicationCard,
+        PrimaryButton,
     },
 }
 </script>

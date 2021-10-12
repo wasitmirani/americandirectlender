@@ -401,6 +401,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     onSubmit: function onSubmit() {
       var _this3 = this;
 
+      this.$root.alertNotificationMessage(201, "Please Wait......");
       var formData = new FormData();
       formData = Object.assign(this.notification, formData);
       formData = Object.assign({

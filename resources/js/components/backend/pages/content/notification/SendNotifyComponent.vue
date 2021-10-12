@@ -183,7 +183,7 @@ export default {
           },
 
             onSubmit(){
-
+                this.$root.alertNotificationMessage(201,"Please Wait......")
                 let formData = new FormData();
                 formData=Object.assign(this.notification,formData);
                 formData=Object.assign({users:this.selected_users},formData)
