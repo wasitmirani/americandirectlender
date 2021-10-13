@@ -16,9 +16,11 @@ class ContactMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $data;
+
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -28,7 +30,8 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-        return $this->from('mhhassan095@gmail.com')
-        ->view('emails.applicationmail');
+        // return $this->from('mhhassan095@gmail.com')
+        // ->view('emails.applicationmail');
+        return $this->view('emails.contactmail');
     }
 }

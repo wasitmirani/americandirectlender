@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Mail\ApplicationMail;
+use App\Mail\ContactMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -153,7 +154,7 @@ class FrontendController extends Controller
         $message->phone = $request->phone;
         $message->message = $request->message;
         if($message->save()){
-            Mail::to('haseebhassan006@gmail.com')->send(new ContactMail);
+            Mail::to('haseebhassan006@gmail.com')->send(new ContactMail($message));
             return back()->with('message','Your Details Submited Successfully');
         }else{
             return back()->with('message','Faile To Send Message');
