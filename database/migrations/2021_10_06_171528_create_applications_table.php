@@ -15,7 +15,7 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->string('date');
+            $table->string('date')->nullable();
             $table->text('name')->nullable();
             $table->text('property_value')->nullable();
             $table->text('property_update')->nullable();
@@ -27,7 +27,7 @@ class CreateApplicationsTable extends Migration
             $table->string('cash_out')->nullable();
             $table->string('refinance')->nullable();
             $table->string('payment_assurance')->nullable();
-            $table->string('payment_surity');
+            $table->string('payment_surity')->nullable();
             $table->string('purchase')->nullable();
             $table->string('second_loan')->nullable();
             $table->string('loan_amount')->nullable();

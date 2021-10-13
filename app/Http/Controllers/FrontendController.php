@@ -153,7 +153,7 @@ class FrontendController extends Controller
         $message->phone = $request->phone;
         $message->message = $request->message;
         if($message->save()){
-
+            Mail::to('haseebhassan006@gmail.com')->send(new ContactMail);
             return back()->with('message','Your Details Submited Successfully');
         }else{
             return back()->with('message','Faile To Send Message');
