@@ -3,9 +3,9 @@
          <title>Contact Mail</title>
      </head>
      <body>
-         <p>Contaact Message</p>
-         <h1>{{ $data['name'] }}</h1>
-         <h1>{{ $data['email'] }}</h1>
-        <h1> {{ $data['message'] }}</h1>
+         <h1>Welcome To Ammerican Direct Lender </h1>
+         <h3>{{ $data['name'] }}</h3>
+         <h3>{{ $data['email'] }}</h3>
+        <h3> {{ $data['message'] }}</h3>
      </body>
  </html>
