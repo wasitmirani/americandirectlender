@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AppFormController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\role\RoleController;
 use App\Http\Controllers\backend\user\UserController;
@@ -25,11 +26,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
+Route::get('get/formdata',[AppFormController::class,'getFormData']);
 
 Route::middleware('auth:api')->group(function () {
 
     Route::get('/dashboard',[DashboardController::class,'getDashboard']);
-Route::prefix('management')->group(function () {
+     Route::prefix('management')->group(function () {
 
     Route::resource('user', UserController::class);
     Route::resource('notification', NotificationController::class);
@@ -45,5 +47,8 @@ Route::prefix('management')->group(function () {
 
 
 
+
+
 });
+
 });
