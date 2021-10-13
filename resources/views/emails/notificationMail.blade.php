@@ -1,7 +1,6 @@
 @component('mail::message')
 # Introduction
-
-The body of your message.
+Welcome To Ammerican Direct Lender
 
 @component('mail::button', ['url' => ''])
 Button Text
