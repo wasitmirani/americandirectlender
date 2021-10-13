@@ -24,22 +24,33 @@
             <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
 
             <li class="onhover-dropdown">
-              <div class="notification-box"><router-link to="/send/notify"> <i data-feather="bell"></i><span class="dot-animated text-danger">{{count(auth()->user()->unreadNotifications )}}</span></router-link></div>
+
+              <div class="notification-box"><i data-feather="bell"></i><span class="dot-animated text-danger">{{count(auth()->user()->unreadNotifications )}}</span></div>
+
               <ul class="notification-dropdown onhover-show-div">
 
-                  @foreach (auth()->user()->unreadNotifications as $notification)
+                  {{-- @foreach (auth()->user()->unreadNotifications as $notification) --}}
                   <li class="noti-primary">
                     <div class="media"><span class="notification-bg bg-light-primary"><i class="fas fa-bell text-primary"></i></span>
                       <div class="media-body">
-                        <div class="media-body"><span>{{$notification->data['title']}}</span>
-                            <p class="f-12 light-font">{{Str::limit($notification->data['description'],30,'.....')}}</p>
+
+                        <div class="media-body">
+                            <span>
+                                <router-link to="show/notify">
+                                bfs
+                                </router-link>
+                                </span>
+                            {{-- <p class="f-12 light-font">{{Str::limit($notification->data['description'],30,'.....')}}</p> --}}
+                            <p class="f-12 light-font">dsj</p>
                           </div>
-                          <p class="f-12">{{$notification->created_at->diffForHumans()}}</p>
+
+                          {{-- <p class="f-12">{{$notification->created_at->diffForHumans()}}</p> --}}
+                          <p>safd</p>
 
                       </div>
                     </div>
                   </li>
-                  @endforeach
+                  {{-- @endforeach --}}
               </ul>
             </li>
 

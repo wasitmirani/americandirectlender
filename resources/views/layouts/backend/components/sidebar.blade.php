@@ -1,7 +1,8 @@
 <header class="main-nav">
     <div class="sidebar-user text-center">
         <img class="img-90 rounded-circle" src="../assets/images/dashboard/1.png" alt="">
- <h6 class="mt-3 f-14 f-w-600">{{ Auth::user()->name }}</h6>
+
+        <h6 class="mt-3 f-14 f-w-600">{{ Auth::user()->name }}</h6>
       <p class="mb-0 font-roboto"></p>
 
       </ul>

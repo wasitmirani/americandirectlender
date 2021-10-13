@@ -95,6 +95,53 @@
 
     </div>
   </div>
+ <div class="col-xl-12 recent-order-sec">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <h5>Recent Applications</h5>
+                          <table class="table table-bordernone">
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Date</th>
+
+                                <th>Value</th>
+                                <th>Rate</th>
+                                <th>Ref-ID</th>
+                                <th>Status</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="item in 10" :key="item.id">
+                                <td>
+                                  <div class="media"><img class="img-fluid rounded-circle" style="width:50px" :src="'assets/images/user/'+item+'.jpg'" alt="" data-original-title="" title="">
+                                    <div class="media-body"><a href="#"><span>What is Lorem Ipsum?</span></a></div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <p>{{Date() |timeformat }}</p>
+                                </td>
+
+
+                                <td><img class="img-fluid" src="assets/images/dashboard/graph-1.png" alt="" data-original-title="" title=""></td>
+                                <td>
+                                  <p>$210326</p>
+                                </td>
+                                    <td>
+                                  <p>{{item}}1231</p>
+                                </td>
+                                <td>
+                                  <p>Pending</p>
+                                </td>
+                              </tr>
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+ </div>
     </div>
 </template>
 

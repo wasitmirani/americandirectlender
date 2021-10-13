@@ -2360,6 +2360,12 @@ var routes = [{
   },
   name: "SendNotify"
 }, {
+  path: "/show/notify",
+  component: function component() {
+    return setComponent("content/notification/ShowNotification");
+  },
+  name: "ShowNotify"
+}, {
   path: "/customer/applications",
   component: function component() {
     return setComponent("content/application/Applications");
@@ -87392,6 +87398,16 @@ var map = {
 		9,
 		"resources_js_components_backend_pages_content_notification_SendNotifyComponent_vue"
 	],
+	"./components/backend/pages/content/notification/ShowNotificationComponent": [
+		"./resources/js/components/backend/pages/content/notification/ShowNotificationComponent.vue",
+		9,
+		"resources_js_components_backend_pages_content_notification_ShowNotificationComponent_vue"
+	],
+	"./components/backend/pages/content/notification/ShowNotificationComponent.vue": [
+		"./resources/js/components/backend/pages/content/notification/ShowNotificationComponent.vue",
+		9,
+		"resources_js_components_backend_pages_content_notification_ShowNotificationComponent_vue"
+	],
 	"./components/backend/pages/dashboard/HomeComponent": [
 		"./resources/js/components/backend/pages/dashboard/HomeComponent.vue",
 		9,
@@ -87669,7 +87685,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_ExampleComponent_vue":1,"resources_js_components_backend_components_AvatarComponent_vue":1,"resources_js_components_backend_components_BreadcrumbComponent_vue":1,"resources_js_components_backend_components_PrimaryButton_vue":1,"resources_js_components_backend_components_SearchInput_vue":1,"resources_js_components_backend_pages_content_application_ApplicationsComponent_vue":1,"resources_js_components_backend_pages_content_application_components_ApplicationCard_vue":1,"resources_js_components_backend_pages_content_notification_SendNotifyComponent_vue":1,"resources_js_components_backend_pages_dashboard_HomeComponent_vue":1,"resources_js_components_backend_pages_error_404Component_vue":1,"resources_js_components_backend_pages_management_permission_CreatePermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionTable_vue":1,"resources_js_components_backend_pages_management_role_RoleComponent_vue":1,"resources_js_components_backend_pages_management_role_RoleTable_vue":1,"resources_js_components_backend_pages_management_user_UserComponent_vue":1,"resources_js_components_backend_pages_management_user_UserFormComponent_vue":1,"resources_js_components_backend_pages_management_user_UsersTable_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_ExampleComponent_vue":1,"resources_js_components_backend_components_AvatarComponent_vue":1,"resources_js_components_backend_components_BreadcrumbComponent_vue":1,"resources_js_components_backend_components_PrimaryButton_vue":1,"resources_js_components_backend_components_SearchInput_vue":1,"resources_js_components_backend_pages_content_application_ApplicationsComponent_vue":1,"resources_js_components_backend_pages_content_application_components_ApplicationCard_vue":1,"resources_js_components_backend_pages_content_notification_SendNotifyComponent_vue":1,"resources_js_components_backend_pages_content_notification_ShowNotificationComponent_vue":1,"resources_js_components_backend_pages_dashboard_HomeComponent_vue":1,"resources_js_components_backend_pages_error_404Component_vue":1,"resources_js_components_backend_pages_management_permission_CreatePermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionTable_vue":1,"resources_js_components_backend_pages_management_role_RoleComponent_vue":1,"resources_js_components_backend_pages_management_role_RoleTable_vue":1,"resources_js_components_backend_pages_management_user_UserComponent_vue":1,"resources_js_components_backend_pages_management_user_UserFormComponent_vue":1,"resources_js_components_backend_pages_management_user_UsersTable_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

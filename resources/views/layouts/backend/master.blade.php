@@ -61,42 +61,45 @@
   </div>
   <!-- Loader ends-->
   <!-- page-wrapper Start-->
-  <div class="page-wrapper compact-wrapper" id="pageWrapper">
+  <div id="app">
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
 
 
 
-    <!-- Page Header Start-->
-       @include('layouts.backend.components.header')
-    <!-- Page Header Ends                              -->
-    <!-- Page Body Start-->
-    <div id="app">
-    <div class="page-body-wrapper sidebar-icon">
-      <!-- Page Sidebar Start-->
-      @include('layouts.backend.components.sidebar')
+        <!-- Page Header Start-->
+           @include('layouts.backend.components.header')
+        <!-- Page Header Ends                              -->
+        <!-- Page Body Start-->
+      <div >
+       <div class="page-body-wrapper sidebar-icon">
+          <!-- Page Sidebar Start-->
+          @include('layouts.backend.components.sidebar')
 
-      <!-- Page Sidebar Ends-->
-      <div class="page-body dashboard-2-main">
-        <!-- Container-fluid starts-->
-        @yield('content')
-        <!-- Container-fluid Ends-->
-      </div>
-    </div>
-    </div>
-
-      <!-- footer start-->
-      <footer class="footer">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-6 footer-copyright">
-              <p class="mb-0">Copyright 2021-22 © {{config('app.name')}} All rights reserved.</p>
-            </div>
-            <div class="col-md-6">
-              <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i></p>
-            </div>
+          <!-- Page Sidebar Ends-->
+          <div class="page-body dashboard-2-main">
+            <!-- Container-fluid starts-->
+            @yield('content')
+            <!-- Container-fluid Ends-->
           </div>
         </div>
-      </footer>
+        </div>
+
+          <!-- footer start-->
+          <footer class="footer">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6 footer-copyright">
+                  <p class="mb-0">Copyright 2021-22 © {{config('app.name')}} All rights reserved.</p>
+                </div>
+                <div class="col-md-6">
+                  <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i></p>
+                </div>
+              </div>
+            </div>
+          </footer>
+      </div>
   </div>
+
   <script>
           window.primarycolor="#1e204f";
 window.appname={!! json_encode(config('app.name'),true)!!};
