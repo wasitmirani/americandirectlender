@@ -54,7 +54,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['applications', 'getApplications']
+});
 
 /***/ }),
 
@@ -142,132 +154,181 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    [
+      _vm._l(_vm.applications, function(application) {
+        return _c(
+          "div",
+          { key: application.id, staticClass: "col-xxl-4 col-lg-6" },
+          [
+            _c("div", { staticClass: "project-box" }, [
+              _c(
+                "span",
+                { staticClass: "badge badge-primary" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      attrs: {
+                        to: {
+                          name: "update-application",
+                          params: { id: application.id }
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa  fa-edit text-primary" })]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("h6", [_vm._v("Endless admin Design")]),
+              _vm._v(" "),
+              _vm._m(0, true),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(1, true),
+              _vm._v(" "),
+              _vm._m(2, true),
+              _vm._v(" "),
+              _vm._m(3, true)
+            ])
+          ]
+        )
+      }),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "pagination pagination-primary mt-4" },
+        [
+          _c("pagination", {
+            attrs: { data: _vm.applications, limit: 5 },
+            on: { "pagination-change-page": _vm.getApplications }
+          })
+        ],
+        1
+      )
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "project-box" }, [
-        _c("span", { staticClass: "badge badge-primary" }, [_vm._v("Doing")]),
-        _vm._v(" "),
-        _c("h6", [_vm._v("Endless admin Design")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "media" }, [
+    return _c("div", { staticClass: "media" }, [
+      _c("img", {
+        staticClass: "img-20 me-2 rounded-circle",
+        attrs: {
+          src: "assets/images/user/3.jpg",
+          alt: "",
+          "data-original-title": "",
+          title: ""
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "media-body" }, [
+        _c("p", [_vm._v("Themeforest, australia")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row details" }, [
+      _c("div", { staticClass: "col-6" }, [_c("span", [_vm._v("Issues ")])]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6 font-primary" }, [_vm._v("12 ")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6" }, [_c("span", [_vm._v("Resolved")])]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6 font-primary" }, [_vm._v("5")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6" }, [_c("span", [_vm._v("Comment")])]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6 font-primary" }, [_vm._v("7")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "customers" }, [
+      _c("ul", [
+        _c("li", { staticClass: "d-inline-block" }, [
           _c("img", {
-            staticClass: "img-20 me-2 rounded-circle",
+            staticClass: "img-30 rounded-circle",
             attrs: {
               src: "assets/images/user/3.jpg",
               alt: "",
               "data-original-title": "",
               title: ""
             }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "media-body" }, [
-            _c("p", [_vm._v("Themeforest, australia")])
-          ])
+          })
         ]),
         _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-          )
+        _c("li", { staticClass: "d-inline-block" }, [
+          _c("img", {
+            staticClass: "img-30 rounded-circle",
+            attrs: {
+              src: "assets/images/user/5.jpg",
+              alt: "",
+              "data-original-title": "",
+              title: ""
+            }
+          })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row details" }, [
-          _c("div", { staticClass: "col-6" }, [
-            _c("span", [_vm._v("Issues ")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 font-primary" }, [_vm._v("12 ")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6" }, [
-            _c("span", [_vm._v("Resolved")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 font-primary" }, [_vm._v("5")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6" }, [
-            _c("span", [_vm._v("Comment")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 font-primary" }, [_vm._v("7")])
+        _c("li", { staticClass: "d-inline-block" }, [
+          _c("img", {
+            staticClass: "img-30 rounded-circle",
+            attrs: {
+              src: "assets/images/user/1.jpg",
+              alt: "",
+              "data-original-title": "",
+              title: ""
+            }
+          })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "customers" }, [
-          _c("ul", [
-            _c("li", { staticClass: "d-inline-block" }, [
-              _c("img", {
-                staticClass: "img-30 rounded-circle",
-                attrs: {
-                  src: "assets/images/user/3.jpg",
-                  alt: "",
-                  "data-original-title": "",
-                  title: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "d-inline-block" }, [
-              _c("img", {
-                staticClass: "img-30 rounded-circle",
-                attrs: {
-                  src: "assets/images/user/5.jpg",
-                  alt: "",
-                  "data-original-title": "",
-                  title: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "d-inline-block" }, [
-              _c("img", {
-                staticClass: "img-30 rounded-circle",
-                attrs: {
-                  src: "assets/images/user/1.jpg",
-                  alt: "",
-                  "data-original-title": "",
-                  title: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "d-inline-block ms-2" }, [
-              _c("p", { staticClass: "f-12" }, [_vm._v("+10 More")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "project-status mt-4" }, [
-          _c("div", { staticClass: "media mb-0" }, [
-            _c("p", [_vm._v("70% ")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "media-body text-end" }, [
-              _c("span", [_vm._v("Done")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "progress", staticStyle: { height: "5px" } },
-            [
-              _c("div", {
-                staticClass:
-                  "progress-bar-animated bg-primary progress-bar-striped",
-                staticStyle: { width: "70%" },
-                attrs: {
-                  role: "progressbar",
-                  "aria-valuenow": "10",
-                  "aria-valuemin": "0",
-                  "aria-valuemax": "100"
-                }
-              })
-            ]
-          )
+        _c("li", { staticClass: "d-inline-block ms-2" }, [
+          _c("p", { staticClass: "f-12" }, [_vm._v("+10 More")])
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "project-status mt-4" }, [
+      _c("div", { staticClass: "media mb-0" }, [
+        _c("p", [_vm._v("70% ")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "media-body text-end" }, [
+          _c("span", [_vm._v("Done")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "progress", staticStyle: { height: "5px" } }, [
+        _c("div", {
+          staticClass: "progress-bar-animated bg-primary progress-bar-striped",
+          staticStyle: { width: "70%" },
+          attrs: {
+            role: "progressbar",
+            "aria-valuenow": "10",
+            "aria-valuemin": "0",
+            "aria-valuemax": "100"
+          }
+        })
       ])
     ])
   }

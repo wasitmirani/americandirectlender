@@ -37,13 +37,15 @@ const routes = [
     { path: "/roles", component: () => setComponent("management/role/Role"), name: "Roles" },
     { path: "/create/roles", component: () => setComponent("management/role/CreateRole"), name: "CreateRoles" },
     { path: "/edit/roles/:id", component: () => setComponent("management/role/CreateRole"), name: "EditRoles" },
-
     { path: "/permissions", component: () => setComponent("management/permission/Permission"), name: "permissions", },
     { path: "/send/notify", component: () => setComponent("content/notification/SendNotify"), name: "SendNotify", },
     { path: "/show/notify", component: () => setComponent("content/notification/ShowNotification"), name: "ShowNotify", },
     { path: "/customer/applications", component: () => setComponent("content/application/Applications"), name: "Customer Applications", },
-
-
+    {
+        path: "/edit/application/:id",
+        component: () => setComponent("content/application/EditApplication"),
+        name: "update-application",
+    },
 
 ];
 

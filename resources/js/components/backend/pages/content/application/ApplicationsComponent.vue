@@ -28,9 +28,18 @@
                     <div class="tab-content" id="top-tabContent">
                       <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
                         <div class="row">
-                            <div class="col-xxl-4 col-lg-6"  v-for="item in 10" :key="item.id">
-                                <ApplicationCard></ApplicationCard>
-                            </div>
+                                     <SearchInput :apiurl="'/customer/applications?page=' +this.page_num"
+                        v-on:query="isquery($event)"
+                        v-on:loading="loadingStart($event)"
+                        v-on:reload="getApplications()"
+                        v-on:filterList="filterdata($event)"
+
+                        label="Search Roles"></SearchInput>
+
+
+                                <ApplicationCard :getApplications="getApplications" :applications="applications"></ApplicationCard>
+
+
                         </div>
                       </div>
                       <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
@@ -56,12 +65,55 @@
 import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 import PrimaryButton from "../../../components/PrimaryButton.vue";
 import ApplicationCard from "./components/ApplicationCard.vue";
+import SearchInput from "../../../components/SearchInput.vue";
 export default {
   components:{
         Breadcrumb,
         ApplicationCard,
         PrimaryButton,
+        SearchInput,
     },
+      data(){
+        return {
+            applications:{},
+            query:"",
+            loading:false,
+            total_applications:0,
+            page_num:1,
+        };
+    },
+      mounted(){
+        this.getApplications();
+
+
+    },
+     methods:{
+          isquery(query) {
+            return (this.query = query);
+          },
+            loadingStart(value) {
+           console.log(value);
+            this.loading = value;
+          },
+          async getApplications(page=1){
+
+                this.loading =true;
+                this.page_num = page;
+                const url="/customer/applications?page=" + page + "&query=" + this.query;
+
+               await axios.get(url).then((res)=>{
+
+                   this.applications = res.data.applications.data;
+                   this.total_application = res.data.total_applications;
+
+                    // this.roles=res.data.roles;
+                   this.loading =false;
+               }).catch((err)=>{
+                        this.$root.alertNotificationMessage(err.response.status,err.response.data);
+
+                  });
+            },
+     }
 }
 </script>
 

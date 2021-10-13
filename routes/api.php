@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AppFormController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\role\RoleController;
 use App\Http\Controllers\backend\user\UserController;
@@ -24,7 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
+Route::get('customer/applications',[AppFormController::class,'getApplications']);
 
 Route::middleware('auth:api')->group(function () {
 

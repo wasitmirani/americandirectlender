@@ -1,7 +1,13 @@
 <template>
-  <div>
+<div>
+  <div class="col-xxl-4 col-lg-6" v-for="application in applications" :key="application.id">
 
-                            <div class="project-box"><span class="badge badge-primary">Doing</span>
+
+
+   <div class="project-box" >
+     <span class="badge badge-primary">
+         <router-link :to="{name: 'update-application', params: { id: application.id }}"><i class="fa  fa-edit text-primary"></i></router-link>
+         </span>
                               <h6>Endless admin Design</h6>
                               <div class="media"><img class="img-20 me-2 rounded-circle" src="assets/images/user/3.jpg" alt="" data-original-title="" title="">
                                 <div class="media-body">
@@ -38,11 +44,16 @@
                               </div>
                             </div>
 
-  </div>
+</div>
+ <ul class="pagination pagination-primary mt-4">
+      <pagination :data="applications" :limit="5" @pagination-change-page="getApplications"></pagination>
+</ul>
+</div>
 </template>
 
 <script>
 export default {
+    props:['applications','getApplications']
 
 }
 </script>

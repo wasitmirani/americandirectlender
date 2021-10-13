@@ -21,6 +21,7 @@ class UserController extends Controller
 
 
         $q=request('query');
+
         $total_users=User::all()->count();
         $agents=Role::select('name')->withCount('users')->get();
 

@@ -21,6 +21,7 @@
                         v-on:loading="loadingStart($event)"
                         v-on:reload="getRoles()"
                         v-on:filterList="filterdata($event)"
+
                         label="Search Roles"></SearchInput>
                     </div>
                   </div>

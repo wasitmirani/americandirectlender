@@ -12,6 +12,9 @@ class HelperComponent {
                     "single_link" => setSingleLink( "Dashboard","home",null,"/"),
                 ],
                 [
+                    "single_link" => setSingleLink( "Applications","applications",null,"/customer/applications"),
+                ],
+                [
                     "heading"=>"Management",
                     "menu"=>[
                         "title"=>'User Management',
@@ -35,6 +38,7 @@ class HelperComponent {
                                   "permissions-view",
                                    "/permissions",
                               ),
+
 
                         ]
 
