@@ -76,6 +76,7 @@ class FrontendController extends Controller
         // ]);
 
         $application = new Application;
+
         $application->date = $request->date;
         $application->name = $request->name;
         $application->property_value = $request->property_value;
@@ -130,11 +131,12 @@ class FrontendController extends Controller
 
 
 
+
     }
 
 
     public function contactUs(){
-  
+
         return view('frontend.pages.contact');
 
     }
@@ -158,7 +160,7 @@ class FrontendController extends Controller
             return back()->with('message','Your Details Submited Successfully');
         }else{
             return back()->with('message','Faile To Send Message');
-        }    
+        }
 
     }
 }

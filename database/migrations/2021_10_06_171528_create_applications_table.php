@@ -52,7 +52,7 @@ class CreateApplicationsTable extends Migration
             $table->string('monthly_rent')->nullable();
             $table->string('renovation')->nullable();
             $table->string('mortgage_statement')->nullable();
-            $table->string('property_insured')->nullbale();
+            $table->string('property_insured')->nullable();
             $table->string('liabilities_loans')->nullable();
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->timestamps();
