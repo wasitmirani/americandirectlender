@@ -188,6 +188,11 @@
 //
 //
 //
+//
+//
+//
+//
+//
 
 /***/ }),
 
@@ -294,530 +299,540 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("div", { staticClass: "col-xl-9 xl-60 box-col-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "job-search" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "media" }, [
-                _c("img", {
-                  staticClass: "img-40 img-fluid m-r-20",
-                  attrs: { src: "", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body" }, [
-                  _c("h6", { staticClass: "f-w-600" }, [
-                    _c("a", { attrs: { href: "job-details.html" } }, [
-                      _vm._v("UI/UX IT Frontend Developer")
-                    ]),
-                    _c(
-                      "span",
-                      { staticClass: "badge badge-primary pull-right" },
-                      [_vm._v("New")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("(L6) Salt Lake City, UT")]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "rating" }, [
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "\n                    We are looking for an experienced and viho designer and/or frontend engineer with expertise in accessibility to join our team ,\n                    3+ years of experience working in as a Frontend Engineer or comparable role. You won’t be a team of one though — you’ll be collaborating closely with other...\n                  "
-                )
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "job-search" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "media" }, [
-                _c("img", {
-                  staticClass: "img-40 img-fluid m-r-20",
-                  attrs: { src: "", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body" }, [
-                  _c("h6", { staticClass: "f-w-600" }, [
-                    _c("a", { attrs: { href: "job-details.html" } }, [
-                      _vm._v("React/React Native Developer")
-                    ]),
-                    _c(
-                      "span",
-                      { staticClass: "badge badge-primary pull-right" },
-                      [_vm._v("New")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("San Diego, CA ")]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "rating" }, [
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Ideally 2+ years experience with React. Bonus points if you have React Native experience. This is an incredibly exciting opportunity to gain commercial , Professional experience of React Native and other front end frameworks. Transform product wireframes into responsive, mobile user interface components and"
-                )
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card ribbon-vertical-left-wrapper" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "ribbon ribbon-bookmark ribbon-vertical-left ribbon-primary"
-            },
-            [_c("i", { staticClass: "icofont icofont-globe-alt" })]
-          ),
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("h1", [_vm._v("Notifications")]),
           _vm._v(" "),
-          _c("div", { staticClass: "job-search" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "media" }, [
-                _c("img", {
-                  staticClass: "img-40 img-fluid m-r-20",
-                  attrs: { src: "", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body" }, [
-                  _c("h6", { staticClass: "f-w-600" }, [
-                    _c("a", { attrs: { href: "job-details.html" } }, [
-                      _vm._v("Senior UX designer")
-                    ]),
-                    _c("span", { staticClass: "pull-right" }, [
-                      _vm._v("2 days ago")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Minneapolis, MN")]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "rating" }, [
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
+          _c("div", { staticClass: "col-xl-9 xl-60 box-col-8" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "job-search" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "media" }, [
+                    _c("img", {
+                      staticClass: "img-40 img-fluid m-r-20",
+                      attrs: { src: "", alt: "" }
+                    }),
                     _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "The designer will apply Lean UX and Design Thinking practices in a highly collaborative, fast-paced, distributed environment You have 4+ years of UX experience. You support UX leadership by providing continuous feedback regarding the evolution of team process standards."
-                )
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "job-search" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "media" }, [
-                _c("img", {
-                  staticClass: "img-40 img-fluid m-r-20",
-                  attrs: { src: "", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body" }, [
-                  _c("h6", { staticClass: "f-w-600" }, [
-                    _c("a", { attrs: { href: "job-details.html" } }, [
-                      _vm._v("Front end web developer")
-                    ]),
-                    _c("span", { staticClass: "pull-right" }, [
-                      _vm._v("3 days ago")
+                    _c("div", { staticClass: "media-body" }, [
+                      _c("h6", { staticClass: "f-w-600" }, [
+                        _c("a", { attrs: { href: "job-details.html" } }, [
+                          _vm._v("UI/UX IT Frontend Developer")
+                        ]),
+                        _c(
+                          "span",
+                          { staticClass: "badge badge-primary pull-right" },
+                          [_vm._v("New")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("(L6) Salt Lake City, UT")]),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "rating" }, [
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ])
+                      ])
                     ])
                   ]),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("Cisco "),
-                    _c("span", [_vm._v("Lelystad, Netherlands ")])
-                  ]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "rating" }, [
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ])
+                    _vm._v(
+                      "\n                        We are looking for an experienced and viho designer and/or frontend engineer with expertise in accessibility to join our team ,\n                        3+ years of experience working in as a Frontend Engineer or comparable role. You won’t be a team of one though — you’ll be collaborating closely with other...\n                      "
+                    )
                   ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Insipidity the sufficient discretion imprudence resolution sir him decisively. Proceed how any engaged visitor. Explained propriety off out perpetual his you. Feel sold off felt nay rose met you. We so entreaties cultivated astonished is. Was sister for few longer mrs sudden talent become."
-                )
               ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "job-search" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "media" }, [
-                _c("img", {
-                  staticClass: "img-40 img-fluid m-r-20",
-                  attrs: { src: "", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body" }, [
-                  _c("h6", { staticClass: "f-w-600" }, [
-                    _c("a", { attrs: { href: "job-details.html" } }, [
-                      _vm._v("Graphic designer")
-                    ]),
-                    _c("span", { staticClass: "pull-right" }, [
-                      _vm._v("3 days ago")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "job-search" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "media" }, [
+                    _c("img", {
+                      staticClass: "img-40 img-fluid m-r-20",
+                      attrs: { src: "", alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "media-body" }, [
+                      _c("h6", { staticClass: "f-w-600" }, [
+                        _c("a", { attrs: { href: "job-details.html" } }, [
+                          _vm._v("React/React Native Developer")
+                        ]),
+                        _c(
+                          "span",
+                          { staticClass: "badge badge-primary pull-right" },
+                          [_vm._v("New")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("San Diego, CA ")]),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "rating" }, [
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ])
+                      ])
                     ])
                   ]),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("Infosys "),
-                    _c("span", [_vm._v("Lelystad, Netherlands ")])
-                  ]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "rating" }, [
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ])
+                    _vm._v(
+                      "Ideally 2+ years experience with React. Bonus points if you have React Native experience. This is an incredibly exciting opportunity to gain commercial , Professional experience of React Native and other front end frameworks. Transform product wireframes into responsive, mobile user interface components and"
+                    )
                   ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Contented get distrusts certainty nay are frankness concealed ham. On unaffected resolution on considered of. No thought me husband or colonel forming effects. End sitting shewing who saw besides son musical adapted. Contrasted interested eat alteration pianoforte sympathize was."
-                )
               ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "job-search" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "media" }, [
-                _c("img", {
-                  staticClass: "img-40 img-fluid m-r-20",
-                  attrs: { src: "", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body" }, [
-                  _c("h6", { staticClass: "f-w-600" }, [
-                    _c("a", { attrs: { href: "job-details.html" } }, [
-                      _vm._v("Designer, CRM")
-                    ]),
-                    _c("span", { staticClass: "pull-right" }, [
-                      _vm._v("3 days ago")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card ribbon-vertical-left-wrapper" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "ribbon ribbon-bookmark ribbon-vertical-left ribbon-primary"
+                },
+                [_c("i", { staticClass: "icofont icofont-globe-alt" })]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "job-search" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "media" }, [
+                    _c("img", {
+                      staticClass: "img-40 img-fluid m-r-20",
+                      attrs: { src: "", alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "media-body" }, [
+                      _c("h6", { staticClass: "f-w-600" }, [
+                        _c("a", { attrs: { href: "job-details.html" } }, [
+                          _vm._v("Senior UX designer")
+                        ]),
+                        _c("span", { staticClass: "pull-right" }, [
+                          _vm._v("2 days ago")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("Minneapolis, MN")]),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "rating" }, [
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ])
+                      ])
                     ])
                   ]),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("Citrix "),
-                    _c("span", [_vm._v("Lelystad, Netherlands ")])
-                  ]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "rating" }, [
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ])
+                    _vm._v(
+                      "The designer will apply Lean UX and Design Thinking practices in a highly collaborative, fast-paced, distributed environment You have 4+ years of UX experience. You support UX leadership by providing continuous feedback regarding the evolution of team process standards."
+                    )
                   ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Situation admitting promotion at or to perceived be. Mr acuteness we as estimable enjoyment up. An held late as felt know. Learn do allow solid to grave. Middleton suspicion age her attention. Chiefly several bed its wishing. Is so moments on chamber pressed to. Doubtful yet way properly answered."
-                )
               ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card ribbon-vertical-left-wrapper" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "ribbon ribbon-bookmark ribbon-vertical-left ribbon-secondary"
-            },
-            [_c("i", { staticClass: "icofont icofont-award" })]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "job-search" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "media" }, [
-                _c("img", {
-                  staticClass: "img-40 img-fluid m-r-20",
-                  attrs: { src: "", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body" }, [
-                  _c("h6", { staticClass: "f-w-600" }, [
-                    _c("a", { attrs: { href: "job-details.html" } }, [
-                      _vm._v("UI designer E-commerce")
-                    ]),
-                    _c("span", { staticClass: "pull-right" }, [
-                      _vm._v("5 days ago")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "job-search" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "media" }, [
+                    _c("img", {
+                      staticClass: "img-40 img-fluid m-r-20",
+                      attrs: { src: "", alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "media-body" }, [
+                      _c("h6", { staticClass: "f-w-600" }, [
+                        _c("a", { attrs: { href: "job-details.html" } }, [
+                          _vm._v("Front end web developer")
+                        ]),
+                        _c("span", { staticClass: "pull-right" }, [
+                          _vm._v("3 days ago")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v("Cisco "),
+                        _c("span", [_vm._v("Lelystad, Netherlands ")])
+                      ]),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "rating" }, [
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ])
+                      ])
                     ])
                   ]),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("Ericsson "),
-                    _c("span", [_vm._v("Lelystad, Netherlands ")])
-                  ]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "rating" }, [
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ])
+                    _vm._v(
+                      "Insipidity the sufficient discretion imprudence resolution sir him decisively. Proceed how any engaged visitor. Explained propriety off out perpetual his you. Feel sold off felt nay rose met you. We so entreaties cultivated astonished is. Was sister for few longer mrs sudden talent become."
+                    )
                   ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Situation admitting promotion at or to perceived be. Mr acuteness we as estimable enjoyment up. An held late as felt know. Learn do allow solid to grave. Middleton suspicion age her attention. Chiefly several bed its wishing. Is so moments on chamber pressed to. Doubtful yet way properly answered."
-                )
               ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "job-search" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "media" }, [
-                _c("img", {
-                  staticClass: "img-40 img-fluid m-r-20",
-                  attrs: { src: "", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body" }, [
-                  _c("h6", { staticClass: "f-w-600" }, [
-                    _c("a", { attrs: { href: "job-details.html" } }, [
-                      _vm._v("Senior UX designer")
-                    ]),
-                    _c("span", { staticClass: "pull-right" }, [
-                      _vm._v("5 days ago")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "job-search" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "media" }, [
+                    _c("img", {
+                      staticClass: "img-40 img-fluid m-r-20",
+                      attrs: { src: "", alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "media-body" }, [
+                      _c("h6", { staticClass: "f-w-600" }, [
+                        _c("a", { attrs: { href: "job-details.html" } }, [
+                          _vm._v("Graphic designer")
+                        ]),
+                        _c("span", { staticClass: "pull-right" }, [
+                          _vm._v("3 days ago")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v("Infosys "),
+                        _c("span", [_vm._v("Lelystad, Netherlands ")])
+                      ]),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "rating" }, [
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ])
+                      ])
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("p", [_vm._v("Minneapolis, MN ")]),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "rating" }, [
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("i", { staticClass: "fa fa-star font-warning" })
-                    ])
+                  _c("p", [
+                    _vm._v(
+                      "Contented get distrusts certainty nay are frankness concealed ham. On unaffected resolution on considered of. No thought me husband or colonel forming effects. End sitting shewing who saw besides son musical adapted. Contrasted interested eat alteration pianoforte sympathize was."
+                    )
                   ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "The designer will apply Lean UX and Design Thinking practices in a highly collaborative, fast-paced, distributed environment You have 4+ years of UX experience. You support UX leadership by providing continuous feedback regarding the evolution of team process standards."
-                )
               ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "job-pagination" }, [
-          _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
-            _c("ul", { staticClass: "pagination pagination-primary" }, [
-              _c("li", { staticClass: "page-item disabled" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "page-link",
-                    attrs: { href: "javascript:void(0)" }
-                  },
-                  [_vm._v("Previous")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "page-item active" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "page-link",
-                    attrs: { href: "javascript:void(0)" }
-                  },
-                  [_vm._v("1")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "page-item" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "page-link",
-                    attrs: { href: "javascript:void(0)" }
-                  },
-                  [_vm._v("2")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "page-item" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "page-link",
-                    attrs: { href: "javascript:void(0)" }
-                  },
-                  [_vm._v("3")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "page-item" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "page-link",
-                    attrs: { href: "javascript:void(0)" }
-                  },
-                  [_vm._v("Next")]
-                )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "job-search" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "media" }, [
+                    _c("img", {
+                      staticClass: "img-40 img-fluid m-r-20",
+                      attrs: { src: "", alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "media-body" }, [
+                      _c("h6", { staticClass: "f-w-600" }, [
+                        _c("a", { attrs: { href: "job-details.html" } }, [
+                          _vm._v("Designer, CRM")
+                        ]),
+                        _c("span", { staticClass: "pull-right" }, [
+                          _vm._v("3 days ago")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v("Citrix "),
+                        _c("span", [_vm._v("Lelystad, Netherlands ")])
+                      ]),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "rating" }, [
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "Situation admitting promotion at or to perceived be. Mr acuteness we as estimable enjoyment up. An held late as felt know. Learn do allow solid to grave. Middleton suspicion age her attention. Chiefly several bed its wishing. Is so moments on chamber pressed to. Doubtful yet way properly answered."
+                    )
+                  ])
+                ])
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card ribbon-vertical-left-wrapper" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "ribbon ribbon-bookmark ribbon-vertical-left ribbon-secondary"
+                },
+                [_c("i", { staticClass: "icofont icofont-award" })]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "job-search" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "media" }, [
+                    _c("img", {
+                      staticClass: "img-40 img-fluid m-r-20",
+                      attrs: { src: "", alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "media-body" }, [
+                      _c("h6", { staticClass: "f-w-600" }, [
+                        _c("a", { attrs: { href: "job-details.html" } }, [
+                          _vm._v("UI designer E-commerce")
+                        ]),
+                        _c("span", { staticClass: "pull-right" }, [
+                          _vm._v("5 days ago")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v("Ericsson "),
+                        _c("span", [_vm._v("Lelystad, Netherlands ")])
+                      ]),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "rating" }, [
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "Situation admitting promotion at or to perceived be. Mr acuteness we as estimable enjoyment up. An held late as felt know. Learn do allow solid to grave. Middleton suspicion age her attention. Chiefly several bed its wishing. Is so moments on chamber pressed to. Doubtful yet way properly answered."
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "job-search" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "media" }, [
+                    _c("img", {
+                      staticClass: "img-40 img-fluid m-r-20",
+                      attrs: { src: "", alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "media-body" }, [
+                      _c("h6", { staticClass: "f-w-600" }, [
+                        _c("a", { attrs: { href: "job-details.html" } }, [
+                          _vm._v("Senior UX designer")
+                        ]),
+                        _c("span", { staticClass: "pull-right" }, [
+                          _vm._v("5 days ago")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("Minneapolis, MN ")]),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "rating" }, [
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("i", { staticClass: "fa fa-star font-warning" })
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "The designer will apply Lean UX and Design Thinking practices in a highly collaborative, fast-paced, distributed environment You have 4+ years of UX experience. You support UX leadership by providing continuous feedback regarding the evolution of team process standards."
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "job-pagination" }, [
+              _c(
+                "nav",
+                { attrs: { "aria-label": "Page navigation example" } },
+                [
+                  _c("ul", { staticClass: "pagination pagination-primary" }, [
+                    _c("li", { staticClass: "page-item disabled" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "javascript:void(0)" }
+                        },
+                        [_vm._v("Previous")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "page-item active" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "javascript:void(0)" }
+                        },
+                        [_vm._v("1")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "javascript:void(0)" }
+                        },
+                        [_vm._v("2")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "javascript:void(0)" }
+                        },
+                        [_vm._v("3")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "javascript:void(0)" }
+                        },
+                        [_vm._v("Next")]
+                      )
+                    ])
+                  ])
+                ]
+              )
             ])
           ])
         ])

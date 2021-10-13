@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div class="container-fluid">
+            <div class="row">
+                <h1>Notifications</h1>
         <div class="col-xl-9 xl-60 box-col-8">
                 <div class="card">
                   <div class="job-search">
@@ -178,6 +181,8 @@
                   </nav>
                 </div>
         </div>
+    </div>
+</div>
     </div>
 </template>
 <script>
