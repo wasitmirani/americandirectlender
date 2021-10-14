@@ -18,8 +18,3 @@ export default {
 
 
 </script>
-<style>
-.wizard-icon-container {
-    background-color:#195bff;
-}
-</style>

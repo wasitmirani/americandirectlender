@@ -1,7 +1,7 @@
 <template>
 <div>
 
-    <form-wizard @on-complete="onComplete">
+    <form-wizard @on-complete="onComplete" color="#195bff">
          <h2 slot="title">Edit Customer Application</h2>
         <tab-content title="Step One">
             <StepOne :application="application"></StepOne>
@@ -157,6 +157,14 @@ export default{
    width: 100%;
    max-width: 100%;
    }
+
+.wizard-icon-container {
+    background-color:#195bff;
+}
+.wizard-icon-circle {
+      border-color:#195bff;
+}
+
 </style>
 
 
