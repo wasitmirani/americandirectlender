@@ -47,6 +47,8 @@ const routes = [
         name: "update-application",
     },
 
+
+
 ];
 
 const router = new VueRouter({

@@ -168,6 +168,7 @@ window.appname={!! json_encode(config('app.name'),true)!!};
     <script src="{{asset('assets/js/custom-card/custom-card.js')}}"></script>
     <script src="{{asset('assets/js/owlcarousel/owl.carousel.js')}}"></script>
     <script src="{{asset('assets/js/owlcarousel/owl-custom.js')}}"></script>
+    <script src="{{ asset('assets/js/form-wizard.js') }}""></script>
     <script src="{{asset('assets/js/dashboard/dashboard_2.js')}}"></script>
     <!-- Plugins JS Ends-->
     <!-- Theme js-->

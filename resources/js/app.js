@@ -11,11 +11,13 @@ window.Vue = require('vue').default;
 import router from "./router";
 import VueProgressBar from 'vue-progressbar'
 import Vuesax from 'vuesax'
+import VueFormWizard from 'vue-form-wizard'
 import 'vuesax/dist/vuesax.css'
 import moment from "moment";
 import Multiselect from 'vue-multiselect'
 import "vue-toastification/dist/index.css";
 import 'vue-multiselect/dist/vue-multiselect.min.css';
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 
 import VueContentPlaceholders from 'vue-content-placeholders'
 import Swal from 'sweetalert2'
@@ -26,7 +28,7 @@ window.Swal = Swal;
 Vue.use(VueContentPlaceholders)
     // register globally
 Vue.component('multiselect', Multiselect)
-
+Vue.use(VueFormWizard)
 Vue.use(Vuesax);
 Vue.component("pagination", require("laravel-vue-pagination"));
 window.moment = moment;
