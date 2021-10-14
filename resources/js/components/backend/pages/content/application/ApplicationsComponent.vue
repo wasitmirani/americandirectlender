@@ -132,6 +132,10 @@ export default {
 }
 </script>
 
-<style>
 
+<style>
+.vs-button {
+   float:right;
+}
 </style>
+
