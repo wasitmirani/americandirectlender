@@ -30,12 +30,12 @@
                         <label class="col-form-label">HOA?</label>
                         <div class="col-sm-9">
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="radio11"  type="radio" :selected="application.hoa === 'yes'" name="hoa" value="yes" v-model="application.hoa">
-                                <label class="form-check-label" for="radio11">Yes</label>
+                                <input class="form-check-input" id="hoa1"  type="radio" :selected="application.hoa === 'yes'" name="hoa" value="yes" v-model="application.hoa">
+                                <label class="form-check-label" for="hoa1">Yes</label>
                             </div>
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="radio22" type="radio" :selected="application.hoa === 'no'" name="hoa" value="no" v-model="application.hoa">
-                                <label class="form-check-label" for="radio22">Yes</label>
+                                <input class="form-check-input" id="hoa2" type="radio" :selected="application.hoa === 'no'" name="hoa" value="no" v-model="application.hoa">
+                                <label class="form-check-label" for="hoa2">Yes</label>
                             </div>
                         </div>
                     </div>
@@ -76,12 +76,12 @@
                         <label class="col-form-label">Have You Made all Your Payments On-Time in the last 12 Months?</label>
                         <div class="col-sm-9">
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="radio11" type="radio" name="payment_assurance" value="yes" :selected="application.payment_assurance === 'yes'" v-model="application.payment_assurance">
-                                <label class="form-check-label" for="radio11">Yes</label>
+                                <input class="form-check-input" id="payment_assurance1" type="radio" name="payment_assurance" value="yes" :selected="application.payment_assurance === 'yes'" v-model="application.payment_assurance">
+                                <label class="form-check-label" for="payment_assurance1">Yes</label>
                             </div>
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="radio22" type="radio" name="payment_assurance" value="no"  :selected="application.payment_assurance === 'no'" v-model="application.payment_assurance">
-                                <label class="form-check-label" for="radio22">No</label>
+                                <input class="form-check-input" id="payment_assurance2" type="radio" name="payment_assurance" value="no"  :selected="application.payment_assurance === 'no'" v-model="application.payment_assurance">
+                                <label class="form-check-label" for="payment_assurance2">No</label>
                             </div>
                         </div>
                     </div>

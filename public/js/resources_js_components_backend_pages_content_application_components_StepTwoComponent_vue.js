@@ -461,7 +461,7 @@ var render = function() {
                   ],
                   staticClass: "form-check-input",
                   attrs: {
-                    id: "radio11",
+                    id: "hoa1",
                     type: "radio",
                     selected: _vm.application.hoa === "yes",
                     name: "hoa",
@@ -477,10 +477,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "radio11" }
-                  },
+                  { staticClass: "form-check-label", attrs: { for: "hoa1" } },
                   [_vm._v("Yes")]
                 )
               ]),
@@ -497,7 +494,7 @@ var render = function() {
                   ],
                   staticClass: "form-check-input",
                   attrs: {
-                    id: "radio22",
+                    id: "hoa2",
                     type: "radio",
                     selected: _vm.application.hoa === "no",
                     name: "hoa",
@@ -513,10 +510,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "radio22" }
-                  },
+                  { staticClass: "form-check-label", attrs: { for: "hoa2" } },
                   [_vm._v("Yes")]
                 )
               ])
@@ -691,7 +685,7 @@ var render = function() {
                   ],
                   staticClass: "form-check-input",
                   attrs: {
-                    id: "radio11",
+                    id: "payment_assurance1",
                     type: "radio",
                     name: "payment_assurance",
                     value: "yes",
@@ -715,7 +709,7 @@ var render = function() {
                   "label",
                   {
                     staticClass: "form-check-label",
-                    attrs: { for: "radio11" }
+                    attrs: { for: "payment_assurance1" }
                   },
                   [_vm._v("Yes")]
                 )
@@ -733,7 +727,7 @@ var render = function() {
                   ],
                   staticClass: "form-check-input",
                   attrs: {
-                    id: "radio22",
+                    id: "payment_assurance2",
                     type: "radio",
                     name: "payment_assurance",
                     value: "no",
@@ -757,7 +751,7 @@ var render = function() {
                   "label",
                   {
                     staticClass: "form-check-label",
-                    attrs: { for: "radio22" }
+                    attrs: { for: "payment_assurance2" }
                   },
                   [_vm._v("No")]
                 )

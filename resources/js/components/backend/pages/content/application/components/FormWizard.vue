@@ -3,7 +3,7 @@
 
     <form-wizard @on-complete="onComplete" color="#195bff">
          <h2 slot="title">Edit Customer Application</h2>
-        <tab-content title="Step One">
+        <tab-content title="Step One" color="#195bff">
             <StepOne :application="application"></StepOne>
         </tab-content>
         <tab-content title="Step Two">
