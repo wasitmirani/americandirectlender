@@ -68,453 +68,753 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "setup-content", attrs: { id: "step-2" } }, [
+      _c("div", { staticClass: "mb-3" }, [
+        _c("label", { staticClass: "col-form-label" }, [
+          _vm._v("Property Value: $ *")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.application.property_value,
+              expression: "application.property_value"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", value: "", placeholder: "$" },
+          domProps: { value: _vm.application.property_value },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.application, "property_value", $event.target.value)
+            }
+          }
+        }),
+        _vm._v("\n            (this can be an approximation)\n        ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-3" }, [
+        _c("label", { staticClass: "col-form-label" }, [
+          _vm._v(
+            "Any updates or changes to the property (*which can change value)?"
+          )
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.application.property_update,
+              expression: "application.property_update"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Company Name" },
+          domProps: { value: _vm.application.property_update },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.application, "property_update", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-3" }, [
+        _c("label", { staticClass: "col-form-label" }, [
+          _vm._v(
+            "Property Address (if known, confirm loan limits in Lending Pad, as they are based on city/county and might be jumbo under $822k):"
+          )
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.application.property_address,
+              expression: "application.property_address"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "" },
+          domProps: { value: _vm.application.property_address },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.application, "property_address", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-auto" }, [
+        _c("label", { staticClass: "col-form-label" }, [
+          _vm._v("Type Of Property")
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.application.property_type,
+                expression: "application.property_type"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.application,
+                  "property_type",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "house" } }, [_vm._v("House")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Condo" } }, [_vm._v("Condo")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Town House" } }, [
+              _vm._v("Town House")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Gated Community" } }, [
+              _vm._v("Gated Community")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2-4-unit-property" } }, [
+              _vm._v("2-4-unit-property")
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-auto" }, [
+        _c("fieldset", { staticClass: "mb-3" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("label", { staticClass: "col-form-label" }, [_vm._v("HOA?")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-9" }, [
+              _c("div", { staticClass: "form-check radio radio-primary" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.application.hoa,
+                      expression: "application.hoa"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    id: "radio11",
+                    type: "radio",
+                    name: "hoa",
+                    value: "yes"
+                  },
+                  domProps: { checked: _vm._q(_vm.application.hoa, "yes") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.application, "hoa", "yes")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "radio11" }
+                  },
+                  [_vm._v("Yes")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check radio radio-primary" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.application.hoa,
+                      expression: "application.hoa"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    id: "radio22",
+                    type: "radio",
+                    name: "hoa",
+                    value: "yes"
+                  },
+                  domProps: { checked: _vm._q(_vm.application.hoa, "yes") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.application, "hoa", "yes")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "radio22" }
+                  },
+                  [_vm._v("Yes")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-auto" }, [
+        _c("label", { staticClass: "form-check-label" }, [
+          _vm._v("Any Mello-Roos/Other Fees or Special Taxes")
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.application.fee,
+                expression: "application.fee"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.application,
+                  "fee",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "house" } }, [_vm._v("House")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Condo" } }, [_vm._v("Condo")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Town House" } }, [
+              _vm._v("Town House")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Gated Community" } }, [
+              _vm._v("Gated Community")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2-4-unit-property" } }, [
+              _vm._v("2-4-unit-property")
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mb-0" }, [
+        _c("label", { staticClass: "col-sm-3 col-form-label pb-0" }, [
+          _vm._v("Refinance")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-9" }, [
+          _c("div", { staticClass: "mb-0" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "form-check form-check-inline checkbox checkbox-primary"
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.application.refinance,
+                      expression: "application.refinance"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    id: "inline-form-1",
+                    value: "yes",
+                    type: "checkbox"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.application.refinance)
+                      ? _vm._i(_vm.application.refinance, "yes") > -1
+                      : _vm.application.refinance
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.application.refinance,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "yes",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.application,
+                              "refinance",
+                              $$a.concat([$$v])
+                            )
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.application,
+                              "refinance",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(_vm.application, "refinance", $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inline-form-1" }
+                  },
+                  [_vm._v("Yes")]
+                ),
+                _vm._v(
+                  "\n                        (if refinance, closing costs to be included?)\n                    "
+                )
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-auto" }, [
+        _c("fieldset", { staticClass: "mb-3" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("label", { staticClass: "col-form-label" }, [
+              _vm._v(
+                "Have You Made all Your Payments On-Time in the last 12 Months?"
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-9" }, [
+              _c("div", { staticClass: "form-check radio radio-primary" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.application.payment_assurance,
+                      expression: "application.payment_assurance"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    id: "radio11",
+                    type: "radio",
+                    name: "hoa",
+                    value: "yes"
+                  },
+                  domProps: {
+                    checked: _vm._q(_vm.application.payment_assurance, "yes")
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(
+                        _vm.application,
+                        "payment_assurance",
+                        "yes"
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "radio11" }
+                  },
+                  [_vm._v("Yes")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check radio radio-primary" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.application.payment_assurance,
+                      expression: "application.payment_assurance"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    id: "radio22",
+                    type: "radio",
+                    name: "hoa",
+                    value: "no"
+                  },
+                  domProps: {
+                    checked: _vm._q(_vm.application.payment_assurance, "no")
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(
+                        _vm.application,
+                        "payment_assurance",
+                        "no"
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "radio22" }
+                  },
+                  [_vm._v("No")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-auto" }, [
+        _c("fieldset", { staticClass: "mb-3" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("label", { staticClass: "col-form-label" }, [
+              _vm._v(
+                "If Payments Have Been Deferred, have you Made Payments on Time in the Last 3 Months?"
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-9" }, [
+              _c("div", { staticClass: "form-check radio radio-primary" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.application.payment_surity,
+                      expression: "application.payment_surity"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    id: "radio11",
+                    type: "radio",
+                    name: "hoa",
+                    value: "yes"
+                  },
+                  domProps: {
+                    checked: _vm._q(_vm.application.payment_surity, "yes")
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.application, "payment_surity", "yes")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "radio11" }
+                  },
+                  [_vm._v("Yes")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check radio radio-primary" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.application.payment_surity,
+                      expression: "application.payment_surity"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: { id: "radio22", type: "radio", value: "no" },
+                  domProps: {
+                    checked: _vm._q(_vm.application.payment_surity, "no")
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.application, "payment_surity", "no")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "radio22" }
+                  },
+                  [_vm._v("No")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mb-0" }, [
+        _c("label", { staticClass: "col-sm-3 col-form-label pb-0" }, [
+          _vm._v("Purchase")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-9" }, [
+          _c("div", { staticClass: "mb-0" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "form-check form-check-inline checkbox checkbox-primary"
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.application.purchase,
+                      expression: "application.purchase"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    id: "inline-form-1",
+                    value: "yes",
+                    type: "checkbox"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.application.purchase)
+                      ? _vm._i(_vm.application.purchase, "yes") > -1
+                      : _vm.application.purchase
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.application.purchase,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "yes",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.application,
+                              "purchase",
+                              $$a.concat([$$v])
+                            )
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.application,
+                              "purchase",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(_vm.application, "purchase", $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inline-form-1" }
+                  },
+                  [_vm._v("Yes")]
+                ),
+                _vm._v(
+                  "\n                        (*Closing costs cannot be financed on new purchase)\n                    "
+                )
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-auto" }, [
+        _c("fieldset", { staticClass: "mb-3" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("label", { staticClass: "col-form-label" }, [
+              _vm._v("Do You Have a Second Loan?")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-9" }, [
+              _c("div", { staticClass: "form-check radio radio-primary" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.application.second_loan,
+                      expression: "application.second_loan"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: { id: "radio11", type: "radio", value: "yes" },
+                  domProps: {
+                    checked: _vm._q(_vm.application.second_loan, "yes")
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.application, "second_loan", "yes")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "radio11" }
+                  },
+                  [_vm._v("Yes")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check radio radio-primary" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.application.second_loan,
+                      expression: "application.second_loan"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: { id: "radio22", type: "radio", value: "no" },
+                  domProps: {
+                    checked: _vm._q(_vm.application.second_loan, "no")
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.application, "second_loan", "no")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "radio22" }
+                  },
+                  [_vm._v("No")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "setup-content", attrs: { id: "step-2" } }, [
-        _c("div", { staticClass: "mb-3" }, [
-          _c("label", { staticClass: "col-form-label" }, [
-            _vm._v("Property Value: $ *")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              value: "$",
-              placeholder: "Enter contact number"
-            }
-          }),
-          _vm._v("\n            (this can be an approximation)\n        ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "mb-3" }, [
-          _c("label", { staticClass: "col-form-label" }, [
-            _vm._v(
-              "Any updates or changes to the property (*which can change value)?"
-            )
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { type: "text", placeholder: "Company Name" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "mb-3" }, [
-          _c("label", { staticClass: "col-form-label" }, [
-            _vm._v(
-              "Property Address (if known, confirm loan limits in Lending Pad, as they are based on city/county and might be jumbo under $822k):"
-            )
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { type: "text", placeholder: "" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-auto" }, [
-          _c("label", { staticClass: "col-form-label" }, [
-            _vm._v("Type Of Property")
-          ]),
-          _vm._v(" "),
-          _c("select", { staticClass: "form-control" }, [
-            _c("option", { attrs: { value: "house" } }, [_vm._v("House")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Condo" } }, [_vm._v("Condo")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Town House" } }, [
-              _vm._v("Town House")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Gated Community" } }, [
-              _vm._v("Gated Community")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2-4-unit-property" } }, [
-              _vm._v("2-4-unit-property")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-auto" }, [
-          _c("fieldset", { staticClass: "mb-3" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("label", { staticClass: "col-form-label" }, [_vm._v("HOA?")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-9" }, [
-                _c("div", { staticClass: "form-check radio radio-primary" }, [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: {
-                      id: "radio11",
-                      type: "radio",
-                      name: "hoa",
-                      value: "yes"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "radio11" }
-                    },
-                    [_vm._v("Yes")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-check radio radio-primary" }, [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: {
-                      id: "radio22",
-                      type: "radio",
-                      name: "hoa",
-                      value: "yes"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "radio22" }
-                    },
-                    [_vm._v("Yes")]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-auto" }, [
-          _c("label", { staticClass: "form-check-label" }, [
-            _vm._v("Any Mello-Roos/Other Fees or Special Taxes")
-          ]),
-          _vm._v(" "),
-          _c("select", { staticClass: "form-control" }, [
-            _c("option", { attrs: { value: "house" } }, [_vm._v("House")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Condo" } }, [_vm._v("Condo")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Town House" } }, [
-              _vm._v("Town House")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Gated Community" } }, [
-              _vm._v("Gated Community")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2-4-unit-property" } }, [
-              _vm._v("2-4-unit-property")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row mb-0" }, [
-          _c("label", { staticClass: "col-sm-3 col-form-label pb-0" }, [
-            _vm._v("Refinance")
-          ]),
+    return _c("div", { staticClass: "col-auto" }, [
+      _c("fieldset", { staticClass: "mb-3" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("label", { staticClass: "col-form-label" }, [_vm._v("If Yes")]),
           _vm._v(" "),
           _c("div", { staticClass: "col-sm-9" }, [
-            _c("div", { staticClass: "mb-0" }, [
+            _c("div", { staticClass: "form-check radio radio-primary" }, [
+              _c("input", {
+                staticClass: "form-check-input",
+                attrs: {
+                  id: "radio11",
+                  type: "radio",
+                  name: "hoa",
+                  value: "yes"
+                }
+              }),
+              _vm._v(" "),
               _c(
-                "div",
-                {
-                  staticClass:
-                    "form-check form-check-inline checkbox checkbox-primary"
-                },
-                [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: {
-                      id: "inline-form-1",
-                      value: "yes",
-                      type: "checkbox"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "inline-form-1" }
-                    },
-                    [_vm._v("Yes")]
-                  ),
-                  _vm._v(
-                    "\n                        (if refinance, closing costs to be included?)\n                    "
-                  )
-                ]
+                "label",
+                { staticClass: "form-check-label", attrs: { for: "radio11" } },
+                [_vm._v("Payof")]
               )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-auto" }, [
-          _c("fieldset", { staticClass: "mb-3" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("label", { staticClass: "col-form-label" }, [
-                _vm._v(
-                  "Have You Made all Your Payments On-Time in the last 12 Months?"
-                )
-              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-check radio radio-primary" }, [
+              _c("input", {
+                staticClass: "form-check-input",
+                attrs: {
+                  id: "radio22",
+                  type: "radio",
+                  name: "hoa",
+                  value: "no"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-9" }, [
-                _c("div", { staticClass: "form-check radio radio-primary" }, [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: {
-                      id: "radio11",
-                      type: "radio",
-                      name: "hoa",
-                      value: "yes"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "radio11" }
-                    },
-                    [_vm._v("Yes")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-check radio radio-primary" }, [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: {
-                      id: "radio22",
-                      type: "radio",
-                      name: "hoa",
-                      value: "no"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "radio22" }
-                    },
-                    [_vm._v("No")]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-auto" }, [
-          _c("fieldset", { staticClass: "mb-3" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("label", { staticClass: "col-form-label" }, [
-                _vm._v(
-                  "If Payments Have Been Deferred, have you Made Payments on Time in the Last 3 Months?"
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-9" }, [
-                _c("div", { staticClass: "form-check radio radio-primary" }, [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: {
-                      id: "radio11",
-                      type: "radio",
-                      name: "hoa",
-                      value: "yes"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "radio11" }
-                    },
-                    [_vm._v("Yes")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-check radio radio-primary" }, [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: {
-                      id: "radio22",
-                      type: "radio",
-                      name: "hoa",
-                      value: "no"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "radio22" }
-                    },
-                    [_vm._v("No")]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row mb-0" }, [
-          _c("label", { staticClass: "col-sm-3 col-form-label pb-0" }, [
-            _vm._v("Purchase")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9" }, [
-            _c("div", { staticClass: "mb-0" }, [
               _c(
-                "div",
-                {
-                  staticClass:
-                    "form-check form-check-inline checkbox checkbox-primary"
-                },
-                [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: {
-                      id: "inline-form-1",
-                      value: "yes",
-                      type: "checkbox"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "inline-form-1" }
-                    },
-                    [_vm._v("Yes")]
-                  ),
-                  _vm._v(
-                    "\n                        (*Closing costs cannot be financed on new purchase)\n                    "
-                  )
-                ]
+                "label",
+                { staticClass: "form-check-label", attrs: { for: "radio22" } },
+                [_vm._v("Subordinate")]
               )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-auto" }, [
-          _c("fieldset", { staticClass: "mb-3" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("label", { staticClass: "col-form-label" }, [
-                _vm._v("Do You Have a Second Loan?")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-9" }, [
-                _c("div", { staticClass: "form-check radio radio-primary" }, [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: {
-                      id: "radio11",
-                      type: "radio",
-                      name: "hoa",
-                      value: "yes"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "radio11" }
-                    },
-                    [_vm._v("Yes")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-check radio radio-primary" }, [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: {
-                      id: "radio22",
-                      type: "radio",
-                      name: "hoa",
-                      value: "no"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "radio22" }
-                    },
-                    [_vm._v("No")]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-auto" }, [
-          _c("fieldset", { staticClass: "mb-3" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("label", { staticClass: "col-form-label" }, [
-                _vm._v("If Yes")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-9" }, [
-                _c("div", { staticClass: "form-check radio radio-primary" }, [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: {
-                      id: "radio11",
-                      type: "radio",
-                      name: "hoa",
-                      value: "yes"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "radio11" }
-                    },
-                    [_vm._v("Payof")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-check radio radio-primary" }, [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: {
-                      id: "radio22",
-                      type: "radio",
-                      name: "hoa",
-                      value: "no"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-check-label",
-                      attrs: { for: "radio22" }
-                    },
-                    [_vm._v("Subordinate")]
-                  )
-                ])
-              ])
             ])
           ])
         ])

@@ -68,40 +68,65 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "setup-content", attrs: { id: "step-1" } }, [
-        _c("div", { staticClass: "mb-3" }, [
-          _c("label", { staticClass: "col-form-label" }, [
-            _vm._v("Client Name")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { type: "text", placeholder: "your Name" }
-          })
+  return _c("div", [
+    _c("div", { staticClass: "setup-content", attrs: { id: "step-1" } }, [
+      _c("div", { staticClass: "mb-3" }, [
+        _c("label", { staticClass: "col-form-label" }, [_vm._v("Client Name")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.name,
+              expression: "name"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "your Name" },
+          domProps: { value: _vm.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.name = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-3" }, [
+        _c("label", { staticClass: "col-form-label" }, [
+          _vm._v("Date Of Application")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "mb-3" }, [
-          _c("label", { staticClass: "col-form-label" }, [
-            _vm._v("Date Of Application")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { type: "date", placeholder: "" }
-          })
-        ])
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.date,
+              expression: "date"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "date", placeholder: "" },
+          domProps: { value: _vm.date },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.date = $event.target.value
+            }
+          }
+        })
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
