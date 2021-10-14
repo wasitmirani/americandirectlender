@@ -67,6 +67,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['application', 'getApplications'],
   methods: {
@@ -228,21 +229,27 @@ var render = function() {
           "div",
           { staticClass: "media mb-0" },
           [
-            _c(
-              "vs-button",
-              {
-                attrs: { active: _vm.active == 0 },
-                on: {
-                  click: [
-                    function($event) {
-                      _vm.active = 0
-                    },
-                    _vm.updateStatus
+            _vm.application.status === "0"
+              ? _c(
+                  "vs-button",
+                  {
+                    attrs: { active: _vm.active == 0 },
+                    on: {
+                      click: [
+                        function($event) {
+                          _vm.active = 0
+                        },
+                        _vm.updateStatus
+                      ]
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                                    Assign\n                                "
+                    )
                   ]
-                }
-              },
-              [_vm._v("\n       Assign\n      ")]
-            )
+                )
+              : _vm._e()
           ],
           1
         )

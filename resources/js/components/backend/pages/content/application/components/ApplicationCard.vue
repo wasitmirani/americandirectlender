@@ -33,13 +33,14 @@
                                 <div class="media mb-0">
                                   <!-- <p>70% </p>
                                   <div class="media-body text-end"><span>Done</span></div> -->
-                                    <vs-button
-        :active="active == 0"
-        @click="active = 0"
-        v-on:click="updateStatus"
-      >
-       Assign
-      </vs-button>
+
+                                    <vs-button v-if="application.status === '0'"
+                              :active="active == 0"
+                              @click="active = 0"
+                              v-on:click="updateStatus"
+                                  >
+                                    Assign
+                                </vs-button>
                                 </div>
                                 <!-- <div class="progress" style="height: 5px">
                                   <div class="progress-bar-animated bg-primary progress-bar-striped" role="progressbar" style="width: 70%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
