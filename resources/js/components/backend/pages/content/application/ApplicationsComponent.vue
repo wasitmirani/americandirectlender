@@ -35,11 +35,11 @@
                         v-on:filterList="filterdata($event)"
 
                         label="Search Roles"></SearchInput>
+                                        <div class="col-xxl-4 col-lg-6" v-for="application in applications" :key="application.id">
 
+                                <ApplicationCard :getApplications="getApplications" :application="application"></ApplicationCard>
 
-                                <ApplicationCard :getApplications="getApplications" :applications="applications"></ApplicationCard>
-
-
+</div>
                         </div>
                       </div>
                       <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
