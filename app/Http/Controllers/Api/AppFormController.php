@@ -16,8 +16,16 @@ class AppFormController extends Controller
         ->orderBy('name','ASC')
         ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
+        $process = Application::where('status','=','0')
+        ->orderBy('name','ASC')
+        ->with('agents','attachments')->paginate(env('PAR_PAGE'));
+
+        $done = Application::where('status','=','1')
+        ->orderBy('name','ASC')
+        ->with('agents','attachments')->paginate(env('PAR_PAGE'));
+
         if($applications){
-            return response()->json(['applications'=>$applications]);
+            return response()->json(['applications'=>$applications,'process'=>$process,'done'=>$done]);
 
         }else{
             return response()->json('No Application Found');
@@ -93,13 +101,15 @@ class AppFormController extends Controller
 
         $application = Application::find($id);
         $application->status = '1';
-        if($application->upadate()){
+        if($application->update()){
 
             return response()->json(['message'=>'Status Updated Successfully']);
         }else{
             return response()->json(['message'=>'Failed To Update Status']);
         }
     }
+
+
 
 
 }

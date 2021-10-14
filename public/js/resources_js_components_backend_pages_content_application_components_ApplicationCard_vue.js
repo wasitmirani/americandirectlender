@@ -66,8 +66,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['application', 'getApplications']
+  props: ['application', 'getApplications'],
+  methods: {
+    updateStatus: function updateStatus() {
+      var _this = this;
+
+      axios.put('/update/status/' + this.application.id).then(function (res) {
+        _this.$root.alertNotificationMessage(res.status, "Status has been updated successfully");
+      })["catch"](function (err) {
+        if (err.response.status == 422) {
+          _this.errors = err.response.data.errors;
+          return _this.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        }
+
+        _this.$root.alertNotificationMessage(err.response.status, err.response.data);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -216,9 +233,12 @@ var render = function() {
               {
                 attrs: { active: _vm.active == 0 },
                 on: {
-                  click: function($event) {
-                    _vm.active = 0
-                  }
+                  click: [
+                    function($event) {
+                      _vm.active = 0
+                    },
+                    _vm.updateStatus
+                  ]
                 }
               },
               [_vm._v("\n       Assign\n      ")]
@@ -234,7 +254,7 @@ var render = function() {
       { staticClass: "pagination pagination-primary mt-4" },
       [
         _c("pagination", {
-          attrs: { data: _vm.applications, limit: 5 },
+          attrs: { data: _vm.application, limit: 5 },
           on: { "pagination-change-page": _vm.getApplications }
         })
       ],

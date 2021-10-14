@@ -267,6 +267,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -281,6 +290,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       applications: {},
+      process: {},
+      done: {},
       query: "",
       loading: false,
       total_applications: 0,
@@ -315,7 +326,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 6;
                 return axios.get(url).then(function (res) {
                   _this.applications = res.data.applications.data;
-                  _this.total_application = res.data.total_applications; // this.roles=res.data.roles;
+                  _this.total_application = res.data.total_applications;
+                  _this.process = res.data.process.data;
+                  _this.done = res.data.done.data; // this.roles=res.data.roles;
 
                   // this.roles=res.data.roles;
                   _this.loading = false;
@@ -402,8 +415,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['application', 'getApplications']
+  props: ['application', 'getApplications'],
+  methods: {
+    updateStatus: function updateStatus() {
+      var _this = this;
+
+      axios.put('/update/status/' + this.application.id).then(function (res) {
+        _this.$root.alertNotificationMessage(res.status, "Status has been updated successfully");
+      })["catch"](function (err) {
+        if (err.response.status == 422) {
+          _this.errors = err.response.data.errors;
+          return _this.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        }
+
+        _this.$root.alertNotificationMessage(err.response.status, err.response.data);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -1966,9 +1996,79 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _vm._m(1),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-pane fade",
+                        attrs: {
+                          id: "top-profile",
+                          role: "tabpanel",
+                          "aria-labelledby": "profile-top-tab"
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "row" },
+                          _vm._l(_vm.process, function(application) {
+                            return _c(
+                              "div",
+                              {
+                                key: application.id,
+                                staticClass: "col-xxl-4 col-lg-6"
+                              },
+                              [
+                                _c("ApplicationCard", {
+                                  attrs: {
+                                    getApplications: _vm.getApplications,
+                                    application: application
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          }),
+                          0
+                        )
+                      ]
+                    ),
                     _vm._v(" "),
-                    _vm._m(2)
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-pane fade",
+                        attrs: {
+                          id: "top-contact",
+                          role: "tabpanel",
+                          "aria-labelledby": "contact-top-tab"
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "row" },
+                          _vm._l(_vm.done, function(application) {
+                            return _c(
+                              "div",
+                              {
+                                key: application.id,
+                                staticClass: "col-xxl-4 col-lg-6"
+                              },
+                              [
+                                _c("ApplicationCard", {
+                                  attrs: {
+                                    getApplications: _vm.getApplications,
+                                    application: application
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          }),
+                          0
+                        )
+                      ]
+                    )
                   ]
                 )
               ])
@@ -2055,50 +2155,6 @@ var staticRenderFns = [
         ]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "tab-pane fade",
-        attrs: {
-          id: "top-profile",
-          role: "tabpanel",
-          "aria-labelledby": "profile-top-tab"
-        }
-      },
-      [
-        _c("div", { staticClass: "row" }, [
-          _vm._v(
-            "\n                            Proccess\n                        "
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "tab-pane fade",
-        attrs: {
-          id: "top-contact",
-          role: "tabpanel",
-          "aria-labelledby": "contact-top-tab"
-        }
-      },
-      [
-        _c("div", { staticClass: "row" }, [
-          _vm._v("\n                         Done\n                        ")
-        ])
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -2183,9 +2239,12 @@ var render = function() {
               {
                 attrs: { active: _vm.active == 0 },
                 on: {
-                  click: function($event) {
-                    _vm.active = 0
-                  }
+                  click: [
+                    function($event) {
+                      _vm.active = 0
+                    },
+                    _vm.updateStatus
+                  ]
                 }
               },
               [_vm._v("\n       Assign\n      ")]
@@ -2201,7 +2260,7 @@ var render = function() {
       { staticClass: "pagination pagination-primary mt-4" },
       [
         _c("pagination", {
-          attrs: { data: _vm.applications, limit: 5 },
+          attrs: { data: _vm.application, limit: 5 },
           on: { "pagination-change-page": _vm.getApplications }
         })
       ],

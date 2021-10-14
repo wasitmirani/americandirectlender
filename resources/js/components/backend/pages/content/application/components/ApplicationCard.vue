@@ -36,6 +36,7 @@
                                     <vs-button
         :active="active == 0"
         @click="active = 0"
+        v-on:click="updateStatus"
       >
        Assign
       </vs-button>
@@ -48,14 +49,33 @@
 
 </div>
  <ul class="pagination pagination-primary mt-4">
-      <pagination :data="applications" :limit="5" @pagination-change-page="getApplications"></pagination>
+      <pagination :data="application" :limit="5" @pagination-change-page="getApplications"></pagination>
 </ul>
 </div>
 </template>
 
 <script>
 export default {
-    props:['application','getApplications']
+    props:['application','getApplications'],
+    methods:{
+
+        updateStatus:function(){
+
+             axios.put('/update/status/'+this.application.id).then((res)=>{
+                      this.$root.alertNotificationMessage(res.status,"Status has been updated successfully");
+
+                    }).catch((err)=>{
+                        if(err.response.status==422){
+                            this.errors=err.response.data.errors;
+                            return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
+                        }
+                    this.$root.alertNotificationMessage(err.response.status,err.response.data);
+
+                });
+
+        }
+
+    }
 
 }
 </script>

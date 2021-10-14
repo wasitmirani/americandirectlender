@@ -39,17 +39,26 @@
 
                                 <ApplicationCard :getApplications="getApplications" :application="application"></ApplicationCard>
 
-</div>
+                                   </div>
                         </div>
                       </div>
                       <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
                         <div class="row">
-                            Proccess
+                            <div class="col-xxl-4 col-lg-6" v-for="application in process" :key="application.id">
+                                <ApplicationCard :getApplications="getApplications" :application="application"></ApplicationCard>
+
+                            </div>
+
+
+
                         </div>
                       </div>
                       <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
                         <div class="row">
-                         Done
+                             <div class="col-xxl-4 col-lg-6" v-for="application in done" :key="application.id">
+                                  <ApplicationCard :getApplications="getApplications" :application="application"></ApplicationCard>
+                             </div>
+
                         </div>
                       </div>
                     </div>
@@ -76,6 +85,8 @@ export default {
       data(){
         return {
             applications:{},
+            process:{},
+            done:{},
             query:"",
             loading:false,
             total_applications:0,
@@ -105,6 +116,10 @@ export default {
 
                    this.applications = res.data.applications.data;
                    this.total_application = res.data.total_applications;
+                   this.process = res.data.process.data;
+                   this.done = res.data.done.data;
+
+
 
                     // this.roles=res.data.roles;
                    this.loading =false;
