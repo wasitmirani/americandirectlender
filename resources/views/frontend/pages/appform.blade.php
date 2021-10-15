@@ -576,7 +576,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>22. List all Liabilities/Liens/Loans/Investments/Cosign on Loans: </label>
-                                                <textarea name="" class="form-control" id="" cols="30" rows="10" name="liabilities_loans"></textarea>
+                                                <textarea  class="form-control" id="" cols="30" rows="10" name="liabilities_loans"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-12">

@@ -8,7 +8,7 @@
             </div>
             <div class="mb-3">
                 <label class="col-form-label">Any updates or changes to the property (*which can change value)?</label>
-                <input class="form-control" type="text" placeholder="" v-model="application.property_update">
+                <input class="form-control" type="text" placeholder="" v-model="application.property_update" >
             </div>
             <div class="mb-3">
                 <label class="col-form-label">Property Address (if known, confirm loan limits in Lending Pad, as they are based on city/county and might be jumbo under $822k):</label>
@@ -50,7 +50,7 @@
                 <div class="col-sm-9">
                     <div class="mb-0">
                         <div class="form-check form-check-inline checkbox checkbox-primary">
-                            <input class="form-check-input" id="cash-out"  value="yes" type="checkbox"  v-model="application.cash_out">
+                            <input class="form-check-input" id="cash-out"  value="yes" type="checkbox"  v-model="application.cash_out" :checked="application.cash_out == 'yes'">
                             <label class="form-check-label" for="cash-out">Yes</label>
                           (for cash out, your name needs to be on title for 6+ months)
                         </div>

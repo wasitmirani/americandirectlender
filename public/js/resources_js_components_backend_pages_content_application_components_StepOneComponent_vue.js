@@ -155,7 +155,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { type: "date", placeholder: "", value: "application." },
+          attrs: { type: "date", placeholder: "", value: "application.date" },
           domProps: { value: _vm.application.date },
           on: {
             input: function($event) {

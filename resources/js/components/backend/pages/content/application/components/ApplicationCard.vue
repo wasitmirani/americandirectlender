@@ -1,9 +1,13 @@
 <template>
 <div>
    <div class="project-box" >
-     <span class="badge badge-primary">
-         <router-link :to="{name: 'update-application', params: { id: application.id }}"><i class="fa  fa-edit text-light"></i></router-link>
-         </span>
+        <span class="badge badge-primary" style="margin-right: 31px;">
+           <router-link :to="{name: 'show-application', params: { id: application.id }}"><i class="fa  fa-eye text-light"></i></router-link>
+        </span>
+        <span class="badge badge-primary">
+           <router-link :to="{name: 'update-application', params: { id: application.id }}"><i class="fa  fa-edit text-light"></i></router-link>
+        </span>
+
                               <h6>{{application.name}}</h6>
                               <div class="media"><img class="img-20 me-2 rounded-circle" src="assets/images/user/3.jpg" alt="" data-original-title="" title="">
                                 <div class="media-body">

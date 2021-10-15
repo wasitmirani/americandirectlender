@@ -934,7 +934,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { type: "text", placeholder: "$", value: "$" },
+          attrs: { type: "text", placeholder: "", value: "" },
           domProps: { value: _vm.application.income_source },
           on: {
             input: function($event) {
@@ -964,7 +964,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { type: "text", placeholder: "$", value: "$" },
+          attrs: { type: "text", placeholder: "", value: "" },
           domProps: { value: _vm.application.recent_business_Activity },
           on: {
             input: function($event) {

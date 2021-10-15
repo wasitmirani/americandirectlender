@@ -1488,7 +1488,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { type: "date", placeholder: "", value: "application." },
+          attrs: { type: "date", placeholder: "", value: "application.date" },
           domProps: { value: _vm.application.date },
           on: {
             input: function($event) {
@@ -2083,7 +2083,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { type: "text", placeholder: "$", value: "$" },
+          attrs: { type: "text", placeholder: "", value: "" },
           domProps: { value: _vm.application.income_source },
           on: {
             input: function($event) {
@@ -2113,7 +2113,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { type: "text", placeholder: "$", value: "$" },
+          attrs: { type: "text", placeholder: "", value: "" },
           domProps: { value: _vm.application.recent_business_Activity },
           on: {
             input: function($event) {
@@ -3500,6 +3500,7 @@ var render = function() {
                   staticClass: "form-check-input",
                   attrs: { id: "cash-out", value: "yes", type: "checkbox" },
                   domProps: {
+                    checked: _vm.application.cash_out == "yes",
                     checked: Array.isArray(_vm.application.cash_out)
                       ? _vm._i(_vm.application.cash_out, "yes") > -1
                       : _vm.application.cash_out

@@ -93,11 +93,11 @@
             </div>
             <div class="mb-3">
                 <label class="col-form-label">  Please explain/clarify any other applicable sources of income:</label>
-                <input class="form-control" type="text" placeholder="$" value="$" v-model="application.income_source">
+                <input class="form-control" type="text" placeholder="" value="" v-model="application.income_source">
             </div>
             <div class="mb-3">
                 <label class="col-form-label">Please Note any Recent Promotions, Changes in Salary, and Whether You are Paying Yourself:</label>
-                <input class="form-control" type="text" placeholder="$" value="$" v-model="application.recent_business_Activity">
+                <input class="form-control" type="text" placeholder="" value="" v-model="application.recent_business_Activity">
             </div>
             <div class="col-auto">
                 <fieldset class="mb-3">

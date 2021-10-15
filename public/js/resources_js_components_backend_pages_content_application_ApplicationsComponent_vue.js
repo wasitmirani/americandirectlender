@@ -417,6 +417,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['application', 'getApplications'],
   methods: {
@@ -2251,6 +2255,29 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "project-box" }, [
+      _c(
+        "span",
+        {
+          staticClass: "badge badge-primary",
+          staticStyle: { "margin-right": "31px" }
+        },
+        [
+          _c(
+            "router-link",
+            {
+              attrs: {
+                to: {
+                  name: "show-application",
+                  params: { id: _vm.application.id }
+                }
+              }
+            },
+            [_c("i", { staticClass: "fa  fa-eye text-light" })]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c(
         "span",
         { staticClass: "badge badge-primary" },

@@ -46,6 +46,17 @@ const routes = [
         component: () => setComponent("content/application/EditApplication"),
         name: "update-application",
     },
+    {
+        path: "/show/application/:id",
+        component: () => setComponent("content/application/ShowApplication"),
+        name: "show-application",
+    },
+    {
+        path: "/profile",
+        component: () => setComponent("content/setting/ProfileSettingComponent"),
+        name: "profile-setting",
+    },
+
 
 
 
