@@ -2265,7 +2265,7 @@ var render = function() {
                 }
               }
             },
-            [_c("i", { staticClass: "fa  fa-edit text-primary" })]
+            [_c("i", { staticClass: "fa  fa-edit text-light" })]
           )
         ],
         1
@@ -2370,7 +2370,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-6" }, [
-      _c("span", [_vm._v("Propert Value")])
+      _c("span", [_vm._v("Property Value")])
     ])
   },
   function() {
@@ -2378,7 +2378,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-6" }, [
-      _c("span", [_vm._v("Propert Type")])
+      _c("span", [_vm._v("Property Type")])
     ])
   },
   function() {

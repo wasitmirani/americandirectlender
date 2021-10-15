@@ -7,14 +7,13 @@
             </div>
             <div class="mb-3">
                 <label class="col-form-label">Date Of Application</label>
-                <input class="form-control" type="date" placeholder="" v-model="application.date">
+                <input class="form-control" type="date" placeholder="" value="application." v-model="application.date">
             </div>
         </div>
     </div>
   </template>
   <script>
     export default{
-        props:['application']
-
-      }
+        props:['application'],
+  }
   </script>

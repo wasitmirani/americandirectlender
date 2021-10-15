@@ -1370,7 +1370,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { type: "date", placeholder: "" },
+          attrs: { type: "date", placeholder: "", value: "application." },
           domProps: { value: _vm.application.date },
           on: {
             input: function($event) {
@@ -1433,7 +1433,7 @@ var render = function() {
                     type: "radio",
                     name: "loan_amount",
                     value: "0-548k",
-                    selected: _vm.application.loan_amount === "0-548k"
+                    selected: _vm.application.loan_amount == "0-548k"
                   },
                   domProps: {
                     checked: _vm._q(_vm.application.loan_amount, "0-548k")
@@ -1471,7 +1471,7 @@ var render = function() {
                     type: "radio",
                     name: "loan_amount",
                     value: "0-548k",
-                    selected: _vm.application.loan_amount === "0-548k"
+                    selected: _vm.application.loan_amount == "0-548k"
                   },
                   domProps: {
                     checked: _vm._q(_vm.application.loan_amount, "0-548k")
@@ -1509,7 +1509,7 @@ var render = function() {
                     type: "radio",
                     name: "loan_amount",
                     value: "$822k+",
-                    selected: _vm.application.loan_amount === "$822k+"
+                    selected: _vm.application.loan_amount == "$822k+"
                   },
                   domProps: {
                     checked: _vm._q(_vm.application.loan_amount, "$822k+")
@@ -1666,7 +1666,7 @@ var render = function() {
                     type: "radio",
                     name: "loan_doc",
                     value: "Full",
-                    selected: _vm.application.doc_type === "Full"
+                    selected: _vm.application.doc_type == "Full"
                   },
                   domProps: {
                     checked: _vm._q(_vm.application.doc_type, "Full")
@@ -1704,7 +1704,7 @@ var render = function() {
                     type: "radio",
                     name: "loan_doc",
                     value: "Bank Statement",
-                    selected: _vm.application.doc_type === "Bank Statement"
+                    selected: _vm.application.doc_type == "Bank Statement"
                   },
                   domProps: {
                     checked: _vm._q(_vm.application.doc_type, "Bank Statement")
@@ -1746,7 +1746,7 @@ var render = function() {
                     type: "radio",
                     name: "loan_doc",
                     value: "No Doc",
-                    selected: _vm.application.doc_type === "No Doc"
+                    selected: _vm.application.doc_type == "No Doc"
                   },
                   domProps: {
                     checked: _vm._q(_vm.application.doc_type, "No Doc")
@@ -1883,15 +1883,15 @@ var render = function() {
                     id: "income_type1",
                     type: "radio",
                     name: "income_type",
-                    value: "W5",
-                    selected: _vm.application.income_type === "W5"
+                    value: "W-2",
+                    selected: _vm.application.income_type === "W-2"
                   },
                   domProps: {
-                    checked: _vm._q(_vm.application.income_type, "W5")
+                    checked: _vm._q(_vm.application.income_type, "W-2")
                   },
                   on: {
                     change: function($event) {
-                      return _vm.$set(_vm.application, "income_type", "W5")
+                      return _vm.$set(_vm.application, "income_type", "W-2")
                     }
                   }
                 }),
@@ -1902,7 +1902,7 @@ var render = function() {
                     staticClass: "form-check-label",
                     attrs: { for: "income_type1" }
                   },
-                  [_vm._v("W5 ")]
+                  [_vm._v("W-2 ")]
                 )
               ]),
               _vm._v(" "),
@@ -2035,15 +2035,15 @@ var render = function() {
                     id: "business_type1",
                     type: "radio",
                     name: "business_type",
-                    value: "DB",
-                    selected: _vm.application.income_type === "DB"
+                    value: "DBA",
+                    selected: _vm.application.income_type === "DBA"
                   },
                   domProps: {
-                    checked: _vm._q(_vm.application.business_type, "DB")
+                    checked: _vm._q(_vm.application.business_type, "DBA")
                   },
                   on: {
                     change: function($event) {
-                      return _vm.$set(_vm.application, "business_type", "DB")
+                      return _vm.$set(_vm.application, "business_type", "DBA")
                     }
                   }
                 }),
@@ -2054,7 +2054,7 @@ var render = function() {
                     staticClass: "form-check-label",
                     attrs: { for: "business_type1" }
                   },
-                  [_vm._v("DB")]
+                  [_vm._v("DBA")]
                 )
               ]),
               _vm._v(" "),

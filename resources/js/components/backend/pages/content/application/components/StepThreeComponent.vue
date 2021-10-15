@@ -7,15 +7,15 @@
                         <label class="col-form-label">Loan Amount</label>
                         <div class="col-sm-9">
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="loan_amount1" type="radio"  name="loan_amount"  value="0-548k" :selected="application.loan_amount === '0-548k'"  v-model="application.loan_amount">
+                                <input class="form-check-input" id="loan_amount1" type="radio"  name="loan_amount"  value="0-548k" :selected="application.loan_amount == '0-548k'"  v-model="application.loan_amount">
                                 <label class="form-check-label" for="loan_amount1">0-548k</label>
                             </div>
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="loan_amount2" type="radio" name="loan_amount"  value="0-548k" :selected="application.loan_amount === '0-548k'" v-model="application.loan_amount">
+                                <input class="form-check-input" id="loan_amount2" type="radio" name="loan_amount"  value="0-548k" :selected="application.loan_amount == '0-548k'" v-model="application.loan_amount">
                                 <label class="form-check-label" for="loan_amount2">0-548k</label>
                             </div>
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="loan_amount2" type="radio" name="loan_amount"  value="$822k+" :selected="application.loan_amount === '$822k+'" v-model="application.loan_amount">
+                                <input class="form-check-input" id="loan_amount2" type="radio" name="loan_amount"  value="$822k+" :selected="application.loan_amount == '$822k+'" v-model="application.loan_amount">
                                 <label class="form-check-label" for="loan_amount2">$822k+</label>
                             </div>
                             (*category A has lowest rates, then followed by category B and then C)
@@ -41,15 +41,15 @@
                         <label class="col-form-label">Loan Doc Type</label>
                         <div class="col-sm-9">
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="loan_doc1" type="radio" name="loan_doc" value="Full" :selected="application.doc_type === 'Full'" v-model="application.doc_type">
+                                <input class="form-check-input" id="loan_doc1" type="radio" name="loan_doc" value="Full" :selected="application.doc_type == 'Full'" v-model="application.doc_type">
                                 <label class="form-check-label" for="loan_doc1">Full </label>
                             </div>
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="loan_doc2" type="radio" name="loan_doc" value="Bank Statement" :selected="application.doc_type === 'Bank Statement'" v-model="application.doc_type">
+                                <input class="form-check-input" id="loan_doc2" type="radio" name="loan_doc" value="Bank Statement" :selected="application.doc_type == 'Bank Statement'" v-model="application.doc_type">
                                 <label class="form-check-label" for="loan_doc2">Bank Statement</label>
                             </div>
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="loan_doc3" type="radio" name="loan_doc" value="No Doc" :selected="application.doc_type === 'No Doc'" v-model="application.doc_type">
+                                <input class="form-check-input" id="loan_doc3" type="radio" name="loan_doc" value="No Doc" :selected="application.doc_type == 'No Doc'" v-model="application.doc_type">
                                 <label class="form-check-label" for="loan_doc3">No Doc</label>
                             </div>
 
@@ -80,8 +80,8 @@
                         <label class="col-form-label">Income Type</label>
                         <div class="col-sm-9">
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="income_type1" type="radio" name="income_type" value="W5" :selected="application.income_type === 'W5'" v-model="application.income_type">
-                                <label class="form-check-label" for="income_type1">W5 </label>
+                                <input class="form-check-input" id="income_type1" type="radio" name="income_type" value="W-2" :selected="application.income_type === 'W-2'" v-model="application.income_type">
+                                <label class="form-check-label" for="income_type1">W-2 </label>
                             </div>
                             <div class="form-check radio radio-primary">
                                 <input class="form-check-input" id="income_type2" type="radio" name="income_type" value="1099" :selected="application.income_type === '1099'" v-model="application.income_type">
@@ -105,8 +105,8 @@
                         <label class="col-form-label">If a Business, which type?</label>
                         <div class="col-sm-9">
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="business_type1" type="radio" name="business_type" value="DB" :selected="application.income_type === 'DB'"   v-model="application.business_type">
-                                <label class="form-check-label" for="business_type1">DB</label>
+                                <input class="form-check-input" id="business_type1" type="radio" name="business_type" value="DBA" :selected="application.income_type === 'DBA'"   v-model="application.business_type">
+                                <label class="form-check-label" for="business_type1">DBA</label>
                             </div>
                             <div class="form-check radio radio-primary">
                                 <input class="form-check-input" id="business_type2" type="radio" name="business_type" value="LLC" :selected="application.income_type === 'LLC'"  v-model="application.business_type">
