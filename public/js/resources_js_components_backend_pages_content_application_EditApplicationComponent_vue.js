@@ -84,7 +84,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         property_type: "",
         fee: "",
         cash_reserve: "",
-        fico: "",
+        fico: [],
         hoa: "",
         income_source: "",
         cash_out: "",
@@ -1687,7 +1687,78 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "mb-3" }, [
+        _c("label", { staticClass: "col-form-label" }, [
+          _vm._v("FICO Score(s): *")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.application.fico,
+              expression: "application.fico"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Experian___" },
+          domProps: { value: _vm.application.fico },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.application, "fico", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.application.fico,
+              expression: "application.fico"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Equifax___" },
+          domProps: { value: _vm.application.fico },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.application, "fico", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.application.fico,
+              expression: "application.fico"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Transunion___" },
+          domProps: { value: _vm.application.fico },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.application, "fico", $event.target.value)
+            }
+          }
+        }),
+        _vm._v("\n                (*we use the middle score)\n            ")
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-auto" }, [
         _c("fieldset", { staticClass: "mb-3" }, [
@@ -3097,34 +3168,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-3" }, [
-      _c("label", { staticClass: "col-form-label" }, [
-        _vm._v("FICO Score(s): *")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Experian___" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Equifax___" }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Transunion___" }
-      }),
-      _vm._v("\n                (*we use the middle score)\n            ")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

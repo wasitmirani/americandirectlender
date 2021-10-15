@@ -30,9 +30,9 @@
             </div>
             <div class="mb-3">
                 <label class="col-form-label">FICO Score(s): *</label>
-                <input class="form-control" type="text" placeholder="Experian___"  >
-                <input class="form-control" type="text" placeholder="Equifax___" >
-                <input class="form-control" type="text" placeholder="Transunion___" >
+                <input class="form-control" type="text" placeholder="Experian___"  v-model="application.fico">
+                <input class="form-control" type="text" placeholder="Equifax___" v-model="application.fico">
+                <input class="form-control" type="text" placeholder="Transunion___" v-model="application.fico">
                 (*we use the middle score)
             </div>
             <div class="col-auto">

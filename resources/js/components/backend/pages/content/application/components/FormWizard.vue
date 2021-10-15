@@ -40,7 +40,7 @@ export default{
         property_type:"",
         fee :"",
         cash_reserve :"",
-        fico :"",
+        fico :[],
         hoa :"",
         income_source :"",
         cash_out : "",
