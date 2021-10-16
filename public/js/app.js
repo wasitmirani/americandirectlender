@@ -2390,11 +2390,17 @@ var routes = [{
   },
   name: "show-application"
 }, {
-  path: "/profile",
+  path: "/profile/setting",
   component: function component() {
-    return setComponent("content/setting/ProfileSettingComponent");
+    return setComponent("setting/ProfileSetting");
   },
   name: "profile-setting"
+}, {
+  path: "/password/setting",
+  component: function component() {
+    return setComponent("setting/Password");
+  },
+  name: "password-setting"
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes,
@@ -87686,6 +87692,16 @@ var map = {
 		9,
 		"resources_js_components_backend_pages_management_user_UsersTable_vue"
 	],
+	"./components/backend/pages/setting/PasswordComponent": [
+		"./resources/js/components/backend/pages/setting/PasswordComponent.vue",
+		9,
+		"resources_js_components_backend_pages_setting_PasswordComponent_vue"
+	],
+	"./components/backend/pages/setting/PasswordComponent.vue": [
+		"./resources/js/components/backend/pages/setting/PasswordComponent.vue",
+		9,
+		"resources_js_components_backend_pages_setting_PasswordComponent_vue"
+	],
 	"./components/backend/pages/setting/ProfileSettingComponent": [
 		"./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue",
 		9,
@@ -87873,7 +87889,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_ExampleComponent_vue":1,"resources_js_components_backend_components_AvatarComponent_vue":1,"resources_js_components_backend_components_BreadcrumbComponent_vue":1,"resources_js_components_backend_components_PrimaryButton_vue":1,"resources_js_components_backend_components_SearchInput_vue":1,"resources_js_components_backend_pages_content_application_ApplicationsComponent_vue":1,"resources_js_components_backend_pages_content_application_EditApplicationComponent_vue":1,"resources_js_components_backend_pages_content_application_ShowApplicationComponent_vue":1,"resources_js_components_backend_pages_content_application_components_ApplicationCard_vue":1,"resources_js_components_backend_pages_content_application_components_CompletedApps_vue":1,"resources_js_components_backend_pages_content_application_components_FormWizard_vue":1,"resources_js_components_backend_pages_content_application_components_ProcessApps_vue":1,"resources_js_components_backend_pages_content_application_components_StepFourComponent_vue":1,"resources_js_components_backend_pages_content_application_components_StepOneComponent_vue":1,"resources_js_components_backend_pages_content_application_components_StepThreeComponent_vue":1,"resources_js_components_backend_pages_content_application_components_StepTwoComponent_vue":1,"resources_js_components_backend_pages_content_notification_SendNotifyComponent_vue":1,"resources_js_components_backend_pages_content_notification_ShowNotificationComponent_vue":1,"resources_js_components_backend_pages_dashboard_HomeComponent_vue":1,"resources_js_components_backend_pages_error_404Component_vue":1,"resources_js_components_backend_pages_management_permission_CreatePermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionTable_vue":1,"resources_js_components_backend_pages_management_role_RoleComponent_vue":1,"resources_js_components_backend_pages_management_role_RoleTable_vue":1,"resources_js_components_backend_pages_management_user_UserComponent_vue":1,"resources_js_components_backend_pages_management_user_UserFormComponent_vue":1,"resources_js_components_backend_pages_management_user_UsersTable_vue":1,"resources_js_components_backend_pages_setting_ProfileSettingComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_ExampleComponent_vue":1,"resources_js_components_backend_components_AvatarComponent_vue":1,"resources_js_components_backend_components_BreadcrumbComponent_vue":1,"resources_js_components_backend_components_PrimaryButton_vue":1,"resources_js_components_backend_components_SearchInput_vue":1,"resources_js_components_backend_pages_content_application_ApplicationsComponent_vue":1,"resources_js_components_backend_pages_content_application_EditApplicationComponent_vue":1,"resources_js_components_backend_pages_content_application_ShowApplicationComponent_vue":1,"resources_js_components_backend_pages_content_application_components_ApplicationCard_vue":1,"resources_js_components_backend_pages_content_application_components_CompletedApps_vue":1,"resources_js_components_backend_pages_content_application_components_FormWizard_vue":1,"resources_js_components_backend_pages_content_application_components_ProcessApps_vue":1,"resources_js_components_backend_pages_content_application_components_StepFourComponent_vue":1,"resources_js_components_backend_pages_content_application_components_StepOneComponent_vue":1,"resources_js_components_backend_pages_content_application_components_StepThreeComponent_vue":1,"resources_js_components_backend_pages_content_application_components_StepTwoComponent_vue":1,"resources_js_components_backend_pages_content_notification_SendNotifyComponent_vue":1,"resources_js_components_backend_pages_content_notification_ShowNotificationComponent_vue":1,"resources_js_components_backend_pages_dashboard_HomeComponent_vue":1,"resources_js_components_backend_pages_error_404Component_vue":1,"resources_js_components_backend_pages_management_permission_CreatePermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionComponent_vue":1,"resources_js_components_backend_pages_management_permission_PermissionTable_vue":1,"resources_js_components_backend_pages_management_role_RoleComponent_vue":1,"resources_js_components_backend_pages_management_role_RoleTable_vue":1,"resources_js_components_backend_pages_management_user_UserComponent_vue":1,"resources_js_components_backend_pages_management_user_UserFormComponent_vue":1,"resources_js_components_backend_pages_management_user_UsersTable_vue":1,"resources_js_components_backend_pages_setting_PasswordComponent_vue":1,"resources_js_components_backend_pages_setting_ProfileSettingComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

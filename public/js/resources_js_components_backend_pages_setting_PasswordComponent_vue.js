@@ -1,29 +1,16 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_backend_pages_setting_ProfileSettingComponent_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_backend_pages_setting_PasswordComponent_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/pages/setting/PasswordComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/pages/setting/PasswordComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -69,28 +56,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      user: {
-        name: "",
-        email: "",
-        thumbnail: ""
-      },
+      passwords: {},
+      user: {},
       errors: {}
     };
   },
   methods: {
-    onSave: function onSave(e) {
+    updatePassword: function updatePassword(e) {
       var _this = this;
 
       e.preventDefault();
       var formData = new FormData();
-      console.log(this.user.email);
-      formData.append('about_me', this.user.user_info.about_me);
-      formData.append('email', this.user.email);
-      formData.append('name', this.user.name);
-      formData.append('thumbnail', this.user.thumbnail);
-      console.log(formData);
-      axios.put('/profile/setting/', formData).then(function (res) {
-        _this.$root.alertNotificationMessage(res.status, "User has been Updated successfully");
+      formData = Object.assign(this.passwords, formData);
+      axios.post('/password/setting/' + this.user.id, formData).then(function (res) {
+        _this.$root.alertNotificationMessage(res.status, "Password Updated Successfully");
+
+        setTimeout(function () {
+          _this.$router.push({
+            name: 'users'
+          });
+        }, 1000);
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this.errors = err.response.data.errors;
@@ -119,18 +104,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue ***!
-  \***********************************************************************************/
+/***/ "./resources/js/components/backend/pages/setting/PasswordComponent.vue":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/backend/pages/setting/PasswordComponent.vue ***!
+  \*****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _ProfileSettingComponent_vue_vue_type_template_id_37122f36___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfileSettingComponent.vue?vue&type=template&id=37122f36& */ "./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue?vue&type=template&id=37122f36&");
-/* harmony import */ var _ProfileSettingComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfileSettingComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _PasswordComponent_vue_vue_type_template_id_7a93db82___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PasswordComponent.vue?vue&type=template&id=7a93db82& */ "./resources/js/components/backend/pages/setting/PasswordComponent.vue?vue&type=template&id=7a93db82&");
+/* harmony import */ var _PasswordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PasswordComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/backend/pages/setting/PasswordComponent.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -140,9 +125,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ProfileSettingComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ProfileSettingComponent_vue_vue_type_template_id_37122f36___WEBPACK_IMPORTED_MODULE_0__.render,
-  _ProfileSettingComponent_vue_vue_type_template_id_37122f36___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _PasswordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PasswordComponent_vue_vue_type_template_id_7a93db82___WEBPACK_IMPORTED_MODULE_0__.render,
+  _PasswordComponent_vue_vue_type_template_id_7a93db82___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -152,46 +137,46 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/backend/pages/setting/ProfileSettingComponent.vue"
+component.options.__file = "resources/js/components/backend/pages/setting/PasswordComponent.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************!*\
-  !*** ./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************/
+/***/ "./resources/js/components/backend/pages/setting/PasswordComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/backend/pages/setting/PasswordComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSettingComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ProfileSettingComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSettingComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PasswordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PasswordComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/pages/setting/PasswordComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PasswordComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue?vue&type=template&id=37122f36&":
-/*!******************************************************************************************************************!*\
-  !*** ./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue?vue&type=template&id=37122f36& ***!
-  \******************************************************************************************************************/
+/***/ "./resources/js/components/backend/pages/setting/PasswordComponent.vue?vue&type=template&id=7a93db82&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/backend/pages/setting/PasswordComponent.vue?vue&type=template&id=7a93db82& ***!
+  \************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSettingComponent_vue_vue_type_template_id_37122f36___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSettingComponent_vue_vue_type_template_id_37122f36___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PasswordComponent_vue_vue_type_template_id_7a93db82___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PasswordComponent_vue_vue_type_template_id_7a93db82___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSettingComponent_vue_vue_type_template_id_37122f36___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ProfileSettingComponent.vue?vue&type=template&id=37122f36& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue?vue&type=template&id=37122f36&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PasswordComponent_vue_vue_type_template_id_7a93db82___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PasswordComponent.vue?vue&type=template&id=7a93db82& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/pages/setting/PasswordComponent.vue?vue&type=template&id=7a93db82&");
 
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue?vue&type=template&id=37122f36&":
-/*!*********************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/pages/setting/ProfileSettingComponent.vue?vue&type=template&id=37122f36& ***!
-  \*********************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/pages/setting/PasswordComponent.vue?vue&type=template&id=7a93db82&":
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/pages/setting/PasswordComponent.vue?vue&type=template&id=7a93db82& ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -213,58 +198,9 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("form", [
-                  _c("div", { staticClass: "row mb-2" }, [
-                    _c("div", { staticClass: "profile-title" }, [
-                      _c("div", { staticClass: "media" }, [
-                        _c("img", {
-                          staticClass: "img-70 rounded-circle",
-                          attrs: { alt: "", src: _vm.user.thumbnail }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "media-body" }, [
-                          _c("h3", { staticClass: "mb-1 f-20 txt-primary" }, [
-                            _vm._v(_vm._s(_vm.user.name))
-                          ]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "f-12" })
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "mb-3" }, [
-                    _c("h6", { staticClass: "form-label" }, [_vm._v("Bio")]),
-                    _vm._v(" "),
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.user.user_info.about_me,
-                          expression: "user.user_info.about_me"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { rows: "5", name: "bio" },
-                      domProps: { value: _vm.user.user_info.about_me },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.user.user_info,
-                            "about_me",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
                   _c("div", { staticClass: "mb-3" }, [
                     _c("label", { staticClass: "form-label" }, [
-                      _vm._v("Email-Address")
+                      _vm._v("Enter Password")
                     ]),
                     _vm._v(" "),
                     _c("input", {
@@ -272,38 +208,80 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.user.email,
-                          expression: "user.email"
+                          value: _vm.passwords.password,
+                          expression: "passwords.password"
                         }
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        placeholder: "your-email@domain.com",
-                        name: "email"
+                        type: "password",
+                        placeholder: "Enter Password"
                       },
-                      domProps: { value: _vm.user.email },
+                      domProps: { value: _vm.passwords.password },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(_vm.user, "email", $event.target.value)
+                          _vm.$set(
+                            _vm.passwords,
+                            "password",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors.password
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v(_vm._s(_vm.errors.password[0]))
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mb-3" }, [
+                    _c("label", { staticClass: "form-label" }, [
+                      _vm._v("Confirm Password")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.passwords.password_confirmation,
+                          expression: "passwords.password_confirmation"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "password",
+                        placeholder: "Confirm Password"
+                      },
+                      domProps: { value: _vm.passwords.password_confirmation },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.passwords,
+                            "password_confirmation",
+                            $event.target.value
+                          )
                         }
                       }
                     })
                   ]),
-                  _vm._v(" "),
-                  _vm._m(1),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-footer" }, [
                     _c(
                       "button",
                       {
                         staticClass: "btn btn-primary btn-block",
-                        attrs: { type: "button" },
-                        on: { click: _vm.onSave }
+                        on: { click: _vm.updatePassword }
                       },
-                      [_vm._v("Save")]
+                      [_vm._v("Update")]
                     )
                   ])
                 ])
@@ -321,7 +299,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header pb-0" }, [
-      _c("h4", { staticClass: "card-title mb-0" }, [_vm._v("My Profile")]),
+      _c("h4", { staticClass: "card-title mb-0" }, [_vm._v("Update Password")]),
       _vm._v(" "),
       _c("div", { staticClass: "card-options" }, [
         _c(
@@ -341,19 +319,6 @@ var staticRenderFns = [
           [_c("i", { staticClass: "fe fe-x" })]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-3" }, [
-      _c("label", { staticClass: "form-label" }, [_vm._v("Image")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "file", name: "thumbnail" }
-      })
     ])
   }
 ]

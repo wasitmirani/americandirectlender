@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\user;
 
 use App\Models\User;
 use App\Models\UserInfo;
+use App\Models\Application;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -23,13 +24,13 @@ class UserController extends Controller
         $q=request('query');
 
         $total_users=User::all()->count();
+       
         $agents=Role::select('name')->withCount('users')->get();
-
 
         $users=User::where('name', 'like', '%' . $q . '%')
         ->Orwhere('email', 'like', '%' . $q. '%')
         ->latest()->with('user:id,name','roles')->paginate((int)env('PER_PAGE'));
-        return response()->json(['users'=>$users,'total_users'=>$total_users,'roles'=>$agents]);
+        return response()->json(['users'=>$users,'total_users'=>$total_users,'roles'=>$agents,'total_applications']);
 
 
     }

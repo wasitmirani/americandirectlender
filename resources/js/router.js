@@ -52,9 +52,14 @@ const routes = [
         name: "show-application",
     },
     {
-        path: "/profile",
-        component: () => setComponent("content/setting/ProfileSettingComponent"),
+        path: "/profile/setting",
+        component: () => setComponent("setting/ProfileSetting"),
         name: "profile-setting",
+    },
+    {
+        path: "/password/setting",
+        component: () => setComponent("setting/Password"),
+        name: "password-setting",
     },
 
 

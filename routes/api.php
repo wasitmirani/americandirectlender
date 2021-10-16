@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AppFormController;
+use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\role\RoleController;
 use App\Http\Controllers\backend\user\UserController;
@@ -27,13 +28,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('customer/applications',[AppFormController::class,'getApplications']);
 Route::get('customer/applications/{id}',[AppFormController::class,'edit']);
+
 Route::put('customer/applications/{id}',[AppFormController::class,'update']);
 Route::put('update/status/{id}',[AppFormController::class,'updateStatus']);
 
+
+
 Route::middleware('auth:api')->group(function () {
 
+    Route::get('profile/setting',[SettingController::class,'index'])->name('profile.setting');
+    Route::post('password/setting/{id}',[SettingController::class,'updatePassword'])->name('password.setting');
+    Route::put('profile/setting',[SettingController::class,'update']);
     Route::get('/dashboard',[DashboardController::class,'getDashboard']);
-Route::prefix('management')->group(function () {
+    Route::prefix('management')->group(function () {
 
     Route::resource('user', UserController::class);
     Route::resource('notification', NotificationController::class);

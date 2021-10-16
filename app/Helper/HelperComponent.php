@@ -14,6 +14,7 @@ class HelperComponent {
                 [
                     "single_link" => setSingleLink( "Applications","file-text",null,"/customer/applications"),
                 ],
+
                 [
                     "heading"=>"Management",
                     "menu"=>[
@@ -82,6 +83,12 @@ class HelperComponent {
 
                 [
                     "heading"=>"Content",
+                ],
+                [
+                    "single_link" => setSingleLink( "Settings","settings",null,"/profile/setting"),
+                ],
+                [
+                    "single_link" => setSingleLink( "Update Password","settings",null,"/password/setting"),
                 ],
 
 
