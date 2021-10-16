@@ -44,6 +44,17 @@
                 <span>{{$menu['single_link']['title']}}</span></router-link></li>
             @endif
             @endforeach
+            {{-- <li class="dropdown">
+             <button class="btn" style="width: 270px;
+             text-align: left;
+             scroll-padding-left: -39px;
+             padding-left: 1px";><a class="nav-link menu-title link-nav" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>Log out</a></button>
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+
+            </li> --}}
 
           </ul>
         </div>

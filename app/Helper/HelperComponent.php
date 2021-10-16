@@ -48,33 +48,7 @@ class HelperComponent {
                 ],
                 [
                     "heading"=>"Config",
-                    "menu"=>[
-                        "title"=>'Settings',
-                        "icon"=>"setting",
-                        "sub_menu"=>[
-                            setSubMenu(
-                              "Profile",
-                               null,
-                               "profile-setting",
-                               "/profile",
-                            ),
-                            setSubMenu(
-                                "Roles",
-                                  null,
-                                  "roles-view",
-                                   "/roles",
-                            ),
-                            setSubMenu(
-                                "Permissions",
-                                  null,
-                                  "permissions-view",
-                                   "/permissions",
-                              ),
 
-
-                        ]
-
-                    ],
 
                 ],
                 [
