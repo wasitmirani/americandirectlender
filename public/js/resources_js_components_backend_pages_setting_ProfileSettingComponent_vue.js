@@ -83,12 +83,10 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
       var formData = new FormData();
-      console.log(this.user.email);
-      formData.append('about_me', this.user.user_info.about_me);
       formData.append('email', this.user.email);
       formData.append('name', this.user.name);
       formData.append('thumbnail', this.user.thumbnail);
-      console.log(formData);
+      formData.append('about_me', this.user.user_info.about_me);
       axios.put('/profile/setting/', formData).then(function (res) {
         _this.$root.alertNotificationMessage(res.status, "User has been Updated successfully");
       })["catch"](function (err) {
