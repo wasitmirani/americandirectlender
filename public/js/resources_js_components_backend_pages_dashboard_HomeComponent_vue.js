@@ -1659,13 +1659,25 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(6)
+                  _c("div", { staticClass: "media-body" }, [
+                    _c("h5", { staticClass: "mb-0" }, [
+                      _c("span", { staticClass: "counter" }, [
+                        _vm._v(
+                          _vm._s(
+                            parseInt(this.total_applications) -
+                              parseInt(this.assigned_apps)
+                          )
+                        )
+                      ])
+                    ]),
+                    _c("span", { staticClass: "mb-1" })
+                  ])
                 ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 ps-0" }, [
                 _c("div", { staticClass: "media" }, [
-                  _vm._m(7),
+                  _vm._m(6),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -1699,7 +1711,7 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _vm._m(8)
+                  _vm._m(7)
                 ])
               ])
             ])
@@ -1708,16 +1720,16 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(9),
+    _vm._m(8),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "table-responsive" }, [
-            _c("h5", [_vm._v("Recent Application")]),
+            _c("h5", [_vm._v("Recent Applications")]),
             _vm._v(" "),
             _c("table", { staticClass: "table table-bordernone" }, [
-              _vm._m(10),
+              _vm._m(9),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -1893,7 +1905,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "align-self-center me-3 text-start" }, [
-      _c("span", { staticClass: "widget-t mb-1" }, [_vm._v("App Created")]),
+      _c("span", { staticClass: "widget-t mb-1" }),
       _vm._v(" "),
       _c("h5", { staticClass: "mb-0" }, [_vm._v("Total Applications")])
     ])
@@ -1913,23 +1925,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "align-self-center me-3 text-start" }, [
-      _c("span", { staticClass: "widget-t mb-1" }, [
-        _vm._v("Pending Application ")
-      ]),
+      _c("span", { staticClass: "widget-t mb-1" }),
       _vm._v(" "),
-      _c("h5", { staticClass: "mb-0" }, [_vm._v("This Week")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "media-body" }, [
-      _c("h5", { staticClass: "mb-0" }, [
-        _vm._v("$"),
-        _c("span", { staticClass: "counter" }, [_vm._v("63147")])
-      ]),
-      _c("span", { staticClass: "mb-1" }, [_vm._v("+$69(65%)")])
+      _c("h5", { staticClass: "mb-0" }, [_vm._v("Pending Application")])
     ])
   },
   function() {

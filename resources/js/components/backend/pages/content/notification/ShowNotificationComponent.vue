@@ -4,19 +4,18 @@
             <div class="row">
                 <h1>Notifications</h1>
         <div class="col-xl-9 xl-60 box-col-8">
-                <div class="card"   v-for="notifications in notification">
+                <div class="card"   v-for="notification in notifications" v-bind:key="notification.id" >
                   <div class="job-search">
                     <div class="card-body">
                       <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
                         <div class="media-body">
-                          <h6 class="f-w-600"><a href="job-details.html">UI/UX IT Frontend Developer</a><span class="badge badge-primary pull-right">New</span></h6>
-                          <p>(L6) Salt Lake City, UT</p>
+                          <h6 class="f-w-600"><a href="job-details.html" v-for="content in notification.data" v-bind:key="content.title">{{content.title}}</a><span class="badge badge-primary pull-right">New</span></h6>
+                          <p v-for="content in notification.data" v-bind:key="content.title">{{content.body}}</p>
              
                         </div>
                       </div>
-                      <p>
-                        We are looking for an experienced and viho designer and/or frontend engineer with expertise in accessibility to join our team ,
-                        3+ years of experience working in as a Frontend Engineer or comparable role. You won’t be a team of one though — you’ll be collaborating closely with other...
+                       <p>
+                       
                       </p>
                     </div>
                   </div>
@@ -54,7 +53,8 @@ export default{
     mounted(){
         var url = "/all/notification";
             axios.get(url).then((res)=>{
-                   this.notifications = res
+                   this.notifications = res.data.notifications
+                   console.log(res.data.notifications)
                    this.loading =false;
                }).catch((err)=>{
                         this.$root.alertNotificationMessage(err.response.status,err.response.data);

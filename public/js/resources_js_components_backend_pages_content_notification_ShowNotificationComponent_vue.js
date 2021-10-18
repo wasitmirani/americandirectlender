@@ -51,7 +51,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -63,7 +62,8 @@ __webpack_require__.r(__webpack_exports__);
 
     var url = "/all/notification";
     axios.get(url).then(function (res) {
-      _this.notifications = res;
+      _this.notifications = res.data.notifications;
+      console.log(res.data.notifications);
       _this.loading = false;
     })["catch"](function (err) {
       _this.$root.alertNotificationMessage(err.response.status, err.response.data);
@@ -165,8 +165,57 @@ var render = function() {
         _c(
           "div",
           { staticClass: "col-xl-9 xl-60 box-col-8" },
-          _vm._l(_vm.notification, function(notifications) {
-            return _c("div", { staticClass: "card" }, [_vm._m(0, true)])
+          _vm._l(_vm.notifications, function(notification) {
+            return _c("div", { key: notification.id, staticClass: "card" }, [
+              _c("div", { staticClass: "job-search" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "media" }, [
+                    _c("img", {
+                      staticClass: "img-40 img-fluid m-r-20",
+                      attrs: { src: "", alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "media-body" },
+                      [
+                        _c(
+                          "h6",
+                          { staticClass: "f-w-600" },
+                          [
+                            _vm._l(notification.data, function(content) {
+                              return _c(
+                                "a",
+                                {
+                                  key: content.title,
+                                  attrs: { href: "job-details.html" }
+                                },
+                                [_vm._v(_vm._s(content.title))]
+                              )
+                            }),
+                            _c(
+                              "span",
+                              { staticClass: "badge badge-primary pull-right" },
+                              [_vm._v("New")]
+                            )
+                          ],
+                          2
+                        ),
+                        _vm._v(" "),
+                        _vm._l(notification.data, function(content) {
+                          return _c("p", { key: content.title }, [
+                            _vm._v(_vm._s(content.body))
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p")
+                ])
+              ])
+            ])
           }),
           0
         )
@@ -174,42 +223,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "job-search" }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("div", { staticClass: "media" }, [
-          _c("img", {
-            staticClass: "img-40 img-fluid m-r-20",
-            attrs: { src: "", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "media-body" }, [
-            _c("h6", { staticClass: "f-w-600" }, [
-              _c("a", { attrs: { href: "job-details.html" } }, [
-                _vm._v("UI/UX IT Frontend Developer")
-              ]),
-              _c("span", { staticClass: "badge badge-primary pull-right" }, [
-                _vm._v("New")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("p", [_vm._v("(L6) Salt Lake City, UT")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "\n                        We are looking for an experienced and viho designer and/or frontend engineer with expertise in accessibility to join our team ,\n                        3+ years of experience working in as a Frontend Engineer or comparable role. You won’t be a team of one though — you’ll be collaborating closely with other...\n                      "
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
