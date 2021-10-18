@@ -4,20 +4,14 @@
             <div class="row">
                 <h1>Notifications</h1>
         <div class="col-xl-9 xl-60 box-col-8">
-                <div class="card">
+                <div class="card"   v-for="notifications in notification">
                   <div class="job-search">
                     <div class="card-body">
                       <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
                         <div class="media-body">
                           <h6 class="f-w-600"><a href="job-details.html">UI/UX IT Frontend Developer</a><span class="badge badge-primary pull-right">New</span></h6>
                           <p>(L6) Salt Lake City, UT</p>
-                          <ul class="rating">
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                          </ul>
+             
                         </div>
                       </div>
                       <p>
@@ -27,149 +21,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="card">
-                  <div class="job-search">
-                    <div class="card-body">
-                      <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
-                        <div class="media-body">
-                          <h6 class="f-w-600"><a href="job-details.html">React/React Native Developer</a><span class="badge badge-primary pull-right">New</span></h6>
-                          <p>San Diego, CA </p>
-                          <ul class="rating">
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p>Ideally 2+ years experience with React. Bonus points if you have React Native experience. This is an incredibly exciting opportunity to gain commercial , Professional experience of React Native and other front end frameworks. Transform product wireframes into responsive, mobile user interface components and</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card ribbon-vertical-left-wrapper">
-                  <div class="ribbon ribbon-bookmark ribbon-vertical-left ribbon-primary"><i class="icofont icofont-globe-alt"></i></div>
-                  <div class="job-search">
-                    <div class="card-body">
-                      <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
-                        <div class="media-body">
-                          <h6 class="f-w-600"><a href="job-details.html">Senior UX designer</a><span class="pull-right">2 days ago</span></h6>
-                          <p>Minneapolis, MN</p>
-                          <ul class="rating">
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p>The designer will apply Lean UX and Design Thinking practices in a highly collaborative, fast-paced, distributed environment You have 4+ years of UX experience. You support UX leadership by providing continuous feedback regarding the evolution of team process standards.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="job-search">
-                    <div class="card-body">
-                      <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
-                        <div class="media-body">
-                          <h6 class="f-w-600"><a href="job-details.html">Front end web developer</a><span class="pull-right">3 days ago</span></h6>
-                          <p>Cisco <span>Lelystad, Netherlands </span></p>
-                          <ul class="rating">
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p>Insipidity the sufficient discretion imprudence resolution sir him decisively. Proceed how any engaged visitor. Explained propriety off out perpetual his you. Feel sold off felt nay rose met you. We so entreaties cultivated astonished is. Was sister for few longer mrs sudden talent become.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="job-search">
-                    <div class="card-body">
-                      <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
-                        <div class="media-body">
-                          <h6 class="f-w-600"><a href="job-details.html">Graphic designer</a><span class="pull-right">3 days ago</span></h6>
-                          <p>Infosys <span>Lelystad, Netherlands </span></p>
-                          <ul class="rating">
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p>Contented get distrusts certainty nay are frankness concealed ham. On unaffected resolution on considered of. No thought me husband or colonel forming effects. End sitting shewing who saw besides son musical adapted. Contrasted interested eat alteration pianoforte sympathize was.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="job-search">
-                    <div class="card-body">
-                      <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
-                        <div class="media-body">
-                          <h6 class="f-w-600"><a href="job-details.html">Designer, CRM</a><span class="pull-right">3 days ago</span></h6>
-                          <p>Citrix <span>Lelystad, Netherlands </span></p>
-                          <ul class="rating">
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p>Situation admitting promotion at or to perceived be. Mr acuteness we as estimable enjoyment up. An held late as felt know. Learn do allow solid to grave. Middleton suspicion age her attention. Chiefly several bed its wishing. Is so moments on chamber pressed to. Doubtful yet way properly answered.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card ribbon-vertical-left-wrapper">
-                  <div class="ribbon ribbon-bookmark ribbon-vertical-left ribbon-secondary"><i class="icofont icofont-award"></i></div>
-                  <div class="job-search">
-                    <div class="card-body">
-                      <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
-                        <div class="media-body">
-                          <h6 class="f-w-600"><a href="job-details.html">UI designer E-commerce</a><span class="pull-right">5 days ago</span></h6>
-                          <p>Ericsson <span>Lelystad, Netherlands </span></p>
-                          <ul class="rating">
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p>Situation admitting promotion at or to perceived be. Mr acuteness we as estimable enjoyment up. An held late as felt know. Learn do allow solid to grave. Middleton suspicion age her attention. Chiefly several bed its wishing. Is so moments on chamber pressed to. Doubtful yet way properly answered.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="job-search">
-                    <div class="card-body">
-                      <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
-                        <div class="media-body">
-                          <h6 class="f-w-600"><a href="job-details.html">Senior UX designer</a><span class="pull-right">5 days ago</span></h6>
-                          <p>Minneapolis, MN </p>
-                          <ul class="rating">
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                            <li><i class="fa fa-star font-warning"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p>The designer will apply Lean UX and Design Thinking practices in a highly collaborative, fast-paced, distributed environment You have 4+ years of UX experience. You support UX leadership by providing continuous feedback regarding the evolution of team process standards.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="job-pagination">
+            
+          
+                <!-- <div class="job-pagination">
                   <nav aria-label="Page navigation example">
                     <ul class="pagination pagination-primary">
                       <li class="page-item disabled"><a class="page-link" href="javascript:void(0)">Previous</a></li>
@@ -179,11 +33,34 @@
                       <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
                     </ul>
                   </nav>
-                </div>
+                </div> -->
         </div>
     </div>
 </div>
     </div>
 </template>
 <script>
+export default{
+    data(){ 
+        return{
+
+           notifications:""
+
+
+
+    }
+    },
+
+    mounted(){
+        var url = "/all/notification";
+            axios.get(url).then((res)=>{
+                   this.notifications = res
+                   this.loading =false;
+               }).catch((err)=>{
+                        this.$root.alertNotificationMessage(err.response.status,err.response.data);
+
+                  });
+    }
+
+}
 </script>

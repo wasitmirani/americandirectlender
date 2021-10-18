@@ -26,4 +26,12 @@ class DashboardController extends Controller
     }
 
 
+    public function recentApp(){
+
+          $recentApps = Application::orderBy('id','DESC')->limit(5)->get();
+           return response()->json(['applications'=>$recentApps]);
+
+    }
+
+
 }

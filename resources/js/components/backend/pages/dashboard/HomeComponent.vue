@@ -217,60 +217,46 @@
   </div>
 
             
-    <div class="col-xl-12 recent-order-sec">
-            <div class="col-xl-12">
+
      
                  
                   <div class="row">
-                    <div class="col-xl-">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5>Recent Application</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="display" id="basic-1">
-                                           <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                           </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            </tbody>
-                                             <tfoot>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                           </tfoot>
-                      
-                                    </table>
-                                </div>
-                            </div>
-                            
+                      <div class="card">
+                          <div class="card-body">
+                                                 <div class="table-responsive">
+                          <h5>Recent Application</h5>
+                          <table class="table table-bordernone">                                         
+                            <thead>
+                              <tr >                                        
+                                <th>Application Name</th>
+                                <th>Status</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="app in apps">
+                                <td>
+                                  <div class="media"><img class="img-fluid rounded-circle" src="" alt="" data-original-title="" title="">
+                                    <div class="media-body"><a href="product-page.html"><span>{{app.name}}</span></a></div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <p v-if="app.status === '1'">Done</p>
+                                  <p v-if="app.status === '0'">In Proccess</p>
+                                </td>
+                              </tr>
+                        
+                            </tbody>
+                          </table>
                         </div>
-                    </div>
+
+                          </div>
+
+                      </div>
+
+                   
                   </div>
               
-            </div>
-    </div>
+      
 </div>
 </template>
 
@@ -287,6 +273,7 @@
                  total_roles:0,
                  assigned_apps:0,
                  roles: {},
+                 apps:{}
 
         }
     },
@@ -441,6 +428,16 @@ var options17 = {
             this.user=user;
             // this.app_name=appname;
             this.dashboardChart();
+
+
+            axios.get('/recent/applications/').then((res)=>{
+                   this.apps = res.data.applications
+                   console.log(res.data.applications)
+                   this.loading =false;
+               }).catch((err)=>{
+                        this.$root.alertNotificationMessage(err.response.status,err.response.data);
+
+                });
 
 
         }

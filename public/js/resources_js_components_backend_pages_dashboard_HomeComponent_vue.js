@@ -292,20 +292,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -316,7 +302,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       total_applications: 0,
       total_roles: 0,
       assigned_apps: 0,
-      roles: {}
+      roles: {},
+      apps: {}
     };
   },
   methods: {
@@ -467,11 +454,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   mounted: function mounted() {
+    var _this2 = this;
+
     this.getDashboardData();
     console.log("userss", user);
     this.user = user; // this.app_name=appname;
 
     this.dashboardChart();
+    axios.get('/recent/applications/').then(function (res) {
+      _this2.apps = res.data.applications;
+      console.log(res.data.applications);
+      _this2.loading = false;
+    })["catch"](function (err) {
+      _this2.$root.alertNotificationMessage(err.response.status, err.response.data);
+    });
   }
 });
 
@@ -1714,7 +1710,55 @@ var render = function() {
     _vm._v(" "),
     _vm._m(9),
     _vm._v(" "),
-    _vm._m(10)
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("h5", [_vm._v("Recent Application")]),
+            _vm._v(" "),
+            _c("table", { staticClass: "table table-bordernone" }, [
+              _vm._m(10),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.apps, function(app) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c("div", { staticClass: "media" }, [
+                        _c("img", {
+                          staticClass: "img-fluid rounded-circle",
+                          attrs: {
+                            src: "",
+                            alt: "",
+                            "data-original-title": "",
+                            title: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "media-body" }, [
+                          _c("a", { attrs: { href: "product-page.html" } }, [
+                            _c("span", [_vm._v(_vm._s(app.name))])
+                          ])
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      app.status === "1" ? _c("p", [_vm._v("Done")]) : _vm._e(),
+                      _vm._v(" "),
+                      app.status === "0"
+                        ? _c("p", [_vm._v("In Proccess")])
+                        : _vm._e()
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -2043,75 +2087,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xl-12 recent-order-sec" }, [
-      _c("div", { staticClass: "col-xl-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-xl-" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-header" }, [
-                _c("h5", [_vm._v("Recent Application")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "table-responsive" }, [
-                  _c(
-                    "table",
-                    { staticClass: "display", attrs: { id: "basic-1" } },
-                    [
-                      _c("thead", [
-                        _c("tr", [
-                          _c("th", [_vm._v("Name")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Position")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Office")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Age")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Start date")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Salary")])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("tbody", [
-                        _c("tr", [
-                          _c("td", [_vm._v("Tiger Nixon")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("System Architect")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("Edinburgh")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("61")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("2011/04/25")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("$320,800")])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("tfoot", [
-                        _c("tr", [
-                          _c("th", [_vm._v("Name")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Position")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Office")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Age")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Start date")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Salary")])
-                        ])
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Application Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")])
       ])
     ])
   }

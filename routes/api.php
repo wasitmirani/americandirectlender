@@ -33,9 +33,10 @@ Route::middleware('auth:api')->group(function () {
 
 Route::get('customer/applications',[AppFormController::class,'getApplications']);
 Route::get('customer/applications/{id}',[AppFormController::class,'edit']);
-
+Route::get('/all/notification',[NotificationController::class,'index']);
 Route::put('customer/applications/{id}',[AppFormController::class,'update']);
 Route::put('update/status/{id}',[AppFormController::class,'updateStatus']);
+Route::get('/recent/applications',[DashboardController::class,'recentApp']);
 
     Route::get('profile/setting',[SettingController::class,'index'])->name('profile.setting');
     Route::post('password/setting/{id}',[SettingController::class,'updatePassword'])->name('password.setting');
@@ -54,6 +55,8 @@ Route::put('update/status/{id}',[AppFormController::class,'updateStatus']);
 
     Route::resource('permission', PermissionController::class);
     Route::post('remove-all/permissions',[UserController::class,'removeAllPermissions']);
+
+   
 
 
 
