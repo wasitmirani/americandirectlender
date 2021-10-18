@@ -11,7 +11,7 @@
                               <h6>{{application.name}}</h6>
                               <div class="media"><img class="img-20 me-2 rounded-circle" src="assets/images/user/3.jpg" alt="" data-original-title="" title="">
                                 <div class="media-body">
-                                  <p>Themeforest, australia</p>
+                                  <p></p>
                                 </div>
                               </div>
                               <p>{{ application.property_detail }}.</p>

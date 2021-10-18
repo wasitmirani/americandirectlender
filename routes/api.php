@@ -39,7 +39,7 @@ Route::put('update/status/{id}',[AppFormController::class,'updateStatus']);
 
     Route::get('profile/setting',[SettingController::class,'index'])->name('profile.setting');
     Route::post('password/setting/{id}',[SettingController::class,'updatePassword'])->name('password.setting');
-    Route::put('profile/setting',[SettingController::class,'update']);
+    Route::post('profile/setting/{id}',[SettingController::class,'update']);
     Route::get('/dashboard',[DashboardController::class,'getDashboard']);
     Route::prefix('management')->group(function () {
 

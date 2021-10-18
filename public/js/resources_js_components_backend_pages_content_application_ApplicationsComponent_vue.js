@@ -2387,9 +2387,7 @@ var staticRenderFns = [
         }
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "media-body" }, [
-        _c("p", [_vm._v("Themeforest, australia")])
-      ])
+      _c("div", { staticClass: "media-body" }, [_c("p")])
     ])
   },
   function() {

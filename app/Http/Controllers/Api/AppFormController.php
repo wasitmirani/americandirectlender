@@ -51,7 +51,6 @@ class AppFormController extends Controller
 
     public function update(Request $request, $id){
 
-
         $application = Application::find($id);
 
         $application->date = $request->date;

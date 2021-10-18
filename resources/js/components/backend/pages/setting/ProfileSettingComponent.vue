@@ -11,6 +11,9 @@
                     </div>
                     <div class="card-body">
                       <form>
+
+
+
                         <div class="row mb-2">
                           <div class="profile-title">
                             <div class="media">
@@ -23,6 +26,10 @@
                               </div>
                             </div>
                           </div>
+                        </div>
+                          <div class="mb-3">
+                          <h6 class="form-label">Name</h6>
+                          <input class="form-control"  v-model="user.name" name="name">
                         </div>
                         <div class="mb-3">
                           <h6 class="form-label">Bio</h6>
@@ -75,16 +82,13 @@
            onSave(e){
                e.preventDefault();
                 var formData = new FormData();
-
-
                 formData.append('email', this.user.email);
                 formData.append('name', this.user.name);
                 formData.append('thumbnail', this.user.thumbnail);
                 formData.append('about_me',this.user.user_info.about_me);
+                formData.append('id',this.user.id);
 
-
-
-                 axios.put('/profile/setting/',formData).then(res=>{
+                 axios.post('/profile/setting/',formData).then(res=>{
 
                         this.$root.alertNotificationMessage(res.status,"User has been Updated successfully");
 

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use random;
 use App\Models\User;
+use App\Models\UserInfo;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -16,53 +19,46 @@ class SettingController extends Controller
         return response()->json(['user'=>$user]);
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $id){
+   
+
+    $user = User::where('id',$request->id)->first();
+
+    if ($request->hasfile('thumbnail')) {
+      
+        $name = Str::slug($request->name, '-')  . "-" . time() . '.' . $request->thumbnail->extension();
+        $request->thumbnail->move(public_path('/user/images'), $name);
+    } else{
+        $name = "";
+    }
+        User::where('id',$request['id'])->update([
+            'id'=>$request->id,
+            'name'=>$request->name,
+            'email'=>$request->email,
+           
+            'user_id'=>$request->user()->id,
+            'thumbnail' => $name
+
+        ]);
+        UserInfo::where('user_id',$user->id)->update([
+            'about_me' => $request->about_me
+        ]);
+
+  
+        return response()->json();
+    }
 
 
+    public function updatePassword(Request $request, $id){
 
-    //        return
-    //     $request->validate([
-    //         'name' => ['required', 'string', 'min:3','max:50'],
-    //         'email' => ['required',  'email', 'unique:users,email,'.$request->id],
+        $request->validate([
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
 
-
-    //     ]);
-
-    //     if($request->password!=""){
-    //           $request->validate([
-    //                 'password' => ['required', 'string', 'min:8'],
-    //           ]);
-    //         User::where('id',$request->id)->update(['password'=>Hash::make($request->password)]);
-    //     }
-
-    //     $user=User::where('id',$request->id)->first();
-
-    //     $request_array=[
-    //         'id'=>$request->id,
-    //         'name'=>$request->name,
-    //         'email'=>$request->email,
-    //         'about_me' => $request->about_me,
-    //         'user_id'=>$request->user()->id,
-    //         'thumbnail' => $request->thumbnail
-    //     ];
-    //     $user->userInfoCreateOrUpdate($user,$request);
-
-    //     // $permission_collection=Permission::WhereIn('id',  json_decode($request->selected_permissions))->get();
-    //     // $new_user->permissions()->attach($permission_collection);
-    //     return response()->json();
-    // }
-
-
-    // public function updatePassword(Request $request, $id){
-
-    //     $request->validate([
-    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
-    //     ]);
-
-    //     $user = User::find($id);
-    //     $user->password = $request->password;
-    //     $user->save();
-    //     return response()->json();
+        $user = User::find($id);
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return response()->json();
 
 
 

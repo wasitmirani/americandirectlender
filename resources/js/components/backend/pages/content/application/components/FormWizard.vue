@@ -159,10 +159,10 @@ export default{
    }
 
 .wizard-icon-container {
-    background-color:#195bff;
+    background-color:#4b4d72;
 }
 .wizard-icon-circle {
-      border-color:#195bff;
+      border-color:#4b4d72;
 }
 
 </style>

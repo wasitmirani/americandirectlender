@@ -66,6 +66,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -87,7 +94,8 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('name', this.user.name);
       formData.append('thumbnail', this.user.thumbnail);
       formData.append('about_me', this.user.user_info.about_me);
-      axios.put('/profile/setting/', formData).then(function (res) {
+      formData.append('id', this.user.id);
+      axios.post('/profile/setting/', formData).then(function (res) {
         _this.$root.alertNotificationMessage(res.status, "User has been Updated successfully");
       })["catch"](function (err) {
         if (err.response.status == 422) {
@@ -228,6 +236,32 @@ var render = function() {
                         ])
                       ])
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mb-3" }, [
+                    _c("h6", { staticClass: "form-label" }, [_vm._v("Name")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.user.name,
+                          expression: "user.name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { name: "name" },
+                      domProps: { value: _vm.user.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.user, "name", $event.target.value)
+                        }
+                      }
+                    })
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "mb-3" }, [
