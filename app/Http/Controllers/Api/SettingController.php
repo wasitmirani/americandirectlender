@@ -7,9 +7,12 @@ use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Notifications\NotifyUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\ChangePasswordNotification;
 
 class SettingController extends Controller
 {
@@ -36,6 +39,7 @@ class SettingController extends Controller
             'user_id'=>$request->user()->id,
             'thumbnail' =>  $image
     ]);
+  
     UserInfo::where('user_id',$user->id)->update([
             'about_me' => $request->about_me
     ]);
@@ -52,6 +56,7 @@ class SettingController extends Controller
         $user = User::find($id);
         $user->password = Hash::make($request->password);
         $user->save();
+        Notification::send($user, new ChangePasswordNotification($user));
         return response()->json();
 
 

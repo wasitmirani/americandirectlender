@@ -8,11 +8,13 @@ use App\Models\UserInfo;
 use App\Models\Application;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Notifications\NotifyUser;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Notifications\Notification;
 
 class UserController extends Controller
 {
@@ -126,6 +128,7 @@ class UserController extends Controller
             'user_id'=>$request->user()->id,
         ];
         $new_user=$user->userCreateOrUpdate($request_array,"update");
+     
         $user->userInfoCreateOrUpdate($user,$request);
         // $permission_collection=Permission::WhereIn('id',  json_decode($request->selected_permissions))->get();
         $roles_collection=Role::WhereIn('id', $request->roles)->get();
@@ -145,7 +148,9 @@ class UserController extends Controller
     {
        $user_info=UserInfo::where('user_id',$id)->delete();
        $user =  User::destroy($id);
+   
        return response()->json($user);
+
 
     }
 
