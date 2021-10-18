@@ -1,7 +1,7 @@
 <template>
   <div>
         <Breadcrumb activename="Customer Applications" ></Breadcrumb>
-       <div class="container-fluid">
+        <div class="container-fluid">
             <div class="row project-cards">
               <div class="col-md-12 project-list">
                 <div class="card">
@@ -14,9 +14,8 @@
                       </ul>
                     </div>
                     <div class="col-md-6 p-0">
-
                       <div class="form-group mb-0 me-0"></div>
-                      <PrimaryButton icon="fas fa-plus"  label="Create Application"  v-on:activemodal="openModal($event)"></PrimaryButton>
+                      <!-- <PrimaryButton icon="fas fa-plus"  label="Create Application"  v-on:activemodal="openModal($event)"></PrimaryButton> -->
                       <!-- <a class="btn btn-primary" href="projectcreate.html"> <i data-feather="plus-square"> </i>Create New Application</a> -->
                     </div>
                   </div>
@@ -66,7 +65,7 @@
                 </div>
               </div>
             </div>
-          </div>
+        </div>
   </div>
 </template>
 

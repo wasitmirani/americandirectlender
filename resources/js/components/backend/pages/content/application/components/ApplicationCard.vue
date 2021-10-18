@@ -86,5 +86,7 @@ export default {
 </script>
 
 <style>
-
+.vs-button{
+    background-color:#4b4d72;
+}
 </style>

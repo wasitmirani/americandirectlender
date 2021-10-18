@@ -78,6 +78,7 @@ class User extends Authenticatable
         }
     }
 
+
     public function userInfoCreateOrUpdate($user,$request){
         $isuser=User::where('id',$user->id)->first();
 

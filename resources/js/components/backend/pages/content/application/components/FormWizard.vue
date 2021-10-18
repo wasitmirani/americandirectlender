@@ -1,9 +1,9 @@
 <template>
 <div>
 
-    <form-wizard @on-complete="onComplete" color="#195bff">
+    <form-wizard @on-complete="onComplete" color="#4b4d72">
          <h2 slot="title">Edit Customer Application</h2>
-        <tab-content title="Step One" color="#195bff">
+        <tab-content title="Step One" color="#4b4d72">
             <StepOne :application="application"></StepOne>
         </tab-content>
         <tab-content title="Step Two">
@@ -149,7 +149,9 @@ export default{
     width: 130px;
     height: 49px;
 }
-
+.vs-button{
+    background-color:#4b4d72;
+}
   .vs-input {
    width: 100%;
    }

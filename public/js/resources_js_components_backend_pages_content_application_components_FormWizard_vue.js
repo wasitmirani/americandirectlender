@@ -692,7 +692,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-button__content {\n    width: 130px;\n    height: 49px;\n}\n.vs-input {\n   width: 100%;\n}\n.vs-select-content {\n   width: 100%;\n   max-width: 100%;\n}\n.wizard-icon-container {\n    background-color:#4b4d72;\n}\n.wizard-icon-circle {\n      border-color:#4b4d72;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-button__content {\n    width: 130px;\n    height: 49px;\n}\n.vs-button{\n    background-color:#4b4d72;\n}\n.vs-input {\n   width: 100%;\n}\n.vs-select-content {\n   width: 100%;\n   max-width: 100%;\n}\n.wizard-icon-container {\n    background-color:#4b4d72;\n}\n.wizard-icon-circle {\n      border-color:#4b4d72;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1107,7 +1107,7 @@ var render = function() {
     [
       _c(
         "form-wizard",
-        { attrs: { color: "#195bff" }, on: { "on-complete": _vm.onComplete } },
+        { attrs: { color: "#4b4d72" }, on: { "on-complete": _vm.onComplete } },
         [
           _c("h2", { attrs: { slot: "title" }, slot: "title" }, [
             _vm._v("Edit Customer Application")
@@ -1115,7 +1115,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "tab-content",
-            { attrs: { title: "Step One", color: "#195bff" } },
+            { attrs: { title: "Step One", color: "#4b4d72" } },
             [_c("StepOne", { attrs: { application: _vm.application } })],
             1
           ),
