@@ -44,6 +44,7 @@
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Image</label>
+                         
                           <input class="form-control" type="file"  id="file" ref="file" v-on:change="handleFileUpload()" >
                         </div>
                         <div class="form-footer">
@@ -167,6 +168,7 @@ export default{
                     formData.append('email', this.user.email);
                     formData.append('name', this.user.name);
                     formData.append('thumbnail', this.file);
+                    formData.append('image', this.user.thumbnail);
                     formData.append('about_me',this.user.user_info.about_me);
                 axios.post('/profile/setting/'+this.user.id,formData,
                 {headers: {

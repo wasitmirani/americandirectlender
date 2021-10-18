@@ -21,8 +21,14 @@ class SettingController extends Controller
 
     public function update(Request $request, $id){
     $user = User::where('id',$request->id)->first();
-    
-    $image = singleImgUpload($request, '/img/users/');
+
+    if($request->hasFile('thumbnail')){
+
+        $image = singleImgUpload($request, '/img/users/');
+     }else{
+        $image = basename($request->image);
+     }
+       
     User::where('id',$request['id'])->update([
             'id'=>$request->id,
             'name'=>$request->name,

@@ -137,6 +137,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -181,6 +182,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('email', this.user.email);
       formData.append('name', this.user.name);
       formData.append('thumbnail', this.file);
+      formData.append('image', this.user.thumbnail);
       formData.append('about_me', this.user.user_info.about_me);
       axios.post('/profile/setting/' + this.user.id, formData, {
         headers: {
