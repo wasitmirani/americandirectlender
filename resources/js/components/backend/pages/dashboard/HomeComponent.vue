@@ -250,6 +250,16 @@
                                                 <td>$320,800</td>
                                             </tr>
                                             </tbody>
+                                             <tfoot>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Position</th>
+                                                <th>Office</th>
+                                                <th>Age</th>
+                                                <th>Start date</th>
+                                                <th>Salary</th>
+                                            </tr>
+                                           </tfoot>
                       
                                     </table>
                                 </div>
@@ -429,7 +439,7 @@ var options17 = {
             this.getDashboardData();
             console.log("userss",user);
             this.user=user;
-            this.app_name=appname;
+            // this.app_name=appname;
             this.dashboardChart();
 
 

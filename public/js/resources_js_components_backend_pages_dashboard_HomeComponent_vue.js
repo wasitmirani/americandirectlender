@@ -296,6 +296,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -459,8 +469,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     this.getDashboardData();
     console.log("userss", user);
-    this.user = user;
-    this.app_name = appname;
+    this.user = user; // this.app_name=appname;
+
     this.dashboardChart();
   }
 });
@@ -2077,6 +2087,22 @@ var staticRenderFns = [
                           _c("td", [_vm._v("2011/04/25")]),
                           _vm._v(" "),
                           _c("td", [_vm._v("$320,800")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tfoot", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Name")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Position")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Office")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Age")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Start date")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Salary")])
                         ])
                       ])
                     ]

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div  v-if="selected_items.length>0">
-               <strong class="ml-4">Selected Items ({{selected_items.length}}) </strong>
+               <strong class="ml-4">Selected Items ({{}}) </strong>
               <vs-button icon danger :active="true" @click="alldeleteItems">
                                  Remove Items
             </vs-button>

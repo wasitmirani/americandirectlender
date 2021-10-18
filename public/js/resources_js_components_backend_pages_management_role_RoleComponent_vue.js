@@ -2584,45 +2584,43 @@ var render = function() {
                   [_vm._v("Users:")]
                 ),
                 _vm._v(" "),
-                _vm.users.length > 0
-                  ? _c(
-                      "vs-select",
-                      {
-                        attrs: {
-                          filter: "",
-                          placeholder: "Select Users",
-                          color: this.$root.primary_color,
-                          required: "",
-                          "collapse-chips": "",
-                          multiple: true
-                        },
-                        model: {
-                          value: _vm.selected_users,
-                          callback: function($$v) {
-                            _vm.selected_users = $$v
-                          },
-                          expression: "selected_users"
-                        }
+                _c(
+                  "vs-select",
+                  {
+                    attrs: {
+                      filter: "",
+                      placeholder: "Select Users",
+                      color: this.$root.primary_color,
+                      required: "",
+                      "collapse-chips": "",
+                      multiple: true
+                    },
+                    model: {
+                      value: _vm.selected_users,
+                      callback: function($$v) {
+                        _vm.selected_users = $$v
                       },
-                      _vm._l(_vm.users, function(item) {
-                        return _c(
-                          "vs-option",
-                          {
-                            key: item.id,
-                            attrs: { label: item.name, value: item.id }
-                          },
-                          [
-                            _vm._v(
-                              "\n                               " +
-                                _vm._s(item.name) +
-                                "\n                      "
-                            )
-                          ]
+                      expression: "selected_users"
+                    }
+                  },
+                  _vm._l(_vm.users, function(item) {
+                    return _c(
+                      "vs-option",
+                      {
+                        key: item.id,
+                        attrs: { label: item.name, value: item.id }
+                      },
+                      [
+                        _vm._v(
+                          "\n                               " +
+                            _vm._s(item.name) +
+                            "\n                      "
                         )
-                      }),
-                      1
+                      ]
                     )
-                  : _vm._e()
+                  }),
+                  1
+                )
               ],
               1
             ),
@@ -2699,9 +2697,7 @@ var render = function() {
           "div",
           [
             _c("strong", { staticClass: "ml-4" }, [
-              _vm._v(
-                "Selected Items (" + _vm._s(_vm.selected_items.length) + ") "
-              )
+              _vm._v("Selected Items ({{}}) ")
             ]),
             _vm._v(" "),
             _c(
