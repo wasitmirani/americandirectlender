@@ -20,32 +20,20 @@ class SettingController extends Controller
     }
 
     public function update(Request $request, $id){
-   
-
     $user = User::where('id',$request->id)->first();
-
-    if ($request->hasfile('thumbnail')) {
-      
-        $name = Str::slug($request->name, '-')  . "-" . time() . '.' . $request->thumbnail->extension();
-        $request->thumbnail->move(public_path('/user/images'), $name);
-    } else{
-        $name = "";
-    }
-        User::where('id',$request['id'])->update([
+    
+    $image = singleImgUpload($request, '/img/users/');
+    User::where('id',$request['id'])->update([
             'id'=>$request->id,
             'name'=>$request->name,
             'email'=>$request->email,
-           
             'user_id'=>$request->user()->id,
-            'thumbnail' => $name
-
-        ]);
-        UserInfo::where('user_id',$user->id)->update([
+            'thumbnail' =>  $image
+    ]);
+    UserInfo::where('user_id',$user->id)->update([
             'about_me' => $request->about_me
-        ]);
-
-  
-        return response()->json();
+    ]);
+    return response()->json();
     }
 
 

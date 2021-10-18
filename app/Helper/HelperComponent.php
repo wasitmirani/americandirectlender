@@ -48,21 +48,21 @@ class HelperComponent {
                 ],
                 [
                     "heading"=>"Config",
+                 
+    
 
 
+                ],
+                [
+                    "single_link" => setSingleLink( "Settings","settings",null,"/password/setting"),
                 ],
                 [
                     "single_link" => setSingleLink( "Notify","bell","notify-view","/send/notify"),
                 ],
-
+                
                 [
                     "heading"=>"Content",
-                ],
-              
-                [
-                    "single_link" => setSingleLink( "Settings","settings",null,"/password/setting"),
-                ],
-
+                ],          
 
      ];
     }

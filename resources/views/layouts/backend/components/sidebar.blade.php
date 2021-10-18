@@ -1,9 +1,11 @@
 <header class="main-nav">
     <div class="sidebar-user text-center">
         @if(Auth::user()->thumbnail)
-        <img class="img-90 rounded-circle" src="../assets/images/dashboard/1.png" alt="">
+        <img class="img-90 rounded-circle" src="{{ Auth::user()->thumbnail  }}" alt="">
+      
         @else
-        <img class="img-90 rounded-circle" src="{{ asset('user/image/Auth::user()->thumbnail') }}" alt="">
+        <img class="img-90 rounded-circle" src="../assets/images/dashboard/1.png" alt="">
+       
         @endif
         <h6 class="mt-3 f-14 f-w-600">{{ Auth::user()->name }}</h6>
       <p class="mb-0 font-roboto"></p>

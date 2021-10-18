@@ -22,7 +22,7 @@
                         <div class="row mb-2">
                           <div class="profile-title">
                             <div class="media">
-                                <img class="img-70 rounded-circle" alt="" v-bind:src="user.thumbnail">
+                                <img class="img-70 rounded-circle"  alt="" v-bind:src="user.thumbnail">
                               <div class="media-body">
                                 <h3 class="mb-1 f-20 txt-primary">{{ user.name}}</h3>
                                 <p class="f-12"></p>
@@ -42,19 +42,16 @@
                           <label class="form-label">Email-Address</label>
                           <input class="form-control" placeholder="your-email@domain.com" v-model="user.email" name="email">
                         </div>
-
-                         <div class="mb-3">
+                        <div class="mb-3">
                           <label class="form-label">Image</label>
-                          <input class="form-control" type="file" name="thumbnail" @change="uploadImage" >
+                          <input class="form-control" type="file"  id="file" ref="file" v-on:change="handleFileUpload()" >
                         </div>
-
                         <div class="form-footer">
                           <button class="btn btn-primary btn-block" type="button" @click="updateProfile">Save</button>
                         </div>
                       </form>
                     </div>
-                         
-                          </div>
+                    </div>
                           <div class="tab-pane fade" id="pills-clrprofile1" role="tabpanel" aria-labelledby="pills-clrprofile-tab1">
                               <div class="card-body">
                       <form>
@@ -133,7 +130,8 @@ export default{
         return {
             passwords:{},
             user:{},
-            errors:{}
+            errors:{},
+            file:""
         }
     },
     methods:{
@@ -158,25 +156,23 @@ export default{
 
 
         },
-           uploadImage(e){
-                const image = e.target.files[0];
-                const reader = new FileReader();
-                reader.readAsDataURL(image);
-                reader.onload = e =>{
-                    this.previewImage = e.target.result;
-                    console.log(e.target.result)
-                    this.user.thumbnail = e.target.result
-                };
-            },
+          
+                handleFileUpload(){
+    this.file = this.$refs.file.files[0];
+  },
         
         updateProfile(e){
                e.preventDefault();
                let formData = new FormData();
                     formData.append('email', this.user.email);
                     formData.append('name', this.user.name);
-                    formData.append('thumbnail', this.user.thumbnail);
+                    formData.append('thumbnail', this.file);
                     formData.append('about_me',this.user.user_info.about_me);
-                axios.post('/profile/setting/'+this.user.id,formData).then((res)=>{
+                axios.post('/profile/setting/'+this.user.id,formData,
+                {headers: {
+                       'Content-Type': 'multipart/form-data'
+                    }}).then((res)=>{
+                     
                         this.$root.alertNotificationMessage(res.status,"Profile Updated Successfully");
                         // setTimeout(() => {
                         //     this.$router.push({ name: 'users' })

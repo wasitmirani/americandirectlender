@@ -137,15 +137,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       passwords: {},
       user: {},
-      errors: {}
+      errors: {},
+      file: ""
     };
   },
   methods: {
@@ -172,55 +170,49 @@ __webpack_require__.r(__webpack_exports__);
         _this.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     },
-    uploadImage: function uploadImage(e) {
-      var _this2 = this;
-
-      var image = e.target.files[0];
-      var reader = new FileReader();
-      reader.readAsDataURL(image);
-
-      reader.onload = function (e) {
-        _this2.previewImage = e.target.result;
-        console.log(e.target.result);
-        _this2.user.thumbnail = e.target.result;
-      };
+    handleFileUpload: function handleFileUpload() {
+      this.file = this.$refs.file.files[0];
     },
     updateProfile: function updateProfile(e) {
-      var _this3 = this;
+      var _this2 = this;
 
       e.preventDefault();
       var formData = new FormData();
       formData.append('email', this.user.email);
       formData.append('name', this.user.name);
-      formData.append('thumbnail', this.user.thumbnail);
+      formData.append('thumbnail', this.file);
       formData.append('about_me', this.user.user_info.about_me);
-      axios.post('/profile/setting/' + this.user.id, formData).then(function (res) {
-        _this3.$root.alertNotificationMessage(res.status, "Profile Updated Successfully"); // setTimeout(() => {
+      axios.post('/profile/setting/' + this.user.id, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (res) {
+        _this2.$root.alertNotificationMessage(res.status, "Profile Updated Successfully"); // setTimeout(() => {
         //     this.$router.push({ name: 'users' })
         // }, 1000);
 
       })["catch"](function (err) {
         if (err.response.status == 422) {
-          _this3.errors = err.response.data.errors;
-          return _this3.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+          _this2.errors = err.response.data.errors;
+          return _this2.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
         }
 
-        _this3.$root.alertNotificationMessage(err.response.status, err.response.data);
+        _this2.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     }
   },
   mounted: function mounted() {
-    var _this4 = this;
+    var _this3 = this;
 
     axios.get("/profile/setting").then(function (res) {
-      _this4.user = res.data.user;
+      _this3.user = res.data.user;
     })["catch"](function (err) {
       if (err.response.status == 422) {
-        _this4.errors = err.response.data.errors;
-        return _this4.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        _this3.errors = err.response.data.errors;
+        return _this3.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
       }
 
-      _this4.$root.alertNotificationMessage(err.response.status, err.response.data);
+      _this3.$root.alertNotificationMessage(err.response.status, err.response.data);
     });
   }
 });
@@ -470,9 +462,14 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("input", {
+                                ref: "file",
                                 staticClass: "form-control",
-                                attrs: { type: "file", name: "thumbnail" },
-                                on: { change: _vm.uploadImage }
+                                attrs: { type: "file", id: "file" },
+                                on: {
+                                  change: function($event) {
+                                    return _vm.handleFileUpload()
+                                  }
+                                }
                               })
                             ]),
                             _vm._v(" "),

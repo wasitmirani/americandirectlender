@@ -14,42 +14,9 @@
                   </div>
                 </div>
               </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                <div class="card o-hidden border-0">
-                  <div class="bg-primary b-r-4 card-body">
-                    <div class="media static-top-widget">
-                      <div class="align-self-center text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg></div>
-                      <div class="media-body"><span class="m-0">Total Applications</span>
-                        <h4 class="mb-0 counter">{{total_applications}}</h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus icon-bg"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                <div class="card o-hidden border-0">
-                  <div class="bg-primary b-r-4 card-body">
-                    <div class="media static-top-widget">
-                      <div class="align-self-center text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg></div>
-                      <div class="media-body"><span class="m-0">Total Roles</span>
-                        <h4 class="mb-0 counter">{{ total_roles}}</h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus icon-bg"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-               <div class="col-sm-6 col-xl-3 col-lg-6">
-                <div class="card o-hidden border-0">
-                  <div class="bg-primary b-r-4 card-body">
-                    <div class="media static-top-widget">
-                      <div class="align-self-center text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg></div>
-                      <div class="media-body"><span class="m-0">Assigned Applications</span>
-                        <h4 class="mb-0 counter">{{ assigned_apps}}</h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus icon-bg"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+         
+    
+              
               <div class="col-sm-6 col-xl-3 col-lg-6" v-for="item in roles" :key="item.id" >
                 <div class="card o-hidden border-0">
                   <div class="bg-primary b-r-4 card-body">
@@ -137,28 +104,28 @@
                     <div class="col-sm-6 pe-0">
                       <div class="media border-after-xs">
                         <div class="align-self-center me-3 text-start"><span class="widget-t mb-1">App Created</span>
-                          <h5 class="mb-0">Today</h5>
+                          <h5 class="mb-0">Total Applications</h5>
                         </div>
                         <div class="media-body align-self-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down font-primary"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
                         <div class="media-body">
-                          <h5 class="mb-0">$<span class="counter">323</span></h5><span class="mb-1">-$2658(36%)</span>
+                          <h5 class="mb-0">{{this.total_applications}}<span class="counter"></span></h5><span class="mb-1"></span>
                         </div>
                       </div>
                     </div>
                     <div class="col-sm-6 ps-0">
                       <div class="media">
-                        <div class="align-self-center me-3 text-start"><span class="widget-t mb-1">App Created </span>
-                          <h5 class="mb-0">This Month</h5>
+                        <div class="align-self-center me-3 text-start"><span class="widget-t mb-1"></span>
+                          <h5 class="mb-0">Approved Applications</h5>
                         </div>
                         <div class="media-body align-self-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up font-primary"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></div>
                         <div class="media-body ps-2">
-                          <h5 class="mb-0">$<span class="counter">83</span></h5><span class="mb-1">+$369(15%)</span>
+                          <h5 class="mb-0">{{this.assigned_apps}}<span class="counter"></span></h5><span class="mb-1"></span>
                         </div>
                       </div>
                     </div>
                     <div class="col-sm-6 pe-0">
                       <div class="media border-after-xs">
-                        <div class="align-self-center me-3 text-start"><span class="widget-t mb-1">App Created </span>
+                        <div class="align-self-center me-3 text-start"><span class="widget-t mb-1">Pending Application </span>
                           <h5 class="mb-0">This Week</h5>
                         </div>
                         <div class="media-body align-self-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up font-primary"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></div>
@@ -183,18 +150,115 @@
               </div>
     </div>
   </div>
-    <div class="col-xl-12 recent-order-sec">
-            <div class="col-xl-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h5>Recent Applications</h5>
-                  </div>
-                  <div class="row">
-                    <div class="col-xl-4">
-
+  <div class="row">
+        <div class="col-xl-4 col-sm-6 ">
+                <div class="card browser-widget">
+                  <div class="media card-body">
+                    <div class="media-img"><img src="assets/images/dashboard/chrome.png" alt=""></div>
+                    <div class="media-body align-self-center">
+                      <div>
+                        <p>Daily </p>
+                        <h4><span class="counter">20</span>%</h4>
+                      </div>
+                      <div>
+                        <p>Month </p>
+                        <h4><span class="counter">53</span>%</h4>
+                      </div>
+                      <div>
+                        <p>Week </p>
+                        <h4><span class="counter">25</span>%</h4>
+                      </div>
                     </div>
                   </div>
                 </div>
+              </div>
+                <div class="col-xl-4 col-sm-6">
+                <div class="card browser-widget">
+                  <div class="media card-body">
+                    <div class="media-img"><img src="assets/images/dashboard/firefox.png" alt=""></div>
+                    <div class="media-body align-self-center">
+                      <div>
+                        <p>Daily </p>
+                        <h4><span class="counter">20</span>%</h4>
+                      </div>
+                      <div>
+                        <p>Month </p>
+                        <h4><span class="counter">53</span>%</h4>
+                      </div>
+                      <div>
+                        <p>Week </p>
+                        <h4><span class="counter">25</span>%</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-sm-6">
+                <div class="card browser-widget">
+                  <div class="media card-body">
+                    <div class="media-img"><img src="/assets/images/dashboard/safari.png" alt=""></div>
+                    <div class="media-body align-self-center">
+                      <div>
+                        <p>Daily </p>
+                        <h4><span class="counter">19</span>%</h4>
+                      </div>
+                      <div>
+                        <p>Month </p>
+                        <h4><span class="counter">52</span>%</h4>
+                      </div>
+                      <div>
+                        <p>Week </p>
+                        <h4><span class="counter">25</span>%</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  </div>
+
+            
+    <div class="col-xl-12 recent-order-sec">
+            <div class="col-xl-12">
+     
+                 
+                  <div class="row">
+                    <div class="col-xl-">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Recent Application</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="display" id="basic-1">
+                                           <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Position</th>
+                                                <th>Office</th>
+                                                <th>Age</th>
+                                                <th>Start date</th>
+                                                <th>Salary</th>
+                                            </tr>
+                                           </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                            </tbody>
+                      
+                                    </table>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                  </div>
+              
             </div>
     </div>
 </div>

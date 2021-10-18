@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/prism.css')}}">
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.css')}}">
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
@@ -138,9 +139,6 @@ window.appname={!! json_encode(config('app.name'),true)!!};
 </script>
   <script src="{{ asset('js/app.js') }}" ></script>
     <script src="{{asset('assets/js/jquery-3.5.1.min.js')}}"></script>
-
-
-
     <!-- feather icon js-->
     <script src="{{asset('assets/js/icons/feather-icon/feather.min.js')}}"></script>
     <script src="{{asset('assets/js/icons/feather-icon/feather-icon.js')}}"></script>
@@ -155,7 +153,8 @@ window.appname={!! json_encode(config('app.name'),true)!!};
     <!-- Plugins JS start-->
     <script src="{{asset('assets/js/chart/chartjs/chart.min.js')}}"></script>
     <script src="{{asset('assets/js/chart/chartist/chartist.js')}}"></script>
-
+    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{asset('assets/js/chart/chartist/chartist-plugin-tooltip.js')}}"></script>
     <script src="{{asset('assets/js/chart/knob/knob.min.js')}}"></script>
     <script src="{{asset('assets/js/chart/apex-chart/apex-chart.js')}}"></script>
@@ -172,6 +171,7 @@ window.appname={!! json_encode(config('app.name'),true)!!};
     <script src="{{asset('assets/js/dashboard/dashboard_2.js')}}"></script>
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
+
     <script src="{{asset('assets/js/script.js')}}"></script>
     <script src="{{asset('assets/js/theme-customizer/customizer.js')}}"></script>
 
