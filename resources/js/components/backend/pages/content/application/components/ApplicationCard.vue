@@ -39,8 +39,8 @@
                                   <div class="media-body text-end"><span>Done</span></div> -->
 
                                     <vs-button v-if="application.status === '0'"
-                              :active="active == 0"
-                              @click="active = 0"
+                            
+                           
                               v-on:click="updateStatus"
                                   >
                                     Assign

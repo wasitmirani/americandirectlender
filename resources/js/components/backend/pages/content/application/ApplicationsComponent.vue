@@ -27,13 +27,13 @@
                     <div class="tab-content" id="top-tabContent">
                       <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
                         <div class="row">
-                                     <SearchInput :apiurl="'/customer/applications?page=' +this.page_num"
-                        v-on:query="isquery($event)"
-                        v-on:loading="loadingStart($event)"
-                        v-on:reload="getApplications()"
-                        v-on:filterList="filterdata($event)"
-
-                        label="Search Roles"></SearchInput>
+                                    <SearchInput :apiurl="'/customer/applications?page=' +this.page_num"
+                                        v-on:query="isquery($event)"
+                                        v-on:loading="loadingStart($event)"
+                                        v-on:reload="getApplications()"
+                                        v-on:filterList="filterdata($event)"
+                                        label="Search Roles">
+                                    </SearchInput>
                                         <div class="col-xxl-4 col-lg-6" v-for="application in applications" :key="application.id">
 
                                 <ApplicationCard :getApplications="getApplications" :application="application"></ApplicationCard>
@@ -105,6 +105,9 @@ export default {
            console.log(value);
             this.loading = value;
           },
+          filterdata(data){
+            this.applications=data.applications.data;
+          },
           async getApplications(page=1){
 
                 this.loading =true;
@@ -117,9 +120,6 @@ export default {
                    this.total_application = res.data.total_applications;
                    this.process = res.data.process.data;
                    this.done = res.data.done.data;
-
-
-
                     // this.roles=res.data.roles;
                    this.loading =false;
                }).catch((err)=>{

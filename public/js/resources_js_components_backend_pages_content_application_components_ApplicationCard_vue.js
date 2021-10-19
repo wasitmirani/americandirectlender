@@ -323,25 +323,11 @@ var render = function() {
           { staticClass: "media mb-0" },
           [
             _vm.application.status === "0"
-              ? _c(
-                  "vs-button",
-                  {
-                    attrs: { active: _vm.active == 0 },
-                    on: {
-                      click: [
-                        function($event) {
-                          _vm.active = 0
-                        },
-                        _vm.updateStatus
-                      ]
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                                    Assign\n                                "
-                    )
-                  ]
-                )
+              ? _c("vs-button", { on: { click: _vm.updateStatus } }, [
+                  _vm._v(
+                    "\n                                    Assign\n                                "
+                  )
+                ])
               : _vm._e()
           ],
           1

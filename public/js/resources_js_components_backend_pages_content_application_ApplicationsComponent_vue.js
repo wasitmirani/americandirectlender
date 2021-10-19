@@ -308,6 +308,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log(value);
       this.loading = value;
     },
+    filterdata: function filterdata(data) {
+      this.applications = data.applications.data;
+    },
     getApplications: function getApplications() {
       var _arguments = arguments,
           _this = this;
@@ -2386,25 +2389,11 @@ var render = function() {
           { staticClass: "media mb-0" },
           [
             _vm.application.status === "0"
-              ? _c(
-                  "vs-button",
-                  {
-                    attrs: { active: _vm.active == 0 },
-                    on: {
-                      click: [
-                        function($event) {
-                          _vm.active = 0
-                        },
-                        _vm.updateStatus
-                      ]
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                                    Assign\n                                "
-                    )
-                  ]
-                )
+              ? _c("vs-button", { on: { click: _vm.updateStatus } }, [
+                  _vm._v(
+                    "\n                                    Assign\n                                "
+                  )
+                ])
               : _vm._e()
           ],
           1

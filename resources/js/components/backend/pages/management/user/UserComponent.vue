@@ -115,7 +115,7 @@ export default {
            return this.active_modal=val;
           },
           filterdata(data){
-            this.users=data.users;
+            this.users = data.users;
           },
            loadingStart(value) {
            console.log(value);
