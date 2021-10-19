@@ -4,24 +4,23 @@
             <div class="row">
                 <h1>Notifications</h1>
         <div class="col-xl-9 xl-60 box-col-8">
-                <div class="card"   v-for="notification in notifications" v-bind:key="notification.id" >
+                <div class="card"    >
                   <div class="job-search">
                     <div class="card-body">
                       <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
-                        <div class="media-body">
-                          <h6 class="f-w-600"><a href="job-details.html">{{notification.data["title"]}}</a><span class="badge badge-primary pull-right"></span></h6>
-                          <p>{{notification.data["body"]}}</p>
-       
+                        <div class="media-body" v-for="cont in content" v-bind:key="cont.title">
+                          <h6 class="f-w-600"><a href="job-details.html">{{cont}}</a></h6>
+                          <p>{{cont.body}}</p>
                         </div>
-                      </div>
-                       <p>
-                       
-                      </p>
+
+                        </div>
+
+                       <p><span class="badge badge-primary pull-right">View</span></p>
                     </div>
                   </div>
                 </div>
-            
-          
+
+
                 <!-- <div class="job-pagination">
                   <nav aria-label="Page navigation example">
                     <ul class="pagination pagination-primary">
@@ -40,10 +39,12 @@
 </template>
 <script>
 export default{
-    data(){ 
+    data(){
         return{
 
-           notifications:""
+           notifications:"",
+           content:""
+
 
 
 
@@ -53,8 +54,9 @@ export default{
     mounted(){
         var url = "/all/notification";
             axios.get(url).then((res)=>{
-                   this.notifications = res.data.notifications
-                   console.log(res.data.notifications)
+                   this.notifications = res.data.notifications;
+                   this.content = res.data.notifications.content
+                   console.log(res.data.notifications.content)
                    this.loading =false;
                }).catch((err)=>{
                         this.$root.alertNotificationMessage(err.response.status,err.response.data);

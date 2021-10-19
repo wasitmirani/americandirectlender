@@ -36,10 +36,11 @@ Route::middleware('auth:api')->group(function () {
     Route::put('customer/applications/{id}',[AppFormController::class,'update']);
     Route::get('/recent/applications',[DashboardController::class,'recentApp']);
 
-    
+
     Route::get('/all/notification',[NotificationController::class,'index']);
+    Route::get('/notification/{id}',[NotificationController::class,'']);
     Route::put('update/status/{id}',[AppFormController::class,'updateStatus']);
-    
+
 
     Route::get('profile/setting',[SettingController::class,'index'])->name('profile.setting');
     Route::post('password/setting/{id}',[SettingController::class,'updatePassword'])->name('password.setting');

@@ -39,7 +39,7 @@ class NotifyUser extends Notification
     {
         return [
             'title' => $this->data->title,
-            'description' => $this->data->body,
+            'body' => $this->data->body,
         ];
     }
 }

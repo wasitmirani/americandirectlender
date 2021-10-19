@@ -20,6 +20,14 @@ class NotificationController extends Controller
     public function index(){
 
         $notifications=DB::table('notifications')->latest()->get();
+        $notContent = "";
+        foreach($notifications as $notification){
+
+             $notContent = json_decode($notification->data);
+             $notifications['content'] = $notContent;
+
+        }
+
         $users=Role::select('id','name')->with('users:id,name')->orderBy('name','ASC')->get();
 
         return response()->json(['notifications'=>$notifications,'users'=>$users]);

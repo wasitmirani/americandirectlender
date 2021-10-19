@@ -50,11 +50,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      notifications: ""
+      notifications: "",
+      content: ""
     };
   },
   mounted: function mounted() {
@@ -63,7 +63,8 @@ __webpack_require__.r(__webpack_exports__);
     var url = "/all/notification";
     axios.get(url).then(function (res) {
       _this.notifications = res.data.notifications;
-      console.log(res.data.notifications);
+      _this.content = res.data.notifications.content;
+      console.log(res.data.notifications.content);
       _this.loading = false;
     })["catch"](function (err) {
       _this.$root.alertNotificationMessage(err.response.status, err.response.data);
@@ -162,45 +163,59 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("h1", [_vm._v("Notifications")]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-xl-9 xl-60 box-col-8" },
-          _vm._l(_vm.notifications, function(notification) {
-            return _c("div", { key: notification.id, staticClass: "card" }, [
-              _c("div", { staticClass: "job-search" }, [
-                _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "media" }, [
+        _c("div", { staticClass: "col-xl-9 xl-60 box-col-8" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "job-search" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "media" },
+                  [
                     _c("img", {
                       staticClass: "img-40 img-fluid m-r-20",
                       attrs: { src: "", alt: "" }
                     }),
                     _vm._v(" "),
-                    _c("div", { staticClass: "media-body" }, [
-                      _c("h6", { staticClass: "f-w-600" }, [
-                        _c("a", { attrs: { href: "job-details.html" } }, [
-                          _vm._v(_vm._s(notification.data["title"]))
-                        ]),
-                        _c("span", {
-                          staticClass: "badge badge-primary pull-right"
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(notification.data["body"]))])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("p")
-                ])
+                    _vm._l(_vm.content, function(cont) {
+                      return _c(
+                        "div",
+                        { key: cont.title, staticClass: "media-body" },
+                        [
+                          _c("h6", { staticClass: "f-w-600" }, [
+                            _c("a", { attrs: { href: "job-details.html" } }, [
+                              _vm._v(_vm._s(cont))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [_vm._v(_vm._s(cont.body))])
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _vm._m(0)
               ])
             ])
-          }),
-          0
-        )
+          ])
+        ])
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("span", { staticClass: "badge badge-primary pull-right" }, [
+        _vm._v("View")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
