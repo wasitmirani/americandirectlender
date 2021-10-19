@@ -31,6 +31,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('customer/applications/{id}',[AppFormController::class,'edit']);
     Route::put('customer/applications/{id}',[AppFormController::class,'update']);
     Route::get('/recent/applications',[DashboardController::class,'recentApp']);
+    Route::post('/assign/app',[AppFormController::class,'AssignApp']);
 
 
     Route::get('/all/notification',[NotificationController::class,'index']);

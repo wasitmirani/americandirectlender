@@ -14,7 +14,7 @@ class HelperComponent {
                 [
                     "single_link" => setSingleLink( "Applications","file-text",null,"/customer/applications"),
                 ],
-              
+
 
                 [
                     "heading"=>"Management",
@@ -47,8 +47,8 @@ class HelperComponent {
                     ],
 
                 ],
-                 
-                
+
+
                 [
                     "heading"=>"Config",
 
@@ -57,12 +57,15 @@ class HelperComponent {
                     "single_link" => setSingleLink( "Settings","settings",null,"/password/setting"),
                 ],
                 [
+                    "single_link" => setSingleLink( "Assign App","file-text",null,"/assign/apps"),
+                ],
+                [
                     "single_link" => setSingleLink( "Notify","bell","notify-view","/send/notify"),
                 ],
-             
+
                 [
                     "heading"=>"Content",
-                ],          
+                ],
 
      ];
     }

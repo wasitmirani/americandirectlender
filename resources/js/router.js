@@ -66,6 +66,11 @@ const routes = [
         component: () => setComponent("setting/Password"),
         name: "password-setting",
     },
+    {
+        path: "/assign/apps",
+        component: () => setComponent("content/application/AssignApp"),
+        name: "assign-apps",
+    },
 
 
 

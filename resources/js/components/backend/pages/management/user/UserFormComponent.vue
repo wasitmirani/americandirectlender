@@ -225,6 +225,9 @@ export default {
                     this.$root.alertNotificationMessage(err.response.status,err.response.data);
 
                 });
+
+
+                
                 }
                 else {
                     axios.put('/management/user/'+this.user.id,formData).then((res)=>{

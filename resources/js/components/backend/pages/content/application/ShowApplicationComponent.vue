@@ -219,7 +219,12 @@
                             <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>other applicable sources of income: </button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon">
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle">
+                                       <circle cx="12" cy="12" r="10"></circle>
+                                       <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17">
+                                           </line></svg>other applicable sources of income:
+                                    </button>
                                 </h5>
                                 </div>
                                 <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
@@ -231,10 +236,10 @@
                             <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Recent Promotions, Changes in Salary, and Whether You are Paying Yourself:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon1" aria-expanded="false" aria-controls="collapseicon1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Recent Promotions, Changes in Salary, and Whether You are Paying Yourself:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon1" aria-labelledby="collapseicon1" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.promotion_detail}}</p>
                                     </div>
@@ -244,10 +249,10 @@
                             <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Type Of Business:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon2" aria-expanded="false" aria-controls="collapseicon2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Type Of Business:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon2" aria-labelledby="collapseicon2" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.business_type}}</p>
                                     </div>
@@ -256,10 +261,10 @@
                             <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Social Media Existance:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon3" aria-expanded="false" aria-controls="collapseicon3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Social Media Existance:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon3" aria-labelledby="collapseicon3" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.is_oline}}</p>
                                     </div>
@@ -268,10 +273,10 @@
                             <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Reason Why No Exist In Social Media:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon4" aria-expanded="false" aria-controls="collapseicon4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Reason Why No Exist In Social Media:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon4" aria-labelledby="collapseicon4" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.is_online_rason}}</p>
                                     </div>
@@ -280,10 +285,10 @@
                             <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Tax Return:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon5" aria-expanded="false" aria-controls="collapseicon5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Tax Return:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon5" aria-labelledby="collapseicon5" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.tax_return}}</p>
                                     </div>
@@ -292,10 +297,10 @@
                              <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Recently Closed / Opened Business:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon6" aria-expanded="false" aria-controls="collapseicon6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Recently Closed / Opened Business:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon6" aria-labelledby="collapseicon6" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.recent_business}}</p>
                                     </div>
@@ -304,10 +309,10 @@
                             <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Experience In Same Business:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon7" aria-expanded="false" aria-controls="collapseicon7"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Experience In Same Business:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon7" aria-labelledby="collapseicon7" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p><{{application.business_line}}</p>
                                     </div>
@@ -316,10 +321,10 @@
                             <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Business Partner:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon8" aria-expanded="false" aria-controls="collapseicon8"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Business Partner:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon8" aria-labelledby="collapseicon8" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.business_partner}}</p>
                                     </div>
@@ -328,10 +333,10 @@
                             <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Credit/Financial History:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon9" aria-expanded="false" aria-controls="collapseicon9"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Credit/Financial History:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon9" aria-labelledby="collapseicon9" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.financial_history}}</p>
                                     </div>
@@ -340,10 +345,10 @@
                             <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>If Investment Property: Monthly Rent $:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon0" aria-expanded="false" aria-controls="collapseicon0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>If Investment Property: Monthly Rent $:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon0" aria-labelledby="collapseicon0" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.investment_property}}</p>
                                     </div>
@@ -352,10 +357,10 @@
                               <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Renovation:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon11" aria-expanded="false" aria-controls="collapseicon11"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Renovation:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon11" aria-labelledby="collapseicon11" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.renovation}}</p>
                                     </div>
@@ -364,10 +369,10 @@
                               <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Mortgage Statement Provided::</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon12" aria-expanded="false" aria-controls="collapseicon12"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Mortgage Statement Provided::</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon12" aria-labelledby="collapseicon12" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.mortgage_statement}}</p>
                                     </div>
@@ -376,10 +381,10 @@
                               <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Is Property Insured:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon13" aria-expanded="false" aria-controls="collapseicon13"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>Is Property Insured:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon13" aria-labelledby="collapseicon13" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.property_insured}}</p>
                                     </div>
@@ -388,10 +393,10 @@
                             <div class="card">
                                <div class="card-header">
                                 <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="false" aria-controls="collapseicon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>List all Liabilities/Liens/Loans/Investments/Cosign on Loans:</button>
+                                   <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseicon14" aria-expanded="false" aria-controls="collapseicon14"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>List all Liabilities/Liens/Loans/Investments/Cosign on Loans:</button>
                                 </h5>
                                 </div>
-                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon" data-parent="#accordionoc">
+                                <div class="collapse" id="collapseicon14" aria-labelledby="collapseicon14" data-parent="#accordionoc">
                                     <div class="card-body">
                                       <p>{{application.liabilities_loans}}</p>
                                     </div>

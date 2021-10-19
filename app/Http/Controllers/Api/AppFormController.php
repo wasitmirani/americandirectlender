@@ -110,6 +110,12 @@ class AppFormController extends Controller
         }
     }
 
+    public function assignApp(Request $request){
+
+        dd($request);
+
+    }
+
 
 
 
