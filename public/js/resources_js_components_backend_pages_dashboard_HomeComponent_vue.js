@@ -1530,7 +1530,7 @@ var render = function() {
               _c("p", [
                 _vm._v(
                   "Welcome to the " +
-                    _vm._s(_vm.appname) +
+                    _vm._s(_vm.app_name) +
                     " Family! we are glad that you are visite this dashboard. we will be happy to help you grow your business."
                 )
               ])

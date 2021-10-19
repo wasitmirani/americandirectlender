@@ -187,10 +187,13 @@ __webpack_require__.r(__webpack_exports__);
           'Content-Type': 'multipart/form-data'
         }
       }).then(function (res) {
-        _this2.$root.alertNotificationMessage(res.status, "Profile Updated Successfully"); // setTimeout(() => {
-        //     this.$router.push({ name: 'users' })
-        // }, 1000);
+        _this2.$root.alertNotificationMessage(res.status, "Profile Updated Successfully");
 
+        setTimeout(function () {
+          _this2.$router.push({
+            name: 'home'
+          });
+        }, 1000);
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this2.errors = err.response.data.errors;

@@ -172,9 +172,9 @@ export default{
                     }}).then((res)=>{
 
                         this.$root.alertNotificationMessage(res.status,"Profile Updated Successfully");
-                        // setTimeout(() => {
-                        //     this.$router.push({ name: 'users' })
-                        // }, 1000);
+                        setTimeout(() => {
+                            this.$router.push({ name: 'home' })
+                        }, 1000);
                     }).catch((err)=>{
                         if(err.response.status==422){
                             this.errors=err.response.data.errors;
