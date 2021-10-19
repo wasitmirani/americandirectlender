@@ -139,9 +139,9 @@
                         <div class="align-self-center me-3 text-start"><span class="widget-t mb-1">App Created</span>
                           <h5 class="mb-0">This Year</h5>
                         </div>
-                        <div class="media-body align-self-center ps-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up font-primary"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></div>
+                        <!-- <div class="media-body align-self-center ps-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up font-primary"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></div> -->
                         <div class="media-body ps-2">
-                          <h5 class="mb-0">$<span class="counter">963198</span></h5><span class="mb-1">+$3654(90%)          </span>
+                          <h5 class="mb-0"><span class="counter"></span></h5><span class="mb-1">         </span>
                         </div>
                       </div>
                     </div>

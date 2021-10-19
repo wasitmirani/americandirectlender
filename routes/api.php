@@ -48,7 +48,6 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/dashboard',[DashboardController::class,'getDashboard']);
 
     Route::prefix('management')->group(function () {
-
         Route::resource('user', UserController::class);
         Route::resource('notification', NotificationController::class);
         Route::post('remove-all/users',[UserController::class,'removeAllUsers']);

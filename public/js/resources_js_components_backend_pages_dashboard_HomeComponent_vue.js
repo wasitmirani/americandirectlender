@@ -1675,52 +1675,14 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 ps-0" }, [
-                _c("div", { staticClass: "media" }, [
-                  _vm._m(6),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "media-body align-self-center ps-3" },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "feather feather-arrow-up font-primary",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "24",
-                            height: "24",
-                            viewBox: "0 0 24 24",
-                            fill: "none",
-                            stroke: "currentColor",
-                            "stroke-width": "2",
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round"
-                          }
-                        },
-                        [
-                          _c("line", {
-                            attrs: { x1: "12", y1: "19", x2: "12", y2: "5" }
-                          }),
-                          _c("polyline", {
-                            attrs: { points: "5 12 12 5 19 12" }
-                          })
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(7)
-                ])
-              ])
+              _vm._m(6)
             ])
           ])
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(8),
+    _vm._m(7),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "card" }, [
@@ -1729,7 +1691,7 @@ var render = function() {
             _c("h5", [_vm._v("Recent Applications")]),
             _vm._v(" "),
             _c("table", { staticClass: "table table-bordernone" }, [
-              _vm._m(9),
+              _vm._m(8),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -1934,22 +1896,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "align-self-center me-3 text-start" }, [
-      _c("span", { staticClass: "widget-t mb-1" }, [_vm._v("App Created")]),
-      _vm._v(" "),
-      _c("h5", { staticClass: "mb-0" }, [_vm._v("This Year")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "media-body ps-2" }, [
-      _c("h5", { staticClass: "mb-0" }, [
-        _vm._v("$"),
-        _c("span", { staticClass: "counter" }, [_vm._v("963198")])
-      ]),
-      _c("span", { staticClass: "mb-1" }, [_vm._v("+$3654(90%)          ")])
+    return _c("div", { staticClass: "col-sm-6 ps-0" }, [
+      _c("div", { staticClass: "media" }, [
+        _c("div", { staticClass: "align-self-center me-3 text-start" }, [
+          _c("span", { staticClass: "widget-t mb-1" }, [_vm._v("App Created")]),
+          _vm._v(" "),
+          _c("h5", { staticClass: "mb-0" }, [_vm._v("This Year")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "media-body ps-2" }, [
+          _c("h5", { staticClass: "mb-0" }, [
+            _c("span", { staticClass: "counter" })
+          ]),
+          _c("span", { staticClass: "mb-1" })
+        ])
+      ])
     ])
   },
   function() {

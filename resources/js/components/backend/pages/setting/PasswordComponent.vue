@@ -1,6 +1,4 @@
 <template>
-
-
     <div>
          <div class="container-fluid">
               <div class="row">
@@ -44,7 +42,7 @@
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Image</label>
-                         
+
                           <input class="form-control" type="file"  id="file" ref="file" v-on:change="handleFileUpload()" >
                         </div>
                         <div class="form-footer">
@@ -84,7 +82,7 @@
             </div>
          </div>
          </div>
-    
+
         <!-- <div class="container-fluid">
             <div class="edit-profile">
               <div class="row">
@@ -123,7 +121,7 @@
           </div> -->
 
 
-   
+
 </template>
 <script>
 export default{
@@ -154,14 +152,12 @@ export default{
                     this.$root.alertNotificationMessage(err.response.status,err.response.data);
 
                 });
+  },
 
-
-        },
-          
                 handleFileUpload(){
     this.file = this.$refs.file.files[0];
   },
-        
+
         updateProfile(e){
                e.preventDefault();
                let formData = new FormData();
@@ -174,7 +170,7 @@ export default{
                 {headers: {
                        'Content-Type': 'multipart/form-data'
                     }}).then((res)=>{
-                     
+
                         this.$root.alertNotificationMessage(res.status,"Profile Updated Successfully");
                         // setTimeout(() => {
                         //     this.$router.push({ name: 'users' })
