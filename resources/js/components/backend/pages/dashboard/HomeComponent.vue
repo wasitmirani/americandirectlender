@@ -14,9 +14,9 @@
                   </div>
                 </div>
               </div>
-         
-    
-              
+
+
+
               <div class="col-sm-6 col-xl-3 col-lg-6" v-for="item in roles" :key="item.id" >
                 <div class="card o-hidden border-0">
                   <div class="bg-primary b-r-4 card-body">
@@ -216,18 +216,18 @@
               </div>
   </div>
 
-            
 
-     
-                 
+
+
+
                   <div class="row">
                       <div class="card">
                           <div class="card-body">
                                                  <div class="table-responsive">
                           <h5>Recent Applications</h5>
-                          <table class="table table-bordernone">                                         
+                          <table class="table table-bordernone">
                             <thead>
-                              <tr >                                        
+                              <tr >
                                 <th>Application Name</th>
                                 <th>Status</th>
                               </tr>
@@ -244,7 +244,7 @@
                                   <p v-if="app.status === '0'">In Proccess</p>
                                 </td>
                               </tr>
-                        
+
                             </tbody>
                           </table>
                         </div>
@@ -253,10 +253,10 @@
 
                       </div>
 
-                   
+
                   </div>
-              
-      
+
+
 </div>
 </template>
 
@@ -426,7 +426,7 @@ var options17 = {
             this.getDashboardData();
             console.log("userss",user);
             this.user=user;
-            // this.app_name=appname;
+            this.app_name="American Lender";
             this.dashboardChart();
 
 

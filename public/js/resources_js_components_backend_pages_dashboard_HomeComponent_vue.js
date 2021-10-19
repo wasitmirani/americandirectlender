@@ -458,8 +458,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     this.getDashboardData();
     console.log("userss", user);
-    this.user = user; // this.app_name=appname;
-
+    this.user = user;
+    this.app_name = "American Lender";
     this.dashboardChart();
     axios.get('/recent/applications/').then(function (res) {
       _this2.apps = res.data.applications;
