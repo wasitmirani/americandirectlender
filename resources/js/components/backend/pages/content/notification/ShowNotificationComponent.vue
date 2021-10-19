@@ -3,8 +3,8 @@
         <div class="container-fluid">
             <div class="row">
                 <h1>Notifications</h1>
-        <div class="col-xl-9 xl-60 box-col-8">
-                <div class="card"    >
+                <div class="col-xl-9 xl-60 box-col-8">
+                <div class="card">
                   <div class="job-search">
                     <div class="card-body">
                       <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
@@ -12,9 +12,7 @@
                           <h6 class="f-w-600"><a href="job-details.html">{{cont}}</a></h6>
                           <p>{{cont.body}}</p>
                         </div>
-
                         </div>
-
                        <p><span class="badge badge-primary pull-right">View</span></p>
                     </div>
                   </div>
