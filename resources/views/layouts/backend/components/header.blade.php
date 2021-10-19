@@ -29,28 +29,33 @@
 
               <ul class="notification-dropdown onhover-show-div">
 
-                  {{-- @foreach (auth()->user()->unreadNotifications as $notification) --}}
+                  @foreach (auth()->user()->unreadNotifications as $notification)
+                  <router-link to="/show/notify">
                   <li class="noti-primary">
                     <div class="media"><span class="notification-bg bg-light-primary"><i class="fas fa-bell text-primary"></i></span>
                       <div class="media-body">
 
+
+                        @foreach($notification['data'] as $notify)
                         <div class="media-body">
                             <span>
-                                <router-link to="show/notify">
-                                bfs
-                                </router-link>
-                                </span>
-                            {{-- <p class="f-12 light-font">{{Str::limit($notification->data['description'],30,'.....')}}</p> --}}
-                            <p class="f-12 light-font">dsj</p>
-                          </div>
 
-                          {{-- <p class="f-12">{{$notification->created_at->diffForHumans()}}</p> --}}
-                          <p>safd</p>
+                                    {{ $notify  }}
+
+                                </span>
+                            <p class="f-12 light-font"></p>
+                            {{-- <p class="f-12 light-font">dsj</p> --}}
+                          </div>
+                        @endforeach
+
+                          <p class="f-12">{{$notification->created_at->diffForHumans()}}</p>
+                          <p></p>
 
                       </div>
                     </div>
                   </li>
-                  {{-- @endforeach --}}
+                </router-link>
+                  @endforeach
               </ul>
             </li>
 

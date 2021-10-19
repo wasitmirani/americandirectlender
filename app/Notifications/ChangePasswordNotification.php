@@ -20,7 +20,7 @@ class ChangePasswordNotification extends Notification
     {
         $this->data = $data;
     }
-    
+
 
     /**
      * Get the notification's delivery channels.
@@ -60,7 +60,7 @@ class ChangePasswordNotification extends Notification
         return [
             'title' => 'Change Password',
             'body' => $this->data['name'].' Updated Password'
-            
+
         ];
     }
 }
