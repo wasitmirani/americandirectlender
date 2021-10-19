@@ -175,41 +175,18 @@ var render = function() {
                       attrs: { src: "", alt: "" }
                     }),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "media-body" },
-                      [
-                        _c(
-                          "h6",
-                          { staticClass: "f-w-600" },
-                          [
-                            _vm._l(notification.data, function(content) {
-                              return _c(
-                                "a",
-                                {
-                                  key: content.title,
-                                  attrs: { href: "job-details.html" }
-                                },
-                                [_vm._v(_vm._s(content.title))]
-                              )
-                            }),
-                            _c(
-                              "span",
-                              { staticClass: "badge badge-primary pull-right" },
-                              [_vm._v("New")]
-                            )
-                          ],
-                          2
-                        ),
-                        _vm._v(" "),
-                        _vm._l(notification.data, function(content) {
-                          return _c("p", { key: content.title }, [
-                            _vm._v(_vm._s(content.body))
-                          ])
+                    _c("div", { staticClass: "media-body" }, [
+                      _c("h6", { staticClass: "f-w-600" }, [
+                        _c("a", { attrs: { href: "job-details.html" } }, [
+                          _vm._v(_vm._s(notification.data["title"]))
+                        ]),
+                        _c("span", {
+                          staticClass: "badge badge-primary pull-right"
                         })
-                      ],
-                      2
-                    )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v(_vm._s(notification.data["body"]))])
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("p")

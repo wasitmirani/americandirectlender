@@ -9,9 +9,9 @@
                     <div class="card-body">
                       <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
                         <div class="media-body">
-                          <h6 class="f-w-600"><a href="job-details.html" v-for="content in notification.data" v-bind:key="content.title">{{content.title}}</a><span class="badge badge-primary pull-right">New</span></h6>
-                          <p v-for="content in notification.data" v-bind:key="content.title">{{content.body}}</p>
-             
+                          <h6 class="f-w-600"><a href="job-details.html">{{notification.data["title"]}}</a><span class="badge badge-primary pull-right"></span></h6>
+                          <p>{{notification.data["body"]}}</p>
+       
                         </div>
                       </div>
                        <p>
