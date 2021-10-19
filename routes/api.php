@@ -31,34 +31,31 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:api')->group(function () {
 
-Route::get('customer/applications',[AppFormController::class,'getApplications']);
-Route::get('customer/applications/{id}',[AppFormController::class,'edit']);
-Route::get('/all/notification',[NotificationController::class,'index']);
-Route::put('customer/applications/{id}',[AppFormController::class,'update']);
-Route::put('update/status/{id}',[AppFormController::class,'updateStatus']);
-Route::get('/recent/applications',[DashboardController::class,'recentApp']);
+    Route::get('customer/applications',[AppFormController::class,'getApplications']);
+    Route::get('customer/applications/{id}',[AppFormController::class,'edit']);
+    Route::put('customer/applications/{id}',[AppFormController::class,'update']);
+    Route::get('/recent/applications',[DashboardController::class,'recentApp']);
+
+    
+    Route::get('/all/notification',[NotificationController::class,'index']);
+    Route::put('update/status/{id}',[AppFormController::class,'updateStatus']);
+    
 
     Route::get('profile/setting',[SettingController::class,'index'])->name('profile.setting');
     Route::post('password/setting/{id}',[SettingController::class,'updatePassword'])->name('password.setting');
     Route::post('profile/setting/{id}',[SettingController::class,'update']);
     Route::get('/dashboard',[DashboardController::class,'getDashboard']);
+
     Route::prefix('management')->group(function () {
 
-    Route::resource('user', UserController::class);
-    Route::resource('notification', NotificationController::class);
-    Route::post('remove-all/users',[UserController::class,'removeAllUsers']);
-    Route::get('/roles-perimissions',[UserController::class,'getRolesPermissions']);
-
-    Route::resource('application', UserController::class);
-    Route::resource('role', RoleController::class);
-    Route::post('remove-all/roles',[UserController::class,'removeAllRoles']);
-
-    Route::resource('permission', PermissionController::class);
-    Route::post('remove-all/permissions',[UserController::class,'removeAllPermissions']);
-
-   
-
-
-
-});
+        Route::resource('user', UserController::class);
+        Route::resource('notification', NotificationController::class);
+        Route::post('remove-all/users',[UserController::class,'removeAllUsers']);
+        Route::get('/roles-perimissions',[UserController::class,'getRolesPermissions']);
+        Route::resource('application', UserController::class);
+        Route::resource('role', RoleController::class);
+        Route::post('remove-all/roles',[UserController::class,'removeAllRoles']);
+        Route::resource('permission', PermissionController::class);
+        Route::post('remove-all/permissions',[UserController::class,'removeAllPermissions']);
+    });
 });
