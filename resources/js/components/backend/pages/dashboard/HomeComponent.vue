@@ -14,9 +14,6 @@
                   </div>
                 </div>
               </div>
-
-
-
               <div class="col-sm-6 col-xl-3 col-lg-6" v-for="item in roles" :key="item.id" >
                 <div class="card o-hidden border-0">
                   <div class="bg-primary b-r-4 card-body">

@@ -13,7 +13,7 @@
                           <p>{{cont.body}}</p>
                         </div>
                         </div>
-                       <p><span class="badge badge-primary pull-right">View</span></p>
+                       <!-- <p><span class="badge badge-primary pull-right">View</span></p> -->
                     </div>
                   </div>
                 </div>
