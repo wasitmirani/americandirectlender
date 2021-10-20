@@ -39,8 +39,8 @@
                                   <div class="media-body text-end"><span>Done</span></div> -->
 
                                     <vs-button v-if="application.status === '0'"
-                            
-                           
+
+
                               v-on:click="updateStatus"
                                   >
                                     Assign
@@ -68,6 +68,9 @@ export default {
 
              axios.put('/update/status/'+this.application.id).then((res)=>{
                       this.$root.alertNotificationMessage(res.status,"Status has been updated successfully");
+                        setTimeout(() => {
+                            this.$router.push({ name: 'users' })
+                        }, 1000);
 
                     }).catch((err)=>{
                         if(err.response.status==422){

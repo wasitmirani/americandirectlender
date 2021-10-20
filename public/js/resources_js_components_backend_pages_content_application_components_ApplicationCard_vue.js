@@ -80,6 +80,12 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.put('/update/status/' + this.application.id).then(function (res) {
         _this.$root.alertNotificationMessage(res.status, "Status has been updated successfully");
+
+        setTimeout(function () {
+          _this.$router.push({
+            name: 'users'
+          });
+        }, 1000);
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this.errors = err.response.data.errors;
