@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Mail\AppAssignMail;
 use App\Models\Application;
 use Illuminate\Http\Request;
+use App\Models\ApplicationAgents;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 
@@ -112,7 +114,14 @@ class AppFormController extends Controller
 
     public function assignApp(Request $request){
 
-        dd($request);
+         ApplicationAgents::create([
+             'application_id' => $request->app,
+             'agent_id' => $request->agent
+         ]);
+
+         return response()->json();
+
+
 
     }
 

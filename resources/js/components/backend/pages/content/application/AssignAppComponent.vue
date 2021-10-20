@@ -14,7 +14,7 @@
                           <div class="mb-3">
 
                              <label class="col-form-label" for="recipient-name">Application:</label>
-                             <vs-select filter multiple collapse-chips placeholder="Applications" v-model="content.app"   v-if="applications.length>0">
+                             <vs-select filter  collapse-chips placeholder="Applications" v-model="app"   v-if="applications.length>0">
                               <vs-option v-for="item in applications" :key="item.id"
                                 :label="item.name" :value="item.id">
                                  {{ item.name }}
@@ -24,7 +24,7 @@
                           </div>
                           <div class="mb-3">
                                <label class="col-form-label" for="recipient-name">Agents:</label>
-                            <vs-select filter multiple collapse-chips placeholder="Roles" v-model="content.role"   v-if="roles.length>0">
+                            <vs-select filter  collapse-chips placeholder="Roles" v-model="agent"   v-if="roles.length>0">
                                 <vs-option v-for="item in roles" :key="item.id"
                                  :label="item.name" :value="item.id">
                                  {{ item.name }}
@@ -55,13 +55,10 @@
    export default{
        data(){
            return{
-                 applications:{},
+            applications:{},
             process:{},
-             content:{
-                 app:"",
-                 role:""
-             },
-
+            app:[],
+            agent:[],
             query:"",
             loading:false,
             total_applications:0,
@@ -112,7 +109,9 @@
             },
                onSubmit(){
               let formData = new FormData();
-                formData=Object.assign(this.content,formData);
+
+                    formData.append('app', this.app);
+                    formData.append('agent', this.agent);
                 //  formData=Object.assign({selected_roles:this.selected_roles},formData)
                   axios.post('/assign/app',formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"Application Assigned To Agent successfully");

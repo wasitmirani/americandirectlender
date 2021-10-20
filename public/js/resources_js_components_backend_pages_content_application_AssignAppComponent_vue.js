@@ -88,10 +88,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       applications: {},
       process: {},
-      content: {
-        app: "",
-        role: ""
-      },
+      app: [],
+      agent: [],
       query: "",
       loading: false,
       total_applications: 0,
@@ -175,7 +173,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this3 = this;
 
       var formData = new FormData();
-      formData = Object.assign(this.content, formData); //  formData=Object.assign({selected_roles:this.selected_roles},formData)
+      formData.append('app', this.app);
+      formData.append('agent', this.agent); //  formData=Object.assign({selected_roles:this.selected_roles},formData)
 
       axios.post('/assign/app', formData).then(function (res) {
         _this3.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
@@ -1154,16 +1153,15 @@ var render = function() {
                               {
                                 attrs: {
                                   filter: "",
-                                  multiple: "",
                                   "collapse-chips": "",
                                   placeholder: "Applications"
                                 },
                                 model: {
-                                  value: _vm.content.app,
+                                  value: _vm.app,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.content, "app", $$v)
+                                    _vm.app = $$v
                                   },
-                                  expression: "content.app"
+                                  expression: "app"
                                 }
                               },
                               _vm._l(_vm.applications, function(item) {
@@ -1208,16 +1206,15 @@ var render = function() {
                               {
                                 attrs: {
                                   filter: "",
-                                  multiple: "",
                                   "collapse-chips": "",
                                   placeholder: "Roles"
                                 },
                                 model: {
-                                  value: _vm.content.role,
+                                  value: _vm.agent,
                                   callback: function($$v) {
-                                    _vm.$set(_vm.content, "role", $$v)
+                                    _vm.agent = $$v
                                   },
-                                  expression: "content.role"
+                                  expression: "agent"
                                 }
                               },
                               _vm._l(_vm.roles, function(item) {
