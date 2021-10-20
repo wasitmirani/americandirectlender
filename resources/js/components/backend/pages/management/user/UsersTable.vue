@@ -20,6 +20,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                              <th scope="col">User Name</th>
+                             <th scope="col">Role</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Create By</th>
                             <th scope="col">Created</th>
@@ -58,7 +59,11 @@
                                     </div>
                                 </div>
                                 </td>
+
                                 <td>{{user.user_name ? user.user_name : "N/A" }}</td>
+                                 <td>
+                                   <span v-for="rol in user.roles" :key="rol.id">{{rol.name}}</span>
+                                </td>
                                 <td>{{user.phone ?  user.phone  : "N/A"}}</td>
                                 <td>{{user.user ? user.user.name : "N/A"}}</td>
                                 <td>{{user.created_at | timeformat}}</td>

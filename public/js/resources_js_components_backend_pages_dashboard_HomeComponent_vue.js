@@ -1896,9 +1896,9 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-sm-6 ps-0" }, [
       _c("div", { staticClass: "media" }, [
         _c("div", { staticClass: "align-self-center me-3 text-start" }, [
-          _c("span", { staticClass: "widget-t mb-1" }, [_vm._v("App Created")]),
+          _c("span", { staticClass: "widget-t mb-1" }),
           _vm._v(" "),
-          _c("h5", { staticClass: "mb-0" }, [_vm._v("This Year")])
+          _c("h5", { staticClass: "mb-0" }, [_vm._v("Agents")])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "media-body ps-2" }, [

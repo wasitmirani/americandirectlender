@@ -126,6 +126,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['users', 'getUsers'],
@@ -494,6 +499,8 @@ var render = function() {
             _vm._v(" "),
             _c("th", { attrs: { scope: "col" } }, [_vm._v("User Name")]),
             _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Role")]),
+            _vm._v(" "),
             _c("th", { attrs: { scope: "col" } }, [_vm._v("Phone")]),
             _vm._v(" "),
             _c("th", { attrs: { scope: "col" } }, [_vm._v("Create By")]),
@@ -595,6 +602,16 @@ var render = function() {
                     _c("td", [
                       _vm._v(_vm._s(user.user_name ? user.user_name : "N/A"))
                     ]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      _vm._l(user.roles, function(rol) {
+                        return _c("span", { key: rol.id }, [
+                          _vm._v(_vm._s(rol.name))
+                        ])
+                      }),
+                      0
+                    ),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(user.phone ? user.phone : "N/A"))]),
                     _vm._v(" "),
