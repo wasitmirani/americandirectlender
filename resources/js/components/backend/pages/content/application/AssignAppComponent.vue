@@ -57,8 +57,8 @@
            return{
             applications:{},
             process:{},
-            app:[],
-            agent:[],
+            app:"",
+            agent:"",
             query:"",
             loading:false,
             total_applications:0,
@@ -112,7 +112,6 @@
 
                     formData.append('app', this.app);
                     formData.append('agent', this.agent);
-                //  formData=Object.assign({selected_roles:this.selected_roles},formData)
                   axios.post('/assign/app',formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"Application Assigned To Agent successfully");
                         setTimeout(() => {

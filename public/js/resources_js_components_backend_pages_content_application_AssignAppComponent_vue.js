@@ -88,8 +88,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       applications: {},
       process: {},
-      app: [],
-      agent: [],
+      app: "",
+      agent: "",
       query: "",
       loading: false,
       total_applications: 0,
@@ -174,8 +174,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       var formData = new FormData();
       formData.append('app', this.app);
-      formData.append('agent', this.agent); //  formData=Object.assign({selected_roles:this.selected_roles},formData)
-
+      formData.append('agent', this.agent);
       axios.post('/assign/app', formData).then(function (res) {
         _this3.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
 
