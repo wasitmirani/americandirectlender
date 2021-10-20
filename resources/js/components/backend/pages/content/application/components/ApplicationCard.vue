@@ -38,13 +38,12 @@
                                   <!-- <p>70% </p>
                                   <div class="media-body text-end"><span>Done</span></div> -->
 
-                                    <vs-button v-if="application.status === '0'"
-
-
-                              v-on:click="updateStatus"
-                                  >
+                              <router-link to="/assign/apps/">
+                                  <vs-button>
                                     Assign
                                 </vs-button>
+                                </router-link>
+
                                 </div>
                                 <!-- <div class="progress" style="height: 5px">
                                   <div class="progress-bar-animated bg-primary progress-bar-striped" role="progressbar" style="width: 70%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
@@ -56,17 +55,83 @@
  <ul class="pagination pagination-primary mt-4">
       <pagination :data="application" :limit="5" @pagination-change-page="getApplications"></pagination>
 </ul>
+      <vs-dialog v-model="active">
+        <template #header>
+          <h4 class="not-margin">
+            Assign  to <b>Agent</b>
+          </h4>
+        </template>
+
+
+        <div class="con-form">
+        <div class="mb-3">
+
+        <label class="col-form-label" for="recipient-name">Application:</label>
+         <vs-select filter  collapse-chips placeholder="Applications" v-model="app"   v-if="applications.length>0">
+            <vs-option v-for="item in applications" :key="item.id" :value="item.id" :label="item.name">
+                {{ item.name }}
+            </vs-option>
+        </vs-select>
+        </div>
+        <div class="mb-3">
+            <label class="col-form-label" for="recipient-name">Agents:</label>
+                <vs-select filter  collapse-chips placeholder="Agents" v-model="agent"   v-if="roles.length>0">
+                    <vs-option v-for="item in roles" :key="item.id" :label="item.name" :value="item.id">
+                        {{ item.name }}
+                    </vs-option>
+                </vs-select>
+        </div>
+        <div class="mb-3">
+            <label class="col-form-label" for="recipient-name">Comment:</label>
+            <textarea class="form-control" v-model="comment"></textarea>
+
+        </div>
+        <div class="mb-3">
+            <label class="mb-3"></label>
+        </div>
+        </div>
+
+        <template #footer>
+          <div class="footer-dialog">
+            <vs-button color="rgb(30, 32, 79)" gradient  type="submit" @click="updateStatus"  >
+                     Submit
+            </vs-button>
+          </div>
+        </template>
+      </vs-dialog>
 </div>
 </template>
 
 <script>
 export default {
-    props:['application','getApplications'],
+    props:['application','getApplications','roles','getRoles','applications'],
+
+   data(){
+       return{
+        app:"",
+        agent:"",
+        comment:"",
+        active: false,
+
+
+      }
+   },
     methods:{
+          openModal(val){
+             this.resetForm();
+             return this.active_modal=val;
+            },
+            resetForm(){
+            this.active_modal=false;
 
+            },
         updateStatus:function(){
+               let formData = new FormData();
 
-             axios.put('/update/status/'+this.application.id).then((res)=>{
+                    formData.append('app', this.app);
+                    formData.append('agent', this.agent);
+
+                  axios.put('/update/status/'+this.application.id,formData).then((res)=>{
                       this.$root.alertNotificationMessage(res.status,"Status has been updated successfully");
                         setTimeout(() => {
                             this.$router.push({ name: 'users' })
@@ -81,11 +146,35 @@ export default {
 
                 });
 
-        }
+        },
 
-    }
+        onSubmit(){
+              let formData = new FormData();
+
+                    formData.append('app', this.app);
+                    formData.append('agent', this.agent);
+                  axios.post('/assign/app',formData).then((res)=>{
+                        this.$root.alertNotificationMessage(res.status,"Application Assigned To Agent successfully");
+                        setTimeout(() => {
+                            this.$router.push({ name: 'users' })
+                        }, 1000);
+                    }).catch((err)=>{
+                        if(err.response.status==422){
+                            this.errors=err.response.data.errors;
+                            return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
+                        }
+                    this.$root.alertNotificationMessage(err.response.status,err.response.data);
+
+                });
+
+               }
+
+    },
+
 
 }
+
+
 </script>
 
 <style>

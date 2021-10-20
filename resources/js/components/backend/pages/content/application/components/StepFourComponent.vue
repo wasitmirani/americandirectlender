@@ -23,6 +23,11 @@
                 <label class="col-form-label">List all Liabilities/Liens/Loans/Investments/Cosign on Loans</label>
                 <textarea class="form-control" v-model="application.liabilities_loans"></textarea>
             </div>
+            <div class="mb-3">
+                <label class="col-form-label">Upload Attachment</label>
+                <input class="form-control" type="file" ref="file"  id="file"  v-on:change="handleFileUpload()">
+            </div>
+
 
 
         </div>
@@ -31,7 +36,8 @@
 </template>
 <script>
     export default{
-        props:['application']
+        props:['application','handleFileUpload'],
+
 
       }
 </script>

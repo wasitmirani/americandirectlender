@@ -13,12 +13,11 @@
             <StepThree :application="application"></StepThree>
         </tab-content>
           <tab-content title="Step Three">
-            <StepFour :application="application"></StepFour>
+            <StepFour :application="application" :handleFileUpload="handleFileUpload"></StepFour>
         </tab-content>
-
             <vs-button slot="prev">Back</vs-button>
             <vs-button slot="next">Next</vs-button>
-            <vs-button slot="finish">Finish</vs-button>
+            <vs-button slot="finish">Update</vs-button>
     </form-wizard>
 </div>
 </template>
@@ -30,7 +29,6 @@ import StepFour from './StepFourComponent.vue';
 export default{
     data(){
         return{
-
         application:{
         date :"",
         name :"",
@@ -74,8 +72,8 @@ export default{
         business_line :"",
         liabilities_loans :"",
         investment_property :"",
-
         },
+        file:"",
           errors:{},
 
         }
@@ -96,9 +94,13 @@ export default{
 
     },
     methods: {
+    handleFileUpload(){
+        this.file = event.target.files[0];
+    },
     onComplete: function(){
         let formData = new FormData();
         formData=Object.assign(this.application,formData);
+        formData.append('attachment',this.file);
          axios.put('/customer/applications/'+this.application.id,formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"Application has been updated successfully");
                         setTimeout(() => {

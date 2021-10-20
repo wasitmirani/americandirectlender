@@ -12,36 +12,39 @@
                       </div>
                       <div class="card-body">
                         <form class="theme-form">
-                          <div class="mb-3">
+                            <div class="mb-3">
+                                <label class="col-form-label" for="recipient-name">Application:</label>
+                                <vs-select filter  collapse-chips placeholder="Applications" v-model="app"   v-if="applications.length>0">
+                                    <vs-option v-for="item in applications" :key="item.id" :value="item.id" :label="item.name">
+                                          {{ item.name }}
+                                    </vs-option>
+                                </vs-select>
 
-                             <label class="col-form-label" for="recipient-name">Application:</label>
-                             <vs-select filter  collapse-chips placeholder="Applications" v-model="app"   v-if="applications.length>0">
-                              <vs-option v-for="item in applications" :key="item.id"
-                                :label="item.name" :value="item.id">
-                                 {{ item.name }}
-                                 </vs-option>
-                             </vs-select>
-
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label" for="recipient-name">Agents:</label>
+                                <vs-select filter  collapse-chips placeholder="Agents" v-model="agent"   v-if="agents.length>0">
+                                    <vs-option v-for="item in agents" :key="item.id" :label="item.name" :value="item.id">
+                                        {{ item.name }}
+                                    </vs-option>
+                                </vs-select>
                           </div>
-                          <div class="mb-3">
-                               <label class="col-form-label" for="recipient-name">Agents:</label>
-                            <vs-select filter  collapse-chips placeholder="Roles" v-model="agent"   v-if="roles.length>0">
-                                <vs-option v-for="item in roles" :key="item.id"
-                                 :label="item.name" :value="item.id">
-                                 {{ item.name }}
-                                </vs-option>
-                            </vs-select>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="recipient-name">Comment:</label>
+                            <textarea class="form-control" v-model="comment"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Attach File</label>
+                            <input  class="form-control" type="file"  id="file" ref="file" v-on:change="handleFileUpload()">
+                        </div>
 
-                          </div>
-
-                        </form>
-                      </div>
-                      <div class="card-footer">
-                        <vs-button color="rgb(30, 32, 79)" gradient  type="submit" @click="onSubmit"  >
+                <vs-button color="rgb(30, 32, 79)" gradient  type="submit" @click="onSubmit">
                      Submit
                   </vs-button>
 
+                        </form>
                       </div>
+
                     </div>
                   </div>
 
@@ -65,16 +68,23 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
             process:{},
             app:"",
             agent:"",
+            comment:"",
+            agents:{},
             query:"",
             loading:false,
             total_applications:0,
             page_num:1,
-            roles:{}
+            roles:{},
+            file:""
            }
         },
 
 
        methods:{
+            handleFileUpload(){
+
+               this.file = this.$refs.file.files[0];
+            },
            isquery(query) {
             return (this.query = query);
           },
@@ -116,13 +126,13 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                onSubmit(){
               let formData = new FormData();
 
-                    formData.append('app', this.app);
-                    formData.append('agent', this.agent);
+                formData.append('app', this.app);
+                formData.append('agent', this.agent);
+                formData.append('file', this.file);
+                formData.append('comment', this.comment);
                   axios.post('/assign/app',formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"Application Assigned To Agent successfully");
-                        setTimeout(() => {
-                            this.$router.push({ name: 'users' })
-                        }, 1000);
+
                     }).catch((err)=>{
                         if(err.response.status==422){
                             this.errors=err.response.data.errors;
@@ -132,12 +142,26 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 
                 });
 
-               }
+               },
+                   async getAgents(page=1){
+             this.loading=true;
+             this.page_num=page;
+             const url="/management/agents?page=" + page + "&query=" + this.query;
+              await axios.get(url).then((res)=>{
+                this.agents = res.data.agents;
+                console.log(res)
+                this.loading=false;
+
+               }).catch((err)=>{
+                     this.$root.alertErrorMessage(err.response.status,err.response.data);
+               });
+            },
 
        },
         mounted(){
            this.getApplications();
            this.getRoles();
+           this.getAgents();
 
        }
 

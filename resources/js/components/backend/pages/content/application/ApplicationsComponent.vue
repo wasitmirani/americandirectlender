@@ -36,7 +36,7 @@
                                     </SearchInput>
                                         <div class="col-xxl-4 col-lg-6" v-for="application in applications" :key="application.id">
 
-                                <ApplicationCard :getApplications="getApplications" :application="application"></ApplicationCard>
+                                <ApplicationCard :getRoles="getRoles" :roles="agents" :getApplications="getApplications" :application="application" :applications="applications"></ApplicationCard>
 
                                    </div>
                         </div>
@@ -44,18 +44,14 @@
                       <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
                         <div class="row">
                             <div class="col-xxl-4 col-lg-6" v-for="application in process" :key="application.id">
-                                <ApplicationCard :getApplications="getApplications" :application="application"></ApplicationCard>
-
+                                <ApplicationCard :getApplications="getApplications" :application="application"  :roles="agents" :applications="applications"></ApplicationCard>
                             </div>
-
-
-
                         </div>
                       </div>
                       <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
                         <div class="row">
                              <div class="col-xxl-4 col-lg-6" v-for="application in done" :key="application.id">
-                                  <ApplicationCard :getApplications="getApplications" :application="application"></ApplicationCard>
+                                  <ApplicationCard :getApplications="getApplications" :application="application" :roles="agents" :applications="applications"></ApplicationCard>
                              </div>
 
                         </div>
@@ -66,6 +62,8 @@
               </div>
             </div>
         </div>
+
+
   </div>
 </template>
 
@@ -83,17 +81,22 @@ export default {
     },
       data(){
         return {
+            
             applications:{},
             process:{},
             done:{},
+            agents:{},
             query:"",
             loading:false,
             total_applications:0,
             page_num:1,
+            roles:{}
         };
     },
       mounted(){
         this.getApplications();
+        this.getRoles();
+        this.getAgents();
 
 
     },
@@ -101,6 +104,7 @@ export default {
           isquery(query) {
             return (this.query = query);
           },
+
             loadingStart(value) {
            console.log(value);
             this.loading = value;
@@ -127,6 +131,34 @@ export default {
 
                   });
             },
+            async getAgents(page=1){
+             this.loading=true;
+             this.page_num=page;
+             const url="/management/agents?page=" + page + "&query=" + this.query;
+              await axios.get(url).then((res)=>{
+                this.agents = res.data.agents;
+                console.log(res)
+                this.loading=false;
+
+               }).catch((err)=>{
+                     this.$root.alertErrorMessage(err.response.status,err.response.data);
+               });
+            },
+
+              async getRoles(page=1){
+             this.loading=true;
+             this.page_num=page;
+             const url="/management/role?page=" + page + "&query=" + this.query;
+               await axios.get(url).then((res)=>{
+                   this.roles = res.data.roles.data;
+                    console.log(res)
+                   this.loading=false;
+
+               }).catch((err)=>{
+                     this.$root.alertErrorMessage(err.response.status,err.response.data);
+               });
+            },
+
      }
 }
 </script>

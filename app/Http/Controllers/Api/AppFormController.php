@@ -6,9 +6,11 @@ use App\Mail\AppAssignMail;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Models\ApplicationAgents;
+use App\Models\ApplicationComment;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Models\ApplicationAttachment;
 
 class AppFormController extends Controller
 {
@@ -96,15 +98,42 @@ class AppFormController extends Controller
         $application->liabilities_loans = $request->liabilities_loans;
         $application->save();
 
+
+
+
+
+        // $attachment = ApplicationAttachment::create([
+
+
+
+        //      'application_id'=>$application->id,
+
+        //  ]);
+
+
+
         return response()->json();
     }
 
 
-    public function updateStatus($id){
+    public function uploadAttachment(Request $request){
+
+        dd($request);
+
+    }
+
+
+    public function updateStatus(Request $request,$id){
 
         $application = Application::find($id);
         $application->status = '1';
-        if($application->update()){
+        $application->update();
+        $agent = ApplicationAgents::create([
+            'application_id' => $request->app,
+            'agent_id' => $request->agent
+        ]);
+
+        if($agent){
 
             return response()->json(['message'=>'Status Updated Successfully']);
         }else{
@@ -114,9 +143,26 @@ class AppFormController extends Controller
 
     public function assignApp(Request $request){
 
-         ApplicationAgents::create([
+
+        $application = Application::find($request->app);
+        $application->status = '1';
+        $application->update();
+        $agent = ApplicationAgents::create([
+            'application_id' => $request->app,
+            'agent_id' => $request->agent
+        ]);
+        $comment = ApplicationComment::create([
+            'application_id' => $request->app,
+            'comment' => $request->comment
+        ]);
+
+
+        $file = singleImgUpload($request, '/app/agent/file');
+         ApplicationAttachment::create([
              'application_id' => $request->app,
-             'agent_id' => $request->agent
+             'agent_id' => $request->agent,
+             'file' => $file
+
          ]);
 
          return response()->json();
@@ -124,6 +170,8 @@ class AppFormController extends Controller
 
 
     }
+
+
 
 
 

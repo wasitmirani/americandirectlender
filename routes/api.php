@@ -46,6 +46,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::prefix('management')->group(function () {
         Route::resource('user', UserController::class);
+        Route::get('agents',[UserController::class,'getAgents']);
         Route::resource('notification', NotificationController::class);
         Route::post('remove-all/users',[UserController::class,'removeAllUsers']);
         Route::get('/roles-perimissions',[UserController::class,'getRolesPermissions']);

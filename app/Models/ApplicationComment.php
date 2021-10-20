@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class ApplicationComment extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 }

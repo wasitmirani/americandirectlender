@@ -72,13 +72,74 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['application', 'getApplications'],
+  props: ['application', 'getApplications', 'roles', 'getRoles', 'applications'],
+  data: function data() {
+    return {
+      app: "",
+      agent: "",
+      comment: "",
+      active: false
+    };
+  },
   methods: {
+    openModal: function openModal(val) {
+      this.resetForm();
+      return this.active_modal = val;
+    },
+    resetForm: function resetForm() {
+      this.active_modal = false;
+    },
     updateStatus: function updateStatus() {
       var _this = this;
 
-      axios.put('/update/status/' + this.application.id).then(function (res) {
+      var formData = new FormData();
+      formData.append('app', this.app);
+      formData.append('agent', this.agent);
+      axios.put('/update/status/' + this.application.id, formData).then(function (res) {
         _this.$root.alertNotificationMessage(res.status, "Status has been updated successfully");
 
         setTimeout(function () {
@@ -93,6 +154,29 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         _this.$root.alertNotificationMessage(err.response.status, err.response.data);
+      });
+    },
+    onSubmit: function onSubmit() {
+      var _this2 = this;
+
+      var formData = new FormData();
+      formData.append('app', this.app);
+      formData.append('agent', this.agent);
+      axios.post('/assign/app', formData).then(function (res) {
+        _this2.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
+
+        setTimeout(function () {
+          _this2.$router.push({
+            name: 'users'
+          });
+        }, 1000);
+      })["catch"](function (err) {
+        if (err.response.status == 422) {
+          _this2.errors = err.response.data.errors;
+          return _this2.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        }
+
+        _this2.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     }
   }
@@ -250,109 +334,318 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "project-box" }, [
-      _c(
-        "span",
-        {
-          staticClass: "badge badge-primary",
-          staticStyle: { "margin-right": "31px" }
-        },
-        [
-          _c(
-            "router-link",
-            {
-              attrs: {
-                to: {
-                  name: "show-application",
-                  params: { id: _vm.application.id }
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "project-box" }, [
+        _c(
+          "span",
+          {
+            staticClass: "badge badge-primary",
+            staticStyle: { "margin-right": "31px" }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: {
+                    name: "show-application",
+                    params: { id: _vm.application.id }
+                  }
                 }
-              }
-            },
-            [_c("i", { staticClass: "fa  fa-eye text-light" })]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "span",
-        { staticClass: "badge badge-primary" },
-        [
-          _c(
-            "router-link",
-            {
-              attrs: {
-                to: {
-                  name: "update-application",
-                  params: { id: _vm.application.id }
-                }
-              }
-            },
-            [_c("i", { staticClass: "fa  fa-edit text-light" })]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("h6", [_vm._v(_vm._s(_vm.application.name))]),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.application.property_detail) + ".")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row details" }, [
-        _vm._m(1),
+              },
+              [_c("i", { staticClass: "fa  fa-eye text-light" })]
+            )
+          ],
+          1
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-6 font-primary" }, [
-          _vm._v(_vm._s(_vm.application.property_value) + " ")
+        _c(
+          "span",
+          { staticClass: "badge badge-primary" },
+          [
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: {
+                    name: "update-application",
+                    params: { id: _vm.application.id }
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fa  fa-edit text-light" })]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("h6", [_vm._v(_vm._s(_vm.application.name))]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c("p", [_vm._v(_vm._s(_vm.application.property_detail) + ".")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row details" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-6 font-primary" }, [
+            _vm._v(_vm._s(_vm.application.property_value) + " ")
+          ]),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-6 font-primary" }, [
+            _vm._v(_vm._s(_vm.application.property_type))
+          ]),
+          _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-6 font-primary" }, [
+            _vm._v(_vm._s(_vm.application.property_update))
+          ])
         ]),
         _vm._v(" "),
-        _vm._m(2),
+        _vm._m(4),
         _vm._v(" "),
-        _c("div", { staticClass: "col-6 font-primary" }, [
-          _vm._v(_vm._s(_vm.application.property_type))
-        ]),
-        _vm._v(" "),
-        _vm._m(3),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-6 font-primary" }, [
-          _vm._v(_vm._s(_vm.application.property_update))
+        _c("div", { staticClass: "project-status mt-4" }, [
+          _c(
+            "div",
+            { staticClass: "media mb-0" },
+            [
+              _c(
+                "router-link",
+                { attrs: { to: "/assign/apps/" } },
+                [
+                  _c("vs-button", [
+                    _vm._v(
+                      "\n                                    Assign\n                                "
+                    )
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
         ])
       ]),
       _vm._v(" "),
-      _vm._m(4),
+      _c(
+        "ul",
+        { staticClass: "pagination pagination-primary mt-4" },
+        [
+          _c("pagination", {
+            attrs: { data: _vm.application, limit: 5 },
+            on: { "pagination-change-page": _vm.getApplications }
+          })
+        ],
+        1
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "project-status mt-4" }, [
-        _c(
-          "div",
-          { staticClass: "media mb-0" },
-          [
-            _vm.application.status === "0"
-              ? _c("vs-button", { on: { click: _vm.updateStatus } }, [
-                  _vm._v(
-                    "\n                                    Assign\n                                "
+      _c(
+        "vs-dialog",
+        {
+          scopedSlots: _vm._u([
+            {
+              key: "header",
+              fn: function() {
+                return [
+                  _c("h4", { staticClass: "not-margin" }, [
+                    _vm._v("\n            Assign  to "),
+                    _c("b", [_vm._v("Agent")])
+                  ])
+                ]
+              },
+              proxy: true
+            },
+            {
+              key: "footer",
+              fn: function() {
+                return [
+                  _c(
+                    "div",
+                    { staticClass: "footer-dialog" },
+                    [
+                      _c(
+                        "vs-button",
+                        {
+                          attrs: {
+                            color: "rgb(30, 32, 79)",
+                            gradient: "",
+                            type: "submit"
+                          },
+                          on: { click: _vm.updateStatus }
+                        },
+                        [_vm._v("\n                     Submit\n            ")]
+                      )
+                    ],
+                    1
                   )
-                ])
-              : _vm._e()
-          ],
-          1
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "pagination pagination-primary mt-4" },
-      [
-        _c("pagination", {
-          attrs: { data: _vm.application, limit: 5 },
-          on: { "pagination-change-page": _vm.getApplications }
-        })
-      ],
-      1
-    )
-  ])
+                ]
+              },
+              proxy: true
+            }
+          ]),
+          model: {
+            value: _vm.active,
+            callback: function($$v) {
+              _vm.active = $$v
+            },
+            expression: "active"
+          }
+        },
+        [
+          _vm._v(" "),
+          _c("div", { staticClass: "con-form" }, [
+            _c(
+              "div",
+              { staticClass: "mb-3" },
+              [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "recipient-name" }
+                  },
+                  [_vm._v("Application:")]
+                ),
+                _vm._v(" "),
+                _vm.applications.length > 0
+                  ? _c(
+                      "vs-select",
+                      {
+                        attrs: {
+                          filter: "",
+                          "collapse-chips": "",
+                          placeholder: "Applications"
+                        },
+                        model: {
+                          value: _vm.app,
+                          callback: function($$v) {
+                            _vm.app = $$v
+                          },
+                          expression: "app"
+                        }
+                      },
+                      _vm._l(_vm.applications, function(item) {
+                        return _c(
+                          "vs-option",
+                          {
+                            key: item.id,
+                            attrs: { value: item.id, label: item.name }
+                          },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(item.name) +
+                                "\n            "
+                            )
+                          ]
+                        )
+                      }),
+                      1
+                    )
+                  : _vm._e()
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "mb-3" },
+              [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "recipient-name" }
+                  },
+                  [_vm._v("Agents:")]
+                ),
+                _vm._v(" "),
+                _vm.roles.length > 0
+                  ? _c(
+                      "vs-select",
+                      {
+                        attrs: {
+                          filter: "",
+                          "collapse-chips": "",
+                          placeholder: "Agents"
+                        },
+                        model: {
+                          value: _vm.agent,
+                          callback: function($$v) {
+                            _vm.agent = $$v
+                          },
+                          expression: "agent"
+                        }
+                      },
+                      _vm._l(_vm.roles, function(item) {
+                        return _c(
+                          "vs-option",
+                          {
+                            key: item.id,
+                            attrs: { label: item.name, value: item.id }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(item.name) +
+                                "\n                    "
+                            )
+                          ]
+                        )
+                      }),
+                      1
+                    )
+                  : _vm._e()
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mb-3" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-form-label",
+                  attrs: { for: "recipient-name" }
+                },
+                [_vm._v("Comment:")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.comment,
+                    expression: "comment"
+                  }
+                ],
+                staticClass: "form-control",
+                domProps: { value: _vm.comment },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.comment = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mb-3" }, [
+              _c("label", { staticClass: "mb-3" })
+            ])
+          ])
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {

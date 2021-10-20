@@ -40,7 +40,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -73,6 +72,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         occupant: "",
         income_type: ""
       }, _defineProperty(_application, "income_source", ""), _defineProperty(_application, "promotion_detail", ""), _defineProperty(_application, "business_type", ""), _defineProperty(_application, "is_online", ""), _defineProperty(_application, "is_online_reason", ""), _defineProperty(_application, "is_business_partner", ""), _defineProperty(_application, "financial_history", ""), _defineProperty(_application, "investment_property", ""), _defineProperty(_application, "renovation", ""), _defineProperty(_application, "mortgage_statement", ""), _defineProperty(_application, "property_insured", ""), _defineProperty(_application, "loan_amount", ""), _defineProperty(_application, "cash_reserve", ""), _defineProperty(_application, "is_online_reason", ""), _defineProperty(_application, "recent_business_Activity", ""), _defineProperty(_application, "recent_business", ""), _defineProperty(_application, "advice", ""), _defineProperty(_application, "tax_return", ""), _defineProperty(_application, "business_line", ""), _defineProperty(_application, "liabilities_loans", ""), _defineProperty(_application, "investment_property", ""), _application),
+      file: "",
       errors: {}
     };
   },
@@ -89,11 +89,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: {
+    handleFileUpload: function handleFileUpload() {
+      this.file = event.target.files[0];
+    },
     onComplete: function onComplete() {
       var _this = this;
 
       var formData = new FormData();
       formData = Object.assign(this.application, formData);
+      formData.append('attachment', this.file);
       axios.put('/customer/applications/' + this.application.id, formData).then(function (res) {
         _this.$root.alertNotificationMessage(res.status, "Application has been updated successfully");
 
@@ -176,8 +180,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['application']
+  props: ['application', 'handleFileUpload']
 });
 
 /***/ }),
@@ -1137,7 +1146,14 @@ var render = function() {
           _c(
             "tab-content",
             { attrs: { title: "Step Three" } },
-            [_c("StepFour", { attrs: { application: _vm.application } })],
+            [
+              _c("StepFour", {
+                attrs: {
+                  application: _vm.application,
+                  handleFileUpload: _vm.handleFileUpload
+                }
+              })
+            ],
             1
           ),
           _vm._v(" "),
@@ -1150,7 +1166,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("vs-button", { attrs: { slot: "finish" }, slot: "finish" }, [
-            _vm._v("Finish")
+            _vm._v("Update")
           ])
         ],
         1
@@ -1301,6 +1317,23 @@ var render = function() {
                 "liabilities_loans",
                 $event.target.value
               )
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-3" }, [
+        _c("label", { staticClass: "col-form-label" }, [
+          _vm._v("Upload Attachment")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          ref: "file",
+          staticClass: "form-control",
+          attrs: { type: "file", id: "file" },
+          on: {
+            change: function($event) {
+              return _vm.handleFileUpload()
             }
           }
         })

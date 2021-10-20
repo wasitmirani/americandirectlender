@@ -71,6 +71,11 @@ const routes = [
         component: () => setComponent("content/application/AssignApp"),
         name: "assign-apps",
     },
+    {
+        path: "/assigned/apps",
+        component: () => setComponent("content/application/AssignedApp"),
+        name: "assigned-apps",
+    },
 
 
 

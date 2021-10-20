@@ -26,7 +26,7 @@ class UserController extends Controller
         $q=request('query');
 
         $total_users=User::all()->count();
-       
+
         $agents=Role::select('name')->withCount('users')->get();
 
         $users=User::where('name', 'like', '%' . $q . '%')
@@ -128,7 +128,7 @@ class UserController extends Controller
             'user_id'=>$request->user()->id,
         ];
         $new_user=$user->userCreateOrUpdate($request_array,"update");
-     
+
         $user->userInfoCreateOrUpdate($user,$request);
         // $permission_collection=Permission::WhereIn('id',  json_decode($request->selected_permissions))->get();
         $roles_collection=Role::WhereIn('id', $request->roles)->get();
@@ -148,14 +148,10 @@ class UserController extends Controller
     {
        $user_info=UserInfo::where('user_id',$id)->delete();
        $user =  User::destroy($id);
-   
        return response()->json($user);
-
-
     }
 
     public function removeAllUsers(Request $request){
-
         $user_info=UserInfo::whereIn('user_id',json_decode($request->user_ids))->delete();
         $delete=User::whereIn('id',json_decode($request->user_ids))->delete();
         return response()->json(['message'=>$delete]);
@@ -165,5 +161,10 @@ class UserController extends Controller
         Auth::logout();
         $url=route('login');
         return response()->json( $url);
+    }
+
+    public function getAgents(){
+        $agents = User::where('user_id','2')->get();
+        return response()->json(['agents'=>$agents]);
     }
 }
