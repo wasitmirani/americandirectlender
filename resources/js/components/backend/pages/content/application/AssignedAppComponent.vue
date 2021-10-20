@@ -21,10 +21,10 @@
                       </thead>
                       <tbody>
                         <tr v-for="application in applications" v-bind:key="application.id">
-                          <th scope="row">1</th>
+                          <th scope="row">{{application.id}}</th>
                           <td>{{application.name}}</td>
                           <td >
-                              <span v-for="user in application.agent" :key="user.id"  color='rgb(23, 201, 100)'>
+                              <span v-for="user in application.agent" :key="user.id" class="primary">
                               {{ user.name }}||
                               </span>
                           </td>

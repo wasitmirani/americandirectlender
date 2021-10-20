@@ -59,9 +59,9 @@ class HelperComponent {
                 [
                     "single_link" => setSingleLink( "Assigned Apps","file-text",null,"/assigned/apps"),
                 ],
-                [
-                    "single_link" => setSingleLink( "Assign App","file-text",null,"/assign/apps"),
-                ],
+                // [
+                //     "single_link" => setSingleLink( "Assign App","file-text",null,"/assign/apps"),
+                // ],
                 [
                     "single_link" => setSingleLink( "Notify","bell","notify-view","/send/notify"),
                 ],

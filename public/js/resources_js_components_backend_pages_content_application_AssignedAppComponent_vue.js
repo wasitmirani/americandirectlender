@@ -1189,7 +1189,9 @@ var render = function() {
                   "tbody",
                   _vm._l(_vm.applications, function(application) {
                     return _c("tr", { key: application.id }, [
-                      _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v(_vm._s(application.id))
+                      ]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(application.name))]),
                       _vm._v(" "),
@@ -1198,10 +1200,7 @@ var render = function() {
                         _vm._l(application.agent, function(user) {
                           return _c(
                             "span",
-                            {
-                              key: user.id,
-                              attrs: { color: "rgb(23, 201, 100)" }
-                            },
+                            { key: user.id, staticClass: "primary" },
                             [
                               _vm._v(
                                 "\n                            " +
