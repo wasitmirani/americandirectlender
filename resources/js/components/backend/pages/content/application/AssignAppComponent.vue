@@ -1,5 +1,6 @@
 <template>
    <div>
+        <Breadcrumb activename="Assign App" ></Breadcrumb>
        <div class="container-fluid">
            <div>
                <div class="col-sm-12 col-xl-12">
@@ -52,7 +53,12 @@
    </div>
 </template>
 <script>
+import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
    export default{
+
+       components:{
+           Breadcrumb
+       },
        data(){
            return{
             applications:{},

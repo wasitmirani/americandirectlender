@@ -1,5 +1,6 @@
 <template>
     <div>
+         <Breadcrumb activename="Settings" ></Breadcrumb>
          <div class="container-fluid">
               <div class="row">
                 <div class="col-xl-12 xl-100 col-lg-12 box-col-12">
@@ -124,7 +125,11 @@
 
 </template>
 <script>
+import Breadcrumb from "../../components/BreadcrumbComponent.vue";
 export default{
+    components:{
+        Breadcrumb
+    },
     data(){
         return {
             passwords:{},
