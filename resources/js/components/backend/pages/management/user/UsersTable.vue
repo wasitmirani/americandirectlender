@@ -65,7 +65,7 @@
 
                                 <td><router-link :to="{name: 'update-user', params: { id: user.id }}"><i class="fa  fa-edit text-primary"></i></router-link> |  <a role="button"  @click="deleteItem(user)"><i class="fa  fa-trash text-danger"></i></a></td>
                             </tr>
-                            
+
 
                         </tbody>
                         </table>
@@ -109,7 +109,7 @@ export default {
                     Swal.fire("Deleted!", "Your file has been deleted.", "success");
                       this.getUsers();
 
-                  }).catch((err)=>{
+                }).catch((err)=>{
                         this.$root.alertNotificationMessage(err.response.status,err.response.data);
                    //    console.log("erro",err.response.data.message);
 

@@ -19,6 +19,12 @@ class Application extends Model
     {
         return $this->hasMany(ApplicationAgents::class, 'application_id', 'id');
     }
+
+    public function agent(){
+           return $this->belongsToMany(User::class,'application_agents','application_id','agent_id');
+    }
+
+
     public function attachments()
     {
         return $this->hasMany(ApplicationAttachment::class, 'application_id', 'id');

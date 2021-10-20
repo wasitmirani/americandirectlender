@@ -9,4 +9,7 @@ class ApplicationAgents extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+
+
 }

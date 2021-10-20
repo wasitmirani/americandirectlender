@@ -9,7 +9,7 @@
         </span>
 
                               <h6>{{application.name}}</h6>
-                              <div class="media"><img class="img-20 me-2 rounded-circle" src="assets/images/user/3.jpg" alt="" data-original-title="" title="">
+                              <div class="media">
                                 <div class="media-body">
                                   <p></p>
                                 </div>
@@ -84,7 +84,6 @@
         <div class="mb-3">
             <label class="col-form-label" for="recipient-name">Comment:</label>
             <textarea class="form-control" v-model="comment"></textarea>
-
         </div>
         <div class="mb-3">
             <label class="mb-3"></label>

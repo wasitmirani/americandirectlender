@@ -116,11 +116,6 @@ class AppFormController extends Controller
     }
 
 
-    public function uploadAttachment(Request $request){
-
-        dd($request);
-
-    }
 
 
     public function updateStatus(Request $request,$id){
@@ -171,9 +166,19 @@ class AppFormController extends Controller
 
     }
 
+    public function getAssignedApp(){
+        $assignedApps = Application::where('status','1')->with('agent')->paginate((int)env('PER_PAGE'));
+        return response()->json(['assignedApps'=>$assignedApps]);
+    }
 
+    public function deleteAssignedApp(Request $request){
 
+        $application_agent =ApplicationAgents::where('application_id',$request->id)->delete();
+        $application_attachment =ApplicationAttachment::where('application_id',$request->id)->delete();
+        $application_comment =ApplicationComment::where('application_id',$request->id)->delete();
+        $application =  Application::destroy($request->id);
+        return response()->json();
 
-
+    }
 
 }
