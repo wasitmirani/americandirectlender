@@ -39,6 +39,7 @@
                     @foreach ($menu['menu']['sub_menu'] as $item)
                       <li @if(isset($item['v-can'])) v-can="'{{$item['v-can']}}'" @endif><router-link exact to="{{$item['v-route']}}" >{{$item['title']}}</router-link></li>
                     @endforeach
+
                 </ul>
               </li>
             @endif
@@ -50,19 +51,17 @@
             </li>
             @endif
             @endforeach
-            {{-- <li class="dropdown">
-             <button class="btn" style="width: 270px;
-             text-align: left;
-             scroll-padding-left: -39px;
-             padding-left: 1px";><a class="nav-link menu-title link-nav" href="{{ route('logout') }}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>Log out</a></button>
-                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+            <li class="dropdown">
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>Log out</a>
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
 
-            </li> --}}
 
           </ul>
+
         </div>
         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
       </div>
