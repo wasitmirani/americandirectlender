@@ -114,15 +114,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: {
-    handleFileUpload: function handleFileUpload() {
-      this.file = event.target.files[0];
-    },
     onComplete: function onComplete() {
       var _this = this;
 
       var formData = new FormData();
       formData = Object.assign(this.application, formData);
-      formData.append('attachment', this.file);
       axios.put('/customer/applications/' + this.application.id, formData).then(function (res) {
         _this.$root.alertNotificationMessage(res.status, "Application has been updated successfully");
 
@@ -174,10 +170,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
 //
 //
 //
@@ -1264,14 +1256,7 @@ var render = function() {
           _c(
             "tab-content",
             { attrs: { title: "Step Three" } },
-            [
-              _c("StepFour", {
-                attrs: {
-                  application: _vm.application,
-                  handleFileUpload: _vm.handleFileUpload
-                }
-              })
-            ],
+            [_c("StepFour", { attrs: { application: _vm.application } })],
             1
           ),
           _vm._v(" "),
@@ -1435,23 +1420,6 @@ var render = function() {
                 "liabilities_loans",
                 $event.target.value
               )
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-3" }, [
-        _c("label", { staticClass: "col-form-label" }, [
-          _vm._v("Upload Attachment")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          ref: "file",
-          staticClass: "form-control",
-          attrs: { type: "file", id: "file" },
-          on: {
-            change: function($event) {
-              return _vm.handleFileUpload()
             }
           }
         })

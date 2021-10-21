@@ -43,10 +43,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['application', 'handleFileUpload']
 });
@@ -257,23 +253,6 @@ var render = function() {
                 "liabilities_loans",
                 $event.target.value
               )
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-3" }, [
-        _c("label", { staticClass: "col-form-label" }, [
-          _vm._v("Upload Attachment")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          ref: "file",
-          staticClass: "form-control",
-          attrs: { type: "file", id: "file" },
-          on: {
-            change: function($event) {
-              return _vm.handleFileUpload()
             }
           }
         })
