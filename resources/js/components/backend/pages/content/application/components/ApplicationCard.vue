@@ -1,6 +1,7 @@
 <template>
 <div>
    <div class="project-box" >
+
         <span class="badge badge-primary" style="margin-right: 31px;">
            <router-link :to="{name: 'show-application', params: { id: application.id }}"><i class="fa  fa-eye text-light"></i></router-link>
         </span>
@@ -8,8 +9,9 @@
            <router-link :to="{name: 'update-application', params: { id: application.id }}"><i class="fa  fa-edit text-light"></i></router-link>
         </span>
 
+
                               <h6>{{application.name}}</h6>
-                              <div class="media">
+                          <div class="media">
                                 <div class="media-body">
                                   <p></p>
                                 </div>
@@ -22,6 +24,8 @@
                                 <div class="col-6 font-primary">{{application.property_type}}</div>
                                 <div class="col-6"> <span>Property Update</span></div>
                                 <div class="col-6 font-primary">{{application.property_update}}</div>
+                            
+
                               </div>
                               <div class="customers">
                                 <ul>

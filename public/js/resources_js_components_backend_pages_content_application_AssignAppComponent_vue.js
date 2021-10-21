@@ -200,15 +200,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1513,54 +1504,7 @@ var render = function() {
                                 "form",
                                 { staticClass: "theme-form" },
                                 [
-                                  _c(
-                                    "div",
-                                    { staticClass: "mb-3" },
-                                    [
-                                      _vm.applications.length > 0
-                                        ? _c(
-                                            "vs-select",
-                                            {
-                                              attrs: {
-                                                filter: "",
-                                                "collapse-chips": "",
-                                                placeholder: "Applications"
-                                              },
-                                              model: {
-                                                value: _vm.app,
-                                                callback: function($$v) {
-                                                  _vm.app = $$v
-                                                },
-                                                expression: "app"
-                                              }
-                                            },
-                                            _vm._l(_vm.applications, function(
-                                              item
-                                            ) {
-                                              return _c(
-                                                "vs-option",
-                                                {
-                                                  key: item.id,
-                                                  attrs: {
-                                                    value: item.id,
-                                                    label: item.name
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                                                      " +
-                                                      _vm._s(item.name) +
-                                                      "\n                                                   "
-                                                  )
-                                                ]
-                                              )
-                                            }),
-                                            1
-                                          )
-                                        : _vm._e()
-                                    ],
-                                    1
-                                  ),
+                                  _c("div", { staticClass: "mb-3" }),
                                   _vm._v(" "),
                                   _c(
                                     "div",
@@ -1667,54 +1611,7 @@ var render = function() {
                                 "form",
                                 { staticClass: "theme-form" },
                                 [
-                                  _c(
-                                    "div",
-                                    { staticClass: "mb-3" },
-                                    [
-                                      _vm.applications.length > 0
-                                        ? _c(
-                                            "vs-select",
-                                            {
-                                              attrs: {
-                                                filter: "",
-                                                "collapse-chips": "",
-                                                placeholder: "Applications"
-                                              },
-                                              model: {
-                                                value: _vm.app,
-                                                callback: function($$v) {
-                                                  _vm.app = $$v
-                                                },
-                                                expression: "app"
-                                              }
-                                            },
-                                            _vm._l(_vm.applications, function(
-                                              item
-                                            ) {
-                                              return _c(
-                                                "vs-option",
-                                                {
-                                                  key: item.id,
-                                                  attrs: {
-                                                    value: item.id,
-                                                    label: item.name
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                                                       " +
-                                                      _vm._s(item.name) +
-                                                      "\n                                                   "
-                                                  )
-                                                ]
-                                              )
-                                            }),
-                                            1
-                                          )
-                                        : _vm._e()
-                                    ],
-                                    1
-                                  ),
+                                  _c("div", { staticClass: "mb-3" }),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "mb-3" }, [
                                     _c(
@@ -1797,110 +1694,9 @@ var render = function() {
                                 "form",
                                 { staticClass: "theme-form" },
                                 [
-                                  _c(
-                                    "div",
-                                    { staticClass: "mb-3" },
-                                    [
-                                      _vm.applications.length > 0
-                                        ? _c(
-                                            "vs-select",
-                                            {
-                                              attrs: {
-                                                filter: "",
-                                                "collapse-chips": "",
-                                                placeholder: "Applications"
-                                              },
-                                              model: {
-                                                value: _vm.app,
-                                                callback: function($$v) {
-                                                  _vm.app = $$v
-                                                },
-                                                expression: "app"
-                                              }
-                                            },
-                                            _vm._l(_vm.applications, function(
-                                              item
-                                            ) {
-                                              return _c(
-                                                "vs-option",
-                                                {
-                                                  key: item.id,
-                                                  attrs: {
-                                                    value: item.id,
-                                                    label: item.name
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                                                          " +
-                                                      _vm._s(item.name) +
-                                                      "\n                                                   "
-                                                  )
-                                                ]
-                                              )
-                                            }),
-                                            1
-                                          )
-                                        : _vm._e()
-                                    ],
-                                    1
-                                  ),
+                                  _c("div", { staticClass: "mb-3" }),
                                   _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "mb-3" },
-                                    [
-                                      _c(
-                                        "label",
-                                        {
-                                          staticClass: "col-form-label",
-                                          attrs: { for: "recipient-name" }
-                                        },
-                                        [_vm._v("Agents:")]
-                                      ),
-                                      _vm._v(" "),
-                                      _vm.agents.length > 0
-                                        ? _c(
-                                            "vs-select",
-                                            {
-                                              attrs: {
-                                                filter: "",
-                                                "collapse-chips": "",
-                                                placeholder: "Agents"
-                                              },
-                                              model: {
-                                                value: _vm.agent,
-                                                callback: function($$v) {
-                                                  _vm.agent = $$v
-                                                },
-                                                expression: "agent"
-                                              }
-                                            },
-                                            _vm._l(_vm.agents, function(item) {
-                                              return _c(
-                                                "vs-option",
-                                                {
-                                                  key: item.id,
-                                                  attrs: {
-                                                    label: item.name,
-                                                    value: item.id
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                                                        " +
-                                                      _vm._s(item.name) +
-                                                      "\n                                               "
-                                                  )
-                                                ]
-                                              )
-                                            }),
-                                            1
-                                          )
-                                        : _vm._e()
-                                    ],
-                                    1
-                                  ),
+                                  _c("div", { staticClass: "mb-3" }),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "mb-3" }, [
                                     _c(

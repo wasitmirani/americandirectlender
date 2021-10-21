@@ -30,11 +30,7 @@
                                             <div class="mb-3">
                                                <!-- <label class="col-form-label" for="recipient-name">Application:</label>
                                                <vs-input v-model="app" placeholder=""></vs-input> -->
-                                               <vs-select filter  collapse-chips placeholder="Applications" v-model="app"   v-if="applications.length>0">
-                                                    <vs-option v-for="item in applications" :key="item.id" :value="item.id" :label="item.name">
-                                                       {{ item.name }}
-                                                    </vs-option>
-                                                </vs-select>
+
                                             </div>
                                             <div class="mb-3">
                                                 <label class="col-form-label" for="recipient-name">Agents:</label>
@@ -67,11 +63,6 @@
                                               <div class="mb-3">
                                                <!-- <label class="col-form-label" for="recipient-name">Application:</label>
                                                <vs-input v-model="app"></vs-input> -->
-                                                <vs-select filter  collapse-chips placeholder="Applications" v-model="app"   v-if="applications.length>0">
-                                                    <vs-option v-for="item in applications" :key="item.id" :value="item.id" :label="item.name">
-                                                        {{ item.name }}
-                                                    </vs-option>
-                                             </vs-select>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="col-form-label" for="recipient-name">Comment:</label>
@@ -102,19 +93,19 @@
                                                 <div class="mb-3">
                                                <!-- <label class="col-form-label" for="recipient-name">Application:</label>
                                                <vs-input v-model="app"></vs-input> -->
-                                                <vs-select filter  collapse-chips placeholder="Applications" v-model="app"   v-if="applications.length>0">
+                                                <!-- <vs-select filter  color="primary" collapse-chips placeholder="Applications" v-model="app"   v-if="applications.length>0">
                                                     <vs-option v-for="item in applications" :key="item.id" :value="item.id" :label="item.name">
                                                            {{ item.name }}
                                                     </vs-option>
-                                                </vs-select>
+                                                </vs-select> -->
                                             </div>
                                             <div class="mb-3">
-                                                <label class="col-form-label" for="recipient-name">Agents:</label>
+                                                <!-- <label class="col-form-label" for="recipient-name">Agents:</label>
                                                 <vs-select filter  collapse-chips placeholder="Agents" v-model="agent"   v-if="agents.length>0">
                                                 <vs-option v-for="item in agents" :key="item.id" :label="item.name" :value="item.id" >
                                                          {{ item.name }}
                                                 </vs-option>
-                                                </vs-select>
+                                                </vs-select> -->
                                             </div>
                                             <div class="mb-3">
                                               <label class="col-form-label">Attach File</label>
