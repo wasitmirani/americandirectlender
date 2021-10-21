@@ -41,7 +41,7 @@ class AppFormController extends Controller
 
 
     public function edit($id){
-        $application = Application::find($id);
+        $application = Application::with('agents')->find($id);
         if($application){
 
             return response()->json(['application' => $application]);
@@ -50,6 +50,16 @@ class AppFormController extends Controller
             return response()->json('No Application Found');
         }
 
+    }
+
+    public function getAppComment($id){
+        $comments = ApplicationComment::where('application_id',$id)->get();
+        return response()->json(['comments'=>$comments]);
+    }
+    
+    public function getAppFile($id){
+        $files = ApplicationAttachment::where('application_id',$id)->get();
+        return response()->json(['files'=>$files]);
     }
 
 

@@ -200,6 +200,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -210,6 +215,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       applications: {},
       application: {},
       process: {},
+      application_agent: {},
       app: "",
       agent: "",
       comment: "",
@@ -219,7 +225,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       total_applications: 0,
       page_num: 1,
       roles: {},
-      thumbnail: ""
+      thumbnail: "",
+      application_files: {},
+      application_comments: {}
     };
   },
   methods: {
@@ -349,9 +357,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this5.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     },
+    getComments: function getComments() {
+      var _this6 = this;
+
+      axios.get('/application/comment/' + this.$route.params.id).then(function (res) {
+        _this6.application_comments = res.data.comments;
+      })["catch"](function (err) {
+        if (err.response.status == 422) {
+          _this6.errors = err.response.data.errors;
+          return _this6.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        }
+
+        _this6.$root.alertNotificationMessage(err.response.status, err.response.data);
+      });
+    },
+    getFiles: function getFiles() {
+      var _this7 = this;
+
+      axios.get('/application/file/' + this.$route.params.id).then(function (res) {
+        _this7.application_files = res.data.files;
+      })["catch"](function (err) {
+        if (err.response.status == 422) {
+          _this7.errors = err.response.data.errors;
+          return _this7.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        }
+
+        _this7.$root.alertNotificationMessage(err.response.status, err.response.data);
+      });
+    },
     getAgents: function getAgents() {
       var _arguments3 = arguments,
-          _this6 = this;
+          _this8 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var page, url;
@@ -360,16 +396,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 page = _arguments3.length > 0 && _arguments3[0] !== undefined ? _arguments3[0] : 1;
-                _this6.loading = true;
-                _this6.page_num = page;
-                url = "/management/agents?page=" + page + "&query=" + _this6.query;
+                _this8.loading = true;
+                _this8.page_num = page;
+                url = "/management/agents?page=" + page + "&query=" + _this8.query;
                 _context3.next = 6;
                 return axios.get(url).then(function (res) {
-                  _this6.agents = res.data.agents;
+                  _this8.agents = res.data.agents;
                   console.log(res);
-                  _this6.loading = false;
+                  _this8.loading = false;
                 })["catch"](function (err) {
-                  _this6.$root.alertErrorMessage(err.response.status, err.response.data);
+                  _this8.$root.alertErrorMessage(err.response.status, err.response.data);
                 });
 
               case 6:
@@ -382,23 +418,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   mounted: function mounted() {
-    var _this7 = this;
+    var _this9 = this;
 
     this.getApplications();
     this.getRoles();
     this.getAgents();
+    this.getComments();
+    this.getFiles();
     var url = "/customer/applications/" + this.$route.params.id;
     axios.get(url).then(function (res) {
       // this.user=res.data.user;
-      _this7.app = res.data.application.id;
+      _this9.app = res.data.application.id;
+      _this9.application_agent = res.data.application.agents;
       console.log(res.application.data);
     })["catch"](function (err) {
       if (err.response.status == 422) {
-        _this7.errors = err.response.data.errors;
-        return _this7.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        _this9.errors = err.response.data.errors;
+        return _this9.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
       }
 
-      _this7.$root.alertNotificationMessage(err.response.status, err.response.data);
+      _this9.$root.alertNotificationMessage(err.response.status, err.response.data);
     });
   }
 });
@@ -1664,7 +1703,36 @@ var render = function() {
                                 ],
                                 1
                               )
-                            ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "ul",
+                              { staticClass: "list-group" },
+                              _vm._l(_vm.application_comments, function(
+                                comment
+                              ) {
+                                return _c(
+                                  "li",
+                                  {
+                                    key: comment.id,
+                                    staticClass:
+                                      "list-group-item d-flex justify-content-between align-items-center"
+                                  },
+                                  [
+                                    _vm._v(_vm._s(comment.comment)),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "badge badge-primary counter"
+                                      },
+                                      [_vm._v(_vm._s(comment.created_at))]
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
                           ])
                         ])
                       ])
