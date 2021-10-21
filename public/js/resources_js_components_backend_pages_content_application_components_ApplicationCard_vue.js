@@ -424,7 +424,7 @@ var render = function() {
                   }
                 },
                 [
-                  _vm.application == "1"
+                  _vm.application.status == "0"
                     ? _c("vs-button", [
                         _vm._v(
                           "\n                                    Assign\n                                "
