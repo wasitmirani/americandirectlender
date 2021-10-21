@@ -430,6 +430,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // this.user=res.data.user;
       _this9.app = res.data.application.id;
       _this9.application_agent = res.data.application.agents;
+      _this9.agent = _this9.application_agent['0'].agent_id;
       console.log(res.application.data);
     })["catch"](function (err) {
       if (err.response.status == 422) {

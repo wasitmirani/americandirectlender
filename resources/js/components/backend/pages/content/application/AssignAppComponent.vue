@@ -35,7 +35,7 @@
                                             <div class="mb-3">
                                                 <label class="col-form-label" for="recipient-name">Agents:</label>
                                                 <vs-select filter   collapse-chips placeholder="Agents"  v-model="agent"  v-if="agents.length>0">
-                                                    <vs-option v-for="item in agents" :key="item.id" :label="item.name" :value="item.id" >
+                                                    <vs-option v-for="item in agents" :key="item.id"  :label="item.name" :value="item.id" >
                                                         {{ item.name }}
                                                     </vs-option>
                                                 </vs-select>
@@ -321,6 +321,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 // this.user=res.data.user;
                 this.app = res.data.application.id
                 this.application_agent = res.data.application.agents
+                this.agent =  this.application_agent['0'].agent_id
 
 
                 console.log(res.application.data)
