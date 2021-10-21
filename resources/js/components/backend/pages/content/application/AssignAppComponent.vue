@@ -14,17 +14,18 @@
                         <form class="theme-form">
                             <div class="mb-3">
                                 <label class="col-form-label" for="recipient-name">Application:</label>
-                                <vs-select filter  collapse-chips placeholder="Applications" v-model="app"   v-if="applications.length>0">
+                                    <vs-input v-model="app"></vs-input>
+                                <!-- <vs-select filter  collapse-chips placeholder="Applications" v-model="app"   v-if="applications.length>0">
                                     <vs-option v-for="item in applications" :key="item.id" :value="item.id" :label="item.name">
                                           {{ item.name }}
                                     </vs-option>
-                                </vs-select>
+                                </vs-select> -->
 
                             </div>
                             <div class="mb-3">
                                 <label class="col-form-label" for="recipient-name">Agents:</label>
                                 <vs-select filter  collapse-chips placeholder="Agents" v-model="agent"   v-if="agents.length>0">
-                                    <vs-option v-for="item in agents" :key="item.id" :label="item.name" :value="item.id">
+                                    <vs-option v-for="item in agents" :key="item.id" :label="item.name" :value="item.id" >
                                         {{ item.name }}
                                     </vs-option>
                                 </vs-select>
@@ -65,6 +66,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
        data(){
            return{
             applications:{},
+            application:{},
             process:{},
             app:"",
             agent:"",
@@ -99,7 +101,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 
                 this.loading =true;
                 this.page_num = page;
-                const url="/customer/applications?page=" + page + "&query=" + this.query;
+                const url="/customer/applications/?page=" + page + "&query=" + this.query;
 
                await axios.get(url).then((res)=>{
 
@@ -162,6 +164,23 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
            this.getApplications();
            this.getRoles();
            this.getAgents();
+           
+             let url="/customer/applications/"+this.$route.params.id;
+                axios.get(url).then((res)=>{
+                // this.user=res.data.user;
+
+                this.app = res.data.application.name
+                  console.log(res.application.data)
+
+
+            }).catch((err)=>{
+                     if(err.response.status==422){
+                         this.errors=err.response.data.errors;
+                        return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
+                    }
+                  this.$root.alertNotificationMessage(err.response.status,err.response.data);
+
+            });
 
        }
 

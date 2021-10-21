@@ -122,6 +122,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -130,6 +131,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       applications: {},
+      application: {},
       process: {},
       app: "",
       agent: "",
@@ -170,7 +172,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
                 _this.loading = true;
                 _this.page_num = page;
-                url = "/customer/applications?page=" + page + "&query=" + _this.query;
+                url = "/customer/applications/?page=" + page + "&query=" + _this.query;
                 _context.next = 6;
                 return axios.get(url).then(function (res) {
                   _this.applications = res.data.applications.data;
@@ -270,9 +272,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   mounted: function mounted() {
+    var _this5 = this;
+
     this.getApplications();
     this.getRoles();
     this.getAgents();
+    var url = "/customer/applications/" + this.$route.params.id;
+    axios.get(url).then(function (res) {
+      // this.user=res.data.user;
+      _this5.app = res.data.application.name;
+      console.log(res.application.data);
+    })["catch"](function (err) {
+      if (err.response.status == 422) {
+        _this5.errors = err.response.data.errors;
+        return _this5.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+      }
+
+      _this5.$root.alertNotificationMessage(err.response.status, err.response.data);
+    });
   }
 });
 
@@ -1370,45 +1387,15 @@ var render = function() {
                               [_vm._v("Application:")]
                             ),
                             _vm._v(" "),
-                            _vm.applications.length > 0
-                              ? _c(
-                                  "vs-select",
-                                  {
-                                    attrs: {
-                                      filter: "",
-                                      "collapse-chips": "",
-                                      placeholder: "Applications"
-                                    },
-                                    model: {
-                                      value: _vm.app,
-                                      callback: function($$v) {
-                                        _vm.app = $$v
-                                      },
-                                      expression: "app"
-                                    }
-                                  },
-                                  _vm._l(_vm.applications, function(item) {
-                                    return _c(
-                                      "vs-option",
-                                      {
-                                        key: item.id,
-                                        attrs: {
-                                          value: item.id,
-                                          label: item.name
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                       " +
-                                            _vm._s(item.name) +
-                                            "\n                                 "
-                                        )
-                                      ]
-                                    )
-                                  }),
-                                  1
-                                )
-                              : _vm._e()
+                            _c("vs-input", {
+                              model: {
+                                value: _vm.app,
+                                callback: function($$v) {
+                                  _vm.app = $$v
+                                },
+                                expression: "app"
+                              }
+                            })
                           ],
                           1
                         ),

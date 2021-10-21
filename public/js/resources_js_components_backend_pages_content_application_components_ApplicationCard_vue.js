@@ -415,13 +415,22 @@ var render = function() {
             [
               _c(
                 "router-link",
-                { attrs: { to: "/assign/apps/" } },
+                {
+                  attrs: {
+                    to: {
+                      name: "assign-apps",
+                      params: { id: _vm.application.id }
+                    }
+                  }
+                },
                 [
-                  _c("vs-button", [
-                    _vm._v(
-                      "\n                                    Assign\n                                "
-                    )
-                  ])
+                  _vm.application == "1"
+                    ? _c("vs-button", [
+                        _vm._v(
+                          "\n                                    Assign\n                                "
+                        )
+                      ])
+                    : _vm._e()
                 ],
                 1
               )

@@ -38,8 +38,8 @@
                                   <!-- <p>70% </p>
                                   <div class="media-body text-end"><span>Done</span></div> -->
 
-                              <router-link to="/assign/apps/">
-                                  <vs-button>
+                              <router-link :to="{name: 'assign-apps', params: { id: application.id }}">
+                                  <vs-button v-if="application == '1'">
                                     Assign
                                 </vs-button>
                                 </router-link>

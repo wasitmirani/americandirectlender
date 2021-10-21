@@ -2408,13 +2408,13 @@ var routes = [{
   },
   name: "password-setting"
 }, {
-  path: "/assign/apps",
+  path: "/assign/apps/:id",
   component: function component() {
     return setComponent("content/application/AssignApp");
   },
   name: "assign-apps"
 }, {
-  path: "/assigned/apps",
+  path: "/assigned/apps/",
   component: function component() {
     return setComponent("content/application/AssignedApp");
   },
