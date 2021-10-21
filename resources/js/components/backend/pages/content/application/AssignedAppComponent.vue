@@ -20,12 +20,14 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="application in applications" v-bind:key="application.id">
+
+                        <tr v-for="application in applications" v-bind:key="application.id"  v-if="application.agent.length>0">
+
                           <th scope="row">{{application.id}}</th>
                           <td>{{application.name}}</td>
                           <td >
                               <span v-for="user in application.agent" :key="user.id" >
-                             <span class="span-name"> {{ user.name }}</span>, 
+                             <span class="span-name"> {{ user.name }}</span>,
                               </span>
                           </td>
                           <td><a role="button"  @click="deleteItem(application.id)"><i class="fa  fa-trash text-danger"></i></a></td>

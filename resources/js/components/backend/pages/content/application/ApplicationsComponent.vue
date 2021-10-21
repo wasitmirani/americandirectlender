@@ -19,7 +19,7 @@
                       <!-- <a class="btn btn-primary" href="projectcreate.html"> <i data-feather="plus-square"> </i>Create New Application</a> -->
                     </div>
                   </div>
-                </div>
+                </div> 
               </div>
               <div class="col-sm-12">
                 <div class="card">
@@ -81,7 +81,7 @@ export default {
     },
       data(){
         return {
-            
+
             applications:{},
             process:{},
             done:{},

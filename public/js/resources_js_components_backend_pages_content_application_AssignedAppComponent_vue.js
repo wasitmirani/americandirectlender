@@ -106,6 +106,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1256,41 +1258,47 @@ var render = function() {
                 _c(
                   "tbody",
                   _vm._l(_vm.applications, function(application) {
-                    return _c("tr", { key: application.id }, [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(_vm._s(application.id))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(application.name))]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        _vm._l(application.agent, function(user) {
-                          return _c("span", { key: user.id }, [
-                            _c("span", { staticClass: "span-name" }, [
-                              _vm._v(" " + _vm._s(user.name))
-                            ]),
-                            _vm._v(", \n                            ")
+                    return application.agent.length > 0
+                      ? _c("tr", { key: application.id }, [
+                          _c("th", { attrs: { scope: "row" } }, [
+                            _vm._v(_vm._s(application.id))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(application.name))]),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            _vm._l(application.agent, function(user) {
+                              return _c("span", { key: user.id }, [
+                                _c("span", { staticClass: "span-name" }, [
+                                  _vm._v(" " + _vm._s(user.name))
+                                ]),
+                                _vm._v(",\n                            ")
+                              ])
+                            }),
+                            0
+                          ),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { role: "button" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deleteItem(application.id)
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fa  fa-trash text-danger"
+                                })
+                              ]
+                            )
                           ])
-                        }),
-                        0
-                      ),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          {
-                            attrs: { role: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.deleteItem(application.id)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fa  fa-trash text-danger" })]
-                        )
-                      ])
-                    ])
+                        ])
+                      : _vm._e()
                   }),
                   0
                 )

@@ -17,7 +17,7 @@
                 </li>
             </ul>
             <div class="tab-content" id="top-tabContent">
-                <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
+            <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
                         <div class="col-sm-12 col-xl-12">
                           <div class="row">
                             <div class="col-sm-12">
@@ -354,6 +354,9 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
    .vs-select-content {
    width: 100%;
    max-width: 100%;
+   }
+   .vs-select__input{
+       border: solid;
    }
 </style>
 
