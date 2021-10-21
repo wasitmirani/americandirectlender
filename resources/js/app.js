@@ -24,6 +24,8 @@ import Swal from 'sweetalert2'
 
 
 
+
+
 window.Swal = Swal;
 Vue.use(VueContentPlaceholders)
     // register globally

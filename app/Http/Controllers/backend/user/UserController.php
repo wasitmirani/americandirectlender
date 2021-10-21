@@ -24,6 +24,7 @@ class UserController extends Controller
 
 
         $q=request('query');
+        
 
         $total_users=User::all()->count();
 

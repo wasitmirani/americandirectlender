@@ -1727,7 +1727,11 @@ var render = function() {
                                         staticClass:
                                           "badge badge-primary counter"
                                       },
-                                      [_vm._v(_vm._s(comment.created_at))]
+                                      [
+                                        _vm._v(
+                                          _vm._s(_vm._f("timeformat")(Date()))
+                                        )
+                                      ]
                                     )
                                   ]
                                 )

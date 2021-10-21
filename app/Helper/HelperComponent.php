@@ -26,20 +26,20 @@ class HelperComponent {
                               "Users",
                                 null,
                                 "users-view",
-                                 "/users",
+                                "/users"
                             ),
                             setSubMenu(
                                 "Roles",
-                                  null,
-                                  "roles-view",
-                                   "/roles",
+                                null,
+                                "roles-view",
+                                "/roles"
                             ),
                             setSubMenu(
                                 "Permissions",
-                                  null,
-                                  "permissions-view",
-                                   "/permissions",
-                              ),
+                                null,
+                                "permissions-view",
+                                "/permissions"
+                              )
 
 
                         ]

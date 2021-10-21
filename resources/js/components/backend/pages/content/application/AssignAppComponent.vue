@@ -17,7 +17,7 @@
                 </li>
             </ul>
             <div class="tab-content" id="top-tabContent">
-            <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
+                <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
                         <div class="col-sm-12 col-xl-12">
                           <div class="row">
                             <div class="col-sm-12">
@@ -76,7 +76,7 @@
 
                                     </div>
                                     <ul class="list-group">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center" v-for="comment in application_comments" :key="comment.id">{{comment.comment}}<span class="badge badge-primary counter">{{comment.created_at}}</span></li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center" v-for="comment in application_comments" :key="comment.id">{{comment.comment}}<span class="badge badge-primary counter">{{Date() |timeformat }}</span></li>
 
                                     </ul>
                                 </div>

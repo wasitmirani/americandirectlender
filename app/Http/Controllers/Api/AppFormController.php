@@ -18,6 +18,8 @@ class AppFormController extends Controller
 
          //
         $q=request('query');
+       
+
         $applications = Application::where('name', 'like', '%' .$q. '%')
         ->orderBy('name','ASC')
         ->with('agents','attachments')->paginate(env('PAR_PAGE'));
@@ -32,7 +34,6 @@ class AppFormController extends Controller
 
         if($applications){
             return response()->json(['applications'=>$applications,'process'=>$process,'done'=>$done]);
-
         }else{
             return response()->json('No Application Found');
         }
@@ -56,7 +57,7 @@ class AppFormController extends Controller
         $comments = ApplicationComment::where('application_id',$id)->get();
         return response()->json(['comments'=>$comments]);
     }
-    
+
     public function getAppFile($id){
         $files = ApplicationAttachment::where('application_id',$id)->get();
         return response()->json(['files'=>$files]);
