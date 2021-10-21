@@ -80,7 +80,7 @@ class FrontendController extends Controller
         $application->date = $request->date;
         $application->name = $request->name;
         $application->property_value = $request->property_value;
-        $application->property_update = $request->property_update;
+        $application->property_update = $request->propert_update;
         $application->property_address = $request->property_address;
         $application->property_type = $request->property_type;
         $application->fee = $request->fee;

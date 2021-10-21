@@ -22,7 +22,6 @@
                       <tbody>
 
                         <tr v-for="application in applications" v-bind:key="application.id"  v-if="application.agent.length>0">
-
                           <th scope="row">{{application.id}}</th>
                           <td>{{application.name}}</td>
                           <td >

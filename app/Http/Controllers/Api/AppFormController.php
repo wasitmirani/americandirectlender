@@ -18,7 +18,7 @@ class AppFormController extends Controller
 
          //
         $q=request('query');
-       
+
 
         $applications = Application::where('name', 'like', '%' .$q. '%')
         ->orderBy('name','ASC')
@@ -67,7 +67,7 @@ class AppFormController extends Controller
     public function update(Request $request, $id){
 
         $application = Application::find($id);
-
+        dd($request->all());
         $application->date = $request->date;
         $application->name = $request->name;
         $application->property_value = $request->property_value;

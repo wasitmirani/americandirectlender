@@ -25,6 +25,12 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">Rate</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{route('dashboard')}}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('app.form')}}">App Form</a>
+                </li>
 
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
@@ -34,9 +40,7 @@
                     <a class="nav-link" href="{{ route('login') }}">Login</a>
                   </li>
                   @else
-                  <li class="nav-item">
-                  <a href="{{route('dashboard')}}">Dashboard</a>
-                  </li>
+
                   <li class="nav-item">
                     <a class="nav-link"  href="{{ route('logout') }}"  onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">Logout

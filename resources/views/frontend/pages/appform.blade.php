@@ -90,8 +90,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>01. Property Value: $ *</label>
-                                                <input class="form-control" type="text" name="property_value" placeholder="" value="$
-                                                ">
+                                                <input class="form-control" type="text" name="property_value" placeholder="" value="">
                                                 <div id="emailHelp" class="form-text">(this can be an approximation) </div>
                                                 <div class="form-group">
                                                     <label>Any updates or changes to the property (*which can change value)?</label>
@@ -110,12 +109,12 @@
                                             <div class="form-group">
                                                 <label> 03. Type of Property:</label>
                                                 <select  class="form-control" id="country" name="property_type">
-                                                    <option value="" selected="selected">House</option>
-                                                    <option value="">Condo</option>
-                                                    <option value="">Townhouse</option>
-                                                    <option value="">Gated Community</option>
-                                                    <option value=""> 2–4-Unit Property  </option>
-                                                    <option value="">Norway</option>
+                                                    <option value="" selected="selec3ted">House</option>
+                                                    <option value="Condo">Condo</option>
+                                                    <option value="Townhouse">Townhouse</option>
+                                                    <option value="Gated Community">Gated Community</option>
+                                                    <option value="2–4-Unit Property"> 2–4-Unit Property  </option>
+                                                    <option value="Norway">Norway</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -146,7 +145,7 @@
                                             <div class="form-group">
                                                 <label>04. Cash Out</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="cash_out" value="" id="defaultCheck1">
+                                                    <input class="form-check-input" type="checkbox" name="cash_out" value="yes" id="defaultCheck1">
                                                     <label class="form-check-label" for="defaultCheck1">
                                                     </label>
                                                     <div id="emailHelp" class="form-text">(for cash out, your name needs to be on title for 6+ months)  </div>
@@ -157,7 +156,7 @@
                                             <div class="form-group">
                                                 <label>Refinance</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="refinance" value="" id="defaultCheck1">
+                                                    <input class="form-check-input" type="checkbox" name="refinance" value="yes" id="defaultCheck1">
                                                     <label class="form-check-label" for="defaultCheck1">
                                                     </label>
                                                     <div id="emailHelp" class="form-text">(if refinance, closing costs to be included? </div>
