@@ -153,7 +153,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     deleteItem: function deleteItem(id) {
       var _this2 = this;
 
-      alert(id);
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
