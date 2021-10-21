@@ -421,6 +421,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios.get(url).then(function (res) {
                   _this2.roles = res.data.roles;
                   _this2.users = res.data.users;
+                  console.log(res.data);
                   _this2.loading = false;
                 })["catch"](function (err) {
                   _this2.$root.alertErrorMessage(err.response.status, err.response.data);

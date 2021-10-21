@@ -173,7 +173,8 @@ export default {
              const url="/management/role?page=" + page + "&query=" + this.query;
                await axios.get(url).then((res)=>{
                    this.roles = res.data.roles;
-                   this.users=res.data.users;
+                   this.users=res.data.users
+                   console.log(res.data)
                    this.loading=false;
 
                }).catch((err)=>{
