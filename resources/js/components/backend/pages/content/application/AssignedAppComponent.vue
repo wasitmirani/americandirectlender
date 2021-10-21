@@ -25,7 +25,7 @@
                           <td>{{application.name}}</td>
                           <td >
                               <span v-for="user in application.agent" :key="user.id" >
-                             <span class="span-name"> {{ user.name }}</span>,
+                             <span class="span-name"> {{ user.name }}</span>, 
                               </span>
                           </td>
                           <td><a role="button"  @click="deleteItem(application.id)"><i class="fa  fa-trash text-danger"></i></a></td>

@@ -146,19 +146,6 @@ class AppFormController extends Controller
             'application_id' => $request->app,
             'agent_id' => $request->agent
         ]);
-        $comment = ApplicationComment::create([
-            'application_id' => $request->app,
-            'comment' => $request->comment
-        ]);
-
-
-        $file = singleImgUpload($request, '/app/agent/file');
-         ApplicationAttachment::create([
-             'application_id' => $request->app,
-             'agent_id' => $request->agent,
-             'file' => $file
-
-         ]);
 
          return response()->json();
 
@@ -178,6 +165,34 @@ class AppFormController extends Controller
         $application_comment =ApplicationComment::where('application_id',$request->id)->delete();
         $application =  Application::destroy($request->id);
         return response()->json();
+
+    }
+
+
+    public function postComment(Request $request){
+        $comment = ApplicationComment::create([
+            'application_id' => $request->app,
+            'comment' => $request->comment
+        ]);
+        return response()->json();
+
+
+
+
+    }
+    public function uploadFile(Request $request){
+
+        $file = singleImgUpload($request, '/app/agent/file');
+         ApplicationAttachment::create([
+             'application_id' => $request->app,
+             'agent_id' => $request->agent,
+             'file' => $file
+         ]);
+
+         return response()->json();
+
+
+
 
     }
 

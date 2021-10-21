@@ -123,6 +123,92 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -142,12 +228,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       total_applications: 0,
       page_num: 1,
       roles: {},
-      file: ""
+      thumbnail: ""
     };
   },
   methods: {
     handleFileUpload: function handleFileUpload() {
-      this.file = this.$refs.file.files[0];
+      this.thumbnail = this.$refs.file.files[0];
     },
     isquery: function isquery(query) {
       return this.query = query;
@@ -220,15 +306,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    onSubmit: function onSubmit() {
+    postComment: function postComment() {
       var _this3 = this;
 
       var formData = new FormData();
-      formData.append('app', this.app);
-      formData.append('agent', this.agent);
-      formData.append('file', this.file);
       formData.append('comment', this.comment);
-      axios.post('/assign/app', formData).then(function (res) {
+      formData.append('app', this.app);
+      axios.post('/add/comment', formData).then(function (res) {
         _this3.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
       })["catch"](function (err) {
         if (err.response.status == 422) {
@@ -239,9 +323,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this3.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     },
+    uploadFile: function uploadFile() {
+      var _this4 = this;
+
+      var formData = new FormData();
+      formData.append('thumbnail', this.thumbnail);
+      formData.append('app', this.app);
+      formData.append('agent', this.agent);
+      axios.post('/upload/file', formData).then(function (res) {
+        _this4.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
+      })["catch"](function (err) {
+        if (err.response.status == 422) {
+          _this4.errors = err.response.data.errors;
+          return _this4.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        }
+
+        _this4.$root.alertNotificationMessage(err.response.status, err.response.data);
+      });
+    },
+    assignAgent: function assignAgent() {
+      var _this5 = this;
+
+      var formData = new FormData();
+      formData.append('app', this.app);
+      formData.append('agent', this.agent);
+      axios.post('/assign/app', formData).then(function (res) {
+        _this5.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
+      })["catch"](function (err) {
+        if (err.response.status == 422) {
+          _this5.errors = err.response.data.errors;
+          return _this5.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        }
+
+        _this5.$root.alertNotificationMessage(err.response.status, err.response.data);
+      });
+    },
     getAgents: function getAgents() {
       var _arguments3 = arguments,
-          _this4 = this;
+          _this6 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var page, url;
@@ -250,16 +369,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 page = _arguments3.length > 0 && _arguments3[0] !== undefined ? _arguments3[0] : 1;
-                _this4.loading = true;
-                _this4.page_num = page;
-                url = "/management/agents?page=" + page + "&query=" + _this4.query;
+                _this6.loading = true;
+                _this6.page_num = page;
+                url = "/management/agents?page=" + page + "&query=" + _this6.query;
                 _context3.next = 6;
                 return axios.get(url).then(function (res) {
-                  _this4.agents = res.data.agents;
+                  _this6.agents = res.data.agents;
                   console.log(res);
-                  _this4.loading = false;
+                  _this6.loading = false;
                 })["catch"](function (err) {
-                  _this4.$root.alertErrorMessage(err.response.status, err.response.data);
+                  _this6.$root.alertErrorMessage(err.response.status, err.response.data);
                 });
 
               case 6:
@@ -272,7 +391,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this7 = this;
 
     this.getApplications();
     this.getRoles();
@@ -280,15 +399,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var url = "/customer/applications/" + this.$route.params.id;
     axios.get(url).then(function (res) {
       // this.user=res.data.user;
-      _this5.app = res.data.application.name;
+      _this7.app = res.data.application.id;
       console.log(res.application.data);
     })["catch"](function (err) {
       if (err.response.status == 422) {
-        _this5.errors = err.response.data.errors;
-        return _this5.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        _this7.errors = err.response.data.errors;
+        return _this7.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
       }
 
-      _this5.$root.alertNotificationMessage(err.response.status, err.response.data);
+      _this7.$root.alertNotificationMessage(err.response.status, err.response.data);
     });
   }
 });
@@ -1361,173 +1480,475 @@ var render = function() {
     [
       _c("Breadcrumb", { attrs: { activename: "Assign App" } }),
       _vm._v(" "),
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", [
-          _c("div", { staticClass: "col-sm-12 col-xl-12" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-sm-12" }, [
-                _c("div", { staticClass: "card" }, [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c(
-                      "form",
-                      { staticClass: "theme-form" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "mb-3" },
-                          [
-                            _c(
-                              "label",
-                              {
-                                staticClass: "col-form-label",
-                                attrs: { for: "recipient-name" }
-                              },
-                              [_vm._v("Application:")]
-                            ),
+      _c("div", { staticClass: "col-sm-12 col-xl-12 xl-100" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tab-content", attrs: { id: "top-tabContent" } },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-pane fade show active",
+                    attrs: {
+                      id: "top-home",
+                      role: "tabpanel",
+                      "aria-labelledby": "top-home-tab"
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "col-sm-12 col-xl-12" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-sm-12" }, [
+                          _c("div", { staticClass: "card" }, [
+                            _vm._m(2),
                             _vm._v(" "),
-                            _c("vs-input", {
-                              model: {
-                                value: _vm.app,
-                                callback: function($$v) {
-                                  _vm.app = $$v
-                                },
-                                expression: "app"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "mb-3" },
-                          [
-                            _c(
-                              "label",
-                              {
-                                staticClass: "col-form-label",
-                                attrs: { for: "recipient-name" }
-                              },
-                              [_vm._v("Agents:")]
-                            ),
-                            _vm._v(" "),
-                            _vm.agents.length > 0
-                              ? _c(
-                                  "vs-select",
-                                  {
-                                    attrs: {
-                                      filter: "",
-                                      "collapse-chips": "",
-                                      placeholder: "Agents"
+                            _c("div", { staticClass: "card-body" }, [
+                              _c(
+                                "form",
+                                { staticClass: "theme-form" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "mb-3" },
+                                    [
+                                      _vm.applications.length > 0
+                                        ? _c(
+                                            "vs-select",
+                                            {
+                                              attrs: {
+                                                filter: "",
+                                                "collapse-chips": "",
+                                                placeholder: "Applications"
+                                              },
+                                              model: {
+                                                value: _vm.app,
+                                                callback: function($$v) {
+                                                  _vm.app = $$v
+                                                },
+                                                expression: "app"
+                                              }
+                                            },
+                                            _vm._l(_vm.applications, function(
+                                              item
+                                            ) {
+                                              return _c(
+                                                "vs-option",
+                                                {
+                                                  key: item.id,
+                                                  attrs: {
+                                                    value: item.id,
+                                                    label: item.name
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                         " +
+                                                      _vm._s(item.name) +
+                                                      "\n                                   "
+                                                  )
+                                                ]
+                                              )
+                                            }),
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "mb-3" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass: "col-form-label",
+                                          attrs: { for: "recipient-name" }
+                                        },
+                                        [_vm._v("Agents:")]
+                                      ),
+                                      _vm._v(" "),
+                                      _vm.agents.length > 0
+                                        ? _c(
+                                            "vs-select",
+                                            {
+                                              attrs: {
+                                                filter: "",
+                                                "collapse-chips": "",
+                                                placeholder: "Agents"
+                                              },
+                                              model: {
+                                                value: _vm.agent,
+                                                callback: function($$v) {
+                                                  _vm.agent = $$v
+                                                },
+                                                expression: "agent"
+                                              }
+                                            },
+                                            _vm._l(_vm.agents, function(item) {
+                                              return _c(
+                                                "vs-option",
+                                                {
+                                                  key: item.id,
+                                                  attrs: {
+                                                    label: item.name,
+                                                    value: item.id
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                        " +
+                                                      _vm._s(item.name) +
+                                                      "\n                                               "
+                                                  )
+                                                ]
+                                              )
+                                            }),
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "vs-button",
+                                    {
+                                      attrs: {
+                                        color: "rgb(30, 32, 79)",
+                                        gradient: "",
+                                        type: "submit"
+                                      },
+                                      on: { click: _vm.assignAgent }
                                     },
-                                    model: {
-                                      value: _vm.agent,
-                                      callback: function($$v) {
-                                        _vm.agent = $$v
-                                      },
-                                      expression: "agent"
-                                    }
-                                  },
-                                  _vm._l(_vm.agents, function(item) {
-                                    return _c(
-                                      "vs-option",
+                                    [
+                                      _vm._v(
+                                        "\n                                              Submit\n                                           "
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ])
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-pane fade",
+                    attrs: {
+                      id: "top-profile",
+                      role: "tabpanel",
+                      "aria-labelledby": "profile-top-tab"
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "col-sm-12 col-xl-12" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-sm-12" }, [
+                          _c("div", { staticClass: "card" }, [
+                            _vm._m(3),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "card-body" }, [
+                              _c(
+                                "form",
+                                { staticClass: "theme-form" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "mb-3" },
+                                    [
+                                      _vm.applications.length > 0
+                                        ? _c(
+                                            "vs-select",
+                                            {
+                                              attrs: {
+                                                filter: "",
+                                                "collapse-chips": "",
+                                                placeholder: "Applications"
+                                              },
+                                              model: {
+                                                value: _vm.app,
+                                                callback: function($$v) {
+                                                  _vm.app = $$v
+                                                },
+                                                expression: "app"
+                                              }
+                                            },
+                                            _vm._l(_vm.applications, function(
+                                              item
+                                            ) {
+                                              return _c(
+                                                "vs-option",
+                                                {
+                                                  key: item.id,
+                                                  attrs: {
+                                                    value: item.id,
+                                                    label: item.name
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                       " +
+                                                      _vm._s(item.name) +
+                                                      "\n                                                   "
+                                                  )
+                                                ]
+                                              )
+                                            }),
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "mb-3" }, [
+                                    _c(
+                                      "label",
                                       {
-                                        key: item.id,
-                                        attrs: {
-                                          label: item.name,
-                                          value: item.id
-                                        }
+                                        staticClass: "col-form-label",
+                                        attrs: { for: "recipient-name" }
                                       },
-                                      [
-                                        _vm._v(
-                                          "\n                                     " +
-                                            _vm._s(item.name) +
-                                            "\n                                 "
-                                        )
-                                      ]
-                                    )
-                                  }),
-                                  1
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mb-3" }, [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "col-form-label",
-                              attrs: { for: "recipient-name" }
-                            },
-                            [_vm._v("Comment:")]
-                          ),
-                          _vm._v(" "),
-                          _c("textarea", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.comment,
-                                expression: "comment"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            domProps: { value: _vm.comment },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.comment = $event.target.value
-                              }
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mb-3" }, [
-                          _c("label", { staticClass: "col-form-label" }, [
-                            _vm._v("Attach File")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            ref: "file",
-                            staticClass: "form-control",
-                            attrs: { type: "file", id: "file" },
-                            on: {
-                              change: function($event) {
-                                return _vm.handleFileUpload()
-                              }
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "vs-button",
-                          {
-                            attrs: {
-                              color: "rgb(30, 32, 79)",
-                              gradient: "",
-                              type: "submit"
-                            },
-                            on: { click: _vm.onSubmit }
-                          },
-                          [
-                            _vm._v(
-                              "\n                  Submit\n               "
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ])
-              ])
-            ])
+                                      [_vm._v("Comment:")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("textarea", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.comment,
+                                          expression: "comment"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      domProps: { value: _vm.comment },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.comment = $event.target.value
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "vs-button",
+                                    {
+                                      attrs: {
+                                        color: "rgb(30, 32, 79)",
+                                        gradient: "",
+                                        type: "submit"
+                                      },
+                                      on: { click: _vm.postComment }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                              Submit\n                                           "
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ])
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-pane fade",
+                    attrs: {
+                      id: "top-contact",
+                      role: "tabpanel",
+                      "aria-labelledby": "contact-top-tab"
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "col-sm-12 col-xl-12" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-sm-12" }, [
+                          _c("div", { staticClass: "card" }, [
+                            _vm._m(4),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "card-body" }, [
+                              _c(
+                                "form",
+                                { staticClass: "theme-form" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "mb-3" },
+                                    [
+                                      _vm.applications.length > 0
+                                        ? _c(
+                                            "vs-select",
+                                            {
+                                              attrs: {
+                                                filter: "",
+                                                "collapse-chips": "",
+                                                placeholder: "Applications"
+                                              },
+                                              model: {
+                                                value: _vm.app,
+                                                callback: function($$v) {
+                                                  _vm.app = $$v
+                                                },
+                                                expression: "app"
+                                              }
+                                            },
+                                            _vm._l(_vm.applications, function(
+                                              item
+                                            ) {
+                                              return _c(
+                                                "vs-option",
+                                                {
+                                                  key: item.id,
+                                                  attrs: {
+                                                    value: item.id,
+                                                    label: item.name
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                          " +
+                                                      _vm._s(item.name) +
+                                                      "\n                                                   "
+                                                  )
+                                                ]
+                                              )
+                                            }),
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "mb-3" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass: "col-form-label",
+                                          attrs: { for: "recipient-name" }
+                                        },
+                                        [_vm._v("Agents:")]
+                                      ),
+                                      _vm._v(" "),
+                                      _vm.agents.length > 0
+                                        ? _c(
+                                            "vs-select",
+                                            {
+                                              attrs: {
+                                                filter: "",
+                                                "collapse-chips": "",
+                                                placeholder: "Agents"
+                                              },
+                                              model: {
+                                                value: _vm.agent,
+                                                callback: function($$v) {
+                                                  _vm.agent = $$v
+                                                },
+                                                expression: "agent"
+                                              }
+                                            },
+                                            _vm._l(_vm.agents, function(item) {
+                                              return _c(
+                                                "vs-option",
+                                                {
+                                                  key: item.id,
+                                                  attrs: {
+                                                    label: item.name,
+                                                    value: item.id
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                        " +
+                                                      _vm._s(item.name) +
+                                                      "\n                                               "
+                                                  )
+                                                ]
+                                              )
+                                            }),
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "mb-3" }, [
+                                    _c(
+                                      "label",
+                                      { staticClass: "col-form-label" },
+                                      [_vm._v("Attach File")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      ref: "file",
+                                      staticClass: "form-control",
+                                      attrs: { type: "file", id: "file" },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.handleFileUpload()
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "vs-button",
+                                    {
+                                      attrs: {
+                                        color: "rgb(30, 32, 79)",
+                                        gradient: "",
+                                        type: "submit"
+                                      },
+                                      on: { click: _vm.uploadFile }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                              Submit\n                                           "
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ])
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            )
           ])
         ])
       ])
@@ -1541,7 +1962,108 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header pb-0" }, [
+      _c("h5"),
+      _c("span", [_c("code")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "ul",
+      {
+        staticClass: "nav nav-tabs border-tab",
+        attrs: { id: "top-tab", role: "tablist" }
+      },
+      [
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link active",
+              attrs: {
+                id: "top-home-tab",
+                "data-bs-toggle": "tab",
+                href: "#top-home",
+                role: "tab",
+                "aria-controls": "top-home",
+                "aria-selected": "true"
+              }
+            },
+            [
+              _c("i", { staticClass: "icofont icofont-man-in-glasses" }),
+              _vm._v("Assign To Agent")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link",
+              attrs: {
+                id: "profile-top-tab",
+                "data-bs-toggle": "tab",
+                href: "#top-profile",
+                role: "tab",
+                "aria-controls": "top-profile",
+                "aria-selected": "false"
+              }
+            },
+            [
+              _c("i", { staticClass: "icofont icofont-comment" }),
+              _vm._v("Comment")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link",
+              attrs: {
+                id: "contact-top-tab",
+                "data-bs-toggle": "tab",
+                href: "#top-contact",
+                role: "tab",
+                "aria-controls": "top-contact",
+                "aria-selected": "false"
+              }
+            },
+            [
+              _c("i", { staticClass: "icofont icofont-upload" }),
+              _vm._v("Upload Attachment")
+            ]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header pb-0" }, [
       _c("h5", [_vm._v("Assign To Agent")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header pb-0" }, [
+      _c("h5", [_vm._v("Comment")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header pb-0" }, [
+      _c("h5", [_vm._v("Upload File")])
     ])
   }
 ]

@@ -32,6 +32,8 @@ Route::middleware('auth:api')->group(function () {
     Route::put('customer/applications/{id}',[AppFormController::class,'update']);
     Route::get('/recent/applications',[DashboardController::class,'recentApp']);
     Route::post('/assign/app',[AppFormController::class,'AssignApp']);
+    Route::post('/add/comment',[AppFormController::class,'postComment']);
+    Route::post('/upload/file',[AppFormController::class,'uploadFile']);
     Route::post('/assigned/app',[AppFormController::class,'getAssignedApp']);
     Route::post('/delete/app',[AppFormController::class,'deleteAssignedApp']);
 

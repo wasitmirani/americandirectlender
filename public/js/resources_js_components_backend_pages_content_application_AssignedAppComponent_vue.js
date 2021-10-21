@@ -1270,7 +1270,7 @@ var render = function() {
                             _c("span", { staticClass: "span-name" }, [
                               _vm._v(" " + _vm._s(user.name))
                             ]),
-                            _vm._v(",\n                            ")
+                            _vm._v(", \n                            ")
                           ])
                         }),
                         0
