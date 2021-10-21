@@ -288,10 +288,10 @@
         },
         release: function(value) {
             //console.log(this.$.attr('value'));
-            console.log("release : " + value);
+            // console.log("release : " + value);
         },
         cancel: function() {
-            console.log("cancel : ", this);
+            // console.log("cancel : ", this);
         },
         format: function(value) {
             return value + '%';
@@ -406,7 +406,7 @@ var options17 = {
 
           async  getDashboardData(){
           await  axios.get('dashboard').then((res)=>{
-              console.log(res)
+            //   console.log(res)
               this.total_users=res.data.users;
               this.total_applications=res.data.total_application;
               this.roles = res.data.roles;
@@ -421,7 +421,7 @@ var options17 = {
 
         mounted(){
             this.getDashboardData();
-            console.log("userss",user);
+            // console.log("userss",user);
             this.user=user;
             this.app_name="American Lender";
             this.dashboardChart();
@@ -429,7 +429,7 @@ var options17 = {
 
             axios.get('/recent/applications/').then((res)=>{
                    this.apps = res.data.applications
-                   console.log(res.data.applications)
+                //    console.log(res.data.applications)
                    this.loading =false;
                }).catch((err)=>{
                         this.$root.alertNotificationMessage(err.response.status,err.response.data);

@@ -311,12 +311,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'max': 100,
         change: function change(value) {//console.log("change : " + value);
         },
-        release: function release(value) {
-          //console.log(this.$.attr('value'));
-          console.log("release : " + value);
+        release: function release(value) {//console.log(this.$.attr('value'));
+          // console.log("release : " + value);
         },
-        cancel: function cancel() {
-          console.log("cancel : ", this);
+        cancel: function cancel() {// console.log("cancel : ", this);
         },
         format: function format(value) {
           return value + '%';
@@ -433,7 +431,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.next = 2;
                 return axios.get('dashboard').then(function (res) {
-                  console.log(res);
+                  //   console.log(res)
                   _this.total_users = res.data.users;
                   _this.total_applications = res.data.total_application;
                   _this.roles = res.data.roles;
@@ -453,14 +451,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     var _this2 = this;
 
-    this.getDashboardData();
-    console.log("userss", user);
+    this.getDashboardData(); // console.log("userss",user);
+
     this.user = user;
     this.app_name = "American Lender";
     this.dashboardChart();
     axios.get('/recent/applications/').then(function (res) {
-      _this2.apps = res.data.applications;
-      console.log(res.data.applications);
+      _this2.apps = res.data.applications; //    console.log(res.data.applications)
+
       _this2.loading = false;
     })["catch"](function (err) {
       _this2.$root.alertNotificationMessage(err.response.status, err.response.data);
