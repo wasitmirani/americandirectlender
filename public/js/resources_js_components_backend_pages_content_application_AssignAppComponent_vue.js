@@ -1548,9 +1548,9 @@ var render = function() {
                                                 },
                                                 [
                                                   _vm._v(
-                                                    "\n                                         " +
+                                                    "\n                                                      " +
                                                       _vm._s(item.name) +
-                                                      "\n                                   "
+                                                      "\n                                                   "
                                                   )
                                                 ]
                                               )
@@ -1604,9 +1604,9 @@ var render = function() {
                                                 },
                                                 [
                                                   _vm._v(
-                                                    "\n                                                        " +
+                                                    "\n                                                       " +
                                                       _vm._s(item.name) +
-                                                      "\n                                               "
+                                                      "\n                                                   "
                                                   )
                                                 ]
                                               )

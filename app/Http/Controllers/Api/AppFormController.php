@@ -161,9 +161,9 @@ class AppFormController extends Controller
     public function deleteAssignedApp(Request $request){
 
         $application_agent =ApplicationAgents::where('application_id',$request->id)->delete();
-        $application_attachment =ApplicationAttachment::where('application_id',$request->id)->delete();
-        $application_comment =ApplicationComment::where('application_id',$request->id)->delete();
-        $application =  Application::destroy($request->id);
+        // $application_attachment =ApplicationAttachment::where('application_id',$request->id)->delete();
+        // $application_comment =ApplicationComment::where('application_id',$request->id)->delete();
+        // $application =  Application::destroy($request->id);
         return response()->json();
 
     }
@@ -189,9 +189,7 @@ class AppFormController extends Controller
              'file' => $file
          ]);
 
-         return response()->json();
-
-
+        return response()->json();
 
 
     }

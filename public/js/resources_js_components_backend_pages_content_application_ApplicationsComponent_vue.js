@@ -2561,13 +2561,11 @@ var render = function() {
                   }
                 },
                 [
-                  _vm.application.status == "0"
-                    ? _c("vs-button", [
-                        _vm._v(
-                          "\n                                    Assign\n                                "
-                        )
-                      ])
-                    : _vm._e()
+                  _c("vs-button", [
+                    _vm._v(
+                      "\n                                    Assign\n                                "
+                    )
+                  ])
                 ],
                 1
               )
