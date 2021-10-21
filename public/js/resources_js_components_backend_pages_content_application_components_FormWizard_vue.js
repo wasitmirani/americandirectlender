@@ -207,6 +207,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['application']
 });
@@ -1333,55 +1341,62 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "setup-content", attrs: { id: "step-1" } }, [
-      _c(
-        "div",
-        { staticClass: "mb-3" },
-        [
-          _c("label", { staticClass: "col-form-label" }, [
-            _vm._v("Client Name")
-          ]),
-          _vm._v(" "),
-          _c("vs-input", {
-            staticClass: "form-control",
-            attrs: { primary: "", type: "text", placeholder: "your Name" },
-            model: {
-              value: _vm.application.name,
-              callback: function($$v) {
-                _vm.$set(_vm.application, "name", $$v)
-              },
-              expression: "application.name"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
       _c("div", { staticClass: "mb-3" }, [
-        _c("label", { staticClass: "col-form-label" }, [
-          _vm._v("Date Of Application")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.application.date,
-              expression: "application.date"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "date", placeholder: "", value: "application.date" },
-          domProps: { value: _vm.application.date },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-xl-6" },
+            [
+              _c("label", { staticClass: "col-form-label" }, [
+                _vm._v("Client Name")
+              ]),
+              _vm._v(" "),
+              _c("vs-input", {
+                attrs: { primary: "", type: "text", placeholder: "your Name" },
+                model: {
+                  value: _vm.application.name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.application, "name", $$v)
+                  },
+                  expression: "application.name"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xl-6" }, [
+            _c("label", { staticClass: "col-form-label" }, [
+              _vm._v("Date Of Application")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.application.date,
+                  expression: "application.date"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "date",
+                placeholder: "",
+                value: "application.date"
+              },
+              domProps: { value: _vm.application.date },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.application, "date", $event.target.value)
+                }
               }
-              _vm.$set(_vm.application, "date", $event.target.value)
-            }
-          }
-        })
+            })
+          ])
+        ])
       ])
     ])
   ])
