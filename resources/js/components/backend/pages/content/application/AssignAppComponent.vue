@@ -75,10 +75,18 @@
                                         </form>
 
                                     </div>
-                                    <ul class="list-group">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center" v-for="comment in application_comments" :key="comment.id">{{comment.comment}}<span class="badge badge-primary counter">{{ comment.created_at |timeformat }}</span></li>
 
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center"  v-for="comment in application_comments"  :key="comment.id" >
+                                        <vs-alert>
+                                          <template>
+                                            <span>{{comment.created_at | timeformat}}</span>
+                                            <p>{{comment.comment}}</p>
+                                          </template>
+                                        </vs-alert>
+                                        </li>
                                     </ul>
+
                                 </div>
                             </div>
                           </div>
@@ -147,6 +155,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
        },
        data(){
            return{
+                page: 1,
             applications:{},
             application:{},
             process:{},
@@ -216,6 +225,9 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 formData.append('app', this.app);
                   axios.post('/add/comment',formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"Comment Added Successfully");
+                              setTimeout(() => {
+                            this.$router.push({ name: 'Customer Applications' })
+                        }, 1000);
 
                     }).catch((err)=>{
                         if(err.response.status==422){
@@ -235,6 +247,9 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 
                   axios.post('/upload/file',formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"File Uploaded Successfully");
+                            setTimeout(() => {
+                            this.$router.push({ name: 'Customer Applications' })
+                        }, 1000);
 
                     }).catch((err)=>{
                         if(err.response.status==422){
@@ -290,7 +305,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 });
 
             },
-            async getAgents(page=1){
+           async getAgents(page=1){
              this.loading=true;
              this.page_num=page;
              const url="/management/agents?page=" + page + "&query=" + this.query;
