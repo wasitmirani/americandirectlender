@@ -289,6 +289,171 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -306,9 +471,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     dashboardChart: function dashboardChart() {
       $(".knob1").knob({
-        'width': 65,
-        'height': 65,
-        'max': 100,
+        width: 65,
+        height: 65,
+        max: 100,
         change: function change(value) {//console.log("change : " + value);
         },
         release: function release(value) {//console.log(this.$.attr('value'));
@@ -317,17 +482,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         cancel: function cancel() {// console.log("cancel : ", this);
         },
         format: function format(value) {
-          return value + '%';
+          return value + "%";
         },
         draw: function draw() {
           // "tron" case
-          if (this.$.data('skin') == 'tron') {
+          if (this.$.data("skin") == "tron") {
             this.cursorExt = 1;
-            var a = this.arc(this.cv) // Arc
-            ,
-                pa // Previous arc
-            ,
-                r = 1;
+            var a = this.arc(this.cv),
+                // Arc
+            pa,
+                // Previous arc
+            r = 1;
             this.g.lineWidth = this.lineWidth;
 
             if (this.o.displayPrevious) {
@@ -358,7 +523,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         series: [100, 67, 61, 90],
         chart: {
           height: 380,
-          type: 'radialBar'
+          type: "radialBar"
         },
         plotOptions: {
           radialBar: {
@@ -367,8 +532,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             endAngle: 270,
             hollow: {
               margin: 5,
-              size: '30%',
-              background: 'transparent',
+              size: "30%",
+              background: "transparent",
               image: undefined
             },
             dataLabels: {
@@ -382,13 +547,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         },
         colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary, vihoAdminConfig.primary, vihoAdminConfig.secondary],
-        labels: ['Total order', 'Total product', 'Quantity', 'Page views'],
+        labels: ["Total order", "Total product", "Quantity", "Page views"],
         legend: {
           show: true,
           floating: true,
-          fontSize: '14px',
-          position: 'left',
-          fontFamily: 'Roboto',
+          fontSize: "14px",
+          position: "left",
+          fontFamily: "Roboto",
           fontweight: 400,
           // offsetX:30,
           offsetY: 20,
@@ -408,14 +573,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         },
         stroke: {
-          lineCap: 'round'
+          lineCap: "round"
         },
         responsive: [{
           breakpoint: 480,
           options: {
             legend: {
               show: true,
-              fontSize: '10px'
+              fontSize: "10px"
             }
           }
         }]
@@ -430,7 +595,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get('dashboard').then(function (res) {
+                return axios.get("dashboard").then(function (res) {
                   //   console.log(res)
                   _this.total_users = res.data.users;
                   _this.total_applications = res.data.total_application;
@@ -456,7 +621,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.user = user;
     this.app_name = "American Lender";
     this.dashboardChart();
-    axios.get('/recent/applications/').then(function (res) {
+    axios.get("/recent/applications/").then(function (res) {
       _this2.apps = res.data.applications; //    console.log(res.data.applications)
 
       _this2.loading = false;
@@ -1322,6 +1487,32 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xl-6 col-md-4 box-col-4 des-xl-50" }, [
+          _c("div", { staticClass: "card profile-greeting" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body text-center p-t-0" }, [
+              _c("h3", { staticClass: "font-light" }, [
+                _vm._v("Wellcome Back, " + _vm._s(_vm.user.name) + "!!")
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "\n              Welcome to the " +
+                    _vm._s(_vm.app_name) +
+                    " Family! we are glad that you are\n              visite this dashboard. we will be happy to help you grow your\n              business.\n            "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(2)
+      ]),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "row" },
@@ -1353,10 +1544,13 @@ var render = function() {
                             d: "M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
                           }
                         }),
+                        _vm._v(" "),
                         _c("circle", { attrs: { cx: "8.5", cy: "7", r: "4" } }),
+                        _vm._v(" "),
                         _c("line", {
                           attrs: { x1: "20", y1: "8", x2: "20", y2: "14" }
                         }),
+                        _vm._v(" "),
                         _c("line", {
                           attrs: { x1: "23", y1: "11", x2: "17", y2: "11" }
                         })
@@ -1370,6 +1564,7 @@ var render = function() {
                     _c("h4", { staticClass: "mb-0 counter" }, [
                       _vm._v(_vm._s(_vm.total_users))
                     ]),
+                    _vm._v(" "),
                     _c(
                       "svg",
                       {
@@ -1392,10 +1587,13 @@ var render = function() {
                             d: "M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
                           }
                         }),
+                        _vm._v(" "),
                         _c("circle", { attrs: { cx: "8.5", cy: "7", r: "4" } }),
+                        _vm._v(" "),
                         _c("line", {
                           attrs: { x1: "20", y1: "8", x2: "20", y2: "14" }
                         }),
+                        _vm._v(" "),
                         _c("line", {
                           attrs: { x1: "23", y1: "11", x2: "17", y2: "11" }
                         })
@@ -1441,12 +1639,15 @@ var render = function() {
                                   d: "M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
                                 }
                               }),
+                              _vm._v(" "),
                               _c("circle", {
                                 attrs: { cx: "8.5", cy: "7", r: "4" }
                               }),
+                              _vm._v(" "),
                               _c("line", {
                                 attrs: { x1: "20", y1: "8", x2: "20", y2: "14" }
                               }),
+                              _vm._v(" "),
                               _c("line", {
                                 attrs: {
                                   x1: "23",
@@ -1468,6 +1669,7 @@ var render = function() {
                         _c("h4", { staticClass: "mb-0 counter" }, [
                           _vm._v(_vm._s(item.users_count))
                         ]),
+                        _vm._v(" "),
                         _c(
                           "svg",
                           {
@@ -1490,12 +1692,15 @@ var render = function() {
                                 d: "M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
                               }
                             }),
+                            _vm._v(" "),
                             _c("circle", {
                               attrs: { cx: "8.5", cy: "7", r: "4" }
                             }),
+                            _vm._v(" "),
                             _c("line", {
                               attrs: { x1: "20", y1: "8", x2: "20", y2: "14" }
                             }),
+                            _vm._v(" "),
                             _c("line", {
                               attrs: { x1: "23", y1: "11", x2: "17", y2: "11" }
                             })
@@ -1511,32 +1716,6 @@ var render = function() {
         ],
         2
       ),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xl-6 col-md-4 box-col-4 des-xl-50" }, [
-          _c("div", { staticClass: "card profile-greeting" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body text-center p-t-0" }, [
-              _c("h3", { staticClass: "font-light" }, [
-                _vm._v("Wellcome Back, " + _vm._s(_vm.user.name) + "!!")
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Welcome to the " +
-                    _vm._s(_vm.app_name) +
-                    " Family! we are glad that you are visite this dashboard. we will be happy to help you grow your business."
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._m(1)
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(2)
-      ]),
       _vm._v(" "),
       _c("div", [
         _c("div", { staticClass: "col-xl-12 xl-50 box-col-12" }, [
@@ -1567,6 +1746,7 @@ var render = function() {
                         _c("line", {
                           attrs: { x1: "12", y1: "5", x2: "12", y2: "19" }
                         }),
+                        _vm._v(" "),
                         _c("polyline", {
                           attrs: { points: "19 12 12 19 5 12" }
                         })
@@ -1576,9 +1756,13 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body" }, [
                     _c("h5", { staticClass: "mb-0" }, [
-                      _vm._v(_vm._s(this.total_applications)),
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(this.total_applications)
+                      ),
                       _c("span", { staticClass: "counter" })
                     ]),
+                    _vm._v(" "),
                     _c("span", { staticClass: "mb-1" })
                   ])
                 ])
@@ -1609,6 +1793,7 @@ var render = function() {
                         _c("line", {
                           attrs: { x1: "12", y1: "19", x2: "12", y2: "5" }
                         }),
+                        _vm._v(" "),
                         _c("polyline", { attrs: { points: "5 12 12 5 19 12" } })
                       ]
                     )
@@ -1616,9 +1801,12 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body ps-2" }, [
                     _c("h5", { staticClass: "mb-0" }, [
-                      _vm._v(_vm._s(this.assigned_apps)),
+                      _vm._v(
+                        "\n                    " + _vm._s(this.assigned_apps)
+                      ),
                       _c("span", { staticClass: "counter" })
                     ]),
+                    _vm._v(" "),
                     _c("span", { staticClass: "mb-1" })
                   ])
                 ])
@@ -1649,6 +1837,7 @@ var render = function() {
                         _c("line", {
                           attrs: { x1: "12", y1: "19", x2: "12", y2: "5" }
                         }),
+                        _vm._v(" "),
                         _c("polyline", { attrs: { points: "5 12 12 5 19 12" } })
                       ]
                     )
@@ -1665,6 +1854,7 @@ var render = function() {
                         )
                       ])
                     ]),
+                    _vm._v(" "),
                     _c("span", { staticClass: "mb-1" })
                   ])
                 ])
@@ -1785,7 +1975,7 @@ var staticRenderFns = [
               "div",
               { staticClass: "header-top d-sm-flex align-items-center" },
               [
-                _c("h5", [_vm._v(" yearly overview  ")]),
+                _c("h5", [_vm._v("yearly overview")]),
                 _vm._v(" "),
                 _c("div", { staticClass: "center-content" }, [
                   _c("p", [
@@ -1798,7 +1988,7 @@ var staticRenderFns = [
                         "toprightarrow-primary fa fa-arrow-up m-l-10 m-r-10"
                     }),
                     _vm._v(
-                      "\n                        86% More than last year\n                    "
+                      "\n                  86% More than last year\n                "
                     )
                   ])
                 ]),
@@ -1903,6 +2093,7 @@ var staticRenderFns = [
           _c("h5", { staticClass: "mb-0" }, [
             _c("span", { staticClass: "counter" })
           ]),
+          _vm._v(" "),
           _c("span", { staticClass: "mb-1" })
         ])
       ])
@@ -1913,18 +2104,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-xl-4 col-sm-6 " }, [
+      _c("div", { staticClass: "col-xl-4 col-sm-6" }, [
         _c("div", { staticClass: "card browser-widget" }, [
           _c("div", { staticClass: "media card-body" }, [
             _c("div", { staticClass: "media-img" }, [
               _c("img", {
-                attrs: { src: "assets/images/dashboard/chrome.png", alt: "" }
+                attrs: { src: "/assets/images/dashboard/chrome.png", alt: "" }
               })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "media-body align-self-center" }, [
               _c("div", [
-                _c("p", [_vm._v("Daily ")]),
+                _c("p", [_vm._v("Daily")]),
                 _vm._v(" "),
                 _c("h4", [
                   _c("span", { staticClass: "counter" }, [_vm._v("20")]),
@@ -1933,7 +2124,7 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("div", [
-                _c("p", [_vm._v("Month ")]),
+                _c("p", [_vm._v("Month")]),
                 _vm._v(" "),
                 _c("h4", [
                   _c("span", { staticClass: "counter" }, [_vm._v("53")]),
@@ -1942,7 +2133,7 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("div", [
-                _c("p", [_vm._v("Week ")]),
+                _c("p", [_vm._v("Week")]),
                 _vm._v(" "),
                 _c("h4", [
                   _c("span", { staticClass: "counter" }, [_vm._v("25")]),
@@ -1965,7 +2156,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "media-body align-self-center" }, [
               _c("div", [
-                _c("p", [_vm._v("Daily ")]),
+                _c("p", [_vm._v("Daily")]),
                 _vm._v(" "),
                 _c("h4", [
                   _c("span", { staticClass: "counter" }, [_vm._v("20")]),
@@ -1974,7 +2165,7 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("div", [
-                _c("p", [_vm._v("Month ")]),
+                _c("p", [_vm._v("Month")]),
                 _vm._v(" "),
                 _c("h4", [
                   _c("span", { staticClass: "counter" }, [_vm._v("53")]),
@@ -1983,7 +2174,7 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("div", [
-                _c("p", [_vm._v("Week ")]),
+                _c("p", [_vm._v("Week")]),
                 _vm._v(" "),
                 _c("h4", [
                   _c("span", { staticClass: "counter" }, [_vm._v("25")]),
@@ -2006,7 +2197,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "media-body align-self-center" }, [
               _c("div", [
-                _c("p", [_vm._v("Daily ")]),
+                _c("p", [_vm._v("Daily")]),
                 _vm._v(" "),
                 _c("h4", [
                   _c("span", { staticClass: "counter" }, [_vm._v("19")]),
@@ -2015,7 +2206,7 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("div", [
-                _c("p", [_vm._v("Month ")]),
+                _c("p", [_vm._v("Month")]),
                 _vm._v(" "),
                 _c("h4", [
                   _c("span", { staticClass: "counter" }, [_vm._v("52")]),
@@ -2024,7 +2215,7 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("div", [
-                _c("p", [_vm._v("Week ")]),
+                _c("p", [_vm._v("Week")]),
                 _vm._v(" "),
                 _c("h4", [
                   _c("span", { staticClass: "counter" }, [_vm._v("25")]),
