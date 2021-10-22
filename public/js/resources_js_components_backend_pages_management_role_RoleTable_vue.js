@@ -493,7 +493,9 @@ var render = function() {
           "div",
           [
             _c("strong", { staticClass: "ml-4" }, [
-              _vm._v("Selected Items ({{}}) ")
+              _vm._v(
+                "Selected Items (" + _vm._s(_vm.selected_items.length) + ") "
+              )
             ]),
             _vm._v(" "),
             _c(
