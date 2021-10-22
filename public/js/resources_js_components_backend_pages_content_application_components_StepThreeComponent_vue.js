@@ -500,7 +500,7 @@ var render = function() {
                 )
               ]),
               _vm._v(
-                "\n                            (*category A has lowest rates, then followed by category B and then C)\n                        "
+                "\r\n                            (*category A has lowest rates, then followed by category B and then C)\r\n                        "
               )
             ])
           ])
@@ -534,7 +534,7 @@ var render = function() {
           }
         }),
         _vm._v(
-          "\n                (this can be approximate, not held after escrow close, jumbo/investment loans usually require 6-12 months depending on the program (must be checked later))\n            "
+          "\r\n                (this can be approximate, not held after escrow close, jumbo/investment loans usually require 6-12 months depending on the program (must be checked later))\r\n            "
         )
       ]),
       _vm._v(" "),
@@ -608,7 +608,7 @@ var render = function() {
             }
           }
         }),
-        _vm._v("\n                (*we use the middle score)\n            ")
+        _vm._v("\r\n                (*we use the middle score)\r\n            ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-auto" }, [
@@ -1476,7 +1476,7 @@ var render = function() {
                 )
               ]),
               _vm._v(
-                "\n                            (*2 years required unless you received a recent degree, certificate, training etc.)\n                        "
+                "\r\n                            (*2 years required unless you received a recent degree, certificate, training etc.)\r\n                        "
               )
             ])
           ])

@@ -354,10 +354,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 </script>
 <style>
 
-.vs-button__content {
-    width: 130px;
-    height: 49px;
-}
+
 
   .vs-input {
    width: 100%;
@@ -366,8 +363,6 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
    width: 100%;
    max-width: 100%;
    }
-   .vs-select__input{
-       border: solid;
-   }
+  
 </style>
 

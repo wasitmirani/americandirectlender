@@ -11,9 +11,7 @@ class HelperComponent {
                 [
                     "single_link" => setSingleLink( "Dashboard","home",null,"/"),
                 ],
-                [
-                    "single_link" => setSingleLink( "Applications","file-text",null,"/customer/applications"),
-                ],
+
                 [
                     "heading"=>"Management",
                     "menu"=>[
@@ -46,11 +44,12 @@ class HelperComponent {
 
 
                 [
-                    "heading"=>"Config",
+                    "heading"=>"Content",
 
                 ],
+
                 [
-                    "single_link" => setSingleLink( "Settings","settings",null,"/password/setting"),
+                    "single_link" => setSingleLink("Applications", "file-text", null, "/customer/applications"),
                 ],
                 [
                     "single_link" => setSingleLink( "Assigned Apps","file-text",null,"/assigned/apps"),
@@ -64,10 +63,15 @@ class HelperComponent {
                 [
                     "single_link" => setSingleLink( "Notify","bell","notify-view","/send/notify"),
                 ],
-
+                [
+                    "heading" => "Config",
+                ],
+                [
+                    "single_link" => setSingleLink("Settings", "settings", null, "/password/setting"),
+                ],
 
                 [
-                    "heading"=>"Content",
+                    "heading"=>"Session",
                 ],
 
      ];

@@ -34,7 +34,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['application']
+  props: ["application"]
 });
 
 /***/ }),
@@ -125,7 +125,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "setup-content", attrs: { id: "step-1" } }, [
-      _c("div", { staticClass: "mb-3" }, [
+      _c("div", { staticClass: "mb-3 container" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-xl-6" }, [
             _c("label", { staticClass: "col-form-label" }, [

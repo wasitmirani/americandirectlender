@@ -22,8 +22,8 @@ export default {
 </script>
 
 <style>
-.vs-button__content {
+/* .vs-button__content {
     width: 130px;
     height: 49px;
-}
+} */
 </style>

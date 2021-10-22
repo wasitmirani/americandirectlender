@@ -19,7 +19,7 @@
                       <!-- <a class="btn btn-primary" href="projectcreate.html"> <i data-feather="plus-square"> </i>Create New Application</a> -->
                     </div>
                   </div>
-                </div> 
+                </div>
               </div>
               <div class="col-sm-12">
                 <div class="card">
@@ -32,9 +32,9 @@
                                         v-on:loading="loadingStart($event)"
                                         v-on:reload="getApplications()"
                                         v-on:filterList="filterdata($event)"
-                                        label="Search Roles">
+                                        label="Search Applications">
                                     </SearchInput>
-                                        <div class="col-xxl-4 col-lg-6" v-for="application in applications" :key="application.id">
+                                        <div class="col-xxl-6 col-lg-6 " v-for="application in applications" :key="application.id">
 
                                 <ApplicationCard :getRoles="getRoles" :roles="agents" :getApplications="getApplications" :application="application" :applications="applications"></ApplicationCard>
 
@@ -43,14 +43,14 @@
                       </div>
                       <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
                         <div class="row">
-                            <div class="col-xxl-4 col-lg-6" v-for="application in process" :key="application.id">
+                            <div class="col-xxl-6 col-lg-6 "  v-for="application in process" :key="application.id">
                                 <ApplicationCard :getApplications="getApplications" :application="application"  :roles="agents" :applications="applications"></ApplicationCard>
                             </div>
                         </div>
                       </div>
                       <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
                         <div class="row">
-                             <div class="col-xxl-4 col-lg-6" v-for="application in done" :key="application.id">
+                             <div class="col-xxl-4 " v-for="application in done" :key="application.id">
                                   <ApplicationCard :getApplications="getApplications" :application="application" :roles="agents" :applications="applications"></ApplicationCard>
                              </div>
 
@@ -165,8 +165,6 @@ export default {
 
 
 <style>
-.vs-button {
-   float:right;
-}
+
 </style>
 

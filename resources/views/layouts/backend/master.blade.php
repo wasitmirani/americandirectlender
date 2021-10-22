@@ -160,14 +160,13 @@ window.appname={!! json_encode(config('app.name'),true)!!};
     <script src="{{asset('assets/js/chart/apex-chart/apex-chart.js')}}"></script>
     <script src="{{asset('assets/js/chart/apex-chart/stock-prices.js')}}"></script>
     <script src="{{asset('assets/js/prism/prism.min.js')}}"></script>
-    <script src="{{asset('assets/js/clipboard/clipboard.min.js')}}"></script>
     <script src="{{asset('assets/js/counter/jquery.waypoints.min.js')}}"></script>
     <script src="{{asset('assets/js/counter/jquery.counterup.min.js')}}"></script>
     <script src="{{asset('assets/js/counter/counter-custom.js')}}"></script>
-    <script src="{{asset('assets/js/custom-card/custom-card.js')}}"></script>
+
     <script src="{{asset('assets/js/owlcarousel/owl.carousel.js')}}"></script>
     <script src="{{asset('assets/js/owlcarousel/owl-custom.js')}}"></script>
-    <script src="{{ asset('assets/js/form-wizard.js') }}""></script>
+    <script src="{{ asset('assets/js/form-wizard.js') }}"></script>
     <script src="{{asset('assets/js/dashboard/dashboard_2.js')}}"></script>
     <!-- Plugins JS Ends-->
     <!-- Theme js-->

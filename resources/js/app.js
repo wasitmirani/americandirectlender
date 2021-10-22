@@ -12,10 +12,10 @@ import router from "./router";
 import VueProgressBar from 'vue-progressbar'
 import Vuesax from 'vuesax'
 import VueFormWizard from 'vue-form-wizard'
-import 'vuesax/dist/vuesax.css'
+
 import moment from "moment";
 import Multiselect from 'vue-multiselect'
-import "vue-toastification/dist/index.css";
+
 import 'vue-multiselect/dist/vue-multiselect.min.css';
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 
@@ -23,12 +23,12 @@ import VueContentPlaceholders from 'vue-content-placeholders'
 import Swal from 'sweetalert2'
 
 
-
+import 'vuesax/dist/vuesax.css'
 
 
 window.Swal = Swal;
 Vue.use(VueContentPlaceholders)
-    // register globally
+// register globally
 Vue.component('multiselect', Multiselect)
 Vue.use(VueFormWizard)
 Vue.use(Vuesax);
@@ -41,7 +41,7 @@ Vue.use(VueProgressBar, {
 })
 
 
-Vue.filter("timeformat", function(value) {
+Vue.filter("timeformat", function (value) {
     if (value) {
         return moment
             .utc(String(value))
@@ -49,7 +49,15 @@ Vue.filter("timeformat", function(value) {
             .fromNow();
     }
 });
-Vue.directive('can', function(el, binding, vnode) {
+Vue.filter("dateformat", function (value) {
+    if (value) {
+        return moment
+            .utc(String(value))
+            .local()
+            .format('ll');
+    }
+});
+Vue.directive('can', function (el, binding, vnode) {
     if (permissions.indexOf(binding.value) !== -1) {
         return vnode.elm.hidden = false;
     } else {
@@ -128,20 +136,20 @@ const app = new Vue({
     created() {
         this.primary_color = primarycolor;
         this.$Progress.start()
-            //  hook the progress bar to start before we move router-view
+        //  hook the progress bar to start before we move router-view
         this.$router.beforeEach((to, from, next) => {
-                //  does the page we want to go to have a meta.progress object
-                if (to.meta.progress !== undefined) {
-                    let meta = to.meta.progress
-                        // parse meta tags
-                    this.$Progress.parseMeta(meta)
-                }
-                //  start the progress bar
-                this.$Progress.start()
-                    //  continue to next page
-                next()
-            })
-            //  hook the progress bar to finish after we've finished moving router-view
+            //  does the page we want to go to have a meta.progress object
+            if (to.meta.progress !== undefined) {
+                let meta = to.meta.progress
+                // parse meta tags
+                this.$Progress.parseMeta(meta)
+            }
+            //  start the progress bar
+            this.$Progress.start()
+            //  continue to next page
+            next()
+        })
+        //  hook the progress bar to finish after we've finished moving router-view
         this.$router.afterEach((to, from) => {
             //  finish the progress bar
             this.$Progress.finish()

@@ -40,6 +40,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -85,7 +87,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   props: {
     title: {
       type: String,
-      "default": 'Edit Customer Application'
+      "default": "Edit Customer Application"
     }
   },
   methods: {
@@ -94,12 +96,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var formData = new FormData();
       formData = Object.assign(this.application, formData);
-      axios.put('/customer/applications/' + this.application.id, formData).then(function (res) {
+      axios.put("/customer/applications/" + this.application.id, formData).then(function (res) {
         _this.$root.alertNotificationMessage(res.status, "Application has been updated successfully");
 
         setTimeout(function () {
           _this.$router.push({
-            name: 'Customer Applications'
+            name: "Customer Applications"
           });
         }, 1000);
       })["catch"](function (err) {
@@ -216,7 +218,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['application']
+  props: ["application"]
 });
 
 /***/ }),
@@ -701,7 +703,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-button__content {\n    width: 130px;\n    height: 49px;\n}\n.vs-button{\n    background-color:#4b4d72;\n}\n.vs-input {\n   width: 100%;\n}\n.vs-select-content {\n   width: 100%;\n   max-width: 100%;\n}\n.wizard-icon-container {\n    background-color:#4b4d72;\n}\n.wizard-icon-circle {\n      border-color:#4b4d72;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-input {\n  width: 100%;\n}\n.vs-select-content {\n  width: 100%;\n  max-width: 100%;\n}\n.wizard-icon-container {\n  background-color: #4b4d72;\n}\n.wizard-icon-circle {\n  border-color: #4b4d72;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1111,62 +1113,77 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "form-wizard",
-        { attrs: { color: "#4b4d72" }, on: { "on-complete": _vm.onComplete } },
-        [
-          _c("h2", { attrs: { slot: "title" }, slot: "title" }, [
-            _vm._v("Edit Customer Application")
-          ]),
-          _vm._v(" "),
-          _c(
-            "tab-content",
-            { attrs: { title: "Step One", color: "#4b4d72" } },
-            [_c("StepOne", { attrs: { application: _vm.application } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "tab-content",
-            { attrs: { title: "Step Two" } },
-            [_c("StepTwo", { attrs: { application: _vm.application } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "tab-content",
-            { attrs: { title: "Step Three" } },
-            [_c("StepThree", { attrs: { application: _vm.application } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "tab-content",
-            { attrs: { title: "Step Three" } },
-            [_c("StepFour", { attrs: { application: _vm.application } })],
-            1
-          ),
-          _vm._v(" "),
-          _c("vs-button", { attrs: { slot: "prev" }, slot: "prev" }, [
-            _vm._v("Back")
-          ]),
-          _vm._v(" "),
-          _c("vs-button", { attrs: { slot: "next" }, slot: "next" }, [
-            _vm._v("Next")
-          ]),
-          _vm._v(" "),
-          _c("vs-button", { attrs: { slot: "finish" }, slot: "finish" }, [
-            _vm._v("Update")
-          ])
-        ],
-        1
-      )
-    ],
-    1
-  )
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
+        _c(
+          "form-wizard",
+          {
+            attrs: { color: "#4b4d72" },
+            on: { "on-complete": _vm.onComplete }
+          },
+          [
+            _c("h2", { attrs: { slot: "title" }, slot: "title" }, [
+              _vm._v("Edit Customer Application")
+            ]),
+            _vm._v(" "),
+            _c(
+              "tab-content",
+              { attrs: { title: "Step One", color: "#4b4d72" } },
+              [_c("StepOne", { attrs: { application: _vm.application } })],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "tab-content",
+              { attrs: { title: "Step Two" } },
+              [_c("StepTwo", { attrs: { application: _vm.application } })],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "tab-content",
+              { attrs: { title: "Step Three" } },
+              [_c("StepThree", { attrs: { application: _vm.application } })],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "tab-content",
+              { attrs: { title: "Step Three" } },
+              [_c("StepFour", { attrs: { application: _vm.application } })],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "vs-button",
+              {
+                attrs: { slot: "prev", flat: "", danger: "", size: "large" },
+                slot: "prev"
+              },
+              [_vm._v(" Back ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "vs-button",
+              { attrs: { slot: "next", size: "large" }, slot: "next" },
+              [_vm._v("Next")]
+            ),
+            _vm._v(" "),
+            _c(
+              "vs-button",
+              { attrs: { slot: "finish", size: "large" }, slot: "finish" },
+              [_vm._v("Update")]
+            )
+          ],
+          1
+        )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1341,7 +1358,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "setup-content", attrs: { id: "step-1" } }, [
-      _c("div", { staticClass: "mb-3" }, [
+      _c("div", { staticClass: "mb-3 container" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-xl-6" }, [
             _c("label", { staticClass: "col-form-label" }, [
@@ -1553,7 +1570,7 @@ var render = function() {
                 )
               ]),
               _vm._v(
-                "\n                            (*category A has lowest rates, then followed by category B and then C)\n                        "
+                "\r\n                            (*category A has lowest rates, then followed by category B and then C)\r\n                        "
               )
             ])
           ])
@@ -1587,7 +1604,7 @@ var render = function() {
           }
         }),
         _vm._v(
-          "\n                (this can be approximate, not held after escrow close, jumbo/investment loans usually require 6-12 months depending on the program (must be checked later))\n            "
+          "\r\n                (this can be approximate, not held after escrow close, jumbo/investment loans usually require 6-12 months depending on the program (must be checked later))\r\n            "
         )
       ]),
       _vm._v(" "),
@@ -1661,7 +1678,7 @@ var render = function() {
             }
           }
         }),
-        _vm._v("\n                (*we use the middle score)\n            ")
+        _vm._v("\r\n                (*we use the middle score)\r\n            ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-auto" }, [
@@ -2529,7 +2546,7 @@ var render = function() {
                 )
               ]),
               _vm._v(
-                "\n                            (*2 years required unless you received a recent degree, certificate, training etc.)\n                        "
+                "\r\n                            (*2 years required unless you received a recent degree, certificate, training etc.)\r\n                        "
               )
             ])
           ])
