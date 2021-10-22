@@ -79,7 +79,7 @@
           <router-link
             :to="{ name: 'update-application', params: { id: application.id } }"
           >
-      
+
 
               <i class="fas fa-edit"></i>
 
@@ -130,7 +130,7 @@
         </table>
       </div>
       <template #footer>
-        <vs-button flat danger> Cancel </vs-button>
+        <vs-button flat danger @click="deleteItem(application.id)"> Cancel </vs-button>
         <router-link
           :to="{ name: 'assign-apps', params: { id: application.id } }"
         >
@@ -167,6 +167,34 @@ export default {
     };
   },
   methods: {
+               deleteItem: function (id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let form_data = new FormData();
+          form_data.append("id", id);
+          axios
+            .post("/delete/application", form_data)
+            .then((res) => {
+                this.getApplications();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            })
+            .catch((err) => {
+              this.$root.alertNotificationMessage(
+                err.response.status,
+                err.response.data
+              );
+            });
+        }
+      });
+    },
     openModal(val) {
       this.resetForm();
       return (this.active_modal = val);
@@ -237,6 +265,7 @@ export default {
         });
     },
   },
+
 };
 </script>
 

@@ -1881,7 +1881,7 @@ var render = function() {
               _c(
                 "tbody",
                 _vm._l(_vm.apps, function(app) {
-                  return _c("tr", [
+                  return _c("tr", { key: app.id }, [
                     _c("td", [
                       _c("div", { staticClass: "media" }, [
                         _c("img", {

@@ -205,6 +205,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -212,6 +220,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
+      page: 1,
       applications: {},
       application: {},
       process: {},
@@ -313,6 +322,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       formData.append('app', this.app);
       axios.post('/add/comment', formData).then(function (res) {
         _this3.$root.alertNotificationMessage(res.status, "Comment Added Successfully");
+
+        setTimeout(function () {
+          _this3.$router.push({
+            name: 'Customer Applications'
+          });
+        }, 1000);
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this3.errors = err.response.data.errors;
@@ -331,6 +346,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       formData.append('agent', this.agent);
       axios.post('/upload/file', formData).then(function (res) {
         _this4.$root.alertNotificationMessage(res.status, "File Uploaded Successfully");
+
+        setTimeout(function () {
+          _this4.$router.push({
+            name: 'Customer Applications'
+          });
+        }, 1000);
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this4.errors = err.response.data.errors;
@@ -1720,24 +1741,29 @@ var render = function() {
                                       "list-group-item d-flex justify-content-between align-items-center"
                                   },
                                   [
-                                    _vm._v(_vm._s(comment.comment)),
                                     _c(
-                                      "span",
-                                      {
-                                        staticClass:
-                                          "badge badge-primary counter"
-                                      },
+                                      "vs-alert",
                                       [
-                                        _vm._v(
-                                          _vm._s(
-                                            _vm._f("timeformat")(
-                                              comment.created_at
+                                        [
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm._f("timeformat")(
+                                                  comment.created_at
+                                                )
+                                              )
                                             )
-                                          )
-                                        )
-                                      ]
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("p", [
+                                            _vm._v(_vm._s(comment.comment))
+                                          ])
+                                        ]
+                                      ],
+                                      2
                                     )
-                                  ]
+                                  ],
+                                  1
                                 )
                               }),
                               0

@@ -587,6 +587,31 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    deleteItem: function deleteItem(id) {
+      var _this = this;
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          var form_data = new FormData();
+          form_data.append("id", id);
+          axios.post("/delete/application", form_data).then(function (res) {
+            _this.getApplications();
+
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          })["catch"](function (err) {
+            _this.$root.alertNotificationMessage(err.response.status, err.response.data);
+          });
+        }
+      });
+    },
     openModal: function openModal(val) {
       this.resetForm();
       return this.active_modal = val;
@@ -595,36 +620,13 @@ __webpack_require__.r(__webpack_exports__);
       this.active_modal = false;
     },
     updateStatus: function updateStatus() {
-      var _this = this;
-
-      var formData = new FormData();
-      formData.append("app", this.app);
-      formData.append("agent", this.agent);
-      axios.put("/update/status/" + this.application.id, formData).then(function (res) {
-        _this.$root.alertNotificationMessage(res.status, "Status has been updated successfully");
-
-        setTimeout(function () {
-          _this.$router.push({
-            name: "users"
-          });
-        }, 1000);
-      })["catch"](function (err) {
-        if (err.response.status == 422) {
-          _this.errors = err.response.data.errors;
-          return _this.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
-        }
-
-        _this.$root.alertNotificationMessage(err.response.status, err.response.data);
-      });
-    },
-    onSubmit: function onSubmit() {
       var _this2 = this;
 
       var formData = new FormData();
       formData.append("app", this.app);
       formData.append("agent", this.agent);
-      axios.post("/assign/app", formData).then(function (res) {
-        _this2.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
+      axios.put("/update/status/" + this.application.id, formData).then(function (res) {
+        _this2.$root.alertNotificationMessage(res.status, "Status has been updated successfully");
 
         setTimeout(function () {
           _this2.$router.push({
@@ -638,6 +640,29 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         _this2.$root.alertNotificationMessage(err.response.status, err.response.data);
+      });
+    },
+    onSubmit: function onSubmit() {
+      var _this3 = this;
+
+      var formData = new FormData();
+      formData.append("app", this.app);
+      formData.append("agent", this.agent);
+      axios.post("/assign/app", formData).then(function (res) {
+        _this3.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
+
+        setTimeout(function () {
+          _this3.$router.push({
+            name: "users"
+          });
+        }, 1000);
+      })["catch"](function (err) {
+        if (err.response.status == 422) {
+          _this3.errors = err.response.data.errors;
+          return _this3.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        }
+
+        _this3.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     }
   }
@@ -662,7 +687,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .vs-button__content {\n    width: 130px;\n    height: 49px;\n} */\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* .vs-button__content {\r\n    width: 130px;\r\n    height: 49px;\r\n} */\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2522,9 +2547,18 @@ var render = function() {
               key: "footer",
               fn: function() {
                 return [
-                  _c("vs-button", { attrs: { flat: "", danger: "" } }, [
-                    _vm._v(" Cancel ")
-                  ]),
+                  _c(
+                    "vs-button",
+                    {
+                      attrs: { flat: "", danger: "" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteItem(_vm.application.id)
+                        }
+                      }
+                    },
+                    [_vm._v(" Cancel ")]
+                  ),
                   _vm._v(" "),
                   _c(
                     "router-link",

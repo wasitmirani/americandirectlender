@@ -148,6 +148,16 @@ class AppFormController extends Controller
 
 
     }
+    public function deleteApplication(Request $request){
+         $application_agent =ApplicationAgents::where('application_id',$request->id)->delete();
+         $application_attachment =ApplicationAttachment::where('application_id',$request->id)->delete();
+         $application_comment =ApplicationComment::where('application_id',$request->id)->delete();
+        $application =  Application::destroy($request->id);
+        return response()->json();
+
+
+
+    }
 
     public function getAssignedApp(){
         $assignedApps = Application::where('status','1')->with('agent')->paginate((int)env('PER_PAGE'));

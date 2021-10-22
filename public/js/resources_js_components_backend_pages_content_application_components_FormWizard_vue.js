@@ -703,7 +703,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-input {\n  width: 100%;\n}\n.vs-select-content {\n  width: 100%;\n  max-width: 100%;\n}\n.wizard-icon-container {\n  background-color: #4b4d72;\n}\n.wizard-icon-circle {\n  border-color: #4b4d72;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-input {\r\n  width: 100%;\n}\n.vs-select-content {\r\n  width: 100%;\r\n  max-width: 100%;\n}\n.wizard-icon-container {\r\n  background-color: #4b4d72;\n}\n.wizard-icon-circle {\r\n  border-color: #4b4d72;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1570,7 +1570,7 @@ var render = function() {
                 )
               ]),
               _vm._v(
-                "\r\n                            (*category A has lowest rates, then followed by category B and then C)\r\n                        "
+                "\n                            (*category A has lowest rates, then followed by category B and then C)\n                        "
               )
             ])
           ])
@@ -1604,7 +1604,7 @@ var render = function() {
           }
         }),
         _vm._v(
-          "\r\n                (this can be approximate, not held after escrow close, jumbo/investment loans usually require 6-12 months depending on the program (must be checked later))\r\n            "
+          "\n                (this can be approximate, not held after escrow close, jumbo/investment loans usually require 6-12 months depending on the program (must be checked later))\n            "
         )
       ]),
       _vm._v(" "),
@@ -1678,7 +1678,7 @@ var render = function() {
             }
           }
         }),
-        _vm._v("\r\n                (*we use the middle score)\r\n            ")
+        _vm._v("\n                (*we use the middle score)\n            ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-auto" }, [
@@ -2546,7 +2546,7 @@ var render = function() {
                 )
               ]),
               _vm._v(
-                "\r\n                            (*2 years required unless you received a recent degree, certificate, training etc.)\r\n                        "
+                "\n                            (*2 years required unless you received a recent degree, certificate, training etc.)\n                        "
               )
             ])
           ])

@@ -38,6 +38,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/upload/file',[AppFormController::class,'uploadFile']);
     Route::post('/assigned/app',[AppFormController::class,'getAssignedApp']);
     Route::post('/delete/app',[AppFormController::class,'deleteAssignedApp']);
+    Route::post('/delete/application',[AppFormController::class,'deleteApplication']);
 
 
     Route::get('/all/notification',[NotificationController::class,'index']);

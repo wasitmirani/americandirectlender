@@ -391,7 +391,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="app in apps">
+                <tr v-for="app in apps" :key="app.id">
                   <td>
                     <div class="media">
                       <img

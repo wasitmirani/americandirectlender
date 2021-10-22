@@ -347,7 +347,8 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 
             });
 
-       }
+       },
+ 
 
 
    }
@@ -363,6 +364,6 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
    width: 100%;
    max-width: 100%;
    }
-  
+
 </style>
 
