@@ -533,6 +533,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['application', 'getApplications', 'roles', 'getRoles', 'applications'],
   data: function data() {
@@ -2554,6 +2559,16 @@ var render = function() {
             "div",
             { staticClass: "media mb-0" },
             [
+              _vm.application.status == "1"
+                ? _c("p", [_vm._v("Assigned")])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.application.status == "0"
+                ? _c("p", [_vm._v("Pending")])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
               _c(
                 "router-link",
                 {
@@ -2832,6 +2847,12 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "customers" }, [_c("ul")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "media-body text-end" }, [_c("span")])
   }
 ]
 render._withStripped = true

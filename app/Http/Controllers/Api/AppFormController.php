@@ -108,21 +108,6 @@ class AppFormController extends Controller
         $application->property_insured = $request->property_insured;
         $application->liabilities_loans = $request->liabilities_loans;
         $application->update();
-
-
-
-
-
-        // $attachment = ApplicationAttachment::create([
-
-
-
-        //      'application_id'=>$application->id,
-
-        //  ]);
-
-
-
         return response()->json();
     }
 

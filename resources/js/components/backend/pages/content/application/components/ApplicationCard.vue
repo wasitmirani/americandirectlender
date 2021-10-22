@@ -8,9 +8,14 @@
         <span class="badge badge-primary">
            <router-link :to="{name: 'update-application', params: { id: application.id }}"><i class="fa  fa-edit text-light"></i></router-link>
         </span>
+    
+        
+   
+     
 
 
                               <h6>{{application.name}}</h6>
+             
                           <div class="media">
                                 <div class="media-body">
                                   <p></p>
@@ -39,8 +44,9 @@
                               </div>
                               <div class="project-status mt-4">
                                 <div class="media mb-0">
-                                  <!-- <p>70% </p>
-                                  <div class="media-body text-end"><span>Done</span></div> -->
+                                  <p v-if="application.status == '1'">Assigned</p>
+                                   <p v-if="application.status == '0'">Pending</p>
+                                  <div class="media-body text-end"><span></span></div>
 
                               <router-link :to="{name: 'assign-apps', params: { id: application.id }}">
                                   <vs-button >
@@ -49,13 +55,12 @@
                                 </router-link>
 
                                 </div>
-                                <!-- <div class="progress" style="height: 5px">
-                                  <div class="progress-bar-animated bg-primary progress-bar-striped" role="progressbar" style="width: 70%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div> -->
+     
                               </div>
 
-
+       
 </div>
+            
  <ul class="pagination pagination-primary mt-4">
       <pagination :data="application" :limit="5" @pagination-change-page="getApplications"></pagination>
 </ul>

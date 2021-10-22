@@ -504,7 +504,7 @@ var render = function() {
                 attrs: { icon: "", danger: "", active: true },
                 on: { click: _vm.alldeleteItems }
               },
-              [_vm._v("\n                             Remove Items\n        ")]
+              [_vm._v("\n                Remove Items\n        ")]
             )
           ],
           1

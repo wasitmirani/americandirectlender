@@ -3,7 +3,7 @@
         <div  v-if="selected_items.length>0">
                <strong class="ml-4">Selected Items ({{selected_items.length}}) </strong>
               <vs-button icon danger :active="true" @click="alldeleteItems">
-                                 Remove Items
+                    Remove Items
             </vs-button>
 
         </div>
