@@ -141,6 +141,7 @@ var render = function() {
                   expression: "application.name"
                 }
               ],
+              staticClass: "form-control",
               attrs: { type: "text", placeholder: "your Name" },
               domProps: { value: _vm.application.name },
               on: {
