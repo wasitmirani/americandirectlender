@@ -69,7 +69,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Date *</label>
-                                                <input type="input" class="form-control" name="date" id="inputDate" placeholder="Date">
+                                                <input type="date" class="form-control" name="date"  placeholder="Date">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -109,12 +109,12 @@
                                             <div class="form-group">
                                                 <label> 03. Type of Property:</label>
                                                 <select  class="form-control" id="country" name="property_type">
-                                                    <option value="" selected="selec3ted">House</option>
+                                                    <option value="Houese" selected="selec3ted">House</option>
                                                     <option value="Condo">Condo</option>
                                                     <option value="Townhouse">Townhouse</option>
                                                     <option value="Gated Community">Gated Community</option>
                                                     <option value="2–4-Unit Property"> 2–4-Unit Property  </option>
-                                                    <option value="Norway">Norway</option>
+
                                                 </select>
                                             </div>
                                         </div>

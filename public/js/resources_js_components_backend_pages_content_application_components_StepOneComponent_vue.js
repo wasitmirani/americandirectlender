@@ -127,27 +127,32 @@ var render = function() {
     _c("div", { staticClass: "setup-content", attrs: { id: "step-1" } }, [
       _c("div", { staticClass: "mb-3" }, [
         _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-xl-6" },
-            [
-              _c("label", { staticClass: "col-form-label" }, [
-                _vm._v("Client Name")
-              ]),
-              _vm._v(" "),
-              _c("vs-input", {
-                attrs: { primary: "", type: "text", placeholder: "your Name" },
-                model: {
+          _c("div", { staticClass: "col-xl-6" }, [
+            _c("label", { staticClass: "col-form-label" }, [
+              _vm._v("Client Name")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
                   value: _vm.application.name,
-                  callback: function($$v) {
-                    _vm.$set(_vm.application, "name", $$v)
-                  },
                   expression: "application.name"
                 }
-              })
-            ],
-            1
-          ),
+              ],
+              attrs: { type: "text", placeholder: "your Name" },
+              domProps: { value: _vm.application.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.application, "name", $event.target.value)
+                }
+              }
+            })
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-xl-6" }, [
             _c("label", { staticClass: "col-form-label" }, [

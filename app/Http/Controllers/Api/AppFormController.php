@@ -67,7 +67,7 @@ class AppFormController extends Controller
     public function update(Request $request, $id){
 
         $application = Application::find($id);
-        dd($request->all());
+
         $application->date = $request->date;
         $application->name = $request->name;
         $application->property_value = $request->property_value;
@@ -107,7 +107,7 @@ class AppFormController extends Controller
         $application->mortgage_statement = $request->mortgage_statement;
         $application->property_insured = $request->property_insured;
         $application->liabilities_loans = $request->liabilities_loans;
-        $application->save();
+        $application->update();
 
 
 

@@ -312,7 +312,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       formData.append('comment', this.comment);
       formData.append('app', this.app);
       axios.post('/add/comment', formData).then(function (res) {
-        _this3.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
+        _this3.$root.alertNotificationMessage(res.status, "Comment Added Successfully");
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this3.errors = err.response.data.errors;
@@ -330,7 +330,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       formData.append('app', this.app);
       formData.append('agent', this.agent);
       axios.post('/upload/file', formData).then(function (res) {
-        _this4.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
+        _this4.$root.alertNotificationMessage(res.status, "File Uploaded Successfully");
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this4.errors = err.response.data.errors;
@@ -1564,6 +1564,7 @@ var render = function() {
                                             "vs-select",
                                             {
                                               attrs: {
+                                                primary: "",
                                                 filter: "",
                                                 "collapse-chips": "",
                                                 placeholder: "Agents"
@@ -1690,8 +1691,7 @@ var render = function() {
                                     {
                                       attrs: {
                                         color: "rgb(30, 32, 79)",
-                                        gradient: "",
-                                        type: "submit"
+                                        gradient: ""
                                       },
                                       on: { click: _vm.postComment }
                                     },

@@ -17,7 +17,7 @@
             <div class="col-auto">
                 <label  class="col-form-label">Type Of Property</label>
                     <select class="form-control" v-model="application.property_type">
-                        <option :selected="application.property_type === 'house'" value="house">House</option>
+                        <option :selected="application.property_type === 'House'"  value="House">House</option>
                         <option :selected="application.property_type === 'Condo'" value="Condo">Condo</option>
                         <option :selected="application.property_type === 'TownHouse'" value="TownHouse">Town House</option>
                         <option :selected="application.property_type === 'GatedCommunity'" value="GatedCommunity">Gated Community</option>

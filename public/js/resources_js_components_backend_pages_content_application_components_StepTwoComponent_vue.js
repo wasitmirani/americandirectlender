@@ -388,9 +388,9 @@ var render = function() {
             _c(
               "option",
               {
-                attrs: { value: "house" },
+                attrs: { value: "House" },
                 domProps: {
-                  selected: _vm.application.property_type === "house"
+                  selected: _vm.application.property_type === "House"
                 }
               },
               [_vm._v("House")]

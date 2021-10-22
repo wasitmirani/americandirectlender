@@ -5,7 +5,7 @@
                 <div class="row">
                        <div class="col-xl-6">
                 <label class="col-form-label">Client Name</label>
-                <vs-input  primary  type="text" placeholder="your Name" v-model="application.name"></vs-input>
+                <input  type="text" placeholder="your Name" v-model="application.name"></input>
                 </div>
 
 

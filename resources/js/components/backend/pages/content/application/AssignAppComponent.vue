@@ -34,7 +34,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label class="col-form-label" for="recipient-name">Agents:</label>
-                                                <vs-select filter   collapse-chips placeholder="Agents"  v-model="agent"  v-if="agents.length>0">
+                                                <vs-select primary filter   collapse-chips placeholder="Agents"  v-model="agent"  v-if="agents.length>0">
                                                     <vs-option v-for="item in agents" :key="item.id"  :label="item.name" :value="item.id" >
                                                         {{ item.name }}
                                                     </vs-option>
@@ -69,7 +69,7 @@
                                                 <textarea class="form-control" v-model="comment"></textarea>
                                             </div>
 
-                                            <vs-button color="rgb(30, 32, 79)" gradient  type="submit" @click="postComment">
+                                            <vs-button color="rgb(30, 32, 79)" gradient  @click="postComment">
                                                Submit
                                             </vs-button>
                                         </form>
@@ -215,7 +215,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 formData.append('comment', this.comment);
                 formData.append('app', this.app);
                   axios.post('/add/comment',formData).then((res)=>{
-                        this.$root.alertNotificationMessage(res.status,"Application Assigned To Agent successfully");
+                        this.$root.alertNotificationMessage(res.status,"Comment Added Successfully");
 
                     }).catch((err)=>{
                         if(err.response.status==422){
@@ -234,7 +234,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                  formData.append('agent', this.agent);
 
                   axios.post('/upload/file',formData).then((res)=>{
-                        this.$root.alertNotificationMessage(res.status,"Application Assigned To Agent successfully");
+                        this.$root.alertNotificationMessage(res.status,"File Uploaded Successfully");
 
                     }).catch((err)=>{
                         if(err.response.status==422){
@@ -250,10 +250,8 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 let formData = new FormData();
                 formData.append('app', this.app);
                 formData.append('agent', this.agent);
-
-                  axios.post('/assign/app',formData).then((res)=>{
-                        this.$root.alertNotificationMessage(res.status,"Application Assigned To Agent successfully");
-
+                axios.post('/assign/app',formData).then((res)=>{
+                    this.$root.alertNotificationMessage(res.status,"Application Assigned To Agent successfully");
                     }).catch((err)=>{
                         if(err.response.status==422){
                             this.errors=err.response.data.errors;
