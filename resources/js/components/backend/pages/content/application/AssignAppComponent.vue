@@ -278,9 +278,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 
             },
             getFiles(){
-
                   axios.get('/application/file/'+this.$route.params.id).then((res)=>{
-
                               this.application_files = res.data.files;
                     }).catch((err)=>{
                         if(err.response.status==422){
