@@ -1729,7 +1729,11 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          _vm._s(_vm._f("timeformat")(Date()))
+                                          _vm._s(
+                                            _vm._f("timeformat")(
+                                              comment.created_at
+                                            )
+                                          )
                                         )
                                       ]
                                     )
@@ -1795,8 +1799,7 @@ var render = function() {
                                     {
                                       attrs: {
                                         color: "rgb(30, 32, 79)",
-                                        gradient: "",
-                                        type: "submit"
+                                        gradient: ""
                                       },
                                       on: { click: _vm.uploadFile }
                                     },

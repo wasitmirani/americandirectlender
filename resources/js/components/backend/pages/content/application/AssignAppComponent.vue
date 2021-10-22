@@ -76,7 +76,7 @@
 
                                     </div>
                                     <ul class="list-group">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center" v-for="comment in application_comments" :key="comment.id">{{comment.comment}}<span class="badge badge-primary counter">{{Date() |timeformat }}</span></li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center" v-for="comment in application_comments" :key="comment.id">{{comment.comment}}<span class="badge badge-primary counter">{{ comment.created_at |timeformat }}</span></li>
 
                                     </ul>
                                 </div>
@@ -116,7 +116,7 @@
                                               <label class="col-form-label">Attach File</label>
                                              <input  class="form-control" type="file"  id="file" ref="file" v-on:change="handleFileUpload()">
                                             </div>
-                                            <vs-button color="rgb(30, 32, 79)" gradient  type="submit" @click="uploadFile">
+                                            <vs-button color="rgb(30, 32, 79)" gradient  @click="uploadFile">
                                                Submit
                                             </vs-button>
                                         </form>
