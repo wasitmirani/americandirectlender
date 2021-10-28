@@ -1456,10 +1456,7 @@ var render = function() {
                           _c("div", { staticClass: "media" }, [
                             _c("img", {
                               staticClass: "img-70 rounded-circle",
-                              attrs: {
-                                alt: "",
-                                src: "/assets/images/user/7.jpg"
-                              }
+                              attrs: { alt: "", src: _vm.user.thumbnail }
                             }),
                             _vm._v(" "),
                             _c("div", { staticClass: "media-body" }, [

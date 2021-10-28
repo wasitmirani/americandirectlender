@@ -1187,7 +1187,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("Breadcrumb", { attrs: { activename: "Assigned Apps" } }),
+      _c("Breadcrumb", { attrs: { activename: "Approved Apps" } }),
       _vm._v(" "),
       _c("div", { staticClass: "container-fluid" }, [
         _c("div", { staticClass: "row" }, [

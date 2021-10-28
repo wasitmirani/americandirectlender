@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Breadcrumb activename="Assigned Apps"></Breadcrumb>
+    <Breadcrumb activename="Approved Apps"></Breadcrumb>
     <div class="container-fluid">
       <div class="row">
         <div class="card-body">

@@ -14,7 +14,7 @@
 
                         <div class="row mb-2">
                           <div class="profile-title">
-                            <div class="media">      <img class="img-70 rounded-circle" alt="" src="/assets/images/user/7.jpg">
+                            <div class="media">      <img class="img-70 rounded-circle" alt="" v-bind:src="user.thumbnail">
                               <div class="media-body">
                                 <h3 class="mb-1 f-20 txt-primary">{{user.name}}</h3>
                                 <p class="f-12">DESIGNER</p>
@@ -227,7 +227,7 @@ export default {
                 });
 
 
-                
+
                 }
                 else {
                     axios.put('/management/user/'+this.user.id,formData).then((res)=>{
