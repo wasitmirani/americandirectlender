@@ -74,12 +74,11 @@
 
                         </tbody>
                         </table>
-                    </div>
+     </div>
 
-                    <ul class="pagination pagination-primary mt-4">
-                        <pagination :data="users" :limit="5" @pagination-change-page="getUsers"></pagination>
-                    </ul>
-
+            <ul class="pagination pagination-primary mt-4">
+                <pagination :data="users" :limit="5" @pagination-change-page="getUsers"></pagination>
+            </ul>
     </div>
 </template>
 

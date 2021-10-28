@@ -112,6 +112,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1221,20 +1224,45 @@ var render = function() {
                         0
                       ),
                       _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          {
-                            attrs: { role: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.deleteItem(application.id)
+                      _c(
+                        "td",
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: { role: "button" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteItem(application.id)
+                                }
                               }
-                            }
-                          },
-                          [_c("i", { staticClass: "fa fa-trash text-danger" })]
-                        )
-                      ])
+                            },
+                            [
+                              _c("i", {
+                                staticClass: "fa fa-trash text-danger"
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              attrs: {
+                                to: {
+                                  name: "assign-apps",
+                                  params: { id: application.id }
+                                }
+                              }
+                            },
+                            [
+                              _c("i", {
+                                staticClass: "fa fa-edit text-success"
+                              })
+                            ]
+                          )
+                        ],
+                        1
+                      )
                     ])
                   }),
                   0

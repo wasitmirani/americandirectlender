@@ -9,23 +9,33 @@ require('./bootstrap');
 window.Vue = require('vue').default;
 
 import router from "./router";
+// import vue progress
 import VueProgressBar from 'vue-progressbar'
+
+// import vue vuesax
 import Vuesax from 'vuesax'
+
+// import vueFormWizard
 import VueFormWizard from 'vue-form-wizard'
-
-import moment from "moment";
-import Multiselect from 'vue-multiselect'
-
-import 'vue-multiselect/dist/vue-multiselect.min.css';
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 
+// import moment.js
+import moment from "moment";
+
+//import vue-multiselect
+import Multiselect from 'vue-multiselect'
+import 'vue-multiselect/dist/vue-multiselect.min.css';
+
+//import vue-content-laceholder
 import VueContentPlaceholders from 'vue-content-placeholders'
+
+//import s-alert2
 import Swal from 'sweetalert2'
 
-
+// import vuesax css
 import 'vuesax/dist/vuesax.css'
 
-
+// swal initialization
 window.Swal = Swal;
 Vue.use(VueContentPlaceholders)
 // register globally
@@ -72,6 +82,7 @@ const app = new Vue({
             primary_color: "",
         };
     },
+    //alert notification method
     methods: {
         alertNotification(position = 'top-right', border, title, description) {
             const noti = this.$vs.notification({
@@ -110,6 +121,7 @@ const app = new Vue({
                 window.location.href = "/login";
             });
         },
+        //delete item method
         deleteItem(url) {
             Swal.fire({
                 title: "Are you sure?",

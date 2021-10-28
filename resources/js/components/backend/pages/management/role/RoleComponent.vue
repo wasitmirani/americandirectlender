@@ -1,30 +1,28 @@
 <template>
   <div>
       <Breadcrumb activename="Roles Management"  :previous="[{name:'Users',link:'/users'}]"></Breadcrumb>
-
         <div class="row">
             <div class="col-12">
-                   <div class="card">
+                <div class="card">
                   <div class="card-header pb-0">
                     <h5>Roles
-
-                     <div style="float: right;">
-                    <PrimaryButton icon="fas fa-plus"  label="Add Role"  v-on:activemodal="openModal($event)"></PrimaryButton>
-                        </div>
-
+                    <div style="float: right;">
+                      <PrimaryButton icon="fas fa-plus"  label="Add Role"  v-on:activemodal="openModal($event)"></PrimaryButton>
+                    </div>
                     </h5>
 
-                  <div class="mb-3 col-4 mt-3">
+                    <div class="mb-3 col-4 mt-3">
 
-                        <SearchInput :apiurl="'/management/role?page=' +this.page_num"
+                    <SearchInput :apiurl="'/management/role?page=' +this.page_num"
                         v-on:query="isquery($event)"
                         v-on:loading="loadingStart($event)"
                         v-on:reload="getRoles()"
                         v-on:filterList="filterdata($event)"
 
-                        label="Search Roles"></SearchInput>
+                        label="Search Roles">
+                    </SearchInput>
                     </div>
-                  </div>
+                </div>
 
                   <div class="card-body">
                        <content-placeholders v-if="loading">

@@ -402,9 +402,9 @@
                         title=""
                       />
                       <div class="media-body">
-                        <a href="product-page.html"
-                          ><span>{{ app.name }}</span></a
-                        >
+                       <router-link
+            :to="{ name: 'show-application', params: { id: app.id } }"
+          ><span>{{ app.name }}</span></router-link>
                       </div>
                     </div>
                   </td>

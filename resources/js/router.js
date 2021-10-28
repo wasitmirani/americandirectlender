@@ -40,6 +40,7 @@ const routes = [
     { path: "/permissions", component: () => setComponent("management/permission/Permission"), name: "permissions", },
     { path: "/send/notify", component: () => setComponent("content/notification/SendNotify"), name: "SendNotify", },
     { path: "/show/notify", component: () => setComponent("content/notification/ShowNotification"), name: "ShowNotify", },
+
     {
         path: "/detail/notify:id",
         component: () => setComponent("content/notification/DetailNotification"),
@@ -75,6 +76,11 @@ const routes = [
         path: "/assigned/apps/",
         component: () => setComponent("content/application/AssignedApp"),
         name: "assigned-apps",
+    },
+    {
+        path: "/edit/assigned/:id",
+        component: () => setComponent("content/application/AssignApp"),
+        name: "EditAssignedApp"
     },
 
 

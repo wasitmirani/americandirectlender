@@ -24,6 +24,7 @@ class AppFormController extends Controller
         ->orderBy('name','ASC')
         ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
+
         $process = Application::where('status','=','0')
         ->orderBy('name','ASC')
         ->with('agents','attachments')->paginate(env('PAR_PAGE'));

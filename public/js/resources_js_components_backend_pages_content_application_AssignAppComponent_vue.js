@@ -213,6 +213,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -247,7 +249,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.query = query;
     },
     loadingStart: function loadingStart(value) {
-      console.log(value);
       this.loading = value;
     },
     filterdata: function filterdata(data) {
@@ -300,7 +301,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.next = 6;
                 return axios.get(url).then(function (res) {
                   _this2.roles = res.data.roles.data;
-                  console.log(res);
                   _this2.loading = false;
                 })["catch"](function (err) {
                   _this2.$root.alertErrorMessage(err.response.status, err.response.data);
@@ -423,7 +423,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context3.next = 6;
                 return axios.get(url).then(function (res) {
                   _this8.agents = res.data.agents;
-                  console.log(res);
+                  cosnole.log(res);
                   _this8.loading = false;
                 })["catch"](function (err) {
                   _this8.$root.alertErrorMessage(err.response.status, err.response.data);
@@ -452,7 +452,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this9.app = res.data.application.id;
       _this9.application_agent = res.data.application.agents;
       _this9.agent = _this9.application_agent['0'].agent_id;
-      console.log(res.application.data);
     })["catch"](function (err) {
       if (err.response.status == 422) {
         _this9.errors = err.response.data.errors;
@@ -1743,7 +1742,30 @@ var render = function() {
                                   [
                                     _c(
                                       "vs-alert",
+                                      {
+                                        attrs: { shadow: "" },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "title",
+                                              fn: function() {
+                                                return [
+                                                  _c("p", [
+                                                    _vm._v(
+                                                      _vm._s(comment.comment)
+                                                    )
+                                                  ])
+                                                ]
+                                              },
+                                              proxy: true
+                                            }
+                                          ],
+                                          null,
+                                          true
+                                        )
+                                      },
                                       [
+                                        _vm._v(" "),
                                         [
                                           _c("span", [
                                             _vm._v(
@@ -1753,10 +1775,6 @@ var render = function() {
                                                 )
                                               )
                                             )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("p", [
-                                            _vm._v(_vm._s(comment.comment))
                                           ])
                                         ]
                                       ],

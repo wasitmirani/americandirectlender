@@ -34,11 +34,17 @@
                                         v-on:filterList="filterdata($event)"
                                         label="Search Applications">
                                     </SearchInput>
+
                                         <div class="col-xxl-6 col-lg-6 " v-for="application in applications" :key="application.id">
 
                                 <ApplicationCard :getRoles="getRoles" :roles="agents" :getApplications="getApplications" :application="application" :applications="applications"></ApplicationCard>
 
                                    </div>
+                                     <h6 class="text-center text-warning" v-if="applications.length < 1">No Application Found</h6>
+
+
+
+
                         </div>
                       </div>
                       <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
@@ -52,6 +58,9 @@
                         <div class="row">
                              <div class="col-xxl-4 " v-for="application in done" :key="application.id">
                                   <ApplicationCard :getApplications="getApplications" :application="application" :roles="agents" :applications="applications"></ApplicationCard>
+
+
+
                              </div>
 
                         </div>
@@ -105,8 +114,8 @@ export default {
             return (this.query = query);
           },
 
-            loadingStart(value) {
-           console.log(value);
+        loadingStart(value) {
+
             this.loading = value;
           },
           filterdata(data){
@@ -165,6 +174,9 @@ export default {
 
 
 <style>
+.vs-alert a {
+    text-decoration: none;
+}
 
 </style>
 

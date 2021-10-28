@@ -161,6 +161,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["application", "getApplications", "roles", "getRoles", "applications"],
   data: function data() {
@@ -271,7 +274,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-card-content.type-3 .vs-card {\n  display: flex;\n  max-width: 100%;\n}\n.vs-button__content {\n  /* width: ; */\n  /* height:  !important; */\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-card-content.type-3 .vs-card {\n  display: flex;\n  max-width: 100%;\n}\n.vs-button__content {\n  /* width: ; */\n  /* height:  !important; */\n}\na{\n    text-decoration: none;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -422,51 +425,56 @@ var render = function() {
               key: "title",
               fn: function() {
                 return [
-                  _vm._v(
-                    "\n      " + _vm._s(_vm.application.name) + "\n      "
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "name",
+                      attrs: {
+                        to: {
+                          name: "show-application",
+                          params: { id: _vm.application.id }
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n      " + _vm._s(_vm.application.name) + "\n      "
+                      )
+                    ]
                   ),
+                  _vm._v(" "),
                   _c(
                     "div",
                     { staticStyle: { float: "right" } },
                     [
                       _c(
                         "vs-button",
-                        { attrs: { success: "", icon: "" } },
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              attrs: {
-                                to: {
-                                  name: "show-application",
-                                  params: { id: _vm.application.id }
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fas fa-eye" })]
-                          )
-                        ],
-                        1
+                        {
+                          attrs: {
+                            success: "",
+                            icon: "",
+                            to: {
+                              name: "show-application",
+                              params: { id: _vm.application.id }
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-eye" })]
                       ),
                       _vm._v(" "),
                       _c(
                         "vs-button",
-                        { attrs: { primary: "", icon: "" } },
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              attrs: {
-                                to: {
-                                  name: "update-application",
-                                  params: { id: _vm.application.id }
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fas fa-edit" })]
-                          )
-                        ],
-                        1
+                        {
+                          attrs: {
+                            primary: "",
+                            icon: "",
+                            to: {
+                              name: "update-application",
+                              params: { id: _vm.application.id }
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-edit" })]
                       )
                     ],
                     1
@@ -502,9 +510,29 @@ var render = function() {
                         }
                       }
                     },
-                    [_c("vs-button", [_vm._v(" Accept ")])],
+                    [
+                      _vm.application.status == "0"
+                        ? _c("vs-button", [_vm._v(" Accept ")])
+                        : _vm._e()
+                    ],
                     1
-                  )
+                  ),
+                  _vm._v(" "),
+                  _vm.application.status == "1"
+                    ? _c(
+                        "vs-button",
+                        {
+                          attrs: {
+                            success: "",
+                            to: {
+                              name: "assign-apps",
+                              params: { id: _vm.application.id }
+                            }
+                          }
+                        },
+                        [_vm._v(" Approved ")]
+                      )
+                    : _vm._e()
                 ]
               },
               proxy: true

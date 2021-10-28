@@ -1894,11 +1894,25 @@ var render = function() {
                           }
                         }),
                         _vm._v(" "),
-                        _c("div", { staticClass: "media-body" }, [
-                          _c("a", { attrs: { href: "product-page.html" } }, [
-                            _c("span", [_vm._v(_vm._s(app.name))])
-                          ])
-                        ])
+                        _c(
+                          "div",
+                          { staticClass: "media-body" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: {
+                                  to: {
+                                    name: "show-application",
+                                    params: { id: app.id }
+                                  }
+                                }
+                              },
+                              [_c("span", [_vm._v(_vm._s(app.name))])]
+                            )
+                          ],
+                          1
+                        )
                       ])
                     ]),
                     _vm._v(" "),

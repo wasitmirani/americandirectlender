@@ -78,11 +78,13 @@
 
                                     <ul class="list-group">
                                         <li class="list-group-item d-flex justify-content-between align-items-center"  v-for="comment in application_comments"  :key="comment.id" >
-                                        <vs-alert>
-                                          <template>
+                                        <vs-alert shadow>
+                                        <template #title>
+                                             <p>{{comment.comment}}</p>
+                                        </template>
+                                        <template>
                                             <span>{{comment.created_at | timeformat}}</span>
-                                            <p>{{comment.comment}}</p>
-                                          </template>
+                                        </template>
                                         </vs-alert>
                                         </li>
                                     </ul>
@@ -185,7 +187,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
             return (this.query = query);
           },
             loadingStart(value) {
-           console.log(value);
+
             this.loading = value;
           },
             filterdata(data){
@@ -212,7 +214,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
              const url="/management/role?page=" + page + "&query=" + this.query;
                await axios.get(url).then((res)=>{
                    this.roles = res.data.roles.data;
-                    console.log(res)
+
                    this.loading=false;
 
                }).catch((err)=>{
@@ -311,7 +313,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
              const url="/management/agents?page=" + page + "&query=" + this.query;
               await axios.get(url).then((res)=>{
                 this.agents = res.data.agents;
-                console.log(res)
+              cosnole.log(res)
                 this.loading=false;
 
                }).catch((err)=>{
@@ -335,7 +337,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 this.agent =  this.application_agent['0'].agent_id
 
 
-                console.log(res.application.data)
+
 
 
             }).catch((err)=>{
@@ -348,7 +350,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
             });
 
        },
- 
+
 
 
    }

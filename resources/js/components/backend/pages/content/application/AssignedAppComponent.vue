@@ -35,6 +35,9 @@
                     <a role="button" @click="deleteItem(application.id)"
                       ><i class="fa fa-trash text-danger"></i
                     ></a>
+                <router-link :to="{ name: 'assign-apps', params: { id: application.id } }">
+                    <i class="fa fa-edit text-success"></i>
+                </router-link>
                   </td>
                 </tr>
               </tbody>

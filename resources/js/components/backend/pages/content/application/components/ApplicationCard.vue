@@ -65,25 +65,25 @@
     <strong>{{ application.created_at | dateformat }}</strong>
     <vs-alert shadow>
       <template #title>
+          <router-link :to="{ name: 'show-application', params: { id: application.id } }" class="name">
         {{ application.name }}
+        </router-link>
         <div style="float: right">
-             <vs-button success icon>
-          <router-link
-            :to="{ name: 'show-application', params: { id: application.id } }"
-          >
+
+             <vs-button success icon :to="{ name: 'show-application', params: { id: application.id } }">
+
 
               <i class="fas fa-eye"></i>
-                </router-link>
+
             </vs-button>
-    <vs-button primary icon>
-          <router-link
-            :to="{ name: 'update-application', params: { id: application.id } }"
-          >
+
+    <vs-button primary icon  :to="{ name: 'update-application', params: { id: application.id } }">
+
 
 
               <i class="fas fa-edit"></i>
 
-          </router-link>
+
             </vs-button>
         </div>
       </template>
@@ -134,8 +134,11 @@
         <router-link
           :to="{ name: 'assign-apps', params: { id: application.id } }"
         >
-          <vs-button> Accept </vs-button>
+          <vs-button v-if="application.status == '0'"> Accept </vs-button>
         </router-link>
+
+          <vs-button success v-if="application.status == '1'" :to="{ name: 'assign-apps', params: { id: application.id } }"> Approved </vs-button>
+
       </template>
     </vs-alert>
     <ul class="pagination pagination-primary mt-4">
@@ -279,5 +282,8 @@ export default {
 .vs-button__content {
   /* width: ; */
   /* height:  !important; */
+}
+a{
+    text-decoration: none;
 }
 </style>

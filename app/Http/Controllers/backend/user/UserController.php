@@ -10,11 +10,13 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Notifications\NotifyUser;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\hasRole;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\HasRoles;
 
 class UserController extends Controller
 {
@@ -24,7 +26,7 @@ class UserController extends Controller
 
 
         $q=request('query');
-        
+
 
         $total_users=User::all()->count();
 
@@ -158,6 +160,13 @@ class UserController extends Controller
         return response()->json(['message'=>$delete]);
     }
 
+
+    public function removeAllRoles(Request $request){
+
+        $delete=Role::whereIn('id',json_decode($request->ids))->delete();
+        return response()->json(['message'=>$delete]);
+    }
+
     public function logout(){
         Auth::logout();
         $url=route('login');
@@ -165,7 +174,13 @@ class UserController extends Controller
     }
 
     public function getAgents(){
-        $agents = User::where('user_id','2')->get();
+
+
+       $agents =User::role('Agent')->get();
+        // $agents = $user->hasRole('Agent');
+
+
+
         return response()->json(['agents'=>$agents]);
     }
 }
