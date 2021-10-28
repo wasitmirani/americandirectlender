@@ -228,7 +228,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                   axios.post('/add/comment',formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"Comment Added Successfully");
                               setTimeout(() => {
-                            this.$router.push({ name: 'Customer Applications' })
+                            this.$router.push({ name: 'assigned-apps' })
                         }, 1000);
 
                     }).catch((err)=>{
@@ -250,7 +250,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                   axios.post('/upload/file',formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"File Uploaded Successfully");
                             setTimeout(() => {
-                            this.$router.push({ name: 'Customer Applications' })
+                            this.$router.push({ name: 'assigned-apps' })
                         }, 1000);
 
                     }).catch((err)=>{

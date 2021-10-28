@@ -3,9 +3,6 @@
     <Breadcrumb activename="Assigned Apps"></Breadcrumb>
     <div class="container-fluid">
       <div class="row">
-        <div class="card">
-          <div class="card-header pb-0"></div>
-        </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table">

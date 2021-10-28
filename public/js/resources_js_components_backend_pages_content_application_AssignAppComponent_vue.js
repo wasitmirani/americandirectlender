@@ -325,7 +325,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
         setTimeout(function () {
           _this3.$router.push({
-            name: 'Customer Applications'
+            name: 'assigned-apps'
           });
         }, 1000);
       })["catch"](function (err) {
@@ -349,7 +349,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
         setTimeout(function () {
           _this4.$router.push({
-            name: 'Customer Applications'
+            name: 'assigned-apps'
           });
         }, 1000);
       })["catch"](function (err) {
