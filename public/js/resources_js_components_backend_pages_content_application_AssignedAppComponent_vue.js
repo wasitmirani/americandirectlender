@@ -112,6 +112,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1200,23 +1208,29 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "td",
-                        _vm._l(application.agent, function(user) {
-                          return _c("span", { key: user.id }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "span badge rounded-pill pill-badge-primary ml-2 mr-2"
-                              },
-                              [
-                                _c("span", { staticClass: "span-name" }, [
-                                  _vm._v(" " + _vm._s(user.name))
-                                ])
-                              ]
-                            )
-                          ])
-                        }),
-                        0
+                        [
+                          _vm._l(application.agent, function(user) {
+                            return _c("span", { key: user.id }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "span badge rounded-pill pill-badge-primary ml-2 mr-2"
+                                },
+                                [
+                                  _c("span", { staticClass: "span-name" }, [
+                                    _vm._v(" " + _vm._s(user.name))
+                                  ])
+                                ]
+                              )
+                            ])
+                          }),
+                          _vm._v(" "),
+                          application.agent.length < 1
+                            ? _c("span", [_vm._m(1, true)])
+                            : _vm._e()
+                        ],
+                        2
                       ),
                       _vm._v(" "),
                       _c(
@@ -1287,6 +1301,16 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "span badge rounded-pill pill-badge-primary ml-2 mr-2" },
+      [_c("span", { staticClass: "span-name" }, [_vm._v("No Agent Found")])]
+    )
   }
 ]
 render._withStripped = true

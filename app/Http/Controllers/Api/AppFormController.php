@@ -137,14 +137,16 @@ class AppFormController extends Controller
 
 
         $application = Application::find($request->app);
+
         $application->status = '1';
         $application->update();
-        $agent = ApplicationAgents::create([
+        $agent = ApplicationAgents::updateOrCreate([
             'application_id' => $request->app,
             'agent_id' => $request->agent
         ]);
 
          return response()->json();
+
 
 
 

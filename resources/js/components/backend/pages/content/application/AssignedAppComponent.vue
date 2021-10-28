@@ -27,6 +27,14 @@
                       </div>
 
                     </span>
+                     <span v-if="application.agent.length < 1">
+
+                       <div class="span badge rounded-pill pill-badge-primary ml-2 mr-2" >
+                          <span class="span-name">No Agent Found</span>
+                      </div>
+
+                    </span>
+
                   </td>
                   <td>
                     <a role="button" @click="deleteItem(application.id)"

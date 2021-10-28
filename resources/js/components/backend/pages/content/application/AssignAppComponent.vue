@@ -269,6 +269,10 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 formData.append('agent', this.agent);
                 axios.post('/assign/app',formData).then((res)=>{
                     this.$root.alertNotificationMessage(res.status,"Application Assigned To Agent successfully");
+                    setTimeout(() => {
+                            this.$router.push({ name: 'assigned-apps' })
+                        }, 1000);
+
                     }).catch((err)=>{
                         if(err.response.status==422){
                             this.errors=err.response.data.errors;

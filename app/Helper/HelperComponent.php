@@ -52,7 +52,7 @@ class HelperComponent {
                     "single_link" => setSingleLink("Applications", "file-text", null, "/customer/applications"),
                 ],
                 [
-                    "single_link" => setSingleLink( "Assigned Apps","file-text",null,"/assigned/apps"),
+                    "single_link" => setSingleLink( "Approved Apps","file-text",null,"/assigned/apps"),
                 ],
                 // [
                 //     "single_link" => setSingleLink( "Assign App","file-text",null,"/assign/apps"),

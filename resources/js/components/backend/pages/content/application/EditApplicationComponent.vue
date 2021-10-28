@@ -9,11 +9,6 @@ export default {
   components:{
       FormWizard
     },
-
-
-
-
-
 }
 
 

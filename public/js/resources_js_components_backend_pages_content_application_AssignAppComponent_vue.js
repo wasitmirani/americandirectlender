@@ -369,6 +369,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       formData.append('agent', this.agent);
       axios.post('/assign/app', formData).then(function (res) {
         _this5.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
+
+        setTimeout(function () {
+          _this5.$router.push({
+            name: 'assigned-apps'
+          });
+        }, 1000);
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this5.errors = err.response.data.errors;
