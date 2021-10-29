@@ -30,10 +30,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
 //
 //
 //
@@ -419,9 +415,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    var _ref;
-
-    return _ref = {
+    return {
       logs: [],
       user: {},
       app_name: "",
@@ -430,8 +424,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       total_roles: 0,
       assigned_apps: 0,
       roles: {},
-      apps: {}
-    }, _defineProperty(_ref, "apps", []), _defineProperty(_ref, "dates", []), _ref;
+      apps: {},
+      applications: [],
+      dates: []
+    };
   },
   methods: {
     dashboardChart: function dashboardChart() {
@@ -454,7 +450,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         },
         series: [{
           name: "Applications",
-          data: ['1', '2', '1', '3']
+          data: [1, 2, 1, 3]
         }],
         title: {
           text: 'Applications Statistics',
@@ -464,7 +460,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           text: '',
           align: 'left'
         },
-        labels: ["2021-09-19T03:30:00", "2021-09-19T04:30:00", "2021-09-19T05:30:00", "2021-09-19T06:30:00"],
+        labels: ['12 oct 2021', '11 oct 2021', '15 oct 2021', '20 oct 2021'],
         xaxis: {
           type: 'datetime'
         },
@@ -492,16 +488,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context.next = 2;
                 return axios.get("dashboard").then(function (res) {
-                  //   console.log(res)
+                  console.log(res.data);
                   _this.total_users = res.data.users;
                   _this.total_applications = res.data.total_application;
                   _this.roles = res.data.roles;
                   _this.total_roles = res.data.total_roles;
                   _this.assigned_apps = res.data.assigned_apps;
-                  _this.apps = res.data.total;
+                  _this.applications = res.data.total;
                   _this.dates = res.data.dates;
                   series.applications = _this.dates;
-                  series.total = _this.apps;
+                  series.total = _this.applications;
                 });
 
               case 2:

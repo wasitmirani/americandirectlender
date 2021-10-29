@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Api;
 use App\Mail\AppAssignMail;
 use App\Models\Application;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\ApplicationAgents;
 use App\Models\ApplicationComment;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ApplicationAttachment;
+use Symfony\Component\Console\Input\Input;
 
 class AppFormController extends Controller
 {
@@ -56,8 +58,19 @@ class AppFormController extends Controller
 
     public function getAppComment($id){
         $comments = ApplicationComment::where('application_id',$id)->get();
-        return response()->json(['comments'=>$comments]);
+        $attachment = ApplicationAttachment::where('application_id',$id)->get();
+        return response()->json(['comments'=>$comments,'attachment'=>$attachment]);
     }
+
+    public function getDownload($id)
+{
+
+    $file = ApplicationAttachment::where('id', $id)->first();
+    $path = public_path("/app/agent/file/".$file->file);
+    return response()->download($path);
+
+}
+
 
     public function getAppFile($id){
         $files = ApplicationAttachment::where('application_id',$id)->get();
@@ -173,6 +186,13 @@ class AppFormController extends Controller
         // $application_attachment =ApplicationAttachment::where('application_id',$request->id)->delete();
         // $application_comment =ApplicationComment::where('application_id',$request->id)->delete();
         // $application =  Application::destroy($request->id);
+        return response()->json();
+
+    }
+
+    public function deleteAppAttachment(Request $request){
+
+        $application_attachment = ApplicationAttachment::where('id',$request->id)->delete();
         return response()->json();
 
     }

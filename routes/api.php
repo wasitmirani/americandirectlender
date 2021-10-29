@@ -33,6 +33,8 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/recent/applications',[DashboardController::class,'recentApp']);
     Route::get('/application/comment/{id}',[AppFormController::class,'getAppComment']);
     Route::get('/application/file/{id}',[AppFormController::class,'getAppFile']);
+    Route::post('/download/file/{id}',[AppFormController::class,'getDownload']);
+    Route::post('/delete/file',[AppFormController::class,'deleteAppAttachment']);
     Route::post('/assign/app',[AppFormController::class,'AssignApp']);
     Route::post('/add/comment',[AppFormController::class,'postComment']);
     Route::post('/upload/file',[AppFormController::class,'uploadFile']);

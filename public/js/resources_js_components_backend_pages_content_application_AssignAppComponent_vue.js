@@ -215,6 +215,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -337,21 +348,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this3.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     },
-    uploadFile: function uploadFile() {
+    downloadFile: function downloadFile(id) {
       var _this4 = this;
 
-      var formData = new FormData();
-      formData.append('thumbnail', this.thumbnail);
-      formData.append('app', this.app);
-      formData.append('agent', this.agent);
-      axios.post('/upload/file', formData).then(function (res) {
-        _this4.$root.alertNotificationMessage(res.status, "File Uploaded Successfully");
+      axios.post('/download/file/' + id).then(function (res) {
+        _this4.$root.alertNotificationMessage(res.status, "File Downloaded");
 
-        setTimeout(function () {
-          _this4.$router.push({
-            name: 'assigned-apps'
-          });
-        }, 1000);
+        console.log(res);
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this4.errors = err.response.data.errors;
@@ -361,14 +364,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this4.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     },
-    assignAgent: function assignAgent() {
+    uploadFile: function uploadFile() {
       var _this5 = this;
 
       var formData = new FormData();
+      formData.append('thumbnail', this.thumbnail);
       formData.append('app', this.app);
       formData.append('agent', this.agent);
-      axios.post('/assign/app', formData).then(function (res) {
-        _this5.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
+      axios.post('/upload/file', formData).then(function (res) {
+        _this5.$root.alertNotificationMessage(res.status, "File Uploaded Successfully");
 
         setTimeout(function () {
           _this5.$router.push({
@@ -384,11 +388,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this5.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     },
-    getComments: function getComments() {
+    assignAgent: function assignAgent() {
       var _this6 = this;
 
-      axios.get('/application/comment/' + this.$route.params.id).then(function (res) {
-        _this6.application_comments = res.data.comments;
+      var formData = new FormData();
+      formData.append('app', this.app);
+      formData.append('agent', this.agent);
+      axios.post('/assign/app', formData).then(function (res) {
+        _this6.$root.alertNotificationMessage(res.status, "Application Assigned To Agent successfully");
+
+        setTimeout(function () {
+          _this6.$router.push({
+            name: 'assigned-apps'
+          });
+        }, 1000);
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this6.errors = err.response.data.errors;
@@ -398,11 +411,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this6.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     },
-    getFiles: function getFiles() {
+    getComments: function getComments() {
       var _this7 = this;
 
-      axios.get('/application/file/' + this.$route.params.id).then(function (res) {
-        _this7.application_files = res.data.files;
+      axios.get('/application/comment/' + this.$route.params.id).then(function (res) {
+        _this7.application_comments = res.data.comments;
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this7.errors = err.response.data.errors;
@@ -412,9 +425,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this7.$root.alertNotificationMessage(err.response.status, err.response.data);
       });
     },
+    getFiles: function getFiles() {
+      var _this8 = this;
+
+      axios.get('/application/file/' + this.$route.params.id).then(function (res) {
+        _this8.application_files = res.data.files;
+      })["catch"](function (err) {
+        if (err.response.status == 422) {
+          _this8.errors = err.response.data.errors;
+          return _this8.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        }
+
+        _this8.$root.alertNotificationMessage(err.response.status, err.response.data);
+      });
+    },
     getAgents: function getAgents() {
       var _arguments3 = arguments,
-          _this8 = this;
+          _this9 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var page, url;
@@ -423,16 +450,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 page = _arguments3.length > 0 && _arguments3[0] !== undefined ? _arguments3[0] : 1;
-                _this8.loading = true;
-                _this8.page_num = page;
-                url = "/management/agents?page=" + page + "&query=" + _this8.query;
+                _this9.loading = true;
+                _this9.page_num = page;
+                url = "/management/agents?page=" + page + "&query=" + _this9.query;
                 _context3.next = 6;
                 return axios.get(url).then(function (res) {
-                  _this8.agents = res.data.agents;
+                  _this9.agents = res.data.agents;
                   cosnole.log(res);
-                  _this8.loading = false;
+                  _this9.loading = false;
                 })["catch"](function (err) {
-                  _this8.$root.alertErrorMessage(err.response.status, err.response.data);
+                  _this9.$root.alertErrorMessage(err.response.status, err.response.data);
                 });
 
               case 6:
@@ -442,10 +469,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee3);
       }))();
+    },
+    deleteFile: function deleteFile(id) {
+      var _this10 = this;
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          var form_data = new FormData();
+          form_data.append("id", id);
+          axios.post("/delete/file", form_data).then(function (res) {
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          })["catch"](function (err) {
+            _this10.$root.alertNotificationMessage(err.response.status, err.response.data);
+          });
+        }
+      });
     }
   },
   mounted: function mounted() {
-    var _this9 = this;
+    var _this11 = this;
 
     this.getApplications();
     this.getRoles();
@@ -455,16 +505,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var url = "/customer/applications/" + this.$route.params.id;
     axios.get(url).then(function (res) {
       // this.user=res.data.user;
-      _this9.app = res.data.application.id;
-      _this9.application_agent = res.data.application.agents;
-      _this9.agent = _this9.application_agent['0'].agent_id;
+      _this11.app = res.data.application.id;
+      _this11.application_agent = res.data.application.agents;
+      _this11.agent = _this11.application_agent['0'].agent_id;
     })["catch"](function (err) {
       if (err.response.status == 422) {
-        _this9.errors = err.response.data.errors;
-        return _this9.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
+        _this11.errors = err.response.data.errors;
+        return _this11.$root.alertNotificationMessage(err.response.status, err.response.data.errors);
       }
 
-      _this9.$root.alertNotificationMessage(err.response.status, err.response.data);
+      _this11.$root.alertNotificationMessage(err.response.status, err.response.data);
     });
   }
 });
@@ -488,7 +538,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-input {\n width: 100%;\n}\n.vs-select-content {\n width: 100%;\n max-width: 100%;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-input {\n width: 100%;\n}\n.vs-select-content {\n width: 100%;\n max-width: 100%;\n}\n.vs-alert{\n     color:#1e204fcc;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1862,7 +1912,88 @@ var render = function() {
                                 ],
                                 1
                               )
-                            ])
+                            ]),
+                            _vm._v(" "),
+                            _c("h6", [_vm._v("Uploaded Files")]),
+                            _vm._v(" "),
+                            _c(
+                              "ul",
+                              { staticClass: "list-group" },
+                              _vm._l(_vm.application_files, function(file) {
+                                return _c(
+                                  "li",
+                                  {
+                                    key: file.id,
+                                    staticClass:
+                                      "list-group-item d-flex justify-content-between align-items-center"
+                                  },
+                                  [
+                                    _c("a", { attrs: { href: file.file } }, [
+                                      _vm._v("File No 1")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "badge badge-primary counter"
+                                      },
+                                      [
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm._f("timeformat")(
+                                              file.created_at
+                                            )
+                                          )
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(
+                                      "|\n                                           "
+                                    ),
+                                    _c("span", [
+                                      _c(
+                                        "a",
+                                        {
+                                          attrs: { role: "button" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.deleteFile(file.id)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass:
+                                              "fa fa-trash text-danger"
+                                          })
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v("|"),
+                                    _c(
+                                      "span",
+                                      [
+                                        _c(
+                                          "vs-button",
+                                          {
+                                            attrs: { role: "button" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.downloadFile(file.id)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Download")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
                           ])
                         ])
                       ])

@@ -19,7 +19,8 @@ class DashboardController extends Controller
         return view('backend.pages.dashboard');
     }
     public function getDashboard(Request $request){
-        $users=User::all()->count();
+
+        $users = User::all()->count();
         $total_applications= Application::all()->count();
         $total_roles = Role::all()->count();
         $assigned_apps = Application::where('status','1')->count();
@@ -32,8 +33,6 @@ class DashboardController extends Controller
             $dates[$key] = $value->created_at;
             $apps[$key] = $value->total;
         }
-
-
         return response()->json(['total'=>$apps,'dates'=> $dates,'users'=>$users,'roles'=>$agents,'total_application'=>$total_applications,'total_roles'=>$total_roles,'assigned_apps'=>$assigned_apps]);
     }
 

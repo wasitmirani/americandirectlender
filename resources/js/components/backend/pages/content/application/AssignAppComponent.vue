@@ -130,11 +130,22 @@
                                                Submit
                                             </vs-button>
                                         </form>
-                                    </div>
-                                    <!-- <ul class="list-group">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center" v-for="file in application_files" :key="file.id">{{file.file}}<span class="badge badge-primary counter">{{file.created_at}}</span></li>
 
-                                    </ul> -->
+
+
+                                    </div>
+                                    <h6>Uploaded Files</h6>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center" v-for="file in application_files" :key="file.id">
+                                            <a v-bind:href="file.file">File No 1</a>
+                                            <span class="badge badge-primary counter">{{file.created_at | timeformat}}</span>|
+                                            <span> <a role="button" @click="deleteFile(file.id)"
+                      ><i class="fa fa-trash text-danger"></i
+                    ></a></span>|<span> <vs-button role="button" @click="downloadFile(file.id)"
+                      >Download</vs-button></span>
+                                            </li>
+
+                                    </ul>
                                 </div>
                             </div>
                           </div>
@@ -241,6 +252,24 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 });
 
                },
+               downloadFile(id){
+                  axios.post('/download/file/'+id).then((res)=>{
+                        this.$root.alertNotificationMessage(res.status,"File Downloaded");
+                     console.log(res)
+
+                    }).catch((err)=>{
+                        if(err.response.status==422){
+                            this.errors=err.response.data.errors;
+                            return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
+                        }
+                    this.$root.alertNotificationMessage(err.response.status,err.response.data);
+
+                });
+
+
+
+
+               },
                 uploadFile(){
                  let formData = new FormData();
                 formData.append('thumbnail', this.thumbnail);
@@ -324,6 +353,33 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                      this.$root.alertErrorMessage(err.response.status,err.response.data);
                });
             },
+  deleteFile: function (id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let form_data = new FormData();
+          form_data.append("id", id);
+          axios
+            .post("/delete/file", form_data)
+            .then((res) => {
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            })
+            .catch((err) => {
+              this.$root.alertNotificationMessage(
+                err.response.status,
+                err.response.data
+              );
+            });
+        }
+      });
+    },
 
        },
 
@@ -369,6 +425,9 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
    .vs-select-content {
    width: 100%;
    max-width: 100%;
+   }
+   .vs-alert{
+       color:#1e204fcc;
    }
 
 </style>

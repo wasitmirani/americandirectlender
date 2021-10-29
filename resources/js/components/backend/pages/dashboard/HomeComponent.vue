@@ -363,9 +363,7 @@
                         title=""
                       />
                       <div class="media-body">
-                       <router-link
-            :to="{ name: 'show-application', params: { id: app.id } }"
-          ><span>{{ app.name }}</span></router-link>
+                       <router-link :to="{ name: 'show-application', params: { id: app.id } }"><span>{{ app.name }}</span></router-link>
                       </div>
                     </div>
                   </td>
@@ -396,11 +394,8 @@ export default {
       assigned_apps: 0,
       roles: {},
       apps: {},
-
-          apps : [],
-          dates:[]
-
-
+    applications : [],
+    dates:[]
     };
   },
 
@@ -427,7 +422,7 @@ export default {
 
     series: [{
         name: "Applications",
-        data:['1','2','1','3']
+        data:[1,2,1,3]
     }],
     title: {
         text: 'Applications Statistics',
@@ -437,7 +432,7 @@ export default {
         text: '',
         align: 'left'
     },
-    labels:   ["2021-09-19T03:30:00", "2021-09-19T04:30:00", "2021-09-19T05:30:00", "2021-09-19T06:30:00"],
+    labels:  ['12 oct 2021','11 oct 2021','15 oct 2021', '20 oct 2021'],
     xaxis: {
         type: 'datetime',
     },
@@ -467,24 +462,26 @@ chart.render();
     console.log(series)
     },
 
+
     async getDashboardData() {
       await axios.get("dashboard").then((res) => {
-        //   console.log(res)
+         console.log(res.data)
         this.total_users = res.data.users;
         this.total_applications = res.data.total_application;
         this.roles = res.data.roles;
         this.total_roles = res.data.total_roles;
         this.assigned_apps = res.data.assigned_apps;
-        this.apps = res.data.total;
+        this.applications = res.data.total;
         this.dates = res.data.dates;
         series.applications =  this.dates
-        series.total = this.apps
+        series.total = this.applications
 
 
 
 
       });
     },
+
   },
 
   mounted() {
