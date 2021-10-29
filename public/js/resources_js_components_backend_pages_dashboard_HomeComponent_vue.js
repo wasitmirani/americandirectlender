@@ -454,7 +454,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         },
         series: [{
           name: "Applications",
-          data: series.applications
+          data: ['1', '2', '1', '3']
         }],
         title: {
           text: 'Applications Statistics',
@@ -464,7 +464,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           text: '',
           align: 'left'
         },
-        labels: ['1', '2', '1', '2'],
+        labels: ["2021-09-19T03:30:00", "2021-09-19T04:30:00", "2021-09-19T05:30:00", "2021-09-19T06:30:00"],
         xaxis: {
           type: 'datetime'
         },

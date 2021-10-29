@@ -427,7 +427,7 @@ export default {
 
     series: [{
         name: "Applications",
-        data:  series.applications
+        data:['1','2','1','3']
     }],
     title: {
         text: 'Applications Statistics',
@@ -437,7 +437,7 @@ export default {
         text: '',
         align: 'left'
     },
-    labels: ['1','2','1','2'],
+    labels:   ["2021-09-19T03:30:00", "2021-09-19T04:30:00", "2021-09-19T05:30:00", "2021-09-19T06:30:00"],
     xaxis: {
         type: 'datetime',
     },
