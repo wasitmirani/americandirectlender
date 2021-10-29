@@ -30,6 +30,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -417,7 +419,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    return {
+    var _ref;
+
+    return _ref = {
       logs: [],
       user: {},
       app_name: "",
@@ -427,7 +431,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       assigned_apps: 0,
       roles: {},
       apps: {}
-    };
+    }, _defineProperty(_ref, "apps", []), _defineProperty(_ref, "dates", []), _ref;
   },
   methods: {
     dashboardChart: function dashboardChart() {
@@ -460,7 +464,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           text: '',
           align: 'left'
         },
-        labels: series.applications,
+        labels: ['1', '2', '1', '2'],
         xaxis: {
           type: 'datetime'
         },
@@ -494,7 +498,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.roles = res.data.roles;
                   _this.total_roles = res.data.total_roles;
                   _this.assigned_apps = res.data.assigned_apps;
-                  series.applications = Object.assign({}, res.data.applications);
+                  _this.apps = res.data.total;
+                  _this.dates = res.data.dates;
+                  series.applications = _this.dates;
+                  series.total = _this.apps;
                 });
 
               case 2:

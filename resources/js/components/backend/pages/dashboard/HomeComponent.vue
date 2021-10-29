@@ -396,6 +396,11 @@ export default {
       assigned_apps: 0,
       roles: {},
       apps: {},
+
+          apps : [],
+          dates:[]
+
+
     };
   },
 
@@ -422,7 +427,7 @@ export default {
 
     series: [{
         name: "Applications",
-        data: series.applications
+        data:  series.applications
     }],
     title: {
         text: 'Applications Statistics',
@@ -432,7 +437,7 @@ export default {
         text: '',
         align: 'left'
     },
-    labels: series.applications,
+    labels: ['1','2','1','2'],
     xaxis: {
         type: 'datetime',
     },
@@ -470,8 +475,13 @@ chart.render();
         this.roles = res.data.roles;
         this.total_roles = res.data.total_roles;
         this.assigned_apps = res.data.assigned_apps;
+        this.apps = res.data.total;
+        this.dates = res.data.dates;
+        series.applications =  this.dates
+        series.total = this.apps
 
-        series.applications = Object.assign({},res.data.applications)
+
+
 
       });
     },

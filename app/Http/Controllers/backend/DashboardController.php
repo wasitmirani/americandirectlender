@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\backend;
 
+
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Application;
@@ -23,13 +24,18 @@ class DashboardController extends Controller
         $total_roles = Role::all()->count();
         $assigned_apps = Application::where('status','1')->count();
         $agents=Role::select('name')->withCount('users')->get();
+        $applications = DB::table('applications')->select(DB::raw('DATE(created_at) as created_at'), DB::raw('COUNT(*) as total'))->
+        groupBy(DB::raw('DATE(created_at)'))->
+        get();
+
+        foreach ($applications as $key=> $value)
+        {
+            $dates[$key] = $value->created_at;
+            $apps[$key] = $value->total;
+        }
 
 
-         $applications= DB::table('applications')->select(DB::raw('DATE(created_at) as created_at'), DB::raw('COUNT(*) as total'))->
-                       groupBy(DB::raw('DATE(created_at)'))->
-                       get();
-
-        return response()->json(['applications'=>$applications,'users'=>$users,'roles'=>$agents,'total_application'=>$total_applications,'total_roles'=>$total_roles,'assigned_apps'=>$assigned_apps]);
+        return response()->json(['total'=>$apps,'dates'=> $dates,'users'=>$users,'roles'=>$agents,'total_application'=>$total_applications,'total_roles'=>$total_roles,'assigned_apps'=>$assigned_apps]);
     }
 
 
