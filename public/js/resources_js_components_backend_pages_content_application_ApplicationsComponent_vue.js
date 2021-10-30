@@ -282,6 +282,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -2342,18 +2343,17 @@ var render = function() {
                                       application: application,
                                       applications: _vm.applications
                                     }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("pagination", {
-                                    attrs: { data: _vm.applications },
-                                    on: {
-                                      "pagination-change-page":
-                                        _vm.getApplications
-                                    }
                                   })
                                 ],
                                 1
                               )
+                            }),
+                            _vm._v(" "),
+                            _c("pagination", {
+                              attrs: { data: _vm.applications },
+                              on: {
+                                "pagination-change-page": _vm.getApplications
+                              }
                             }),
                             _vm._v(" "),
                             _vm.applications.length < 1

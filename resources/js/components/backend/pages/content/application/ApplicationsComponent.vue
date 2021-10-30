@@ -38,8 +38,9 @@
                                         <div class="col-xxl-6 col-lg-6 " v-for="application in applications" :key="application.id">
 
                                 <ApplicationCard :getRoles="getRoles" :roles="agents" :getApplications="getApplications" :application="application" :applications="applications"></ApplicationCard>
-   <pagination :data="applications" @pagination-change-page=" getApplications"></pagination>
                                    </div>
+                                    <pagination :data="applications" @pagination-change-page=" getApplications"></pagination>
+
                                      <h6 class="text-center text-warning" v-if="applications.length < 1">No Application Found</h6>
 
 
