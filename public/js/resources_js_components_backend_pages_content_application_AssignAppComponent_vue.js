@@ -351,10 +351,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     downloadFile: function downloadFile(id) {
       var _this4 = this;
 
-      axios.post('/download/file/' + id).then(function (res) {
-        _this4.$root.alertNotificationMessage(res.status, "File Downloaded");
-
-        console.log(res);
+      axios.post('/download/file/' + id, {
+        responseType: 'blob'
+      }).then(function (res) {
+        var fileURL = window.URL.createObjectURL(new Blob([response.data], {
+          type: 'application/pdf'
+        }));
+        var fileLink = document.createElement('a');
+        fileLink.href = fileURL;
+        fileLink.setAttribute('download', 'file.pdf');
+        document.body.appendChild(fileLink);
+        fileLink.click();
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this4.errors = err.response.data.errors;

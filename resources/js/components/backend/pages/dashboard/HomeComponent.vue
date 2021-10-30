@@ -475,10 +475,6 @@ chart.render();
         this.dates = res.data.dates;
         series.applications =  this.dates
         series.total = this.applications
-
-
-
-
       });
     },
 

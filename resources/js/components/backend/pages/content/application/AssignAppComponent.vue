@@ -253,22 +253,23 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 
                },
                downloadFile(id){
-                  axios.post('/download/file/'+id).then((res)=>{
-                        this.$root.alertNotificationMessage(res.status,"File Downloaded");
-                     console.log(res)
+                  axios.post('/download/file/'+id,{
 
-                    }).catch((err)=>{
+                    responseType: 'blob',
+                    }).then((res)=>{
+                        var fileURL = window.URL.createObjectURL(new Blob([response.data], {type: 'application/pdf'}));
+                        var fileLink = document.createElement('a');
+                          fileLink.href = fileURL;
+                          fileLink.setAttribute('download', 'file.pdf');
+                          document.body.appendChild(fileLink);
+                          fileLink.click();
+                        }).catch((err)=>{
                         if(err.response.status==422){
                             this.errors=err.response.data.errors;
                             return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
                         }
                     this.$root.alertNotificationMessage(err.response.status,err.response.data);
-
                 });
-
-
-
-
                },
                 uploadFile(){
                  let formData = new FormData();

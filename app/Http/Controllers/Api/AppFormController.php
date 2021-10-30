@@ -170,9 +170,6 @@ class AppFormController extends Controller
          $application_comment =ApplicationComment::where('application_id',$request->id)->delete();
         $application =  Application::destroy($request->id);
         return response()->json();
-
-
-
     }
 
     public function getAssignedApp(){
