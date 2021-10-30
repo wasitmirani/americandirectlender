@@ -43,6 +43,7 @@ Vue.component('multiselect', Multiselect)
 Vue.use(VueFormWizard)
 Vue.use(Vuesax);
 Vue.component("pagination", require("laravel-vue-pagination"));
+
 window.moment = moment;
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',

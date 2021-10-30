@@ -38,8 +38,6 @@ class PermissionController extends Controller
         $permission->syncRoles($role_collection);
         $permission->users()->attach($user_collection);
         // $permission->roles()->attach($roles_collection);
-
-
         return response()->json($permission);
     }
 

@@ -58,16 +58,16 @@
                   </div>
                <div class="mb-3">
                 <label class="col-form-label" for="recipient-name">Users:</label>
-                      <vs-select  filter placeholder="Select Users"  :color="this.$root.primary_color" required   collapse-chips :multiple="true"  v-model="selected_users"  >
-                      <vs-option v-for="item in users" :key="item.id"
+                    <vs-select  filter placeholder="Select Users"  :color="this.$root.primary_color" required   collapse-chips :multiple="true"  v-model="selected_users"  >
+                        <vs-option v-for="item in users" :key="item.id"
                                 :label="item.name" :value="item.id">
                                  {{ item.name }}
                         </vs-option>
-                     </vs-select>
+                    </vs-select>
 
-                    <!-- <multiselect v-model="selected_users" placeholder="Search Users" limit="" label="name" track-by="id" :options="users" :multiple="true"  :taggable="true" >
+                    <!--<multiselect v-model="selected_users" placeholder="Search Users" limit="" label="name" track-by="id" :options="users" :multiple="true"  :taggable="true" >
                       <span slot="noResult">Oops! No elements found. Consider changing the search query.</span>
-                    </multiselect> -->
+                    </multiselect>-->
                </div>
                <div class="flex">
                   <!-- <vs-checkbox v-model="checkbox1">Remember me</vs-checkbox> -->
@@ -111,7 +111,6 @@ export default {
             query:"",
             loading:false,
             }
-
      },
      mounted(){
        this.getRoles();

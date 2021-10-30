@@ -125,7 +125,6 @@ export default {
                   this.loading =true;
                   this.page_num = page;
                  const url="/management/user?page=" + page + "&query=" + this.query;
-
                await axios.get(url).then((res)=>{
                    this.users = res.data.users;
                    this.total_users=res.data.total_users;

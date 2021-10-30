@@ -2342,6 +2342,14 @@ var render = function() {
                                       application: application,
                                       applications: _vm.applications
                                     }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("pagination", {
+                                    attrs: { data: _vm.applications },
+                                    on: {
+                                      "pagination-change-page":
+                                        _vm.getApplications
+                                    }
                                   })
                                 ],
                                 1

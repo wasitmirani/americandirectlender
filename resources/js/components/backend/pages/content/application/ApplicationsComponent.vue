@@ -38,7 +38,7 @@
                                         <div class="col-xxl-6 col-lg-6 " v-for="application in applications" :key="application.id">
 
                                 <ApplicationCard :getRoles="getRoles" :roles="agents" :getApplications="getApplications" :application="application" :applications="applications"></ApplicationCard>
-
+   <pagination :data="applications" @pagination-change-page=" getApplications"></pagination>
                                    </div>
                                      <h6 class="text-center text-warning" v-if="applications.length < 1">No Application Found</h6>
 
@@ -153,16 +153,14 @@ export default {
                      this.$root.alertErrorMessage(err.response.status,err.response.data);
                });
             },
-
-              async getRoles(page=1){
-             this.loading=true;
-             this.page_num=page;
-             const url="/management/role?page=" + page + "&query=" + this.query;
-               await axios.get(url).then((res)=>{
-                   this.roles = res.data.roles.data;
+            async getRoles(page=1){
+                this.loading=true;
+                this.page_num=page;
+                const url="/management/role?page=" + page + "&query=" + this.query;
+                 await axios.get(url).then((res)=>{
+                    this.roles = res.data.roles.data;
                     console.log(res)
-                   this.loading=false;
-
+                    this.loading=false;
                }).catch((err)=>{
                      this.$root.alertErrorMessage(err.response.status,err.response.data);
                });
