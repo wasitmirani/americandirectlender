@@ -26,16 +26,18 @@ class DashboardController extends Controller
         $assigned_apps = Application::where('status','1')->count();
         $agents=Role::select('name')->where('name','=','agent')->withCount('users')->get();
 
-        $applications = DB::table('applications')->select(DB::raw('DATE(created_at) as created_at'), DB::raw('COUNT(*) as total'))->
-        groupBy(DB::raw('DATE(created_at)'))->
+        $applications = DB::table('applications')
+        ->select(DB::raw('DATE_FORMAT(DATE(created_at), "%d %M %Y") as created_at'), DB::raw('COUNT(*) as total'))->
+        groupBy(DB::raw('DATE_FORMAT(DATE(created_at), "%d %M %Y")'))->
         get();
 
-        foreach ($applications as $key=> $value)
-        {
-            $dates[$key] = $value->created_at;
-            $apps[$key] = $value->total;
-        }
-        return response()->json(['total'=>$apps,'dates'=> $dates,'users'=>$users,'roles'=>$agents,'total_application'=>$total_applications,'total_roles'=>$total_roles,'assigned_apps'=>$assigned_apps]);
+
+        $apps_status = DB::table('applications')->
+        select( DB::raw('count(applications.status) as count, applications.status') )->
+        groupBy('applications.status')->get();
+
+        return response()->json(['dateby_applications'=>$applications,'users'=>$users,'roles'=>$agents,'total_application'=>$total_applications,'total_roles'=>$total_roles,'assigned_apps'=>$assigned_apps,'app_status'=>
+        $apps_status]);
     }
 
 

@@ -15,6 +15,7 @@
                 business.
               </p>
             </div>
+
             <div class="confetti">
               <div class="confetti-piece"></div>
               <div class="confetti-piece"></div>
@@ -30,23 +31,39 @@
               <div class="confetti-piece"></div>
               <div class="confetti-piece"></div>
             </div>
+
           </div>
+                <div class="box-col-12 col-xl-12 des-xl-100">
+                <div class="card">
+                  <div class="card-header pb-0">
+                    <h5>Pie Chart </h5>
+                  </div>
+                  <div class="card-body apex-chart">
+                    <div id="piechart"></div>
+                  </div>
+                </div>
+              </div>
+
+
         </div>
 
         <div class="col-xl-6 box-col-12 des-xl-100 invoice-sec">
-             <div class="card">
+                      <div class="card">
                   <div class="card-header pb-0">
-                    <h5>Daily Register Applications</h5>
+                    <h5>Applications Analytics</h5>
                   </div>
                   <div class="card-body">
                     <div id="basic-apex"></div>
                   </div>
                 </div>
 
+
         </div>
+
 
       </div>
       <div class="row">
+
         <div class="col-sm-6 col-xl-3 col-lg-6">
           <div class="card o-hidden border-0">
             <div class="bg-primary b-r-4 card-body">
@@ -95,6 +112,7 @@
             </div>
           </div>
         </div>
+
         <div
           class="col-sm-6 col-xl-3 col-lg-6"
           v-for="item in roles"
@@ -396,12 +414,43 @@ export default {
       assigned_apps: 0,
       roles: {},
       apps: {},
-    applications : [],
+      app_status:[],
+    total_apps : [],
     dates:[]
     };
   },
 
   methods: {
+      pieChart(){
+          var options8 = {
+    chart: {
+        width: 380,
+        type: 'pie',
+    },
+    labels: ['Pending Apps', 'Approved Apps'],
+    series: this.app_status,
+    responsive: [{
+        breakpoint: 480,
+        options: {
+            chart: {
+                width: 200
+            },
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }],
+    colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary, '#997959', '#717171', '#e2c636']
+}
+
+var chart8 = new ApexCharts(
+    document.querySelector("#piechart"),
+    options8
+);
+
+chart8.render();
+
+      },
     dashboardChart() {
 
     var options = {
@@ -424,8 +473,8 @@ export default {
 
     series: [{
         name: "Applications",
-        data:this.applications
-        // data:[1,2,1,3]
+        data:this.total_apps,
+        // data:this.applications,
     }],
     title: {
         text: 'Applications Statistics',
@@ -435,7 +484,7 @@ export default {
         text: '',
         align: 'left'
     },
-    // labels:  ['12-oct-2021','11-oct-2021','15-10-2021', '20-oct-2021'],
+    // labels:  this.total,
      labels:  this.dates,
     xaxis: {
         type: 'datetime',
@@ -458,6 +507,7 @@ chart.render();
 },
 
 
+
     getDate(){
 
     console.log(series)
@@ -466,16 +516,27 @@ chart.render();
 
     async getDashboardData() {
       await axios.get("dashboard").then((res) => {
-         console.log(res.data)
+        //  console.log(res.data)
         this.total_users = res.data.users;
         this.total_applications = res.data.total_application;
         this.roles = res.data.roles;
         this.total_roles = res.data.total_roles;
         this.assigned_apps = res.data.assigned_apps;
         this.applications = res.data.total;
-        this.dates = res.data.dates;
-        series.applications =  this.dates
-        series.total = this.applications
+        let data=res.data.dateby_applications;
+        // console.log(data);
+        this.dates=[];
+        this.total_apps=[];
+        this.dates = data.map(x =>  moment(x.created_at).format("D MMM YYYY"));
+        this.total_apps = data.map(x => parseInt(x.total));
+        this.app_status = res.data.app_status.map(x => x.count)
+
+
+        // this.dates = res.data.dates;
+        // series.applications =  data.map(x => x.created_at);
+        // series.total = data.map(x => x.total);
+        this.dashboardChart();
+        this.pieChart()
       });
     },
 
@@ -486,7 +547,7 @@ chart.render();
     // console.log("userss",user);
     this.user = user;
     this.app_name = "American Lender";
-    this.dashboardChart();
+
     this.getDate()
 
     axios

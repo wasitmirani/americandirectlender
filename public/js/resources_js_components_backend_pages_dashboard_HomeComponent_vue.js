@@ -415,6 +415,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -427,11 +445,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       assigned_apps: 0,
       roles: {},
       apps: {},
-      applications: [],
+      app_status: [],
+      total_apps: [],
       dates: []
     };
   },
   methods: {
+    pieChart: function pieChart() {
+      var options8 = {
+        chart: {
+          width: 380,
+          type: 'pie'
+        },
+        labels: ['Pending Apps', 'Approved Apps'],
+        series: this.app_status,
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }],
+        colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary, '#997959', '#717171', '#e2c636']
+      };
+      var chart8 = new ApexCharts(document.querySelector("#piechart"), options8);
+      chart8.render();
+    },
     dashboardChart: function dashboardChart() {
       var options = {
         chart: {
@@ -452,7 +495,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         },
         series: [{
           name: "Applications",
-          data: this.applications // data:[1,2,1,3]
+          data: this.total_apps // data:this.applications,
 
         }],
         title: {
@@ -463,7 +506,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           text: '',
           align: 'left'
         },
-        // labels:  ['12-oct-2021','11-oct-2021','15-10-2021', '20-oct-2021'],
+        // labels:  this.total,
         labels: this.dates,
         xaxis: {
           type: 'datetime'
@@ -492,16 +535,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.next = 2;
                 return axios.get("dashboard").then(function (res) {
-                  console.log(res.data);
+                  //  console.log(res.data)
                   _this.total_users = res.data.users;
                   _this.total_applications = res.data.total_application;
                   _this.roles = res.data.roles;
                   _this.total_roles = res.data.total_roles;
                   _this.assigned_apps = res.data.assigned_apps;
                   _this.applications = res.data.total;
-                  _this.dates = res.data.dates;
-                  series.applications = _this.dates;
-                  series.total = _this.applications;
+                  var data = res.data.dateby_applications; // console.log(data);
+
+                  // console.log(data);
+                  _this.dates = [];
+                  _this.total_apps = [];
+                  _this.dates = data.map(function (x) {
+                    return moment(x.created_at).format("D MMM YYYY");
+                  });
+                  _this.total_apps = data.map(function (x) {
+                    return parseInt(x.total);
+                  });
+                  _this.app_status = res.data.app_status.map(function (x) {
+                    return x.count;
+                  }); // this.dates = res.data.dates;
+                  // series.applications =  data.map(x => x.created_at);
+                  // series.total = data.map(x => x.total);
+
+                  // this.dates = res.data.dates;
+                  // series.applications =  data.map(x => x.created_at);
+                  // series.total = data.map(x => x.total);
+                  _this.dashboardChart();
+
+                  _this.pieChart();
                 });
 
               case 2:
@@ -520,7 +583,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     this.user = user;
     this.app_name = "American Lender";
-    this.dashboardChart();
     this.getDate();
     axios.get("/recent/applications/").then(function (res) {
       _this2.apps = res.data.applications; //    console.log(res.data.applications)
@@ -1408,10 +1470,12 @@ var render = function() {
             ]),
             _vm._v(" "),
             _vm._m(1)
-          ])
+          ]),
+          _vm._v(" "),
+          _vm._m(2)
         ]),
         _vm._v(" "),
-        _vm._m(2)
+        _vm._m(3)
       ]),
       _vm._v(" "),
       _c(
@@ -1624,7 +1688,7 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-sm-6 pe-0" }, [
                 _c("div", { staticClass: "media border-after-xs" }, [
-                  _vm._m(3),
+                  _vm._m(4),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body align-self-center" }, [
                     _c(
@@ -1671,7 +1735,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 ps-0" }, [
                 _c("div", { staticClass: "media" }, [
-                  _vm._m(4),
+                  _vm._m(5),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body align-self-center" }, [
                     _c(
@@ -1715,7 +1779,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 pe-0" }, [
                 _c("div", { staticClass: "media border-after-xs" }, [
-                  _vm._m(5),
+                  _vm._m(6),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body align-self-center" }, [
                     _c(
@@ -1763,7 +1827,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 ps-0" }, [
                 _c("div", { staticClass: "media" }, [
-                  _vm._m(6),
+                  _vm._m(7),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body ps-2" }, [
                     _c(
@@ -1789,7 +1853,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(7),
+    _vm._m(8),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "card" }, [
@@ -1798,7 +1862,7 @@ var render = function() {
             _c("h5", [_vm._v("Recent Applications")]),
             _vm._v(" "),
             _c("table", { staticClass: "table table-bordernone" }, [
-              _vm._m(8),
+              _vm._m(9),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -1901,13 +1965,29 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-col-12 col-xl-12 des-xl-100" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header pb-0" }, [
+          _c("h5", [_vm._v("Pie Chart ")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body apex-chart" }, [
+          _c("div", { attrs: { id: "piechart" } })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
       { staticClass: "col-xl-6 box-col-12 des-xl-100 invoice-sec" },
       [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header pb-0" }, [
-            _c("h5", [_vm._v("Daily Register Applications")])
+            _c("h5", [_vm._v("Applications Analytics")])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
