@@ -2386,6 +2386,12 @@ var routes = [{
   },
   name: "ShowNotify"
 }, {
+  path: "/view/notify/:id",
+  component: function component() {
+    return setComponent("content/notification/DetailNotification");
+  },
+  name: "ViewNotify"
+}, {
   path: "/detail/notify:id",
   component: function component() {
     return setComponent("content/notification/DetailNotification");

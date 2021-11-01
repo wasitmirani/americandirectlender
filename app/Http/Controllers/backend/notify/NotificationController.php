@@ -22,10 +22,8 @@ class NotificationController extends Controller
         $notifications=DB::table('notifications')->latest()->get();
         $notContent = "";
         foreach($notifications as $notification){
-
              $notContent = json_decode($notification->data);
-             $notifications['content'] = $notContent;
-
+             $notifications['content'] = json_decode($notification->data);
         }
 
         $users=Role::select('id','name')->with('users:id,name')->orderBy('name','ASC')->get();
@@ -33,18 +31,23 @@ class NotificationController extends Controller
         return response()->json(['notifications'=>$notifications,'users'=>$users]);
 
     }
+    public function show($id){
+
+      $notification = DB::table('notifications')->where('id',$id)->first();
+      return response()->json(['notification'=>$notification]);
+
+
+    }
     public function store(Request $request){
+
         $users =User::WhereIn('id',  $request->users)->get();
+
 
         $notificationdata =(object)[
             'title' =>$request->title,
             'body' => $request->body,
         ];
         $lead_mail = env('LEAD_MAIL');
-
-
-
-
         $res=collect($users)->map(function($user) use ($notificationdata,$lead_mail){
             $details = [
                 'title' => 'Hi,'.$user->name,

@@ -29,7 +29,12 @@
                      <content-placeholders-heading :img="true" />
                      <content-placeholders-text :lines="1" />
                   </content-placeholders>
-                   <!-- <notificationTable :getNotifications="getNotifications" :notifications="notifications" v-on:editItem="editItem($event)" v-on:deleteItem="deleteItem($event)" v-else></notificationTable> -->
+                   <!-- <notificationTable :getNotifications="getNotifications" :notifications="notifications" v-on:editItem="editItem($event)" v-on:deleteItem="deleteItem($event)" v-else></notificationTable>
+                    -->
+                    <div  v-for="cont in notifications" v-bind:key="cont.id">
+                         <ShowNotification :getNotifications="getNotifications" :cont="cont" v-on:editItem="editItem($event)" v-on:deleteItem="deleteItem($event)" ></ShowNotification>
+                    </div>
+
                   </div>
             </div>
         </div>
@@ -82,6 +87,7 @@
 <script>
 import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 import PrimaryButton from "../../../components/PrimaryButton";
+import ShowNotification from "./ShowNotificationComponent"
 
 import SearchInput from "../../../components/SearchInput.vue";
 export default {
@@ -89,6 +95,7 @@ export default {
     components:{
         Breadcrumb,
         PrimaryButton,
+        ShowNotification,
         SearchInput,
     },
      data(){
@@ -98,6 +105,7 @@ export default {
             active_modal:false,
             edit_mode:false,
             selected_users:[],
+            notification_data:{},
             users:{},
             errors:[],
             page_num:1,
@@ -113,7 +121,7 @@ export default {
      },
         methods:{
           onChange(event){
-            console.log("log",event);
+            // console.log("log",event);
           },
             editItem(item) {
             this.resetForm();
@@ -163,6 +171,8 @@ export default {
              const url="/management/notification?page=" + page + "&query=" + this.query;
                await axios.get(url).then((res)=>{
                    this.notifications = res.data.notifications;
+                   this.notification_data =  res.data.notifications
+
                    this.users=res.data.users;
                    this.loading=false;
 
