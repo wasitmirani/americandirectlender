@@ -36,24 +36,43 @@
                 <div class="box-col-12 col-xl-12 des-xl-100">
                 <div class="card">
                   <div class="card-header pb-0">
-                    <h5>Pie Chart </h5>
+                    <h5>Applications By Status </h5>
                   </div>
                   <div class="card-body apex-chart">
                     <div id="piechart"></div>
                   </div>
                 </div>
+
+                <div class="card">
+                  <div class="card-header pb-0">
+                    <h5>Radial Bar Chart</h5>
+                  </div>
+                  <div class="card-body">
+                    <div id="circlechart"></div>
+                  </div>
+                </div>
+
               </div>
 
 
         </div>
 
         <div class="col-xl-6 box-col-12 des-xl-100 invoice-sec">
-                      <div class="card">
+                <div class="card">
                   <div class="card-header pb-0">
                     <h5>Applications Analytics</h5>
                   </div>
                   <div class="card-body">
                     <div id="basic-apex"></div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header pb-0">
+                    <h5>Users By Role</h5>
+                  </div>
+                  <div class="card-body apex-chart">
+                    <div id="donutchart"></div>
                   </div>
                 </div>
 
@@ -382,14 +401,14 @@
                         data-original-title=""
                         title=""
                       />
-                      <div class="media-body">
+                      <div class="media-body recent-" >
                        <router-link :to="{ name: 'show-application', params: { id: app.id } }"><span>{{ app.name }}</span></router-link>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <p v-if="app.status === '1'">Done</p>
-                    <p v-if="app.status === '0'">In Proccess</p>
+                    <p v-if="app.status === '1'" class="badge rounded-pill pill-badge-success">Approved</p>
+                    <p v-if="app.status === '0'" class="badge rounded-pill pill-badge-warning">In Proccess</p>
                   </td>
                 </tr>
               </tbody>
@@ -414,9 +433,14 @@ export default {
       assigned_apps: 0,
       roles: {},
       apps: {},
+      userByRole:[],
       app_status:[],
-    total_apps : [],
-    dates:[]
+      total_apps : [],
+      userRoleLabel : [],
+      userByPermission:[],
+      userPermissionLabel:[],
+      totalPermissions:0,
+      dates:[]
     };
   },
 
@@ -440,7 +464,7 @@ export default {
             }
         }
     }],
-    colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary, '#997959', '#717171', '#e2c636']
+    colors: ['#46c93a', '#ffba00']
 }
 
 var chart8 = new ApexCharts(
@@ -449,6 +473,76 @@ var chart8 = new ApexCharts(
 );
 
 chart8.render();
+
+      },
+donutChart(){
+          var options9 = {
+    chart: {
+        width: 380,
+        type: 'donut',
+    },
+    series: this.userByRole,
+    labels: this.userRoleLabel,
+    responsive: [{
+        breakpoint: 480,
+        options: {
+            chart: {
+                width: 200
+            },
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }],
+    colors: [vihoAdminConfig.secondary, '#e2c636']
+}
+
+var chart9 = new ApexCharts(
+    document.querySelector("#donutchart"),
+    options9
+);
+
+chart9.render();
+      },
+      radialBar(){
+          var options11 = {
+    chart: {
+        height: 350,
+        type: 'radialBar',
+    },
+    plotOptions: {
+        radialBar: {
+            dataLabels: {
+                name: {
+                    fontSize: '22px',
+                },
+                value: {
+                    fontSize: '16px',
+                },
+                total: {
+
+                    show: true,
+                    label: 'Permissions',
+                    formatter: function(w) {
+                        return this.totalPermissions;
+                    }
+                }
+            }
+        }
+    },
+    series: this.userByPermission,
+    labels: this.userPermissionLabel,
+    colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary, '#222222', '#717171']
+
+
+}
+
+var chart11 = new ApexCharts(
+    document.querySelector("#circlechart"),
+    options11
+);
+
+chart11.render();
 
       },
     dashboardChart() {
@@ -530,13 +624,20 @@ chart.render();
         this.dates = data.map(x =>  moment(x.created_at).format("D MMM YYYY"));
         this.total_apps = data.map(x => parseInt(x.total));
         this.app_status = res.data.app_status.map(x => x.count)
+        this.userByRole =  res.data.userByRole.map(x => x.users_count)
+        this.userRoleLabel = res.data.userByRole.map(x => x.name)
+        this.userByPermission = res.data.userByPermission.map(x => x.users_count)
+        this.userPermissionLabel = res.data.userByPermission.map(x => x.name)
+        this.totalPermissions = res.data.totalPermissions;
 
 
         // this.dates = res.data.dates;
         // series.applications =  data.map(x => x.created_at);
         // series.total = data.map(x => x.total);
         this.dashboardChart();
-        this.pieChart()
+        this.pieChart();
+        this.donutChart();
+        this.radialBar();
       });
     },
 

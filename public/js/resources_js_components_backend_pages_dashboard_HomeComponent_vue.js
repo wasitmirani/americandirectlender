@@ -433,6 +433,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -445,8 +464,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       assigned_apps: 0,
       roles: {},
       apps: {},
+      userByRole: [],
       app_status: [],
       total_apps: [],
+      userRoleLabel: [],
+      userByPermission: [],
+      userPermissionLabel: [],
+      totalPermissions: 0,
       dates: []
     };
   },
@@ -470,10 +494,66 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }],
-        colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary, '#997959', '#717171', '#e2c636']
+        colors: ['#46c93a', '#ffba00']
       };
       var chart8 = new ApexCharts(document.querySelector("#piechart"), options8);
       chart8.render();
+    },
+    donutChart: function donutChart() {
+      var options9 = {
+        chart: {
+          width: 380,
+          type: 'donut'
+        },
+        series: this.userByRole,
+        labels: this.userRoleLabel,
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }],
+        colors: [vihoAdminConfig.secondary, '#e2c636']
+      };
+      var chart9 = new ApexCharts(document.querySelector("#donutchart"), options9);
+      chart9.render();
+    },
+    radialBar: function radialBar() {
+      var options11 = {
+        chart: {
+          height: 350,
+          type: 'radialBar'
+        },
+        plotOptions: {
+          radialBar: {
+            dataLabels: {
+              name: {
+                fontSize: '22px'
+              },
+              value: {
+                fontSize: '16px'
+              },
+              total: {
+                show: true,
+                label: 'Permissions',
+                formatter: function formatter(w) {
+                  return this.totalPermissions;
+                }
+              }
+            }
+          }
+        },
+        series: this.userByPermission,
+        labels: this.userPermissionLabel,
+        colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary, '#222222', '#717171']
+      };
+      var chart11 = new ApexCharts(document.querySelector("#circlechart"), options11);
+      chart11.render();
     },
     dashboardChart: function dashboardChart() {
       var options = {
@@ -555,7 +635,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                   _this.app_status = res.data.app_status.map(function (x) {
                     return x.count;
-                  }); // this.dates = res.data.dates;
+                  });
+                  _this.userByRole = res.data.userByRole.map(function (x) {
+                    return x.users_count;
+                  });
+                  _this.userRoleLabel = res.data.userByRole.map(function (x) {
+                    return x.name;
+                  });
+                  _this.userByPermission = res.data.userByPermission.map(function (x) {
+                    return x.users_count;
+                  });
+                  _this.userPermissionLabel = res.data.userByPermission.map(function (x) {
+                    return x.name;
+                  });
+                  _this.totalPermissions = res.data.totalPermissions; // this.dates = res.data.dates;
                   // series.applications =  data.map(x => x.created_at);
                   // series.total = data.map(x => x.total);
 
@@ -565,6 +658,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.dashboardChart();
 
                   _this.pieChart();
+
+                  _this.donutChart();
+
+                  _this.radialBar();
                 });
 
               case 2:
@@ -1882,7 +1979,7 @@ var render = function() {
                         _vm._v(" "),
                         _c(
                           "div",
-                          { staticClass: "media-body" },
+                          { staticClass: "media-body recent-" },
                           [
                             _c(
                               "router-link",
@@ -1903,10 +2000,26 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("td", [
-                      app.status === "1" ? _c("p", [_vm._v("Done")]) : _vm._e(),
+                      app.status === "1"
+                        ? _c(
+                            "p",
+                            {
+                              staticClass:
+                                "badge rounded-pill pill-badge-success"
+                            },
+                            [_vm._v("Approved")]
+                          )
+                        : _vm._e(),
                       _vm._v(" "),
                       app.status === "0"
-                        ? _c("p", [_vm._v("In Proccess")])
+                        ? _c(
+                            "p",
+                            {
+                              staticClass:
+                                "badge rounded-pill pill-badge-warning"
+                            },
+                            [_vm._v("In Proccess")]
+                          )
                         : _vm._e()
                     ])
                   ])
@@ -1968,11 +2081,21 @@ var staticRenderFns = [
     return _c("div", { staticClass: "box-col-12 col-xl-12 des-xl-100" }, [
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-header pb-0" }, [
-          _c("h5", [_vm._v("Pie Chart ")])
+          _c("h5", [_vm._v("Applications By Status ")])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body apex-chart" }, [
           _c("div", { attrs: { id: "piechart" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header pb-0" }, [
+          _c("h5", [_vm._v("Radial Bar Chart")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { attrs: { id: "circlechart" } })
         ])
       ])
     ])
@@ -1992,6 +2115,16 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { attrs: { id: "basic-apex" } })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header pb-0" }, [
+            _c("h5", [_vm._v("Users By Role")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body apex-chart" }, [
+            _c("div", { attrs: { id: "donutchart" } })
           ])
         ])
       ]
