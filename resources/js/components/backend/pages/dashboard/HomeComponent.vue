@@ -45,7 +45,7 @@
 
                 <div class="card">
                   <div class="card-header pb-0">
-                    <h5>Radial Bar Chart</h5>
+                    <h5>Prmissions Analytics</h5>
                   </div>
                   <div class="card-body">
                     <div id="circlechart"></div>

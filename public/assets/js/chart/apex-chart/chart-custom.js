@@ -2392,7 +2392,7 @@ var options11 = {
                     show: true,
                     label: 'Total',
                     formatter: function(w) {
-                        return 249
+                        return 5
                     }
                 }
             }

@@ -2091,7 +2091,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-header pb-0" }, [
-          _c("h5", [_vm._v("Radial Bar Chart")])
+          _c("h5", [_vm._v("Prmissions Analytics")])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
