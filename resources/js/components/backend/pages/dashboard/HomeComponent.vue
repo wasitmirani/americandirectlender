@@ -397,7 +397,7 @@
                         title=""
                       />
                       <div class="media-body recent-" >
-                       <router-link :to="{ name: 'show-application', params: { id: app.id } }"><span>{{ app.name }}</span></router-link>
+                       <router-link :to="{ name: 'show-application', params: { id: app.id } }"><span>{{ app.name }}<i class="icofont icofont-link-alt"></i></span></router-link>
                       </div>
                     </div>
                   </td>

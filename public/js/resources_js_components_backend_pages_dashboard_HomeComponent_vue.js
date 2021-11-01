@@ -1986,7 +1986,14 @@ var render = function() {
                                   }
                                 }
                               },
-                              [_c("span", [_vm._v(_vm._s(app.name))])]
+                              [
+                                _c("span", [
+                                  _vm._v(_vm._s(app.name)),
+                                  _c("i", {
+                                    staticClass: "icofont icofont-link-alt"
+                                  })
+                                ])
+                              ]
                             )
                           ],
                           1
