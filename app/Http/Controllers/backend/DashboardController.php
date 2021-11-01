@@ -24,7 +24,8 @@ class DashboardController extends Controller
         $total_applications= Application::all()->count();
         $total_roles = Role::all()->count();
         $assigned_apps = Application::where('status','1')->count();
-        $agents=Role::select('name')->withCount('users')->get();
+        $agents=Role::select('name')->where('name','=','agent')->withCount('users')->get();
+
         $applications = DB::table('applications')->select(DB::raw('DATE(created_at) as created_at'), DB::raw('COUNT(*) as total'))->
         groupBy(DB::raw('DATE(created_at)'))->
         get();

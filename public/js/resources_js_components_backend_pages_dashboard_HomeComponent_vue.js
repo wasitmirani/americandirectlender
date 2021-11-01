@@ -413,6 +413,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -450,7 +452,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         },
         series: [{
           name: "Applications",
-          data: [1, 2, 1, 3]
+          data: this.applications // data:[1,2,1,3]
+
         }],
         title: {
           text: 'Applications Statistics',
@@ -460,7 +463,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           text: '',
           align: 'left'
         },
-        labels: ['12 oct 2021', '11 oct 2021', '15 oct 2021', '20 oct 2021'],
+        // labels:  ['12-oct-2021','11-oct-2021','15-10-2021', '20-oct-2021'],
+        labels: this.dates,
         xaxis: {
           type: 'datetime'
         },
@@ -473,7 +477,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         colors: [vihoAdminConfig.primary]
       };
       var chart = new ApexCharts(document.querySelector("#basic-apex"), options);
-      chart.render(); // second chart dashbord dafault
+      chart.render();
     },
     getDate: function getDate() {
       console.log(series);
@@ -1757,7 +1761,28 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(6)
+              _c("div", { staticClass: "col-sm-6 ps-0" }, [
+                _c("div", { staticClass: "media" }, [
+                  _vm._m(6),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "media-body ps-2" }, [
+                    _c(
+                      "h5",
+                      { staticClass: "mb-0" },
+                      _vm._l(_vm.roles, function(role) {
+                        return _c(
+                          "span",
+                          { key: role.id, staticClass: "counter" },
+                          [_vm._v(_vm._s(role.users_count))]
+                        )
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "mb-1" })
+                  ])
+                ])
+              ])
             ])
           ])
         ])
@@ -1926,22 +1951,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-6 ps-0" }, [
-      _c("div", { staticClass: "media" }, [
-        _c("div", { staticClass: "align-self-center me-3 text-start" }, [
-          _c("span", { staticClass: "widget-t mb-1" }),
-          _vm._v(" "),
-          _c("h5", { staticClass: "mb-0" }, [_vm._v("Agents")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "media-body ps-2" }, [
-          _c("h5", { staticClass: "mb-0" }, [
-            _c("span", { staticClass: "counter" })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "mb-1" })
-        ])
-      ])
+    return _c("div", { staticClass: "align-self-center me-3 text-start" }, [
+      _c("span", { staticClass: "widget-t mb-1" }),
+      _vm._v(" "),
+      _c("h5", { staticClass: "mb-0" }, [_vm._v("Agents")])
     ])
   },
   function() {

@@ -252,13 +252,15 @@
               <div class="col-sm-6 ps-0">
                 <div class="media">
                   <div class="align-self-center me-3 text-start">
-                    <span class="widget-t mb-1"></span>
+                    <span class="widget-t mb-1">
+
+                    </span>
                     <h5 class="mb-0">Agents</h5>
                   </div>
                   <!-- <div class="media-body align-self-center ps-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up font-primary"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></div> -->
                   <div class="media-body ps-2">
-                    <h5 class="mb-0"><span class="counter"></span></h5>
-                    <span class="mb-1"> </span>
+                    <h5 class="mb-0"><span class="counter" v-for="role in roles" :key="role.id">{{role.users_count}}</span></h5>
+                    <span class="mb-1"></span>
                   </div>
                 </div>
               </div>
@@ -422,7 +424,8 @@ export default {
 
     series: [{
         name: "Applications",
-        data:[1,2,1,3]
+        data:this.applications
+        // data:[1,2,1,3]
     }],
     title: {
         text: 'Applications Statistics',
@@ -432,7 +435,8 @@ export default {
         text: '',
         align: 'left'
     },
-    labels:  ['12 oct 2021','11 oct 2021','15 oct 2021', '20 oct 2021'],
+    // labels:  ['12-oct-2021','11-oct-2021','15-10-2021', '20-oct-2021'],
+     labels:  this.dates,
     xaxis: {
         type: 'datetime',
     },
@@ -450,11 +454,8 @@ export default {
     document.querySelector("#basic-apex"),
     options
 );
-
 chart.render();
-      // second chart dashbord dafault
-
-    },
+},
 
 
     getDate(){
@@ -506,4 +507,5 @@ chart.render();
 </script>
 
 <style lang="scss" scoped>
+
 </style>
