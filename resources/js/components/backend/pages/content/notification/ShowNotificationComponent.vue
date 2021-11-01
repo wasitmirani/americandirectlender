@@ -9,12 +9,9 @@
 
                        <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
                         <div class="media-body"  >
-
                           <vs-alert v-for="notie in noties" :key="notie.title">
                                <router-link  :to="{ name: 'ViewNotify', params: { id: cont.id } }"><span>{{ notie }}</span></router-link>
-
                           </vs-alert>
-
                        </div>
 
                     </div>
@@ -52,6 +49,7 @@ export default{
     },
 
     mounted(){
+
         this.noties = JSON.parse(this.cont.data)
         var url = "/all/notification";
             axios.get(url).then((res)=>{
@@ -68,7 +66,7 @@ export default{
 }
 </script>
 <style>
-  .vs-alert__content_text{
+.vs-alert a{
       text-decoration:none;
   }
 </style>

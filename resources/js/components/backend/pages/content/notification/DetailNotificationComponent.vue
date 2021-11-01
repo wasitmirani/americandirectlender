@@ -1,34 +1,35 @@
 <template>
 <div>
-    <div class="container">
-           <div class="col-xl-12 col-sm-6">
-                    <div class="card">
-                      <div class="blog-box blog-list row">
-                        <div class="col-xl-7 col-12">
-                          <div class="blog-details">
-                            <div class="blog-date"><span>{{ notification.created_at | timeformat }}</span></div><a href="learning-detailed.html">
-                              <h6 v-for="notify in this.body" :key="notify.title">  {{ notify }} </h6></a>
-                            <div class="blog-bottom-content">
-                              <ul class="blog-social">
-                                <!-- <li>by: Paige Turner</li>
-                                <li>15 Hits</li> -->
-                              </ul>
-                              <hr>
-                              <p class="mt-0">inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit.inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit.inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+     <Breadcrumb activename="Notifications" ></Breadcrumb>
+    <div class="col-sm-12 col-md-6">
+        <div class="card">
+            <div class="card-header pb-0">
+                <h5></h5><span v-for="notify in this.body" :key="notify.title">  {{ notify }}</span>
             </div>
-
+            <div class="card-body">
+                <div id="the-basics">
+                    <form class="theme-form">
+                        <div class="form-group">
+                            <span class="twitter-typeahead" style="position: relative; display: inline-block;">
+                            {{ notification.created_at | timeformat }}
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 
 </template>
 <script>
+import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 export default {
+    components:{
+        Breadcrumb
+
+    },
     data(){
         return {
             notification:"",

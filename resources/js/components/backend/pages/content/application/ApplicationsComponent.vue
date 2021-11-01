@@ -1,6 +1,6 @@
 <template>
   <div>
-        <Breadcrumb activename="Customer Applications" ></Breadcrumb>
+       s
         <div class="container-fluid">
             <div class="row project-cards">
               <div class="col-md-12 project-list">

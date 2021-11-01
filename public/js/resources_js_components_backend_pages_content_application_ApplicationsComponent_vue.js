@@ -2265,120 +2265,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("Breadcrumb", { attrs: { activename: "Customer Applications" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row project-cards" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "tab-content",
-                    attrs: { id: "top-tabContent" }
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade show active",
-                        attrs: {
-                          id: "top-home",
-                          role: "tabpanel",
-                          "aria-labelledby": "top-home-tab"
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "row" },
-                          [
-                            _c("SearchInput", {
-                              attrs: {
-                                apiurl:
-                                  "/customer/applications?page=" +
-                                  this.page_num,
-                                label: "Search Applications"
+  return _c("div", [
+    _vm._v("\n     s\n      "),
+    _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "row project-cards" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "div",
+                { staticClass: "tab-content", attrs: { id: "top-tabContent" } },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-pane fade show active",
+                      attrs: {
+                        id: "top-home",
+                        role: "tabpanel",
+                        "aria-labelledby": "top-home-tab"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "row" },
+                        [
+                          _c("SearchInput", {
+                            attrs: {
+                              apiurl:
+                                "/customer/applications?page=" + this.page_num,
+                              label: "Search Applications"
+                            },
+                            on: {
+                              query: function($event) {
+                                return _vm.isquery($event)
                               },
-                              on: {
-                                query: function($event) {
-                                  return _vm.isquery($event)
-                                },
-                                loading: function($event) {
-                                  return _vm.loadingStart($event)
-                                },
-                                reload: function($event) {
-                                  return _vm.getApplications()
-                                },
-                                filterList: function($event) {
-                                  return _vm.filterdata($event)
-                                }
+                              loading: function($event) {
+                                return _vm.loadingStart($event)
+                              },
+                              reload: function($event) {
+                                return _vm.getApplications()
+                              },
+                              filterList: function($event) {
+                                return _vm.filterdata($event)
                               }
-                            }),
-                            _vm._v(" "),
-                            _vm._l(_vm.applications, function(application) {
-                              return _c(
-                                "div",
-                                {
-                                  key: application.id,
-                                  staticClass: "col-xxl-6 col-lg-6 "
-                                },
-                                [
-                                  _c("ApplicationCard", {
-                                    attrs: {
-                                      getRoles: _vm.getRoles,
-                                      roles: _vm.agents,
-                                      getApplications: _vm.getApplications,
-                                      application: application,
-                                      applications: _vm.applications
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            }),
-                            _vm._v(" "),
-                            _c("pagination", {
-                              attrs: { data: _vm.applications },
-                              on: {
-                                "pagination-change-page": _vm.getApplications
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.applications.length < 1
-                              ? _c(
-                                  "h6",
-                                  { staticClass: "text-center text-warning" },
-                                  [_vm._v("No Application Found")]
-                                )
-                              : _vm._e()
-                          ],
-                          2
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade",
-                        attrs: {
-                          id: "top-profile",
-                          role: "tabpanel",
-                          "aria-labelledby": "profile-top-tab"
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "row" },
-                          _vm._l(_vm.process, function(application) {
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm._l(_vm.applications, function(application) {
                             return _c(
                               "div",
                               {
@@ -2388,9 +2325,10 @@ var render = function() {
                               [
                                 _c("ApplicationCard", {
                                   attrs: {
+                                    getRoles: _vm.getRoles,
+                                    roles: _vm.agents,
                                     getApplications: _vm.getApplications,
                                     application: application,
-                                    roles: _vm.agents,
                                     applications: _vm.applications
                                   }
                                 })
@@ -2398,59 +2336,109 @@ var render = function() {
                               1
                             )
                           }),
-                          0
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade",
-                        attrs: {
-                          id: "top-contact",
-                          role: "tabpanel",
-                          "aria-labelledby": "contact-top-tab"
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "row" },
-                          _vm._l(_vm.done, function(application) {
-                            return _c(
-                              "div",
-                              {
-                                key: application.id,
-                                staticClass: "col-xxl-4 "
-                              },
-                              [
-                                _c("ApplicationCard", {
-                                  attrs: {
-                                    getApplications: _vm.getApplications,
-                                    application: application,
-                                    roles: _vm.agents,
-                                    applications: _vm.applications
-                                  }
-                                })
-                              ],
-                              1
-                            )
+                          _vm._v(" "),
+                          _c("pagination", {
+                            attrs: { data: _vm.applications },
+                            on: {
+                              "pagination-change-page": _vm.getApplications
+                            }
                           }),
-                          0
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ])
+                          _vm._v(" "),
+                          _vm.applications.length < 1
+                            ? _c(
+                                "h6",
+                                { staticClass: "text-center text-warning" },
+                                [_vm._v("No Application Found")]
+                              )
+                            : _vm._e()
+                        ],
+                        2
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-pane fade",
+                      attrs: {
+                        id: "top-profile",
+                        role: "tabpanel",
+                        "aria-labelledby": "profile-top-tab"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "row" },
+                        _vm._l(_vm.process, function(application) {
+                          return _c(
+                            "div",
+                            {
+                              key: application.id,
+                              staticClass: "col-xxl-6 col-lg-6 "
+                            },
+                            [
+                              _c("ApplicationCard", {
+                                attrs: {
+                                  getApplications: _vm.getApplications,
+                                  application: application,
+                                  roles: _vm.agents,
+                                  applications: _vm.applications
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-pane fade",
+                      attrs: {
+                        id: "top-contact",
+                        role: "tabpanel",
+                        "aria-labelledby": "contact-top-tab"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "row" },
+                        _vm._l(_vm.done, function(application) {
+                          return _c(
+                            "div",
+                            { key: application.id, staticClass: "col-xxl-4 " },
+                            [
+                              _c("ApplicationCard", {
+                                attrs: {
+                                  getApplications: _vm.getApplications,
+                                  application: application,
+                                  roles: _vm.agents,
+                                  applications: _vm.applications
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ]
+              )
             ])
           ])
         ])
       ])
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
