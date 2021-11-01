@@ -447,11 +447,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -542,7 +537,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 show: true,
                 label: 'Permissions',
                 formatter: function formatter(w) {
-                  return this.totalPermissions;
+                  return 5;
                 }
               }
             }

@@ -66,7 +66,6 @@
                     <div id="basic-apex"></div>
                   </div>
                 </div>
-
                 <div class="card">
                   <div class="card-header pb-0">
                     <h5>Users By Role</h5>
@@ -75,14 +74,11 @@
                     <div id="donutchart"></div>
                   </div>
                 </div>
-
-
         </div>
 
 
       </div>
       <div class="row">
-
         <div class="col-sm-6 col-xl-3 col-lg-6">
           <div class="card o-hidden border-0">
             <div class="bg-primary b-r-4 card-body">
@@ -131,7 +127,6 @@
             </div>
           </div>
         </div>
-
         <div
           class="col-sm-6 col-xl-3 col-lg-6"
           v-for="item in roles"
@@ -524,7 +519,7 @@ chart9.render();
                     show: true,
                     label: 'Permissions',
                     formatter: function(w) {
-                        return this.totalPermissions;
+                        return 5;
                     }
                 }
             }
