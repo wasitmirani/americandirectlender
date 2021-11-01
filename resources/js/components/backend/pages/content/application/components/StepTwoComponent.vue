@@ -139,12 +139,12 @@
                         <label class="col-form-label">If Yes</label>
                         <div class="col-sm-9">
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="is_second_loan1" type="radio" value="yes" :selected="application.is_second_loan === 'yes'" v-model="application.is_second_loan">
-                                <label class="form-check-label" for="is_second_loan1">Payof</label>
+                                <input class="form-check-input" id="is_second_loan1" type="radio" value="payoff" :selected="application.is_second_loan === 'payoff'" v-model="application.is_second_loan">
+                                <label class="form-check-label" for="is_second_loan1">Payoff</label>
                             </div>
                             <div class="form-check radio radio-primary">
-                                  <input class="form-check-input" id="is_second_loan2" type="radio" value="no" :selected="application.is_second_loan === 'no'" v-model="application.is_second_loan">
-                                  <label class="form-check-label" for="is_second_loan2">Subordinate</label>
+                                <input class="form-check-input" id="is_second_loan2" type="radio" value="subordinate" :selected="application.is_second_loan === 'subordinate'" v-model="application.is_second_loan">
+                                <label class="form-check-label" for="is_second_loan2">Subordinate</label>
                             </div>
                         </div>
                     </div>

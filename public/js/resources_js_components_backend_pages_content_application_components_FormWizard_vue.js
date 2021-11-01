@@ -3886,15 +3886,19 @@ var render = function() {
                   attrs: {
                     id: "is_second_loan1",
                     type: "radio",
-                    value: "yes",
-                    selected: _vm.application.is_second_loan === "yes"
+                    value: "payoff",
+                    selected: _vm.application.is_second_loan === "payoff"
                   },
                   domProps: {
-                    checked: _vm._q(_vm.application.is_second_loan, "yes")
+                    checked: _vm._q(_vm.application.is_second_loan, "payoff")
                   },
                   on: {
                     change: function($event) {
-                      return _vm.$set(_vm.application, "is_second_loan", "yes")
+                      return _vm.$set(
+                        _vm.application,
+                        "is_second_loan",
+                        "payoff"
+                      )
                     }
                   }
                 }),
@@ -3905,7 +3909,7 @@ var render = function() {
                     staticClass: "form-check-label",
                     attrs: { for: "is_second_loan1" }
                   },
-                  [_vm._v("Payof")]
+                  [_vm._v("Payoff")]
                 )
               ]),
               _vm._v(" "),
@@ -3923,15 +3927,22 @@ var render = function() {
                   attrs: {
                     id: "is_second_loan2",
                     type: "radio",
-                    value: "no",
-                    selected: _vm.application.is_second_loan === "no"
+                    value: "subordinate",
+                    selected: _vm.application.is_second_loan === "subordinate"
                   },
                   domProps: {
-                    checked: _vm._q(_vm.application.is_second_loan, "no")
+                    checked: _vm._q(
+                      _vm.application.is_second_loan,
+                      "subordinate"
+                    )
                   },
                   on: {
                     change: function($event) {
-                      return _vm.$set(_vm.application, "is_second_loan", "no")
+                      return _vm.$set(
+                        _vm.application,
+                        "is_second_loan",
+                        "subordinate"
+                      )
                     }
                   }
                 }),

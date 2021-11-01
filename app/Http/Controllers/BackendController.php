@@ -12,7 +12,7 @@ class BackendController extends Controller
     {
         $this->middleware('auth');
     }
-    //
+
     public function index(){
         $activityLog =  Activity::all()->last();
         return view('backend.pages.dashboard',['activities'=>$activityLog]);

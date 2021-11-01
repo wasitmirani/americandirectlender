@@ -1892,13 +1892,14 @@ var render = function() {
                               disabled: "",
                               id: "is_second_loan1",
                               type: "radio",
-                              value: "yes",
-                              selected: _vm.application.is_second_loan === "yes"
+                              value: "payoff",
+                              selected:
+                                _vm.application.is_second_loan === "payoff"
                             },
                             domProps: {
                               checked: _vm._q(
                                 _vm.application.is_second_loan,
-                                "yes"
+                                "payoff"
                               )
                             },
                             on: {
@@ -1906,7 +1907,7 @@ var render = function() {
                                 return _vm.$set(
                                   _vm.application,
                                   "is_second_loan",
-                                  "yes"
+                                  "payoff"
                                 )
                               }
                             }
@@ -1918,7 +1919,7 @@ var render = function() {
                               staticClass: "form-check-label",
                               attrs: { for: "is_second_loan1" }
                             },
-                            [_vm._v("Payof")]
+                            [_vm._v("Payoff")]
                           )
                         ]
                       ),
@@ -1941,13 +1942,14 @@ var render = function() {
                               disabled: "",
                               id: "is_second_loan2",
                               type: "radio",
-                              value: "no",
-                              selected: _vm.application.is_second_loan === "no"
+                              value: "subordinate",
+                              selected:
+                                _vm.application.is_second_loan === "subordinate"
                             },
                             domProps: {
                               checked: _vm._q(
                                 _vm.application.is_second_loan,
-                                "no"
+                                "subordinate"
                               )
                             },
                             on: {
@@ -1955,7 +1957,7 @@ var render = function() {
                                 return _vm.$set(
                                   _vm.application,
                                   "is_second_loan",
-                                  "no"
+                                  "subordinate"
                                 )
                               }
                             }
