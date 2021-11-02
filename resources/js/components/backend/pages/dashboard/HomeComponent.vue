@@ -10,9 +10,7 @@
             <div class="card-body text-center p-t-0">
               <h3 class="font-light">Wellcome Back, {{ user.name }}!!</h3>
               <p>
-                Welcome to the {{ app_name }} Family! we are glad that you are
-                visite this dashboard. we will be happy to help you grow your
-                business.
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi minima veritatis nam iste soluta dolorum voluptate vero quam at cum blanditiis, repellendus cumque obcaecati, eligendi fuga facilis ex nulla eveniet.
               </p>
             </div>
 

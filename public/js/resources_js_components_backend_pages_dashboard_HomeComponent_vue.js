@@ -445,8 +445,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1554,9 +1552,7 @@ var render = function() {
               _vm._v(" "),
               _c("p", [
                 _vm._v(
-                  "\n              Welcome to the " +
-                    _vm._s(_vm.app_name) +
-                    " Family! we are glad that you are\n              visite this dashboard. we will be happy to help you grow your\n              business.\n            "
+                  "\n           Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi minima veritatis nam iste soluta dolorum voluptate vero quam at cum blanditiis, repellendus cumque obcaecati, eligendi fuga facilis ex nulla eveniet.\n            "
                 )
               ])
             ]),
