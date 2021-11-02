@@ -277,7 +277,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 
@@ -2266,7 +2265,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._v("\n     s\n      "),
     _c("div", { staticClass: "container-fluid" }, [
       _c("div", { staticClass: "row project-cards" }, [
         _vm._m(0),

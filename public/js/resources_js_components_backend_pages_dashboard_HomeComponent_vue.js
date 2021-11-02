@@ -480,7 +480,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
+              width: '100%'
             },
             legend: {
               position: 'bottom'
@@ -504,7 +504,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
+              width: '100%'
             },
             legend: {
               position: 'bottom'

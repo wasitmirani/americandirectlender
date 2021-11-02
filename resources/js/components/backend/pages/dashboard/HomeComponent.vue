@@ -450,7 +450,7 @@ export default {
         breakpoint: 480,
         options: {
             chart: {
-                width: 200
+                width: '100%'
             },
             legend: {
                 position: 'bottom'
@@ -480,7 +480,7 @@ donutChart(){
         breakpoint: 480,
         options: {
             chart: {
-                width: 200
+                width: '100%'
             },
             legend: {
                 position: 'bottom'
@@ -526,8 +526,6 @@ chart9.render();
     series: this.userByPermission,
     labels: this.userPermissionLabel,
     colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary, '#222222', '#717171']
-
-
 }
 
 var chart11 = new ApexCharts(
@@ -638,6 +636,7 @@ chart.render();
 
   mounted() {
     this.getDashboardData();
+
     // console.log("userss",user);
     this.user = user;
     this.app_name = "American Lender";
