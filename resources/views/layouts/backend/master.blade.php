@@ -164,6 +164,7 @@ window.appname={!! json_encode(config('app.name'),true)!!};
     <script src="{{asset('assets/js/counter/jquery.counterup.min.js')}}"></script>
     <script src="{{asset('assets/js/counter/counter-custom.js')}}"></script>
 
+
     <script src="{{asset('assets/js/owlcarousel/owl.carousel.js')}}"></script>
     <script src="{{asset('assets/js/owlcarousel/owl-custom.js')}}"></script>
     <script src="{{ asset('assets/js/form-wizard.js') }}"></script>
@@ -173,7 +174,11 @@ window.appname={!! json_encode(config('app.name'),true)!!};
 
     <script src="{{asset('assets/js/script.js')}}"></script>
     <script src="{{asset('assets/js/theme-customizer/customizer.js')}}"></script>
-
+    <script src="{{ asset('/assets/js/chart/morris-chart/raphael.js') }}"></script>
+    <script src="{{ asset('/assets/js/chart/morris-chart/morris.js') }}"> </script>
+    <script src="{{ asset('/assets/js/chart/morris-chart/prettify.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/chart/morris-chart/morris.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/chart/morris-chart/morris-script.js') }}"></script>
     <!-- login js-->
     <!-- Plugin used-->
   </body>

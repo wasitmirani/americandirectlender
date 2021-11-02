@@ -42,18 +42,52 @@ class HelperComponent {
 
                 ],
 
-
                 [
                     "heading"=>"Content",
+                    "menu"=>[
+                        "title"=>'Applications',
+                        "icon"=>"file-text",
+                        "sub_menu"=>[
+                            setSubMenu(
+                                "New App",
+                                  null,
+                                  null,
+                                  "/create/app"
+                              ),
+                            setSubMenu(
+                              "Apps List",
+                                null,
+                                null,
+                                "/customer/applications"
+                            ),
+                            setSubMenu(
+                                "Approved Apps",
+                                null,
+                               null,
+                                "/assigned/apps"
+                            ),
+                            setSubMenu(
+                                "My Apps",
+                                null,
+                                "permissions-view",
+                                "/my/application"
+                              )
+                        ]
+
+                    ],
+
 
                 ],
 
-                [
-                    "single_link" => setSingleLink("Applications", "file-text", null, "/customer/applications"),
-                ],
-                [
-                    "single_link" => setSingleLink( "Approved Apps","file-text",null,"/assigned/apps"),
-                ],
+                // [
+                //     "single_link" => setSingleLink("Applications", "file-text", null, "/customer/applications"),
+                // ],
+                // [
+                //     "single_link" => setSingleLink( "Approved Apps","file-text",null,"/assigned/apps"),
+                // ],
+                // [
+                //     "single_link" => setSingleLink( "My Apps","file-text",null,"/my/apps"),
+                // ],
                 // [
                 //     "single_link" => setSingleLink( "Assign App","file-text",null,"/assign/apps"),
                 // ],

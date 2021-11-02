@@ -2,10 +2,10 @@
     <div>
       <div class="setup-content" id="step-1" style="">
             <div class="mb-3 container">
-                <div class="row">
-                    <div class="col-xl-6">
-                <label class="col-form-label">Client Name</label>
-                <input  type="text" class="form-control" placeholder="your Name" v-model="application.name"></input>
+            <div class="row">
+                <div class="col-xl-6">
+                  <label class="col-form-label">Client Name</label>
+                  <input  type="text" class="form-control" placeholder="your Name" v-model="application.name"></input>
                 </div>
 
 
@@ -17,7 +17,7 @@
                 </div>
 
             </div>
-        </div>
+      </div>
     </div>
   </template>
   <script>

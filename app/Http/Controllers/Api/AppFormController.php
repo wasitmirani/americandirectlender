@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\ApplicationAgents;
 use App\Models\ApplicationComment;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ApplicationAttachment;
 use Symfony\Component\Console\Input\Input;
@@ -217,6 +219,74 @@ class AppFormController extends Controller
 
         return response()->json();
 
+
+    }
+
+    public function createApplications(Request $request){
+        $application = Application::Create([
+            "date" => $request->date,
+            "name" => $request->name,
+            "property_value" => $request->property_value,
+            "property_update" => $request->property_update,
+            "property_address" =>  $request->property_address,
+            "promotion_detail" =>$request->property_detail,
+            "property_type" => $request->property_type,
+            "hoa" => $request->hoa,
+            "fee" => $request->fee,
+            "cash_out" => $request->cash_out,
+            "refinance" => $request->refinance,
+            "payment_assurance" => $request->assurance,
+            "payment_surity" => $request->payment_surity,
+            "purchase" => $request->purchase,
+            "second_loan" => $request->second_loan,
+            "loan_amount" => $request->loan_amount,
+            "investment_property" => $request->investment_property,
+            "is_second_loan" => $request->is_second_loan,
+            "cash_reserve" => $request->cash_reserve,
+            "fico" => $request->fico,
+            "doc_type" => $request->doc_type,
+            "occupant" => $request->occupant,
+            "income_source" => $request->income_source,
+            "income_type" => $request->income_type,
+            "recent_business_Activity" => $request->recent_business,
+            "business_type" => $request->business_Type,
+            "is_online" => $request->is_online,
+            "tax_return" => $request->tax_return,
+            "recent_business" => $request->recent_business,
+            "is_online_reason" => $request->is_online_reason,
+            "business_line" => $request->business_line,
+            "advice" => $request->advice,
+            "is_business_partner" => $request->is_business_partner,
+            "financial_history" => $request->financial_history,
+            "monthly_rent" => $request->monthly_rent,
+            "renovation" => $request->renovation,
+            "mortgage_statement" => $request->mortgage_statement,
+            "property_insured" => $request->property_insured,
+            "liabilities_loans" => $request->liabilities_loans,
+
+
+        ]);
+        if($application){
+            return response()->json();
+
+        }else{
+             return response()->json('Something Went Wrong');
+        }
+
+
+
+    }
+
+    public function myApplications()
+    {
+        $id = Auth::user()->id;
+
+        $applications = DB::table('applications')
+        ->join('application_agents', 'application_agents.application_id', '=', 'applications.id')
+        ->where('application_agents.agent_id','=',$id)
+        ->get(['applications.*']);
+  
+        return response()->json(['applications'=>$applications]);
 
     }
 

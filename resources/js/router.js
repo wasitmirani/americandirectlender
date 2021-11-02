@@ -42,6 +42,7 @@ const routes = [
     { path: "/show/notify", component: () => setComponent("content/notification/ShowNotification"), name: "ShowNotify", },
     { path: "/view/notify/:id", component: () => setComponent("content/notification/DetailNotification"), name: "ViewNotify", },
 
+
     {
         path: "/detail/notify:id",
         component: () => setComponent("content/notification/DetailNotification"),
@@ -57,6 +58,16 @@ const routes = [
         path: "/show/application/:id",
         component: () => setComponent("content/application/ShowApplication"),
         name: "show-application",
+    },
+    {
+        path: "/my/application",
+        component: () => setComponent("content/application/MyApplication"),
+        name: "my-application",
+    },
+    {
+        path: "/create/app",
+        component: () => setComponent("content/application/CreateApp"),
+        name: "create-application",
     },
     {
         path: "/profile/setting",

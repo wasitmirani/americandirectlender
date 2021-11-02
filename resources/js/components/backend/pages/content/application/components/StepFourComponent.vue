@@ -23,7 +23,7 @@
                 <label class="col-form-label">List all Liabilities/Liens/Loans/Investments/Cosign on Loans</label>
                 <textarea class="form-control" v-model="application.liabilities_loans"></textarea>
             </div>
-        
+
 
 
         </div>

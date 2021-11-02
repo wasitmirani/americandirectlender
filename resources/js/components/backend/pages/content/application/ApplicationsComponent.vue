@@ -1,5 +1,7 @@
 <template>
   <div>
+          <Breadcrumb activename="Applications" ></Breadcrumb>
+
         <div class="container-fluid">
             <div class="row project-cards">
               <div class="col-md-12 project-list">
@@ -26,14 +28,13 @@
                     <div class="tab-content" id="top-tabContent">
                       <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
                         <div class="row">
-                                    <SearchInput :apiurl="'/customer/applications?page=' +this.page_num"
+                                <SearchInput :apiurl="'/customer/applications?page=' +this.page_num"
                                         v-on:query="isquery($event)"
                                         v-on:loading="loadingStart($event)"
                                         v-on:reload="getApplications()"
                                         v-on:filterList="filterdata($event)"
                                         label="Search Applications">
-                                    </SearchInput>
-
+                                </SearchInput>
                         <div class="col-xxl-6 col-lg-6 " v-for="application in applications" :key="application.id">
 
                              <ApplicationCard :getRoles="getRoles" :roles="agents" :getApplications="getApplications" :application="application" :applications="applications"></ApplicationCard>

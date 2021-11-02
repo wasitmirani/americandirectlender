@@ -27,6 +27,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:api')->group(function () {
 
     Route::get('customer/applications',[AppFormController::class,'getApplications']);
+    Route::get('my/applications',[AppFormController::class,'myApplications']);
+    Route::post('customer/application',[AppFormController::class,'CreateApplications']);
     Route::get('customer/applications/{id}',[AppFormController::class,'edit']);
     Route::put('customer/applications/{id}',[AppFormController::class,'update']);
     Route::get('/recent/applications',[DashboardController::class,'recentApp']);

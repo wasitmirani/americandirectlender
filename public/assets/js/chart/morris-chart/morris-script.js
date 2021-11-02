@@ -262,7 +262,8 @@ var morris_chart = {
                 labels: ["Licensed", "SORN"],
                 xLabelAngle: 60
             })
-        }), $(function() {
+        }),
+        $(function() {
             Morris.Donut({
                 element: 'donut-color-chart-morris',
                 data: [{

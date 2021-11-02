@@ -480,7 +480,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           breakpoint: 480,
           options: {
             chart: {
-              width: '100%'
+              width: 200
             },
             legend: {
               position: 'bottom'
@@ -504,7 +504,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           breakpoint: 480,
           options: {
             chart: {
-              width: '100%'
+              width: 200
             },
             legend: {
               position: 'bottom'
@@ -594,9 +594,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       };
       var chart = new ApexCharts(document.querySelector("#basic-apex"), options);
       chart.render();
-    },
-    getDate: function getDate() {
-      console.log(series);
     },
     getDashboardData: function getDashboardData() {
       var _this = this;

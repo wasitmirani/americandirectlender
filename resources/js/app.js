@@ -35,13 +35,18 @@ import Swal from 'sweetalert2'
 // import vuesax css
 import 'vuesax/dist/vuesax.css'
 
+
+
+
 // swal initialization
 window.Swal = Swal;
 Vue.use(VueContentPlaceholders)
 // register globally
 Vue.component('multiselect', Multiselect)
+
 Vue.use(VueFormWizard)
 Vue.use(Vuesax);
+
 Vue.component("pagination", require("laravel-vue-pagination"));
 
 window.moment = moment;

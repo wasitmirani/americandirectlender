@@ -7,7 +7,7 @@
         <img class="img-90 rounded-circle" src="../assets/images/dashboard/1.png" alt="">
 
         @endif
-        <h6 class="mt-3 f-14 f-w-600">American Direct Lender</h6>
+        <h6 class="mt-3 f-14 f-w-600">{{ Auth::user()->name }}</h6>
       <p class="mb-0 font-roboto"></p>
 
       </ul>
