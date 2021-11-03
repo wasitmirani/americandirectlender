@@ -39,6 +39,7 @@
                   <div class="card-body apex-chart">
                     <div id="piechart"></div>
                   </div>
+
                 </div>
 
                 <div class="card">
@@ -58,11 +59,14 @@
         <div class="col-xl-6 box-col-12 des-xl-100 invoice-sec">
                 <div class="card">
                   <div class="card-header pb-0">
-                    <h5>Applications Analytics</h5>
+                    <h5></h5>
                   </div>
                   <div class="card-body">
                     <div id="basic-apex"></div>
                   </div>
+                <!-- <div id="chart">
+                   <lineChart :total_apps="total_apps" :dates='dates'></lineChart>
+                </div> -->
                 </div>
                 <div class="card">
                   <div class="card-header pb-0">
@@ -72,7 +76,7 @@
                     <div class="chart-overflow" id="pie-chart3"></div>
                   </div>
                   <div id="chart">
-        <apexchart type="donut"  :options="chartOptions" :series="series"></apexchart>
+        <apexchart type="donut"  :options="chartOptions" :series="series" ></apexchart>
       </div>
                 </div>
 
@@ -418,8 +422,12 @@
 </template>
 
 <script>
+import lineChart from './ChartComponent.vue'
 
 export default {
+    components:{
+       lineChart
+    },
   data() {
     return {
       logs: [],
@@ -432,7 +440,7 @@ export default {
       roles: {},
       apps: {},
       series:[],
-      label:[],
+      labels:[],
       chartOptions:{},
       userByRole:"",
       userWithRole:"",
@@ -442,7 +450,17 @@ export default {
       userByPermission:[],
       userPermissionLabel:[],
       totalPermissions:0,
-      dates:[]
+      dates:[],
+       series: [{
+              name: "Desktops",
+              data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+          }],
+     chartOptions : {
+        chart: {
+              type: 'donut',
+            },
+        labels:[],
+     }
     }
 
   },
@@ -546,7 +564,7 @@ chart11.render();
         // data:this.applications,
     }],
     title: {
-        text: 'Applications Statistics',
+        text: 'Applications Analytics',
         align: 'left'
     },
     subtitle: {
@@ -598,27 +616,7 @@ donutChart(){
 },
 userRoleChart(){
 
-     this.chartOptions = {
-           chart: {
-              type: 'donut',
-            },
-           labels: ["Apple", "Mango", "Banana", "Papaya", "Orange"],
-  dataLabels: {
-      enabled: false
-  },
-            responsive: [{
-              breakpoint: 480,
-              options: {
-                chart: {
-                  width: 200
-                },
-                legend: {
-                  position: 'bottom'
-                }
-              }
-            }]
 
-     }
     console.log('user role chart')
 }
 ,
@@ -641,10 +639,11 @@ async getDashboardData() {
         this.series =  res.data.userByRole.map(x => x.users_count)
         this.label = res.data.userByRole.map(x => x.name)
         this.userByRole =  res.data.userByRole.map(x => x.users_count)
-        this.userRoleLabel = res.data.userByRole.map(x => x.name)
+        this.chartOptions.labels = res.data.userByRole.map(x => x.name)
         this.userByPermission = res.data.userByPermission.map(x => x.users_count)
         this.userPermissionLabel = res.data.userByPermission.map(x => x.name)
         this.totalPermissions = res.data.totalPermissions;
+        this.series1 = res.data.dateby_applications
         // this.dates = res.data.dates;
         // series.applications =  data.map(x => x.created_at);
         // series.total = data.map(x => x.total);
