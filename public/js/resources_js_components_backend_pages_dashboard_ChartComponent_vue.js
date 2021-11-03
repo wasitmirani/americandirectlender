@@ -17,60 +17,87 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['dates', 'total_apps'],
+  props: ['app_status'],
   data: function data() {
     return {
-      date: [],
-      apps: [],
-      series: [{
-        name: "Applications",
-        data: this.apps
-      }],
+      series: ['2', '2'],
       chartOptions: {
         chart: {
-          height: 350,
-          type: 'line',
-          zoom: {
-            enabled: false
+          width: 380,
+          type: 'donut',
+          dropShadow: {
+            enabled: true,
+            color: '#111',
+            top: -1,
+            left: 3,
+            blur: 3,
+            opacity: 0.2
           }
-        },
-        dataLabels: {
-          enabled: false
         },
         stroke: {
-          curve: 'straight'
+          width: 0
         },
-        title: {
-          text: 'Application Analytics',
-          align: 'left'
-        },
-        grid: {
-          row: {
-            colors: ['#f3f3f3', 'transparent'],
-            // takes an array which will be repeated on columns
-            opacity: 0.5
+        plotOptions: {
+          pie: {
+            donut: {
+              labels: {
+                show: true,
+                total: {
+                  showAlways: true,
+                  show: true
+                }
+              }
+            }
           }
         },
-        xaxis: {
-          categories: this.date
-        }
+        labels: ["Pending", "Approved"],
+        dataLabels: {
+          dropShadow: {
+            blur: 3,
+            opacity: 0.8
+          }
+        },
+        fill: {
+          type: 'pattern',
+          opacity: 1,
+          pattern: {
+            enabled: true,
+            style: ['verticalLines', 'squares', 'horizontalLines', 'circles', 'slantedLines']
+          }
+        },
+        states: {
+          hover: {
+            filter: 'none'
+          }
+        },
+        theme: {
+          palette: 'palette2'
+        },
+        title: {
+          text: "Applications By Status"
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
       }
     };
   },
   methods: {
     init: function init() {
-      this.apps = this.total_apps;
-    },
-    "int": function int() {
-      this.series.data = this.dates;
+      this.series = this.app_status;
     }
   },
   watch: {
-    total_apps: function total_apps(new_value) {
+    app_status: function app_status(new_value) {
       this.init();
-    },
-    dates: function dates(new_value) {
-      this["int"]();
     }
   }
 });
@@ -166,8 +193,8 @@ var render = function() {
     [
       _c("apexchart", {
         attrs: {
-          type: "line",
-          height: "350",
+          type: "donut",
+          width: "380",
           options: _vm.chartOptions,
           series: _vm.series
         }

@@ -1,79 +1,98 @@
 <template>
    <div>
-        <apexchart type="line" height="350" :options="chartOptions" :series="series"></apexchart>
+        <apexchart type="donut" width="380" :options="chartOptions" :series="series"></apexchart>
    </div>
 </template>
 <script>
   export default{
 
-      props:['dates','total_apps'],
+      props:['app_status'],
 
       data(){
           return{
-              date:[],
-              apps:[],
-            series: [{
-              name: "Applications",
-              data: this.apps
-          }],
-             chartOptions: {
+
+                series: ['2','2'],
+          chartOptions: {
             chart: {
-              height: 350,
-              type: 'line',
-              zoom: {
-                enabled: false
+              width: 380,
+              type: 'donut',
+              dropShadow: {
+                enabled: true,
+                color: '#111',
+                top: -1,
+                left: 3,
+                blur: 3,
+                opacity: 0.2
               }
             },
-            dataLabels: {
-              enabled: false
-            },
             stroke: {
-              curve: 'straight'
+              width: 0,
             },
-            title: {
-              text: 'Application Analytics',
-              align: 'left'
+            plotOptions: {
+              pie: {
+                donut: {
+                  labels: {
+                    show: true,
+                    total: {
+                      showAlways: true,
+                      show: true
+                    }
+                  }
+                }
+              }
             },
-            grid: {
-              row: {
-                colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-                opacity: 0.5
+            labels: ["Pending","Approved"],
+            dataLabels: {
+              dropShadow: {
+                blur: 3,
+                opacity: 0.8
+              }
+            },
+            fill: {
+            type: 'pattern',
+              opacity: 1,
+              pattern: {
+                enabled: true,
+                style: ['verticalLines', 'squares', 'horizontalLines', 'circles','slantedLines'],
               },
             },
-            xaxis: {
-              categories:this.date
-            }
+            states: {
+              hover: {
+                filter: 'none'
+              }
+            },
+            theme: {
+              palette: 'palette2'
+            },
+            title: {
+              text: "Applications By Status"
+            },
+            responsive: [{
+              breakpoint: 480,
+              options: {
+                chart: {
+                  width: 200
+                },
+                legend: {
+                  position: 'bottom'
+                }
+              }
+            }]
           },
 
           }
       },
+      methods:{
 
-   methods: {
-      init() {
-
-        this.apps = this.total_apps
+          init(){
+              this.series = this.app_status
+          }
       },
-      int(){
-          this.series.data = this.dates
-      }
-
-    },
-   watch:{
-    total_apps: function(new_value) {
+      watch:{
+        app_status: function(new_value) {
         this.init()
-      },
-    dates: function(new_value) {
-        this.int()
       }
-
-    }
-
-
-
-
-
-
-
+      }
 
   }
 </script>

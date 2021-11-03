@@ -287,9 +287,9 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>08. FICO Score(s): *</label>
-                                                <input class="form-control" type="text" name="fico[]" placeholder="Experian______">
-                                                <input class="form-control" type="text" name="fico[]" placeholder="Equifax______">
-                                                <input class="form-control" type="text" name="fico[]" placeholder="Transunion______">
+                                                <input class="form-control" type="text" name="fico_one" placeholder="Experian______">
+                                                <input class="form-control" type="text" name="fico_two" placeholder="Equifax______">
+                                                <input class="form-control" type="text" name="fico_three" placeholder="Transunion______">
                                                 <div id="emailHelp" class="form-text">(*we use the middle score) </div>
                                             </div>
                                         </div>
