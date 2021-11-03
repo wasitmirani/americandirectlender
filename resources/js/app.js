@@ -35,7 +35,9 @@ import Swal from 'sweetalert2'
 // import vuesax css
 import 'vuesax/dist/vuesax.css'
 
-
+import VueApexCharts from 'vue-apexcharts'
+Vue.use(VueApexCharts)
+Vue.component('apexchart', VueApexCharts)
 
 
 // swal initialization
@@ -48,6 +50,7 @@ Vue.use(VueFormWizard)
 Vue.use(Vuesax);
 
 Vue.component("pagination", require("laravel-vue-pagination"));
+
 
 window.moment = moment;
 Vue.use(VueProgressBar, {

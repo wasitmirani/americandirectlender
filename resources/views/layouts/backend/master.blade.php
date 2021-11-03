@@ -149,42 +149,30 @@ window.appname={!! json_encode(config('app.name'),true)!!};
     <!-- Bootstrap js-->
     <script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap/bootstrap.min.js')}}"></script>
-
-    <!-- Plugins JS start-->
     <script src="{{asset('assets/js/chart/chartjs/chart.min.js')}}"></script>
     <script src="{{asset('assets/js/chart/chartist/chartist.js')}}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+    <script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{asset('assets/js/chart/chartist/chartist-plugin-tooltip.js')}}"></script>
     <script src="{{asset('assets/js/chart/knob/knob.min.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="{{asset('/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
     <script src="{{asset('assets/js/chart/apex-chart/stock-prices.js')}}"></script>
     <script src="{{asset('assets/js/prism/prism.min.js')}}"></script>
     <script src="{{asset('assets/js/counter/jquery.waypoints.min.js')}}"></script>
     <script src="{{asset('assets/js/counter/jquery.counterup.min.js')}}"></script>
     <script src="{{asset('assets/js/counter/counter-custom.js')}}"></script>
-
-
     <script src="{{asset('assets/js/owlcarousel/owl.carousel.js')}}"></script>
     <script src="{{asset('assets/js/owlcarousel/owl-custom.js')}}"></script>
-    <script src="{{ asset('assets/js/form-wizard.js') }}"></script>
+    <script src="{{asset('assets/js/form-wizard.js') }}"></script>
     <script src="{{asset('assets/js/dashboard/dashboard_2.js')}}"></script>
-    <!-- Plugins JS Ends-->
-    <!-- Theme js-->
-
-    <script src="../assets/js/chart/google/google-chart-loader.js"></script>
-
+    <script src="{{ asset('assets/js/chart/google/google-chart-loader.js') }}"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
     <script src="{{asset('assets/js/script.js')}}"></script>
     <script src="{{asset('assets/js/theme-customizer/customizer.js')}}"></script>
     <script>
         google.load('visualization', '1.0', {'packages':['corechart']});
         google.setOnLoadCallback(drawChart);
     </script>
-
-    <!-- login js-->
-    <!-- Plugin used-->
   </body>
 
 

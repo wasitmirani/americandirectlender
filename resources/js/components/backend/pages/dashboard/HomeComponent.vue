@@ -71,6 +71,9 @@
                     <div class="card-body p-0 chart-block">
                     <div class="chart-overflow" id="pie-chart3"></div>
                   </div>
+                  <div id="chart">
+        <apexchart type="donut"  :options="chartOptions" :series="series"></apexchart>
+      </div>
                 </div>
 
         </div>
@@ -428,6 +431,9 @@ export default {
       assigned_apps: 0,
       roles: {},
       apps: {},
+      series:[],
+      label:[],
+      chartOptions:{},
       userByRole:"",
       userWithRole:"",
       app_status:[],
@@ -437,7 +443,8 @@ export default {
       userPermissionLabel:[],
       totalPermissions:0,
       dates:[]
-    };
+    }
+
   },
 
   methods: {
@@ -569,8 +576,14 @@ chart.render();
 },
 donutChart(){
       var data = google.visualization.arrayToDataTable([
+
         ['Role', 'Users'],
         ['Admin', 2],
+        this.userByRole.forEach(function (arrayItem) {
+                    var x = arrayItem.name;
+                    var y = arrayItem.users_count;
+                    "['"+x+"',"+" "+y+"],"
+        })
         ['Agent', 3]
       ]);
       var options = {
@@ -583,6 +596,32 @@ donutChart(){
       var chart = new google.visualization.PieChart(document.getElementById('pie-chart3'));
       chart.draw(data, options);
 },
+userRoleChart(){
+
+     this.chartOptions = {
+           chart: {
+              type: 'donut',
+            },
+           labels: ["Apple", "Mango", "Banana", "Papaya", "Orange"],
+  dataLabels: {
+      enabled: false
+  },
+            responsive: [{
+              breakpoint: 480,
+              options: {
+                chart: {
+                  width: 200
+                },
+                legend: {
+                  position: 'bottom'
+                }
+              }
+            }]
+
+     }
+    console.log('user role chart')
+}
+,
 async getDashboardData() {
       await axios.get("dashboard").then((res) => {
         //  console.log(res.data)
@@ -599,7 +638,9 @@ async getDashboardData() {
         this.dates = data.map(x =>  moment(x.created_at).format("D MMM YYYY"));
         this.total_apps = data.map(x => parseInt(x.total));
         this.app_status = res.data.app_status.map(x => x.count)
-        this.userByRole =  res.data.userByRole.map(x => x)
+        this.series =  res.data.userByRole.map(x => x.users_count)
+        this.label = res.data.userByRole.map(x => x.name)
+        this.userByRole =  res.data.userByRole.map(x => x.users_count)
         this.userRoleLabel = res.data.userByRole.map(x => x.name)
         this.userByPermission = res.data.userByPermission.map(x => x.users_count)
         this.userPermissionLabel = res.data.userByPermission.map(x => x.name)
@@ -612,19 +653,16 @@ async getDashboardData() {
         // this.userByRole = arr.reduce(
         //   (obj, item) => Object.assign(obj, { [item.name]: item.users_count }), {}
         // );
-        // this.userByRole.forEach(function (arrayItem) {
-        //             var x = arrayItem.name;
-        //             var y = arrayItem.users_count;
-        //             "['"+x+"',"+" "+y+"],"
-        //         })
-
-
-
-
+        this.userByRole.forEach(function (arrayItem) {
+                    var x = arrayItem.name;
+                    var y = arrayItem.users_count;
+                    "['"+x+"',"+" "+y+"],"
+                })
         this.dashboardChart();
         this.pieChart();
         this.radialBar();
         this.donutChart();
+        this.userRoleChart();
       });
     },
 

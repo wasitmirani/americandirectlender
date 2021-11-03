@@ -446,6 +446,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -458,6 +461,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       assigned_apps: 0,
       roles: {},
       apps: {},
+      series: [],
+      label: [],
+      chartOptions: {},
       userByRole: "",
       userWithRole: "",
       app_status: [],
@@ -574,7 +580,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       chart.render();
     },
     donutChart: function donutChart() {
-      var data = google.visualization.arrayToDataTable([['Role', 'Users'], ['Admin', 2], ['Agent', 3]]);
+      var data = google.visualization.arrayToDataTable([['Role', 'Users'], ['Admin', 2], this.userByRole.forEach(function (arrayItem) {
+        var x = arrayItem.name;
+        var y = arrayItem.users_count;
+        "['" + x + "'," + " " + y + "],";
+      })[('Agent', 3)]]);
       var options = {
         title: 'Users By Role',
         pieHole: 0.4,
@@ -584,6 +594,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       };
       var chart = new google.visualization.PieChart(document.getElementById('pie-chart3'));
       chart.draw(data, options);
+    },
+    userRoleChart: function userRoleChart() {
+      this.chartOptions = {
+        chart: {
+          type: 'donut'
+        },
+        labels: ["Apple", "Mango", "Banana", "Papaya", "Orange"],
+        dataLabels: {
+          enabled: false
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+      };
+      console.log('user role chart');
     },
     getDashboardData: function getDashboardData() {
       var _this = this;
@@ -616,8 +649,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.app_status = res.data.app_status.map(function (x) {
                     return x.count;
                   });
+                  _this.series = res.data.userByRole.map(function (x) {
+                    return x.users_count;
+                  });
+                  _this.label = res.data.userByRole.map(function (x) {
+                    return x.name;
+                  });
                   _this.userByRole = res.data.userByRole.map(function (x) {
-                    return x;
+                    return x.users_count;
                   });
                   _this.userRoleLabel = res.data.userByRole.map(function (x) {
                     return x.name;
@@ -636,11 +675,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   // this.userByRole = arr.reduce(
                   //   (obj, item) => Object.assign(obj, { [item.name]: item.users_count }), {}
                   // );
-                  // this.userByRole.forEach(function (arrayItem) {
-                  //             var x = arrayItem.name;
-                  //             var y = arrayItem.users_count;
-                  //             "['"+x+"',"+" "+y+"],"
-                  //         })
 
                   // this.dates = res.data.dates;
                   // series.applications =  data.map(x => x.created_at);
@@ -650,11 +684,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   // this.userByRole = arr.reduce(
                   //   (obj, item) => Object.assign(obj, { [item.name]: item.users_count }), {}
                   // );
-                  // this.userByRole.forEach(function (arrayItem) {
-                  //             var x = arrayItem.name;
-                  //             var y = arrayItem.users_count;
-                  //             "['"+x+"',"+" "+y+"],"
-                  //         })
+                  _this.userByRole.forEach(function (arrayItem) {
+                    var x = arrayItem.name;
+                    var y = arrayItem.users_count;
+                    "['" + x + "'," + " " + y + "],";
+                  });
+
                   _this.dashboardChart();
 
                   _this.pieChart();
@@ -662,6 +697,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.radialBar();
 
                   _this.donutChart();
+
+                  _this.userRoleChart();
                 });
 
               case 2:
@@ -1569,7 +1606,34 @@ var render = function() {
           _vm._m(2)
         ]),
         _vm._v(" "),
-        _vm._m(3)
+        _c(
+          "div",
+          { staticClass: "col-xl-6 box-col-12 des-xl-100 invoice-sec" },
+          [
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _c(
+                "div",
+                { attrs: { id: "chart" } },
+                [
+                  _c("apexchart", {
+                    attrs: {
+                      type: "donut",
+                      options: _vm.chartOptions,
+                      series: _vm.series
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ]
+        )
       ]),
       _vm._v(" "),
       _c(
@@ -1782,7 +1846,7 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-sm-6 pe-0" }, [
                 _c("div", { staticClass: "media border-after-xs" }, [
-                  _vm._m(4),
+                  _vm._m(6),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body align-self-center" }, [
                     _c(
@@ -1829,7 +1893,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 ps-0" }, [
                 _c("div", { staticClass: "media" }, [
-                  _vm._m(5),
+                  _vm._m(7),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body align-self-center" }, [
                     _c(
@@ -1873,7 +1937,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 pe-0" }, [
                 _c("div", { staticClass: "media border-after-xs" }, [
-                  _vm._m(6),
+                  _vm._m(8),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body align-self-center" }, [
                     _c(
@@ -1921,7 +1985,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 ps-0" }, [
                 _c("div", { staticClass: "media" }, [
-                  _vm._m(7),
+                  _vm._m(9),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body ps-2" }, [
                     _c(
@@ -1947,7 +2011,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(8),
+    _vm._m(10),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "card" }, [
@@ -1956,7 +2020,7 @@ var render = function() {
             _c("h5", [_vm._v("Recent Applications")]),
             _vm._v(" "),
             _c("table", { staticClass: "table table-bordernone" }, [
-              _vm._m(9),
+              _vm._m(11),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -2108,34 +2172,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-xl-6 box-col-12 des-xl-100 invoice-sec" },
-      [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header pb-0" }, [
-            _c("h5", [_vm._v("Applications Analytics")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { attrs: { id: "basic-apex" } })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header pb-0" }, [
-            _c("h5", [_vm._v("Users By Role")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body p-0 chart-block" }, [
-            _c("div", {
-              staticClass: "chart-overflow",
-              attrs: { id: "pie-chart3" }
-            })
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header pb-0" }, [
+        _c("h5", [_vm._v("Applications Analytics")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("div", { attrs: { id: "basic-apex" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header pb-0" }, [
+      _c("h5", [_vm._v("Users By Role")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body p-0 chart-block" }, [
+      _c("div", { staticClass: "chart-overflow", attrs: { id: "pie-chart3" } })
+    ])
   },
   function() {
     var _vm = this
