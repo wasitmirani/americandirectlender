@@ -171,8 +171,11 @@ window.appname={!! json_encode(config('app.name'),true)!!};
     <script src="{{asset('assets/js/dashboard/dashboard_2.js')}}"></script>
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
+
     <script src="../assets/js/chart/google/google-chart-loader.js"></script>
+
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
     <script src="{{asset('assets/js/script.js')}}"></script>
     <script src="{{asset('assets/js/theme-customizer/customizer.js')}}"></script>
     <script>

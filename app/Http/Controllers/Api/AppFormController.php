@@ -103,7 +103,9 @@ class AppFormController extends Controller
         $application->investment_property = $request->investment_property;
         $application->is_second_loan = $request->is_second_loan;
         $application->cash_reserve = $request->cash_reserve;
-        $application->fico = $request->fico;
+        $application->fico_one = $request->fico_one;
+        $application->fico_two = $request->fico_two;
+        $application->fico_three = $request->fico_three;
         $application->doc_type = $request->doc_type;
         $application->occupant = $request->occupant;
         $application->income_source = $request->income_source;
@@ -243,7 +245,9 @@ class AppFormController extends Controller
             "investment_property" => $request->investment_property,
             "is_second_loan" => $request->is_second_loan,
             "cash_reserve" => $request->cash_reserve,
-            "fico" => $request->fico,
+            "fico_one" => $request->fico_one,
+            "fico_two" => $request->fico_two,
+            "fico_three" => $request->fico_three,
             "doc_type" => $request->doc_type,
             "occupant" => $request->occupant,
             "income_source" => $request->income_source,
@@ -285,7 +289,7 @@ class AppFormController extends Controller
         ->join('application_agents', 'application_agents.application_id', '=', 'applications.id')
         ->where('application_agents.agent_id','=',$id)
         ->get(['applications.*']);
-  
+
         return response()->json(['applications'=>$applications]);
 
     }

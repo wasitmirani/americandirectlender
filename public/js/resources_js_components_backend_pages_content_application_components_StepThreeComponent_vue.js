@@ -286,6 +286,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['application']
 });
@@ -543,72 +555,80 @@ var render = function() {
           _vm._v("FICO Score(s): *")
         ]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.application.fico,
-              expression: "application.fico"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", placeholder: "Experian___" },
-          domProps: { value: _vm.application.fico },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-3" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.application.fico_one,
+                  expression: "application.fico_one"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Experian___" },
+              domProps: { value: _vm.application.fico_one },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.application, "fico_one", $event.target.value)
+                }
               }
-              _vm.$set(_vm.application, "fico", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.application.fico,
-              expression: "application.fico"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", placeholder: "Equifax___" },
-          domProps: { value: _vm.application.fico },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-3" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.application.fico_two,
+                  expression: "application.fico_two"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Equifax___" },
+              domProps: { value: _vm.application.fico_two },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.application, "fico_two", $event.target.value)
+                }
               }
-              _vm.$set(_vm.application, "fico", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.application.fico,
-              expression: "application.fico"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", placeholder: "Transunion___" },
-          domProps: { value: _vm.application.fico },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-3" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.application.fico_three,
+                  expression: "application.fico_three"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Transunion___" },
+              domProps: { value: _vm.application.fico_three },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.application, "fico_three", $event.target.value)
+                }
               }
-              _vm.$set(_vm.application, "fico", $event.target.value)
-            }
-          }
-        }),
-        _vm._v("\n                (*we use the middle score)\n            ")
+            })
+          ])
+        ]),
+        _vm._v("\n\n\n                (*we use the middle score)\n            ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-auto" }, [

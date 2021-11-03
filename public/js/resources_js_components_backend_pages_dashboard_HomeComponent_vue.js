@@ -574,11 +574,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       chart.render();
     },
     donutChart: function donutChart() {
-      var data = google.visualization.arrayToDataTable([['Role', 'Users'], this.userByRole.forEach(function (arrayItem) {
-        var x = arrayItem.name;
-        var y = arrayItem.users_count;
-        "['" + x + "'," + " " + y + "],";
-      })]);
+      var data = google.visualization.arrayToDataTable([['Role', 'Users'], ['Admin', 2], ['Agent', 3]]);
       var options = {
         title: 'Users By Role',
         pieHole: 0.4,
@@ -640,6 +636,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   // this.userByRole = arr.reduce(
                   //   (obj, item) => Object.assign(obj, { [item.name]: item.users_count }), {}
                   // );
+                  // this.userByRole.forEach(function (arrayItem) {
+                  //             var x = arrayItem.name;
+                  //             var y = arrayItem.users_count;
+                  //             "['"+x+"',"+" "+y+"],"
+                  //         })
 
                   // this.dates = res.data.dates;
                   // series.applications =  data.map(x => x.created_at);
@@ -649,12 +650,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   // this.userByRole = arr.reduce(
                   //   (obj, item) => Object.assign(obj, { [item.name]: item.users_count }), {}
                   // );
-                  _this.userByRole.forEach(function (arrayItem) {
-                    var x = arrayItem.name;
-                    var y = arrayItem.users_count;
-                    "['" + x + "'," + " " + y + "],";
-                  });
-
+                  // this.userByRole.forEach(function (arrayItem) {
+                  //             var x = arrayItem.name;
+                  //             var y = arrayItem.users_count;
+                  //             "['"+x+"',"+" "+y+"],"
+                  //         })
                   _this.dashboardChart();
 
                   _this.pieChart();

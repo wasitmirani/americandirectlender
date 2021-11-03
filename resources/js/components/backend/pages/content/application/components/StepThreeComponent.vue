@@ -28,11 +28,23 @@
                 <input class="form-control" type="number" placeholder="$" value="" v-model="application.cash_reserve" >
                 (this can be approximate, not held after escrow close, jumbo/investment loans usually require 6-12 months depending on the program (must be checked later))
             </div>
-            <div class="mb-3">
+           <div class="mb-3">
                 <label class="col-form-label">FICO Score(s): *</label>
-                <input class="form-control" type="text" placeholder="Experian___"  v-model="application.fico">
-                <input class="form-control" type="text" placeholder="Equifax___" v-model="application.fico">
-                <input class="form-control" type="text" placeholder="Transunion___" v-model="application.fico">
+                <div class="row">
+                    <div class="col-3">
+                         <input class="form-control" type="text" placeholder="Experian___"  v-model="application.fico_one">
+                    </div>
+                    <div class="col-3">
+                         <input class="form-control" type="text" placeholder="Equifax___" v-model="application.fico_two">
+                    </div>
+                    <div class="col-3">
+
+                <input class="form-control" type="text" placeholder="Transunion___" v-model="application.fico_three">
+
+                    </div>
+                </div>
+
+
                 (*we use the middle score)
             </div>
             <div class="col-auto">

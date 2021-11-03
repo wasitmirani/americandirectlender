@@ -569,14 +569,9 @@ chart.render();
 },
 donutChart(){
       var data = google.visualization.arrayToDataTable([
-        
-         ['Role', 'Users'],
-        this.userByRole.forEach(function (arrayItem) {
-          var x = arrayItem.name;
-          var y = arrayItem.users_count;
-          "['"+x+"',"+" "+y+"],"
-        })
-
+        ['Role', 'Users'],
+        ['Admin', 2],
+        ['Agent', 3]
       ]);
       var options = {
         title: 'Users By Role',
@@ -617,13 +612,11 @@ async getDashboardData() {
         // this.userByRole = arr.reduce(
         //   (obj, item) => Object.assign(obj, { [item.name]: item.users_count }), {}
         // );
-
-
-        this.userByRole.forEach(function (arrayItem) {
-                    var x = arrayItem.name;
-                    var y = arrayItem.users_count;
-                    "['"+x+"',"+" "+y+"],"
-                })
+        // this.userByRole.forEach(function (arrayItem) {
+        //             var x = arrayItem.name;
+        //             var y = arrayItem.users_count;
+        //             "['"+x+"',"+" "+y+"],"
+        //         })
 
 
 

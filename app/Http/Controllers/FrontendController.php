@@ -85,7 +85,9 @@ class FrontendController extends Controller
         $application->property_type = $request->property_type;
         $application->fee = $request->fee;
         $application->cash_reserve = $request->cash_reserve;
-        $application->fico = json_encode($request->fico);
+        $application->fico_one = $request->fico_one;
+        $application->fico_two = $request->fico_two;
+        $application->fico_three = $request->fico_three;
         $application->hoa = $request->hoa;
         $application->income_source = $request->income_clarification;
         $application->cash_out = $request->cash_out;

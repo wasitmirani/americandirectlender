@@ -3,39 +3,47 @@
        <div class="container">
       <form-wizard @on-complete="onComplete" color="#4b4d72">
         <h2 slot="title">Create Application</h2>
-        <tab-content title="Step One" color="#4b4d72">
+        <tab-content title="Step One" color="#4b4d72" >
             <div class="setup-content" id="step-1" style="">
                 <div class="mb-3 container">
                     <div class="row">
                         <div class="col-xl-6">
                             <label class="col-form-label">Client Name</label>
-                            <input  type="text" class="form-control" placeholder="your Name" v-model="application.name"></input>
+                            <input  type="text" class="form-control" placeholder="your Name" v-model="application.name" required></input>
                         </div>
                         <div class="col-xl-6">
                             <label class="col-form-label">Date Of Application</label>
-                            <input class="form-control" type="date" placeholder="" value="application.date" v-model="application.date">
+                            <input class="form-control" type="date" placeholder="" value="application.date" v-model="application.date" requird>
                         </div>
                     </div>
                 </div>
             </div>
         </tab-content>
-        <tab-content title="Step Two">
+        <tab-content title="Step Two" >
             <div class="setup-content" id="step-2">
                 <div class="mb-3">
-                    <label class="col-form-label">Property Value: $ *</label>
-                    <input class="form-control" type="text"  value="" placeholder="$" v-model="application.property_value">
-                    (this can be an approximation)
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <label class="col-form-label">Property Value: $ *</label>
+                            <input class="form-control" type="text"  value="" placeholder="$" v-model="application.property_value" required>
+                            (this can be an approximation)
+                        </div>
+                        <div class="col-xl-6">
+                            <label class="col-form-label">Any updates or changes to the property (*which can change value)?</label>
+                            <input class="form-control" type="text" placeholder="" v-model="application.property_update" required >
+                        </div>
+                    </div>
+
                 </div>
+
                 <div class="mb-3">
-                    <label class="col-form-label">Any updates or changes to the property (*which can change value)?</label>
-                    <input class="form-control" type="text" placeholder="" v-model="application.property_update" >
-                </div>
-                <div class="mb-3">
-                    <label class="col-form-label">Property Address (if known, confirm loan limits in Lending Pad, as they are based on city/county and might be jumbo under $822k):</label>
-                    <input class="form-control" type="text" placeholder="" v-model="application.property_address">
-                </div>
-                <div class="col-auto">
-                <label  class="col-form-label">Type Of Property</label>
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <label class="col-form-label">Property Address (if known, confirm loan limits in Lending Pad, as they are based on city/county and might be jumbo under $822k):</label>
+                            <input class="form-control" type="text" placeholder="" v-model="application.property_address" required>
+                        </div>
+                        <div class="col-xl-6">
+                        <label  class="col-form-label">Type Of Property</label>
                     <select class="form-control" v-model="application.property_type">
                         <option :selected="application.property_type === 'House'"  value="House">House</option>
                         <option :selected="application.property_type === 'Condo'" value="Condo">Condo</option>
@@ -43,54 +51,73 @@
                         <option :selected="application.property_type === 'GatedCommunity'" value="GatedCommunity">Gated Community</option>
                         <option :selected="application.property_type === 'GatedCommunity'" value="2-4-unit-property">2-4-unit-property</option>
                     </select>
+                        </div>
+
+                    </div>
+
                 </div>
+
                 <div class="col-auto">
-                <fieldset class="mb-3">
+                 <div class="row">
+                     <div class="col-xl-6">
+                           <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">HOA?</label>
                         <div class="col-sm-9">
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="hoa1"  type="radio" :selected="application.hoa === 'yes'" name="hoa" value="yes" v-model="application.hoa">
+                                <input class="form-check-input" id="hoa1"  type="radio" :selected="application.hoa === 'yes'" name="hoa" value="yes" v-model="application.hoa" required>
                                 <label class="form-check-label" for="hoa1">Yes</label>
                             </div>
                             <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="hoa2" type="radio" :selected="application.hoa === 'no'" name="hoa" value="no" v-model="application.hoa">
+                                <input class="form-check-input" id="hoa2" type="radio" :selected="application.hoa === 'no'" name="hoa" value="no" v-model="application.hoa" required>
                                 <label class="form-check-label" for="hoa2">Yes</label>
                             </div>
                         </div>
                     </div>
                 </fieldset>
-                </div>
-                <div class="col-auto">
+                     </div>
+                     <div class="col-xl-6">
+                           <div class="col-auto">
                     <label class="form-check-label">Any Mello-Roos/Other Fees or Special Taxes</label>
-                    <vs-input class="form-control" type="number" v-model="application.fee"></vs-input>
+                    <input class="form-control" type="number" v-model="application.fee">
                 </div>
+                     </div>
+                 </div>
+
+                </div>
+
                 <div class="row mb-0">
-                    <label class="col-sm-3 col-form-label pb-0">Cash Out</label>
+                    <div class="col-xl-6">
+                              <label class="col-sm-3 col-form-label pb-0">Cash Out</label>
                 <div class="col-sm-9">
                     <div class="mb-0">
                         <div class="form-check form-check-inline checkbox checkbox-primary">
-                            <input class="form-check-input" id="cash-out"  value="yes" type="checkbox"  v-model="application.cash_out" :checked="application.cash_out == 'yes'">
+                            <input class="form-check-input" id="cash-out"  value="yes" type="checkbox"  v-model="application.cash_out" :checked="application.cash_out == 'yes'"  required>
                             <label class="form-check-label" for="cash-out">Yes</label>
                           (for cash out, your name needs to be on title for 6+ months)
                         </div>
                     </div>
                 </div>
-                </div>
-                <div class="row mb-0">
-                <label class="col-sm-3 col-form-label pb-0">Refinance</label>
+
+                    </div>
+                     <div class="col-xl-6">
+                             <label class="col-sm-3 col-form-label pb-0">Refinance</label>
                 <div class="col-sm-9">
                     <div class="mb-0">
                         <div class="form-check form-check-inline checkbox checkbox-primary">
-                            <vs-checkbox class="form-check-input" id="refinance"  value="yes" type="checkbox"  v-model="application.refinance"></vs-checkbox>
+                            <input class="form-check-input" id="refinance"  value="yes" type="checkbox"  v-model="application.refinance">
                             <label class="form-check-label" for="refinance">Yes</label>
                             (if refinance, closing costs to be included?)
                         </div>
                     </div>
                 </div>
+                     </div>
+
                 </div>
+
                 <div class="col-auto">
-                <fieldset class="mb-3">
+                    <div class="col-xl-6">
+                           <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">Have You Made all Your Payments On-Time in the last 12 Months?</label>
                         <div class="col-sm-9">
@@ -105,8 +132,10 @@
                         </div>
                     </div>
                 </fieldset>
-                </div>
-                <div class="col-auto">
+
+                    </div>
+                     <div class="col-xl-6">
+                           <div class="col-auto">
                 <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">If Payments Have Been Deferred, have you Made Payments on Time in the Last 3 Months?</label>
@@ -123,19 +152,27 @@
                     </div>
                 </fieldset>
                 </div>
+
+                     </div>
+
+
+                </div>
+
                 <div class="row mb-0">
-                <label class="col-sm-3 col-form-label pb-0">Purchase</label>
-                <div class="col-sm-9">
-                    <div class="mb-0">
+                    <div class="col-xl-6">
+                        <label class="col-sm-3 col-form-label pb-0">Purchase</label>
+                       <div class="col-sm-9">
+                        <div class="mb-0">
                         <div class="form-check form-check-inline checkbox checkbox-primary">
                             <input class="form-check-input" id="purchase" value="yes" type="checkbox" v-model="application.purchase" >
                             <label class="form-check-label" for="purchase">Yes</label>
                             (*Closing costs cannot be financed on new purchase)
                         </div>
                     </div>
-                </div>
-                </div>
-                <div class="col-auto">
+                     </div>
+                    </div>
+                    <div class="col-xl-6">
+                           <div class="col-auto">
                 <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">Do You Have a Second Loan?</label>
@@ -152,7 +189,11 @@
                     </div>
                 </fieldset>
                 </div>
-                   <div class="col-auto">
+                    </div>
+
+                </div>
+
+                <div class="col-auto">
                 <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">If Yes</label>
@@ -174,8 +215,10 @@
         <tab-content title="Step Three">
             <div class="setup-content" id="step-3" style="">
                 <div class="col-auto">
-                <fieldset class="mb-3">
                     <div class="row">
+                        <div class="col-xl-6">
+                            <fieldset class="mb-3">
+                           <div class="row">
                         <label class="col-form-label">Loan Amount</label>
                         <div class="col-sm-9">
                             <div class="form-check radio radio-primary">
@@ -193,22 +236,40 @@
                             (*category A has lowest rates, then followed by category B and then C)
                         </div>
                     </div>
-                </fieldset>
-            </div>
-             <div class="mb-3">
+                      </fieldset>
+                        </div>
+                        <div class="col-xl-6">
+                              <div class="mb-3">
                 <label class="col-form-label">Cash Reserve</label>
                 <input class="form-control" type="number" placeholder="$" value="" v-model="application.cash_reserve" >
                 (this can be approximate, not held after escrow close, jumbo/investment loans usually require 6-12 months depending on the program (must be checked later))
             </div>
+                        </div>
+                    </div>
+
+            </div>
+
              <div class="mb-3">
                 <label class="col-form-label">FICO Score(s): *</label>
-                <input class="form-control" type="text" placeholder="Experian___"  v-model="application.fico">
-                <input class="form-control" type="text" placeholder="Equifax___" v-model="application.fico">
-                <input class="form-control" type="text" placeholder="Transunion___" v-model="application.fico">
+                <div class="row">
+                    <div class="col-3">
+                         <input class="form-control" type="text" placeholder="Experian___"  v-model="application.fico_one">
+                    </div>
+                    <div class="col-3">
+                         <input class="form-control" type="text" placeholder="Equifax___" v-model="application.fico_two">
+                    </div>
+                    <div class="col-3">
+
+                <input class="form-control" type="text" placeholder="Transunion___" v-model="application.fico_three">
+
+                    </div>
+                </div>
                 (*we use the middle score)
             </div>
                 <div class="col-auto">
-                <fieldset class="mb-3">
+                    <div class="row">
+                         <div class="col-xl-6">
+                          <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">Loan Doc Type</label>
                         <div class="col-sm-9">
@@ -228,8 +289,9 @@
                         </div>
                     </div>
                 </fieldset>
-            </div>
-                <div class="col-auto">
+                    </div>
+                     <div class="col-xl-6">
+                               <div class="col-auto">
                 <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">Occupant</label>
@@ -246,33 +308,54 @@
                     </div>
                 </fieldset>
             </div>
+
+                     </div>
+
+                    </div>
+
+
+            </div>
+
               <div class="col-auto">
                 <fieldset class="mb-3">
                     <div class="row">
-                        <label class="col-form-label">Income Type</label>
+                        <div class="col-xl-6">
+                                 <label class="col-form-label">Income Type</label>
                         <div class="col-sm-9">
                             <div class="form-check radio radio-primary">
                                 <input class="form-check-input" id="income_type1" type="radio" name="income_type" value="W-2" :selected="application.income_type === 'W-2'" v-model="application.income_type">
                                 <label class="form-check-label" for="income_type1">W-2 </label>
                             </div>
-                            <div class="form-check radio radio-primary">
+
+                        </div>
+                        </div>
+                        <div class="col-xl-6">
+                               <div class="form-check radio radio-primary">
                                 <input class="form-check-input" id="income_type2" type="radio" name="income_type" value="1099" :selected="application.income_type === '1099'" v-model="application.income_type">
                                 <label class="form-check-label" for="income_type2">1099</label>
                             </div>
                         </div>
+
                     </div>
                 </fieldset>
             </div>
             <div class="mb-3">
-                <label class="col-form-label">  Please explain/clarify any other applicable sources of income:</label>
-                <input class="form-control" type="text" placeholder="" value="" v-model="application.income_source">
-            </div>
-            <div class="mb-3">
-                <label class="col-form-label">Please Note any Recent Promotions, Changes in Salary, and Whether You are Paying Yourself:</label>
-                <input class="form-control" type="text" placeholder="" value="" v-model="application.recent_business_Activity">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <label class="col-form-label">  Please explain/clarify any other applicable sources of income:</label>
+                        <input class="form-control" type="text" placeholder="" value="" v-model="application.income_source">
+                    </div>
+                    <div class="col-xl-6">
+                        <label class="col-form-label">Please Note any Recent Promotions, Changes in Salary, and Whether You are Paying Yourself:</label>
+                        <input class="form-control" type="text" placeholder="" value="" v-model="application.recent_business_Activity">
+                    </div>
+                </div>
+
             </div>
                <div class="col-auto">
-                <fieldset class="mb-3">
+                   <div class="row">
+                             <div class="col-xl-6">
+                           <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">If a Business, which type?</label>
                         <div class="col-sm-9">
@@ -291,9 +374,10 @@
                         </div>
                     </div>
                 </fieldset>
-            </div>
-            <div class="col-auto">
-                <fieldset class="mb-3">
+
+                   </div>
+                              <div class="col-xl-6">
+                        <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label"> Is Business Listed Online or on Social Media?</label>
                         <div class="col-sm-9">
@@ -309,13 +393,22 @@
                         </div>
                     </div>
                 </fieldset>
+                    </div>
+
+                   </div>
+
+
+
             </div>
+
             <div class="mb-3">
                 <label class="col-form-label">If not Why?:</label>
                 <input class="form-control" type="text" placeholder="" v-model="application.is_online_reason">
             </div>
             <div class="col-auto">
-                <fieldset class="mb-3">
+                <div class="row">
+                      <div class="col-xl-6">
+                      <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">Tax Return Provided?</label>
                         <div class="col-sm-9">
@@ -331,13 +424,25 @@
                         </div>
                     </div>
                 </fieldset>
-            </div>
-            <div class="mb-3">
+
+                </div>
+                <div class="col-xl-6">
+                      <div class="mb-3">
                 <label class="col-form-label">List Any Recently Closed/Opened Business(es):</label>
                 <input class="form-control" type="text" placeholder="" v-model="application.recent_business">
             </div>
+
+                </div>
+
+                </div>
+
+
+            </div>
+
             <div class="col-auto">
-                <fieldset class="mb-3">
+                <div class="row">
+                          <div class="col-xl-6">
+                       <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">Number of Years in Same Line of Business:</label>
                         <div class="col-sm-9">
@@ -357,13 +462,24 @@
                         </div>
                     </div>
                 </fieldset>
-            </div>
-            <div class="mb-3">
+                </div>
+                 <div class="col-xl-6">
+                       <div class="mb-3">
                 <label class="col-form-label">Please Advice:</label>
                 <input class="form-control" type="text" placeholder="" v-model="application.advice">
             </div>
+
+                 </div>
+
+
+                </div>
+
+            </div>
+
             <div class="col-auto">
-                <fieldset class="mb-3">
+                <div class="row">
+                        <div class="co-xl-6">
+                    <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">Are any Business Partners a Spouse/Domestic/Civil Partner?</label>
                         <div class="col-sm-9">
@@ -378,8 +494,9 @@
                         </div>
                     </div>
                 </fieldset>
-            </div>
-                          <div class="col-auto">
+                </div>
+                <div class="co-xl-6">
+                               <div class="col-auto">
                 <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">Credit/Financial History?</label>
@@ -404,12 +521,21 @@
                     </div>
                 </fieldset>
             </div>
-             <div class="mb-3">
-                <label class="col-form-label">If Investment Property: Monthly Rent $:</label>
-                <input class="form-control" type="text" placeholder="$" v-model="application.investment_property">
+                </div>
+
+
+                </div>
+
             </div>
-            <div class="col-auto">
-                <fieldset class="mb-3">
+
+             <div class="mb-3">
+                 <div class="row">
+                     <div class="col-xl-6">
+                        <label class="col-form-label">If Investment Property: Monthly Rent $:</label>
+                        <input class="form-control" type="text" placeholder="$" v-model="application.investment_property">
+                     </div>
+                     <div class="col-xl-6">
+                            <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">Renovation</label>
                         <div class="col-sm-9">
@@ -424,8 +550,13 @@
                         </div>
                     </div>
                 </fieldset>
+
+                     </div>
+                 </div>
+
             </div>
             <div class="col-auto">
+
                 <fieldset class="mb-3">
                     <div class="row">
                         <label class="col-form-label">Mortgage Statement Provided:</label>
@@ -473,9 +604,9 @@
             </div>
         </tab-content>
         <!-- <vs-button >Back</vs-button> -->
-        <vs-button flat danger slot="prev" size="large"> Back </vs-button>
-        <vs-button slot="next" size="large">Next</vs-button>
-        <vs-button slot="finish" size="large">Update</vs-button>
+        <vs-button flat danger slot="prev" size="large" > Back </vs-button>
+        <vs-button slot="next" size="large" >Next</vs-button>
+        <vs-button slot="finish" size="large">Create</vs-button>
       </form-wizard>
     </div>
   </div>
@@ -485,10 +616,12 @@
 
    data(){
        return{
-           application:{}
+           application:{
+           }
        }
    },
      methods: {
+
     onComplete: function () {
       let formData = new FormData();
       formData = Object.assign(this.application, formData);

@@ -34,7 +34,9 @@ class CreateApplicationsTable extends Migration
             $table->string('investment_property')->nullable();
             $table->string('is_second_loan')->nullable();
             $table->string('cash_reserve')->nullable();
-            $table->json('fico')->nullable();
+            $table->string('fico_one')->nullable();
+            $table->string('fico_two')->nullable();
+            $table->string('fico_three')->nullable();
             $table->string('doc_type')->nullable();
             $table->string('occupant')->nullable();
             $table->string('income_source')->nullable();
