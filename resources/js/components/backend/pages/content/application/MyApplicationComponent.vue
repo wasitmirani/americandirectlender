@@ -10,42 +10,76 @@
                     <div class="tab-content" id="top-tabContent">
                       <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
                         <div class="row">
-                                    <SearchInput :apiurl="'/customer/applications?page=' +this.page_num"
+                            <SearchInput :apiurl="'/customer/applications?page=' +this.page_num"
                                         v-on:query="isquery($event)"
                                         v-on:loading="loadingStart($event)"
                                         v-on:reload="getApplications()"
                                         v-on:filterList="filterdata($event)"
                                         label="Search Applications">
-                                    </SearchInput>
-                        <div class="col-xxl-6 col-lg-6 " v-for="application in applications" :key="application.id">
-                            <ApplicationCard  :application="application" ></ApplicationCard>
+                            </SearchInput>
+                        <div class="col-xxl-12 col-lg-12" v-for="application in applications" :key="application.id">
+                          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">App Name</th>
+                  <th scope="col">Property Type</th>
+                  <th scope="col">Property Value</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Income Type</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="application in applications" :key="application.id" >
+                  <th scope="row">{{ application.id }}</th>
+                  <td>{{ application.name }}</td>
+                  <td>{{ application.property_type }}</td>
+                  <td>${{ application.property_value }}</td>
+                   <td>
+                <div
+                  class="span badge rounded-pill pill-badge-success"
+                  v-if="application.status == 1"
+                >
+                  Approved
+                </div>
+                <div class="span badge rounded-pill pill-badge-warning" v-else>
+                  Pending
+                </div>
+              </td>
+              <td> {{ application.income_type }}</td>
+              <td>
+                <vs-button success icon :to="{ name: 'show-application', params: { id: application.id } }">
+                   <i class="fas fa-eye"></i>
+                </vs-button>
+              </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
                         </div>
                         <pagination :data="applications" @pagination-change-page=" getApplications"></pagination>
                         <h6 class="text-center text-warning" v-if="applications.length < 1">No Application Found</h6>
                         </div>
                       </div>
-
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
         </div>
-
-
-
-
   </div>
 </template>
 <script>
  import BreadCrumb from "../../../components/BreadcrumbComponent.vue";
- import ApplicationCard from "./components/ApplicationCard.vue";
+import AppDetail from "./components/AppDetail.vue";
  import SearchInput from "../../../components/SearchInput.vue";
  export default{
     components:{
         BreadCrumb,
-        ApplicationCard,
+        AppDetail,
         SearchInput
     },
     data(){

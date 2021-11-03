@@ -4,6 +4,13 @@
     <div class="container-fluid">
       <div class="row">
         <div class="card-body">
+              <SearchInput :apiurl="'/customer/applications?page=' +this.page_num"
+                                        v-on:query="isquery($event)"
+                                        v-on:loading="loadingStart($event)"
+                                        v-on:reload="getApplications()"
+                                        v-on:filterList="filterdata($event)"
+                                        label="Search Applications">
+                                </SearchInput>
           <div class="table-responsive">
             <table class="table">
               <thead>
@@ -21,20 +28,10 @@
                   <td>{{ application.name }}</td>
                   <td>
                     <span v-for="user in application.agent" :key="user.id">
-
-                       <div class="span badge rounded-pill pill-badge-primary ml-2 mr-2" >
-                          <span class="span-name"> {{ user.name }}</span>
-                      </div>
-
+                        <div class="span badge rounded-pill pill-badge-primary ml-2 mr-2" >
+                            <span class="span-name"> {{ user.name }}</span>
+                        </div>
                     </span>
-                     <span v-if="application.agent.length < 1">
-
-                       <div class="span badge rounded-pill pill-badge-primary ml-2 mr-2" >
-                          <span class="span-name">No Agent Found</span>
-                      </div>
-
-                    </span>
-
                   </td>
                   <td>
                     <a role="button" @click="deleteItem(application.id)"
@@ -55,19 +52,34 @@
 </template>
 <script>
 import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
+import SearchInput from "../../../components/SearchInput.vue";
 export default {
   components: {
     Breadcrumb,
+    SearchInput
   },
   data() {
     return {
       applications: {},
+       query:"",
+       page_num : ""
     };
   },
   mounted() {
     this.getApplications();
   },
   methods: {
+        isquery(query) {
+            return (this.query = query);
+        },
+        loadingStart(value) {
+            this.loading = value;
+        },
+        filterdata(data){
+            this.applications = data.applications.data;
+
+        },
+
     async getApplications(page = 1) {
       this.loading = true;
       this.page_num = page;

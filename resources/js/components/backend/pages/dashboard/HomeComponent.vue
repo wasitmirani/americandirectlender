@@ -68,10 +68,11 @@
                   <div class="card-header pb-0">
                     <h5>Users By Role</h5>
                   </div>
-                  <div class="card-body apex-chart">
-                    <div id="donutchart"></div>
+                    <div class="card-body p-0 chart-block">
+                    <div class="chart-overflow" id="pie-chart3"></div>
                   </div>
                 </div>
+
         </div>
 
 
@@ -414,6 +415,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -426,7 +428,8 @@ export default {
       assigned_apps: 0,
       roles: {},
       apps: {},
-      userByRole:[],
+      userByRole:"",
+      userWithRole:"",
       app_status:[],
       total_apps : [],
       userRoleLabel : [],
@@ -468,36 +471,8 @@ var chart8 = new ApexCharts(
 chart8.render();
 
       },
-donutChart(){
-          var options9 = {
-    chart: {
-        width: 380,
-        type: 'donut',
-    },
-    series: this.userByRole,
-    labels: this.userRoleLabel,
-    responsive: [{
-        breakpoint: 480,
-        options: {
-            chart: {
-                width: 200
-            },
-            legend: {
-                position: 'bottom'
-            }
-        }
-    }],
-    colors: [vihoAdminConfig.secondary, '#e2c636']
-}
 
-var chart9 = new ApexCharts(
-    document.querySelector("#donutchart"),
-    options9
-);
-
-chart9.render();
-      },
-      radialBar(){
+radialBar(){
           var options11 = {
     chart: {
         height: 350,
@@ -537,7 +512,7 @@ var chart11 = new ApexCharts(
 
 chart11.render();
 
-      },
+     },
     dashboardChart() {
 
     var options = {
@@ -592,13 +567,28 @@ chart11.render();
 );
 chart.render();
 },
+donutChart(){
+      var data = google.visualization.arrayToDataTable([
+        
+         ['Role', 'Users'],
+        this.userByRole.forEach(function (arrayItem) {
+          var x = arrayItem.name;
+          var y = arrayItem.users_count;
+          "['"+x+"',"+" "+y+"],"
+        })
 
-
-
- 
-
-
-    async getDashboardData() {
+      ]);
+      var options = {
+        title: 'Users By Role',
+        pieHole: 0.4,
+        width:'100%',
+        height: 300,
+        colors: [vihoAdminConfig.secondary, vihoAdminConfig.primary]
+      };
+      var chart = new google.visualization.PieChart(document.getElementById('pie-chart3'));
+      chart.draw(data, options);
+},
+async getDashboardData() {
       await axios.get("dashboard").then((res) => {
         //  console.log(res.data)
         this.total_users = res.data.users;
@@ -614,20 +604,34 @@ chart.render();
         this.dates = data.map(x =>  moment(x.created_at).format("D MMM YYYY"));
         this.total_apps = data.map(x => parseInt(x.total));
         this.app_status = res.data.app_status.map(x => x.count)
-        this.userByRole =  res.data.userByRole.map(x => x.users_count)
+        this.userByRole =  res.data.userByRole.map(x => x)
         this.userRoleLabel = res.data.userByRole.map(x => x.name)
         this.userByPermission = res.data.userByPermission.map(x => x.users_count)
         this.userPermissionLabel = res.data.userByPermission.map(x => x.name)
         this.totalPermissions = res.data.totalPermissions;
-
-
         // this.dates = res.data.dates;
         // series.applications =  data.map(x => x.created_at);
         // series.total = data.map(x => x.total);
+        // var arr =  res.data.userByRole.map(x => x)
+        // console.log(arr)
+        // this.userByRole = arr.reduce(
+        //   (obj, item) => Object.assign(obj, { [item.name]: item.users_count }), {}
+        // );
+
+
+        this.userByRole.forEach(function (arrayItem) {
+                    var x = arrayItem.name;
+                    var y = arrayItem.users_count;
+                    "['"+x+"',"+" "+y+"],"
+                })
+
+
+
+
         this.dashboardChart();
         this.pieChart();
-        this.donutChart();
         this.radialBar();
+        this.donutChart();
       });
     },
 
@@ -638,9 +642,6 @@ chart.render();
     // console.log("userss",user);
     this.user = user;
     this.app_name = "American Lender";
-
-    this.getDate()
-
     axios
       .get("/recent/applications/")
       .then((res) => {

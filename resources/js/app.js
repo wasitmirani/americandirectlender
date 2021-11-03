@@ -55,8 +55,6 @@ Vue.use(VueProgressBar, {
     failedColor: 'red',
     height: '10px'
 })
-
-
 Vue.filter("timeformat", function (value) {
     if (value) {
         return moment

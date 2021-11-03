@@ -275,7 +275,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                  let formData = new FormData();
                 formData.append('thumbnail', this.thumbnail);
                 formData.append('app', this.app);
-                 formData.append('agent', this.agent);
+                formData.append('agent', this.agent);
 
                   axios.post('/upload/file',formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"File Uploaded Successfully");

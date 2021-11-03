@@ -445,6 +445,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -457,7 +458,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       assigned_apps: 0,
       roles: {},
       apps: {},
-      userByRole: [],
+      userByRole: "",
+      userWithRole: "",
       app_status: [],
       total_apps: [],
       userRoleLabel: [],
@@ -491,30 +493,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       };
       var chart8 = new ApexCharts(document.querySelector("#piechart"), options8);
       chart8.render();
-    },
-    donutChart: function donutChart() {
-      var options9 = {
-        chart: {
-          width: 380,
-          type: 'donut'
-        },
-        series: this.userByRole,
-        labels: this.userRoleLabel,
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }],
-        colors: [vihoAdminConfig.secondary, '#e2c636']
-      };
-      var chart9 = new ApexCharts(document.querySelector("#donutchart"), options9);
-      chart9.render();
     },
     radialBar: function radialBar() {
       var options11 = {
@@ -595,6 +573,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var chart = new ApexCharts(document.querySelector("#basic-apex"), options);
       chart.render();
     },
+    donutChart: function donutChart() {
+      var data = google.visualization.arrayToDataTable([['Role', 'Users'], this.userByRole.forEach(function (arrayItem) {
+        var x = arrayItem.name;
+        var y = arrayItem.users_count;
+        "['" + x + "'," + " " + y + "],";
+      })]);
+      var options = {
+        title: 'Users By Role',
+        pieHole: 0.4,
+        width: '100%',
+        height: 300,
+        colors: [vihoAdminConfig.secondary, vihoAdminConfig.primary]
+      };
+      var chart = new google.visualization.PieChart(document.getElementById('pie-chart3'));
+      chart.draw(data, options);
+    },
     getDashboardData: function getDashboardData() {
       var _this = this;
 
@@ -627,7 +621,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     return x.count;
                   });
                   _this.userByRole = res.data.userByRole.map(function (x) {
-                    return x.users_count;
+                    return x;
                   });
                   _this.userRoleLabel = res.data.userByRole.map(function (x) {
                     return x.name;
@@ -641,17 +635,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.totalPermissions = res.data.totalPermissions; // this.dates = res.data.dates;
                   // series.applications =  data.map(x => x.created_at);
                   // series.total = data.map(x => x.total);
+                  // var arr =  res.data.userByRole.map(x => x)
+                  // console.log(arr)
+                  // this.userByRole = arr.reduce(
+                  //   (obj, item) => Object.assign(obj, { [item.name]: item.users_count }), {}
+                  // );
 
                   // this.dates = res.data.dates;
                   // series.applications =  data.map(x => x.created_at);
                   // series.total = data.map(x => x.total);
+                  // var arr =  res.data.userByRole.map(x => x)
+                  // console.log(arr)
+                  // this.userByRole = arr.reduce(
+                  //   (obj, item) => Object.assign(obj, { [item.name]: item.users_count }), {}
+                  // );
+                  _this.userByRole.forEach(function (arrayItem) {
+                    var x = arrayItem.name;
+                    var y = arrayItem.users_count;
+                    "['" + x + "'," + " " + y + "],";
+                  });
+
                   _this.dashboardChart();
 
                   _this.pieChart();
 
-                  _this.donutChart();
-
                   _this.radialBar();
+
+                  _this.donutChart();
                 });
 
               case 2:
@@ -670,7 +680,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     this.user = user;
     this.app_name = "American Lender";
-    this.getDate();
     axios.get("/recent/applications/").then(function (res) {
       _this2.apps = res.data.applications; //    console.log(res.data.applications)
 
@@ -2118,8 +2127,11 @@ var staticRenderFns = [
             _c("h5", [_vm._v("Users By Role")])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body apex-chart" }, [
-            _c("div", { attrs: { id: "donutchart" } })
+          _c("div", { staticClass: "card-body p-0 chart-block" }, [
+            _c("div", {
+              staticClass: "chart-overflow",
+              attrs: { id: "pie-chart3" }
+            })
           ])
         ])
       ]

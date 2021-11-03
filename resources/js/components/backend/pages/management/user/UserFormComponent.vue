@@ -244,14 +244,7 @@ export default {
 
                 });
                 }
-
-      }
-
-
-
-
-
-
+            }
      },
     mounted(){
         this.getRolesPerimissions();
