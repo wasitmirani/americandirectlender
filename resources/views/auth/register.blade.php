@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="row m-0">
-    <div class="col-xl-5"><img class="bg-img-cover bg-center" src="../assets/images/login/3.jpg" alt="looginpage"></div>
+    <div class="col-xl-5" style="background-size: contain !important; background-position: center center;display: block;background-repeat: no-repeat;">
+        <img class="bg-img-cover bg-center" src="../assets/images/login/3.png" alt="looginpage">
+    </div>
     <div class="col-xl-7 p-0">
       <div class="login-card">
         <form class="theme-form login-form" method="POST" action="{{ route('register') }}">

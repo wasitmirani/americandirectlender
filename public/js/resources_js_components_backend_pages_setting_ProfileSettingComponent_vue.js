@@ -251,7 +251,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { name: "name" },
+                      attrs: { name: "name", required: "" },
                       domProps: { value: _vm.user.name },
                       on: {
                         input: function($event) {
@@ -277,7 +277,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { rows: "5", name: "bio" },
+                      attrs: { rows: "5", name: "bio", required: "" },
                       domProps: { value: _vm.user.user_info.about_me },
                       on: {
                         input: function($event) {
@@ -310,8 +310,10 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        type: "email",
                         placeholder: "your-email@domain.com",
-                        name: "email"
+                        name: "email",
+                        required: ""
                       },
                       domProps: { value: _vm.user.email },
                       on: {

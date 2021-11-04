@@ -29,15 +29,15 @@
                         </div>
                           <div class="mb-3">
                           <h6 class="form-label">Name</h6>
-                          <input class="form-control"  v-model="user.name" name="name">
+                          <input class="form-control"  v-model="user.name" name="name" required>
                         </div>
                         <div class="mb-3">
                           <h6 class="form-label">Bio</h6>
-                          <textarea class="form-control" rows="5" v-model="user.user_info.about_me" name="bio"></textarea>
+                          <textarea class="form-control" rows="5" v-model="user.user_info.about_me" name="bio" required></textarea>
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Email-Address</label>
-                          <input class="form-control" placeholder="your-email@domain.com" v-model="user.email" name="email">
+                          <input type="email" class="form-control" placeholder="your-email@domain.com" v-model="user.email" name="email" required>
                         </div>
 
                          <div class="mb-3">

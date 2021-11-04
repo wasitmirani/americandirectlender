@@ -76,8 +76,9 @@
 
 
     <div class="row">
-        <div class="col-xl-5" style="background-size: contain;background-position: center center;display: block;background-repeat: no-repeat;">
-            <img class="bg-img-cover bg-center" src="{{asset('/assets/images/login/3.png')}}" alt="looginpage"></div>
+        <div class="col-xl-5" style="background-size: contain; background-position: center center;display: block;background-repeat: no-repeat;">
+            <img class="bg-img-cover bg-center" src="{{asset('/assets/images/login/3.png')}}" alt="looginpage">
+        </div>
         <div class="col-xl-7 p-0">
           <div class="login-card">
             <form method="post" class="theme-form login-form needs-validation" novalidate="" action="{{ route('login') }}">
@@ -139,6 +140,10 @@
 @endsection
 @push('scripts')
 <script>
+    $(document).ready(function(){
+        $(".remove").css(['background-size'=>'contain'])
+
+    })
     (function() {
     'use strict';
     window.addEventListener('load', function() {
