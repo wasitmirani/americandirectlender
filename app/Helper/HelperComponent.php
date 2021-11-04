@@ -103,6 +103,9 @@ class HelperComponent {
                 [
                     "single_link" => setSingleLink("Settings", "settings", null, "/password/setting"),
                 ],
+                [
+                    "single_link" => setSingleLink("Logs", "bullseye", null, "/logs/activities"),
+                ],
 
                 [
                     "heading"=>"Session",

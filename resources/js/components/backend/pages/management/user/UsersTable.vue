@@ -132,11 +132,11 @@ export default {
          }
      },
       deleteItem: function (item) {
-                  return this.$emit("deleteItem", item);
-              },
+            return this.$emit("deleteItem", item);
+        },
         editItem: function (item) {
-                  return this.$emit("editItem", item);
-              }
+            return this.$emit("editItem", item);
+        }
 
 
         }

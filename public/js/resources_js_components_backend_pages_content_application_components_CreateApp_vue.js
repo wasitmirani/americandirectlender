@@ -836,7 +836,7 @@ var render = function() {
                       _c("div", { staticClass: "row" }, [
                         _c("div", { staticClass: "col-xl-6" }, [
                           _c("label", { staticClass: "col-form-label" }, [
-                            _vm._v("Client Name")
+                            _vm._v("Client Name*")
                           ]),
                           _vm._v(" "),
                           _c("input", {
@@ -851,7 +851,7 @@ var render = function() {
                             staticClass: "form-control",
                             attrs: {
                               type: "text",
-                              placeholder: "your Name",
+                              placeholder: "your Name(required)",
                               required: ""
                             },
                             domProps: { value: _vm.application.name },

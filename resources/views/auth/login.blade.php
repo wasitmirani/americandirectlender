@@ -76,8 +76,8 @@
 
 
     <div class="row">
-        <div class="col-xl-5" style="background-size: contain; background-position: center center;display: block;background-repeat: no-repeat;">
-            <img class="bg-img-cover bg-center" src="{{asset('/assets/images/login/3.png')}}" alt="looginpage">
+        <div class="col-xl-5" style="background-size: contain; background-position: center center; display: block; background-repeat: no-repeat;">
+            <img class="bg-img-cover bg-center" src="{{asset('/assets/images/login/3.png')}}" >
         </div>
         <div class="col-xl-7 p-0">
           <div class="login-card">

@@ -94,6 +94,11 @@ const routes = [
         component: () => setComponent("content/application/AssignApp"),
         name: "EditAssignedApp"
     },
+    {
+        path: "/logs/activities",
+        component: () => setComponent("setting/Log"),
+        name: "LogActivities"
+    }
 
 
 

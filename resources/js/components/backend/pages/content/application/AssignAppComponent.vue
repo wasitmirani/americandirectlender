@@ -219,7 +219,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 
                   });
             },
-              async getRoles(page=1){
+            async getRoles(page=1){
              this.loading=true;
              this.page_num=page;
              const url="/management/role?page=" + page + "&query=" + this.query;
@@ -232,7 +232,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                      this.$root.alertErrorMessage(err.response.status,err.response.data);
                });
             },
-               postComment(){
+            postComment(){
                 let formData = new FormData();
                 formData.append('comment', this.comment);
                 formData.append('app', this.app);
@@ -251,8 +251,8 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 
                 });
 
-               },
-               downloadFile(id){
+            },
+            downloadFile(id){
                   axios.post('/download/file/'+id,{
 
                     responseType: 'blob',
@@ -270,9 +270,9 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                         }
                     this.$root.alertNotificationMessage(err.response.status,err.response.data);
                 });
-               },
-                uploadFile(){
-                 let formData = new FormData();
+            },
+            uploadFile(){
+                let formData = new FormData();
                 formData.append('thumbnail', this.thumbnail);
                 formData.append('app', this.app);
                 formData.append('agent', this.agent);
@@ -292,7 +292,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 
                 });
 
-               },
+            },
             assignAgent(){
                 let formData = new FormData();
                 formData.append('app', this.app);
@@ -313,11 +313,9 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 });
 
             },
-              getComments(){
-
+            getComments(){
                   axios.get('/application/comment/'+this.$route.params.id).then((res)=>{
                           this.application_comments = res.data.comments;
-
                     }).catch((err)=>{
                         if(err.response.status==422){
                             this.errors=err.response.data.errors;
@@ -341,7 +339,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 });
 
             },
-           async getAgents(page=1){
+            async getAgents(page=1){
              this.loading=true;
              this.page_num=page;
              const url="/management/agents?page=" + page + "&query=" + this.query;
@@ -381,10 +379,8 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
         }
       });
     },
-
-       },
-
-        mounted(){
+},
+mounted(){
            this.getApplications();
            this.getRoles();
            this.getAgents();
@@ -396,24 +392,15 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 this.app = res.data.application.id
                 this.application_agent = res.data.application.agents
                 this.agent =  this.application_agent['0'].agent_id
-
-
-
-
-
             }).catch((err)=>{
                      if(err.response.status==422){
                          this.errors=err.response.data.errors;
                         return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
                     }
                   this.$root.alertNotificationMessage(err.response.status,err.response.data);
-
             });
 
        },
-
-
-
    }
 </script>
 <style>

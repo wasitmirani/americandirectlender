@@ -434,6 +434,7 @@ export default {
        donutChart,
        BarGraph
     },
+
   data() {
     return {
       series: [],
@@ -455,16 +456,16 @@ export default {
                 },
                 dataLabels: {
                   name: {
-                    show: false,
+                    show: true,
                   },
                   value: {
-                    show: false,
+                    show: true,
                   }
                 }
               }
             },
             colors: ['#1ab7ea', '#0084ff', '#39539E', '#0077B5'],
-            labels: [],
+            labels: ['admin'],
             legend: {
               show: true,
               floating: true,
@@ -489,7 +490,7 @@ export default {
               breakpoint: 480,
               options: {
                 legend: {
-                    show: false
+                    show: true
                 }
               }
             }]

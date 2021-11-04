@@ -7,9 +7,18 @@
 <script>
  export default{
   props:['userByRole','userRoleLabel'],
+    computed: {
+    chartData: function() {
+      return this.userByRole;
+    },
+    charLabel: function(){
+        return this.userRoleLabel
+    }
+
+  },
   data(){
       return{
-            series: [],
+            series: this.chartData,
           chartOptions: {
             chart: {
               height: 390,
@@ -37,7 +46,7 @@
               }
             },
             colors: ['#1ab7ea', '#0084ff', '#39539E', '#0077B5'],
-            labels: [],
+             labels:"",
             legend: {
               show: true,
               floating: true,
@@ -71,25 +80,32 @@
       }
   },
 
-    methods:{
-        init(){
-            this.series = this.userByRole
-        },
-        label(){
-            this.chartOptions.labels = this.userRoleLabel
-        }
-    },
-    watch:{
-        userByRole: function(new_role){
-            this.init();
+    // methods:{
+    //     init(){
+    //         this.series = this.userByRole
+    //     },
+    //     label(){
+    //         this.chartOptions.labels = this.userRoleLabel
+    //     },
+    // updateLabels: function() {
 
-        },
+    //   this.chartOptions = {
+    //     labels: this.userRoleLabel ,
+    //   }
+    // }
+    // },
 
-    },
-    watch:{
-        userRoleLabel: function(new_role){
-            this.label();
-        }
-    }
+    // watch:{
+    //     userByRole: function(new_role){
+    //         this.init();
+
+    //     },
+
+    // },
+    // watch:{
+    //     userRoleLabel: function(new_role){
+    //         this.updateLabels();
+    //     }
+    // }
  }
 </script>

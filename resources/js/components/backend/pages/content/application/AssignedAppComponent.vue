@@ -28,7 +28,7 @@
                   <td>{{ application.name }}</td>
                   <td>
                     <span v-for="user in application.agent" :key="user.id">
-                        <div class="span badge rounded-pill pill-badge-primary ml-2 mr-2" >
+                        <div class="span badge rounded-pill pill-badge-primary ml-2 mr-2">
                             <span class="span-name"> {{ user.name }}</span>
                         </div>
                     </span>
