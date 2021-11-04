@@ -1,37 +1,76 @@
 <template>
  <div>
-    <apexchart type="donut"  :options="chartOptions" :series="series" ></apexchart>
+
+
  </div>
 </template>
 <script>
  export default{
-     props:['userByRole','userRoleLabel'],
-    data(){
-    return {
-        series: [44, 55, 13, 43, 22],
+  props:['userByRole','userRoleLabel'],
+  data(){
+      return{
+            series: [],
           chartOptions: {
             chart: {
-              width: 380,
-              type: 'pie',
+              height: 390,
+              type: 'radialBar',
             },
-            labels: ['admin','agent'],
+            plotOptions: {
+              radialBar: {
+                offsetY: 0,
+                startAngle: 0,
+                endAngle: 270,
+                hollow: {
+                  margin: 5,
+                  size: '30%',
+                  background: 'transparent',
+                  image: undefined,
+                },
+                dataLabels: {
+                  name: {
+                    show: false,
+                  },
+                  value: {
+                    show: false,
+                  }
+                }
+              }
+            },
+            colors: ['#1ab7ea', '#0084ff', '#39539E', '#0077B5'],
+            labels: [],
+            legend: {
+              show: true,
+              floating: true,
+              fontSize: '16px',
+              position: 'left',
+              offsetX: 160,
+              offsetY: 15,
+              labels: {
+                useSeriesColors: true,
+              },
+              markers: {
+                size: 0
+              },
+              formatter: function(seriesName, opts) {
+                return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+              },
+              itemMargin: {
+                vertical: 3
+              }
+            },
             responsive: [{
               breakpoint: 480,
               options: {
-                chart: {
-                  width: 200
-                },
                 legend: {
-                  position: 'bottom'
+                    show: false
                 }
               }
             }]
           },
 
+      }
+  },
 
-
-     }
-    },
     methods:{
         init(){
             this.series = this.userByRole
@@ -41,15 +80,16 @@
         }
     },
     watch:{
-           userRoleLabel: function(new_role){
-            this.label();
-        },
         userByRole: function(new_role){
-
             this.init();
 
-        }
+        },
 
+    },
+    watch:{
+        userRoleLabel: function(new_role){
+            this.label();
+        }
     }
  }
 </script>

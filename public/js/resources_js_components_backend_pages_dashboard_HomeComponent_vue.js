@@ -107,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['app_status'],
   data: function data() {
     return {
-      series: ['2', '2'],
+      series: [2, 2],
       chartOptions: {
         chart: {
           width: 380,
@@ -202,30 +202,72 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty({
   props: ['userByRole', 'userRoleLabel'],
   data: function data() {
     return {
-      series: [44, 55, 13, 43, 22],
+      series: [],
       chartOptions: {
         chart: {
-          width: 380,
-          type: 'pie'
+          height: 390,
+          type: 'radialBar'
         },
-        labels: ['admin', 'agent'],
+        plotOptions: {
+          radialBar: {
+            offsetY: 0,
+            startAngle: 0,
+            endAngle: 270,
+            hollow: {
+              margin: 5,
+              size: '30%',
+              background: 'transparent',
+              image: undefined
+            },
+            dataLabels: {
+              name: {
+                show: false
+              },
+              value: {
+                show: false
+              }
+            }
+          }
+        },
+        colors: ['#1ab7ea', '#0084ff', '#39539E', '#0077B5'],
+        labels: [],
+        legend: {
+          show: true,
+          floating: true,
+          fontSize: '16px',
+          position: 'left',
+          offsetX: 160,
+          offsetY: 15,
+          labels: {
+            useSeriesColors: true
+          },
+          markers: {
+            size: 0
+          },
+          formatter: function formatter(seriesName, opts) {
+            return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex];
+          },
+          itemMargin: {
+            vertical: 3
+          }
+        },
         responsive: [{
           breakpoint: 480,
           options: {
-            chart: {
-              width: 200
-            },
             legend: {
-              position: 'bottom'
+              show: false
             }
           }
         }]
@@ -241,14 +283,15 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    userRoleLabel: function userRoleLabel(new_role) {
-      this.label();
-    },
     userByRole: function userByRole(new_role) {
       this.init();
     }
   }
-});
+}, "watch", {
+  userRoleLabel: function userRoleLabel(new_role) {
+    this.label();
+  }
+}));
 
 /***/ }),
 
@@ -273,6 +316,8 @@ __webpack_require__.r(__webpack_exports__);
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
 //
@@ -710,7 +755,67 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     BarGraph: _BarGraph_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
-    return {
+    var _ref;
+
+    return _ref = {
+      series: [],
+      chartOptions: {
+        chart: {
+          height: 390,
+          type: 'radialBar'
+        },
+        plotOptions: {
+          radialBar: {
+            offsetY: 0,
+            startAngle: 0,
+            endAngle: 270,
+            hollow: {
+              margin: 5,
+              size: '30%',
+              background: 'transparent',
+              image: undefined
+            },
+            dataLabels: {
+              name: {
+                show: false
+              },
+              value: {
+                show: false
+              }
+            }
+          }
+        },
+        colors: ['#1ab7ea', '#0084ff', '#39539E', '#0077B5'],
+        labels: [],
+        legend: {
+          show: true,
+          floating: true,
+          fontSize: '16px',
+          position: 'left',
+          offsetX: 160,
+          offsetY: 15,
+          labels: {
+            useSeriesColors: true
+          },
+          markers: {
+            size: 0
+          },
+          formatter: function formatter(seriesName, opts) {
+            return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex];
+          },
+          itemMargin: {
+            vertical: 3
+          }
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            legend: {
+              show: false
+            }
+          }
+        }]
+      },
       logs: [],
       user: {},
       app_name: "",
@@ -720,18 +825,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       assigned_apps: 0,
       roles: {},
       apps: {},
-      labels: [],
-      chartOptions: {},
-      userByRole: "",
-      userWithRole: "",
-      app_status: [],
-      total_apps: [],
-      userRoleLabel: [],
-      userByPermission: [],
-      userPermissionLabel: [],
-      totalPermissions: 0,
-      dates: []
-    };
+      labels: []
+    }, _defineProperty(_ref, "chartOptions", {}), _defineProperty(_ref, "userByRole", ""), _defineProperty(_ref, "userWithRole", ""), _defineProperty(_ref, "app_status", []), _defineProperty(_ref, "total_apps", []), _defineProperty(_ref, "userRoleLabel", []), _defineProperty(_ref, "userByPermission", []), _defineProperty(_ref, "userPermissionLabel", []), _defineProperty(_ref, "totalPermissions", 0), _defineProperty(_ref, "dates", []), _ref;
   },
   methods: {
     pieChart: function pieChart() {
@@ -837,25 +932,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var chart = new ApexCharts(document.querySelector("#basic-apex"), options);
       chart.render();
     },
-    donutChart: function donutChart() {
-      var data = google.visualization.arrayToDataTable([['Role', 'Users'], ['Admin', 2], this.userByRole.forEach(function (arrayItem) {
-        var x = arrayItem.name;
-        var y = arrayItem.users_count;
-        "['" + x + "'," + " " + y + "],";
-      })[('Agent', 3)]]);
-      var options = {
-        title: 'Users By Role',
-        pieHole: 0.4,
-        width: '100%',
-        height: 300,
-        colors: [vihoAdminConfig.secondary, vihoAdminConfig.primary]
-      };
-      var chart = new google.visualization.PieChart(document.getElementById('pie-chart3'));
-      chart.draw(data, options);
-    },
-    userRoleChart: function userRoleChart() {
-      console.log('user role chart');
-    },
+    // donutChart(){
+    //       var data = google.visualization.arrayToDataTable([
+    //         ['Role', 'Users'],
+    //         ['Admin', 2],
+    //         this.userByRole.forEach(function (arrayItem) {
+    //                     var x = arrayItem.name;
+    //                     var y = arrayItem.users_count;
+    //                     "['"+x+"',"+" "+y+"],"
+    //         })
+    //         ['Agent', 3]
+    //       ]);
+    //       var options = {
+    //         title: 'Users By Role',
+    //         pieHole: 0.4,
+    //         width:'100%',
+    //         height: 300,
+    //         colors: [vihoAdminConfig.secondary, vihoAdminConfig.primary]
+    //       };
+    //       var chart = new google.visualization.PieChart(document.getElementById('pie-chart3'));
+    //       chart.draw(data, options);
+    // },
     getDashboardData: function getDashboardData() {
       var _this = this;
 
@@ -887,10 +984,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.app_status = res.data.app_status.map(function (x) {
                     return x.count;
                   });
-                  _this.userRoleLabel = res.data.userByRole.map(function (x) {
+                  _this.chartOptions.labels = res.data.userByRole.map(function (x) {
                     return x.name;
                   });
-                  _this.userByRole = res.data.userByRole.map(function (x) {
+                  _this.series = res.data.userByRole.map(function (x) {
                     return x.users_count;
                   });
                   _this.chartOptions.labels = res.data.userByRole.map(function (x) {
@@ -902,8 +999,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.userPermissionLabel = res.data.userByPermission.map(function (x) {
                     return x.name;
                   });
-                  _this.totalPermissions = res.data.totalPermissions;
-                  _this.series1 = res.data.dateby_applications; // this.dates = res.data.dates;
+                  _this.totalPermissions = res.data.totalPermissions; // this.dates = res.data.dates;
                   // series.applications =  data.map(x => x.created_at);
                   // series.total = data.map(x => x.total);
                   // var arr =  res.data.userByRole.map(x => x)
@@ -911,6 +1007,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   // this.userByRole = arr.reduce(
                   //   (obj, item) => Object.assign(obj, { [item.name]: item.users_count }), {}
                   // );
+                  // this.userByRole.forEach(function (arrayItem) {
+                  //             var x = arrayItem.name;
+                  //             var y = arrayItem.users_count;
+                  //             "['"+x+"',"+" "+y+"],"
+                  //         })
 
                   // this.dates = res.data.dates;
                   // series.applications =  data.map(x => x.created_at);
@@ -920,21 +1021,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   // this.userByRole = arr.reduce(
                   //   (obj, item) => Object.assign(obj, { [item.name]: item.users_count }), {}
                   // );
-                  _this.userByRole.forEach(function (arrayItem) {
-                    var x = arrayItem.name;
-                    var y = arrayItem.users_count;
-                    "['" + x + "'," + " " + y + "],";
-                  });
+                  // this.userByRole.forEach(function (arrayItem) {
+                  //             var x = arrayItem.name;
+                  //             var y = arrayItem.users_count;
+                  //             "['"+x+"',"+" "+y+"],"
+                  //         })
+                  _this.dashboardChart(); // this.pieChart();
 
-                  _this.dashboardChart();
 
-                  _this.pieChart();
+                  // this.pieChart();
+                  _this.radialBar(); // this.donutChart();
+                  // this.userRoleChart();
 
-                  _this.radialBar();
-
-                  _this.donutChart();
-
-                  _this.userRoleChart();
                 });
 
               case 2:
@@ -2109,15 +2207,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("apexchart", {
-        attrs: { type: "donut", options: _vm.chartOptions, series: _vm.series }
-      })
-    ],
-    1
-  )
+  return _c("div")
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -2191,16 +2281,18 @@ var render = function() {
             _c("div", { staticClass: "card" }, [
               _vm._m(5),
               _vm._v(" "),
-              _vm._m(6),
+              _c("div", { staticClass: "card-body p-0 chart-block" }),
               _vm._v(" "),
               _c(
                 "div",
                 { attrs: { id: "chart" } },
                 [
-                  _c("donutChart", {
+                  _c("apexchart", {
                     attrs: {
-                      userByRole: _vm.userByRole,
-                      userRoleLabel: _vm.userRoleLabel
+                      type: "radialBar",
+                      height: "390",
+                      options: _vm.chartOptions,
+                      series: _vm.series
                     }
                   })
                 ],
@@ -2421,7 +2513,7 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-sm-6 pe-0" }, [
                 _c("div", { staticClass: "media border-after-xs" }, [
-                  _vm._m(7),
+                  _vm._m(6),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body align-self-center" }, [
                     _c(
@@ -2468,7 +2560,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 ps-0" }, [
                 _c("div", { staticClass: "media" }, [
-                  _vm._m(8),
+                  _vm._m(7),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body align-self-center" }, [
                     _c(
@@ -2512,7 +2604,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 pe-0" }, [
                 _c("div", { staticClass: "media border-after-xs" }, [
-                  _vm._m(9),
+                  _vm._m(8),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body align-self-center" }, [
                     _c(
@@ -2560,7 +2652,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 ps-0" }, [
                 _c("div", { staticClass: "media" }, [
-                  _vm._m(10),
+                  _vm._m(9),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body ps-2" }, [
                     _c(
@@ -2586,7 +2678,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(11),
+    _vm._m(10),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "card" }, [
@@ -2595,7 +2687,7 @@ var render = function() {
             _c("h5", [_vm._v("Recent Applications")]),
             _vm._v(" "),
             _c("table", { staticClass: "table table-bordernone" }, [
-              _vm._m(12),
+              _vm._m(11),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -2757,14 +2849,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header pb-0" }, [
       _c("h5", [_vm._v("Users By Role")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body p-0 chart-block" }, [
-      _c("div", { staticClass: "chart-overflow", attrs: { id: "pie-chart3" } })
     ])
   },
   function() {

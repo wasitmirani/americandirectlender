@@ -54,7 +54,7 @@
                   </div>
                 </div>
 
-              </div>
+          </div>
 
 
         </div>
@@ -76,10 +76,10 @@
                     <h5>Users By Role</h5>
                   </div>
                     <div class="card-body p-0 chart-block">
-                    <div class="chart-overflow" id="pie-chart3"></div>
+                    <!-- <div class="chart-overflow" id="pie-chart3"></div> -->
                   </div>
                   <div id="chart">
-                    <donutChart :userByRole="userByRole" :userRoleLabel="userRoleLabel"></donutChart>
+                   <apexchart type="radialBar" height="390" :options="chartOptions" :series="series"></apexchart>
       </div>
                 </div>
 
@@ -436,6 +436,64 @@ export default {
     },
   data() {
     return {
+      series: [],
+      chartOptions: {
+            chart: {
+              height: 390,
+              type: 'radialBar',
+            },
+            plotOptions: {
+              radialBar: {
+                offsetY: 0,
+                startAngle: 0,
+                endAngle: 270,
+                hollow: {
+                  margin: 5,
+                  size: '30%',
+                  background: 'transparent',
+                  image: undefined,
+                },
+                dataLabels: {
+                  name: {
+                    show: false,
+                  },
+                  value: {
+                    show: false,
+                  }
+                }
+              }
+            },
+            colors: ['#1ab7ea', '#0084ff', '#39539E', '#0077B5'],
+            labels: [],
+            legend: {
+              show: true,
+              floating: true,
+              fontSize: '16px',
+              position: 'left',
+              offsetX: 160,
+              offsetY: 15,
+              labels: {
+                useSeriesColors: true,
+              },
+              markers: {
+                size: 0
+              },
+              formatter: function(seriesName, opts) {
+                return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+              },
+              itemMargin: {
+                vertical: 3
+              }
+            },
+            responsive: [{
+              breakpoint: 480,
+              options: {
+                legend: {
+                    show: false
+                }
+              }
+            }]
+          },
       logs: [],
       user: {},
       app_name: "",
@@ -445,7 +503,6 @@ export default {
       assigned_apps: 0,
       roles: {},
       apps: {},
-
       labels:[],
       chartOptions:{},
       userByRole:"",
@@ -590,34 +647,28 @@ chart11.render();
 );
 chart.render();
 },
-donutChart(){
-      var data = google.visualization.arrayToDataTable([
+// donutChart(){
+//       var data = google.visualization.arrayToDataTable([
 
-        ['Role', 'Users'],
-        ['Admin', 2],
-        this.userByRole.forEach(function (arrayItem) {
-                    var x = arrayItem.name;
-                    var y = arrayItem.users_count;
-                    "['"+x+"',"+" "+y+"],"
-        })
-        ['Agent', 3]
-      ]);
-      var options = {
-        title: 'Users By Role',
-        pieHole: 0.4,
-        width:'100%',
-        height: 300,
-        colors: [vihoAdminConfig.secondary, vihoAdminConfig.primary]
-      };
-      var chart = new google.visualization.PieChart(document.getElementById('pie-chart3'));
-      chart.draw(data, options);
-},
-userRoleChart(){
-
-
-    console.log('user role chart')
-}
-,
+//         ['Role', 'Users'],
+//         ['Admin', 2],
+//         this.userByRole.forEach(function (arrayItem) {
+//                     var x = arrayItem.name;
+//                     var y = arrayItem.users_count;
+//                     "['"+x+"',"+" "+y+"],"
+//         })
+//         ['Agent', 3]
+//       ]);
+//       var options = {
+//         title: 'Users By Role',
+//         pieHole: 0.4,
+//         width:'100%',
+//         height: 300,
+//         colors: [vihoAdminConfig.secondary, vihoAdminConfig.primary]
+//       };
+//       var chart = new google.visualization.PieChart(document.getElementById('pie-chart3'));
+//       chart.draw(data, options);
+// },
 async getDashboardData() {
       await axios.get("dashboard").then((res) => {
         //  console.log(res.data)
@@ -634,14 +685,12 @@ async getDashboardData() {
         this.dates = data.map(x =>  moment(x.created_at).format("D MMM YYYY"));
         this.total_apps = data.map(x => parseInt(x.total));
         this.app_status = res.data.app_status.map(x => x.count)
-
-        this.userRoleLabel = res.data.userByRole.map(x => x.name)
-        this.userByRole =  res.data.userByRole.map(x => x.users_count)
+        this.chartOptions.labels = res.data.userByRole.map(x => x.name)
+        this.series =  res.data.userByRole.map(x => x.users_count)
         this.chartOptions.labels = res.data.userByRole.map(x => x.name)
         this.userByPermission = res.data.userByPermission.map(x => x.users_count)
         this.userPermissionLabel = res.data.userByPermission.map(x => x.name)
         this.totalPermissions = res.data.totalPermissions;
-        this.series1 = res.data.dateby_applications
         // this.dates = res.data.dates;
         // series.applications =  data.map(x => x.created_at);
         // series.total = data.map(x => x.total);
@@ -650,16 +699,16 @@ async getDashboardData() {
         // this.userByRole = arr.reduce(
         //   (obj, item) => Object.assign(obj, { [item.name]: item.users_count }), {}
         // );
-        this.userByRole.forEach(function (arrayItem) {
-                    var x = arrayItem.name;
-                    var y = arrayItem.users_count;
-                    "['"+x+"',"+" "+y+"],"
-                })
+        // this.userByRole.forEach(function (arrayItem) {
+        //             var x = arrayItem.name;
+        //             var y = arrayItem.users_count;
+        //             "['"+x+"',"+" "+y+"],"
+        //         })
         this.dashboardChart();
-        this.pieChart();
+        // this.pieChart();
         this.radialBar();
-        this.donutChart();
-        this.userRoleChart();
+        // this.donutChart();
+        // this.userRoleChart();
       });
     },
 

@@ -11,30 +11,72 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty({
   props: ['userByRole', 'userRoleLabel'],
   data: function data() {
     return {
-      series: [44, 55, 13, 43, 22],
+      series: [],
       chartOptions: {
         chart: {
-          width: 380,
-          type: 'pie'
+          height: 390,
+          type: 'radialBar'
         },
-        labels: ['admin', 'agent'],
+        plotOptions: {
+          radialBar: {
+            offsetY: 0,
+            startAngle: 0,
+            endAngle: 270,
+            hollow: {
+              margin: 5,
+              size: '30%',
+              background: 'transparent',
+              image: undefined
+            },
+            dataLabels: {
+              name: {
+                show: false
+              },
+              value: {
+                show: false
+              }
+            }
+          }
+        },
+        colors: ['#1ab7ea', '#0084ff', '#39539E', '#0077B5'],
+        labels: [],
+        legend: {
+          show: true,
+          floating: true,
+          fontSize: '16px',
+          position: 'left',
+          offsetX: 160,
+          offsetY: 15,
+          labels: {
+            useSeriesColors: true
+          },
+          markers: {
+            size: 0
+          },
+          formatter: function formatter(seriesName, opts) {
+            return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex];
+          },
+          itemMargin: {
+            vertical: 3
+          }
+        },
         responsive: [{
           breakpoint: 480,
           options: {
-            chart: {
-              width: 200
-            },
             legend: {
-              position: 'bottom'
+              show: false
             }
           }
         }]
@@ -50,14 +92,15 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    userRoleLabel: function userRoleLabel(new_role) {
-      this.label();
-    },
     userByRole: function userByRole(new_role) {
       this.init();
     }
   }
-});
+}, "watch", {
+  userRoleLabel: function userRoleLabel(new_role) {
+    this.label();
+  }
+}));
 
 /***/ }),
 
@@ -145,15 +188,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("apexchart", {
-        attrs: { type: "donut", options: _vm.chartOptions, series: _vm.series }
-      })
-    ],
-    1
-  )
+  return _c("div")
 }
 var staticRenderFns = []
 render._withStripped = true

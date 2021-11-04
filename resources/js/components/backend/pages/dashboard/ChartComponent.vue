@@ -11,7 +11,7 @@
       data(){
           return{
 
-                series: ['2','2'],
+                series: [2,2],
           chartOptions: {
             chart: {
               width: 380,
@@ -83,7 +83,6 @@
           }
       },
       methods:{
-
           init(){
               this.series = this.app_status
           }
