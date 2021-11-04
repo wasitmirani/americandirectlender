@@ -31,7 +31,7 @@
             </div>
 
           </div>
-                <div class="box-col-12 col-xl-12 des-xl-100">
+          <div class="box-col-12 col-xl-12 des-xl-100">
                 <div class="card">
                   <div class="card-header pb-0">
                     <h5> </h5>
@@ -66,6 +66,7 @@
                   </div>
                   <div class="card-body">
                     <div id="basic-apex"></div>
+                    <!-- <BarGraph :total_apps="total_apps" :dates="dates"></BarGraph> -->
                   </div>
 
                 </div>
@@ -425,11 +426,12 @@
 <script>
 import lineChart from './ChartComponent.vue'
 import donutChart from './DonutChart.vue'
-
+import BarGraph from './BarGraph.vue'
 export default {
     components:{
        lineChart,
-       donutChart
+       donutChart,
+       BarGraph
     },
   data() {
     return {
