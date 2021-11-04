@@ -83,7 +83,6 @@ export default {
     },
       data(){
         return {
-
             applications:{},
             process:{},
             done:{},

@@ -123,9 +123,6 @@ export default {
           );
         });
     },
-    :function(){
-
-    }
   },
   mounted() {
     if (this.$route.params.id) {

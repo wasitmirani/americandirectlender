@@ -21,7 +21,8 @@ import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 
 // import moment.js
 import moment from "moment";
-
+import Chart from 'chart.js/auto';
+Vue.use(VueApexCharts)
 
 //import vue-multiselect
 import Multiselect from 'vue-multiselect'
