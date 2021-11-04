@@ -26,7 +26,7 @@ __webpack_require__.r(__webpack_exports__);
           width: 380,
           type: 'pie'
         },
-        labels: [],
+        labels: ['admin', 'agent'],
         responsive: [{
           breakpoint: 480,
           options: {
@@ -50,11 +50,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    userByRole: function userByRole(new_role) {
-      this.init();
-    },
     userRoleLabel: function userRoleLabel(new_role) {
       this.label();
+    },
+    userByRole: function userByRole(new_role) {
+      this.init();
     }
   }
 });

@@ -66,9 +66,10 @@
                   </div>
                   <div class="card-body">
                     <div id="basic-apex"></div>
-                    <!-- <BarGraph :total_apps="total_apps" :dates="dates"></BarGraph> -->
+                    <div id="chart">
+                        <!-- <BarGraph :total_apps="total_apps" :dates="dates"></BarGraph> -->
+                    </div>
                   </div>
-
                 </div>
                 <div class="card">
                   <div class="card-header pb-0">

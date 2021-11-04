@@ -8,13 +8,13 @@
      props:['userByRole','userRoleLabel'],
     data(){
     return {
-           series: [44, 55, 13, 43, 22],
+        series: [44, 55, 13, 43, 22],
           chartOptions: {
             chart: {
               width: 380,
               type: 'pie',
             },
-            labels: [],
+            labels: ['admin','agent'],
             responsive: [{
               breakpoint: 480,
               options: {
@@ -41,14 +41,15 @@
         }
     },
     watch:{
+           userRoleLabel: function(new_role){
+            this.label();
+        },
         userByRole: function(new_role){
 
             this.init();
 
-        },
-        userRoleLabel: function(new_role){
-            this.label();
         }
+
     }
  }
 </script>

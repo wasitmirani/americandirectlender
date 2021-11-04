@@ -217,7 +217,7 @@ __webpack_require__.r(__webpack_exports__);
           width: 380,
           type: 'pie'
         },
-        labels: [],
+        labels: ['admin', 'agent'],
         responsive: [{
           breakpoint: 480,
           options: {
@@ -241,11 +241,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    userByRole: function userByRole(new_role) {
-      this.init();
-    },
     userRoleLabel: function userRoleLabel(new_role) {
       this.label();
+    },
+    userByRole: function userByRole(new_role) {
+      this.init();
     }
   }
 });
@@ -274,6 +274,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -2744,7 +2745,9 @@ var staticRenderFns = [
       _c("div", { staticClass: "card-header pb-0" }, [_c("h5")]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
-        _c("div", { attrs: { id: "basic-apex" } })
+        _c("div", { attrs: { id: "basic-apex" } }),
+        _vm._v(" "),
+        _c("div", { attrs: { id: "chart" } })
       ])
     ])
   },
