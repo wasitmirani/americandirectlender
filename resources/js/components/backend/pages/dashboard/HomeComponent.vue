@@ -38,30 +38,25 @@
                     <h5> </h5>
                   </div>
                   <div class="card-body apex-chart">
-                    <!-- <div id="piechart"></div> -->
+                    <div id="piechart"></div>
                       <div id="chart">
-                   <lineChart :app_status="app_status" ></lineChart>
+                   <!-- <lineChart :app_status="app_status" ></lineChart> -->
                 </div>
                   </div>
 
                 </div>
 
-                <div class="card" v-if="role == 'Admin'">
-                  <div class="card-header pb-0">
-                    <h5>Prmissions Analytics</h5>
-                  </div>
-                  <div class="card-body">
-                    <div id="circlechart">
-
+                <!-- <div class="card" v-if="role == 'Admin'">
+                    <div class="card-header pb-0">
+                      <h5>Prmissions Analytics</h5>
                     </div>
-                  </div>
-                </div>
-
+                    <div class="card-body">
+                      <div id="circlechart">
+                      </div>
+                    </div>
+                </div> -->
           </div>
-
-
         </div>
-
         <div class="col-xl-6 box-col-12 des-xl-100 invoice-sec">
                 <div class="card">
                   <div class="card-header pb-0">
@@ -70,26 +65,21 @@
                   <div class="card-body">
                     <div id="basic-apex"></div>
                     <div id="chart">
-                        <!-- <BarGraph :total_apps="total_apps" :dates="dates"></BarGraph> -->
+                        <!--<BarGraph :total_apps="total_apps" :dates="dates"></BarGraph>-->
                     </div>
                   </div>
                 </div>
-
-                <div class="card" v-if="role == 'Admin'">
-                  <div class="card-header pb-0">
-                    <h5>Users By Role</h5>
-                  </div>
+                <!-- <div class="card" v-if="role == 'Admin'">
+                    <div class="card-header pb-0">
+                       <h5>Users By Role</h5>
+                    </div>
                     <div class="card-body p-0 chart-block">
-                    <!-- <div class="chart-overflow" id="pie-chart3"></div> -->
-                  </div>
-                  <div id="chart">
-                   <apexchart type="radialBar" height="390" :options="chartOptions" :series="series"></apexchart>
-      </div>
-                </div>
-
+                      <div class="chart-overflow" id="pie-chart3"></div>
+                    </div>
+                    <div id="chart">
+                    </div>
+                </div> -->
         </div>
-
-
       </div>
       <div class="row" v-if="role == 'Admin'">
         <div class="col-sm-6 col-xl-3 col-lg-6">
@@ -552,18 +542,15 @@ var chart8 = new ApexCharts(
     document.querySelector("#piechart"),
     options8
 );
-
 chart8.render();
-
-      },
-
+},
 radialBar(){
-          var options11 = {
-    chart: {
+    var options11 = {
+        chart: {
         height: 350,
         type: 'radialBar',
-    },
-    plotOptions: {
+        },
+        plotOptions: {
         radialBar: {
             dataLabels: {
                 name: {
@@ -582,23 +569,18 @@ radialBar(){
                 }
             }
         }
-    },
+        },
     series: this.userByPermission,
     labels: this.userPermissionLabel,
     colors: [vihoAdminConfig.primary, vihoAdminConfig.secondary, '#222222', '#717171']
-
-
 }
-
-var chart11 = new ApexCharts(
+    var chart11 = new ApexCharts(
     document.querySelector("#circlechart"),
     options11
 );
-
-chart11.render();
-
-     },
-    dashboardChart() {
+    chart11.render();
+},
+dashboardChart() {
 
     var options = {
     chart: {
@@ -711,10 +693,10 @@ async getDashboardData() {
         //             "['"+x+"',"+" "+y+"],"
         //         })
         this.dashboardChart();
-        // this.pieChart();
+        this.pieChart();
         this.radialBar();
-        // this.donutChart();
-        // this.userRoleChart();
+        this.donutChart();
+        this.userRoleChart();
       });
     },
 

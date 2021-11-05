@@ -21,7 +21,7 @@ export default{
                 type: 'radialBar',
             },
             plotOptions: {
-        radialBar: {
+                radialBar: {
             dataLabels: {
                 name: {
                     fontSize: '22px',
@@ -37,7 +37,7 @@ export default{
                     }
                 }
             }
-        }
+            }
         },
         series: this.userByPermission,
         labels: this.userPermissionLabel,

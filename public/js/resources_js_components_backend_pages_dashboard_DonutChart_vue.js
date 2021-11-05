@@ -11,13 +11,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
 //
-//
-//
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty({
   props: ['userByRole', 'userRoleLabel'],
   computed: {
     chartData: function chartData() {
@@ -88,31 +88,30 @@ __webpack_require__.r(__webpack_exports__);
         }]
       }
     };
-  } // methods:{
-  //     init(){
-  //         this.series = this.userByRole
-  //     },
-  //     label(){
-  //         this.chartOptions.labels = this.userRoleLabel
-  //     },
-  // updateLabels: function() {
-  //   this.chartOptions = {
-  //     labels: this.userRoleLabel ,
-  //   }
-  // }
-  // },
-  // watch:{
-  //     userByRole: function(new_role){
-  //         this.init();
-  //     },
-  // },
-  // watch:{
-  //     userRoleLabel: function(new_role){
-  //         this.updateLabels();
-  //     }
-  // }
-
-});
+  },
+  methods: {
+    init: function init() {
+      this.series = this.userByRole;
+    },
+    label: function label() {
+      this.chartOptions.labels = this.userRoleLabel;
+    },
+    updateLabels: function updateLabels() {
+      this.chartOptions = {
+        labels: this.userRoleLabel
+      };
+    }
+  },
+  watch: {
+    userByRole: function userByRole(new_role) {
+      this.init();
+    }
+  }
+}, "watch", {
+  userRoleLabel: function userRoleLabel(new_role) {
+    this.updateLabels();
+  }
+}));
 
 /***/ }),
 

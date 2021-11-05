@@ -202,13 +202,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
 //
-//
-//
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty({
   props: ['userByRole', 'userRoleLabel'],
   computed: {
     chartData: function chartData() {
@@ -279,31 +279,30 @@ __webpack_require__.r(__webpack_exports__);
         }]
       }
     };
-  } // methods:{
-  //     init(){
-  //         this.series = this.userByRole
-  //     },
-  //     label(){
-  //         this.chartOptions.labels = this.userRoleLabel
-  //     },
-  // updateLabels: function() {
-  //   this.chartOptions = {
-  //     labels: this.userRoleLabel ,
-  //   }
-  // }
-  // },
-  // watch:{
-  //     userByRole: function(new_role){
-  //         this.init();
-  //     },
-  // },
-  // watch:{
-  //     userRoleLabel: function(new_role){
-  //         this.updateLabels();
-  //     }
-  // }
-
-});
+  },
+  methods: {
+    init: function init() {
+      this.series = this.userByRole;
+    },
+    label: function label() {
+      this.chartOptions.labels = this.userRoleLabel;
+    },
+    updateLabels: function updateLabels() {
+      this.chartOptions = {
+        labels: this.userRoleLabel
+      };
+    }
+  },
+  watch: {
+    userByRole: function userByRole(new_role) {
+      this.init();
+    }
+  }
+}, "watch", {
+  userRoleLabel: function userRoleLabel(new_role) {
+    this.updateLabels();
+  }
+}));
 
 /***/ }),
 
@@ -331,16 +330,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -1044,13 +1033,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   //             var y = arrayItem.users_count;
                   //             "['"+x+"',"+" "+y+"],"
                   //         })
-                  _this.dashboardChart(); // this.pieChart();
+                  _this.dashboardChart();
 
+                  _this.pieChart();
 
-                  // this.pieChart();
-                  _this.radialBar(); // this.donutChart();
-                  // this.userRoleChart();
+                  _this.radialBar();
 
+                  _this.donutChart();
+
+                  _this.userRoleChart();
                 });
 
               case 2:
@@ -2272,61 +2263,10 @@ var render = function() {
             _vm._m(1)
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "box-col-12 col-xl-12 des-xl-100" }, [
-            _c("div", { staticClass: "card" }, [
-              _vm._m(2),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body apex-chart" }, [
-                _c(
-                  "div",
-                  { attrs: { id: "chart" } },
-                  [_c("lineChart", { attrs: { app_status: _vm.app_status } })],
-                  1
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _vm.role == "Admin"
-              ? _c("div", { staticClass: "card" }, [
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _vm._m(4)
-                ])
-              : _vm._e()
-          ])
+          _vm._m(2)
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-xl-6 box-col-12 des-xl-100 invoice-sec" },
-          [
-            _vm._m(5),
-            _vm._v(" "),
-            _vm.role == "Admin"
-              ? _c("div", { staticClass: "card" }, [
-                  _vm._m(6),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body p-0 chart-block" }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { attrs: { id: "chart" } },
-                    [
-                      _c("apexchart", {
-                        attrs: {
-                          type: "radialBar",
-                          height: "390",
-                          options: _vm.chartOptions,
-                          series: _vm.series
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ])
-              : _vm._e()
-          ]
-        )
+        _vm._m(3)
       ]),
       _vm._v(" "),
       _vm.role == "Admin"
@@ -2574,7 +2514,7 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-sm-6 pe-0" }, [
                 _c("div", { staticClass: "media border-after-xs" }, [
-                  _vm._m(7),
+                  _vm._m(4),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body align-self-center" }, [
                     _c(
@@ -2621,7 +2561,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 ps-0" }, [
                 _c("div", { staticClass: "media" }, [
-                  _vm._m(8),
+                  _vm._m(5),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body align-self-center" }, [
                     _c(
@@ -2665,7 +2605,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-6 pe-0" }, [
                 _c("div", { staticClass: "media border-after-xs" }, [
-                  _vm._m(9),
+                  _vm._m(6),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body align-self-center" }, [
                     _c(
@@ -2714,7 +2654,7 @@ var render = function() {
               _c("div", { staticClass: "col-sm-6 ps-0" }, [
                 _vm.role == "ademin"
                   ? _c("div", { staticClass: "media" }, [
-                      _vm._m(10),
+                      _vm._m(7),
                       _vm._v(" "),
                       _c("div", { staticClass: "media-body ps-2" }, [
                         _c(
@@ -2741,7 +2681,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(11),
+    _vm._m(8),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "card" }, [
@@ -2750,7 +2690,7 @@ var render = function() {
             _c("h5", [_vm._v("Recent Applications")]),
             _vm._v(" "),
             _c("table", { staticClass: "table table-bordernone" }, [
-              _vm._m(12),
+              _vm._m(9),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -2876,35 +2816,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header pb-0" }, [_c("h5")])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header pb-0" }, [
-      _c("h5", [_vm._v("Prmissions Analytics")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("div", { attrs: { id: "circlechart" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header pb-0" }, [_c("h5")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("div", { attrs: { id: "basic-apex" } }),
+    return _c("div", { staticClass: "box-col-12 col-xl-12 des-xl-100" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header pb-0" }, [_c("h5")]),
         _vm._v(" "),
-        _c("div", { attrs: { id: "chart" } })
+        _c("div", { staticClass: "card-body apex-chart" }, [
+          _c("div", { attrs: { id: "piechart" } }),
+          _vm._v(" "),
+          _c("div", { attrs: { id: "chart" } })
+        ])
       ])
     ])
   },
@@ -2912,9 +2832,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header pb-0" }, [
-      _c("h5", [_vm._v("Users By Role")])
-    ])
+    return _c(
+      "div",
+      { staticClass: "col-xl-6 box-col-12 des-xl-100 invoice-sec" },
+      [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header pb-0" }, [_c("h5")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { attrs: { id: "basic-apex" } }),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "chart" } })
+          ])
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this

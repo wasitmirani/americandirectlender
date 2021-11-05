@@ -1,7 +1,5 @@
 <template>
  <div>
-
-
  </div>
 </template>
 <script>
@@ -14,7 +12,6 @@
     charLabel: function(){
         return this.userRoleLabel
     }
-
   },
   data(){
       return{
@@ -80,32 +77,32 @@
       }
   },
 
-    // methods:{
-    //     init(){
-    //         this.series = this.userByRole
-    //     },
-    //     label(){
-    //         this.chartOptions.labels = this.userRoleLabel
-    //     },
-    // updateLabels: function() {
+    methods:{
+        init(){
+            this.series = this.userByRole
+        },
+        label(){
+            this.chartOptions.labels = this.userRoleLabel
+        },
+    updateLabels: function() {
 
-    //   this.chartOptions = {
-    //     labels: this.userRoleLabel ,
-    //   }
-    // }
-    // },
+      this.chartOptions = {
+        labels: this.userRoleLabel ,
+      }
+    }
+    },
 
-    // watch:{
-    //     userByRole: function(new_role){
-    //         this.init();
+    watch:{
+        userByRole: function(new_role){
+            this.init();
 
-    //     },
+        },
 
-    // },
-    // watch:{
-    //     userRoleLabel: function(new_role){
-    //         this.updateLabels();
-    //     }
-    // }
+    },
+    watch:{
+        userRoleLabel: function(new_role){
+            this.updateLabels();
+        }
+    }
  }
 </script>
