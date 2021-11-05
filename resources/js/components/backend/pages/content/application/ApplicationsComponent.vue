@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div >
           <Breadcrumb activename="Applications" ></Breadcrumb>
 
-        <div class="container-fluid">
+        <div class="container-fluid center" ref="target" id="target" >
             <div class="row project-cards">
               <div class="col-md-12 project-list">
                 <div class="card">
@@ -88,28 +88,48 @@ export default {
             done:{},
             agents:{},
             query:"",
-            loading:false,
+            // loading:false,
             total_applications:0,
             page_num:1,
-            roles:{}
+            roles:{},
+            progress: 0
         };
     },
       mounted(){
+        this.openLoading()
         this.getApplications();
         this.getRoles();
         this.getAgents();
 
 
+
     },
      methods:{
+        openLoading() {
+            const loading = this.$vs.loading({
+            progress: 0
+        })
+        const interval = setInterval(() => {
+            if (this.progress <= 100) {
+              loading.changeProgress(this.progress++)
+            }
+          }, 40)
+        setTimeout(() => {
+            loading.close()
+            clearInterval(interval)
+            this.progress = 0
+          }, 4100)
+    },
+
           isquery(query) {
             return (this.query = query);
           },
 
-        loadingStart(value) {
+        // loadingStart(value) {
 
-            this.loading = value;
-          },
+        //     this.loading = value;
+        //   },
+
           filterdata(data){
             this.applications=data.applications.data;
           },
@@ -158,7 +178,9 @@ export default {
                });
             },
 
-     }
+     },
+
+
 }
 </script>
 

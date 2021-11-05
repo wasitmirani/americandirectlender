@@ -4,13 +4,13 @@
     <div class="container-fluid">
       <div class="row">
         <div class="card-body">
-              <SearchInput :apiurl="'/customer/applications?page=' +this.page_num"
-                                        v-on:query="isquery($event)"
-                                        v-on:loading="loadingStart($event)"
-                                        v-on:reload="getApplications()"
-                                        v-on:filterList="filterdata($event)"
-                                        label="Search Applications">
-                                </SearchInput>
+                <SearchInput :apiurl="'/customer/applications?page=' +this.page_num"
+                    v-on:query="isquery($event)"
+                    v-on:loading="loadingStart($event)"
+                    v-on:reload="getApplications()"
+                    v-on:filterList="filterdata($event)"
+                    label="Search Applications">
+                </SearchInput>
           <div class="table-responsive">
             <table class="table">
               <thead>
@@ -62,7 +62,9 @@ export default {
     return {
       applications: {},
        query:"",
-       page_num : ""
+       page_num : "",
+       loading:false,
+
     };
   },
   mounted() {
@@ -77,9 +79,7 @@ export default {
         },
         filterdata(data){
             this.applications = data.applications.data;
-
         },
-
     async getApplications(page = 1) {
       this.loading = true;
       this.page_num = page;
@@ -93,7 +93,8 @@ export default {
         .catch((err) => {
           this.$root.alertNotificationMessage(
             err.response.status,
-            err.response.data
+            err.response.data,
+            this.loading =false
           );
         });
     },
@@ -125,6 +126,7 @@ export default {
       });
     },
   },
+
 };
 </script>
 <style>

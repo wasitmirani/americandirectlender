@@ -233,7 +233,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       applications: {},
       query: "",
-      page_num: ""
+      page_num: "",
+      loading: false
     };
   },
   mounted: function mounted() {
@@ -268,7 +269,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.applications = res.data.assignedApps.data;
                   _this.loading = false;
                 })["catch"](function (err) {
-                  _this.$root.alertNotificationMessage(err.response.status, err.response.data);
+                  _this.$root.alertNotificationMessage(err.response.status, err.response.data, _this.loading = false);
                 });
 
               case 6:

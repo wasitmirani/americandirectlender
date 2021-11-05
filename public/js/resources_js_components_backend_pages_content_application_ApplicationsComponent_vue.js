@@ -293,30 +293,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       done: {},
       agents: {},
       query: "",
-      loading: false,
+      // loading:false,
       total_applications: 0,
       page_num: 1,
-      roles: {}
+      roles: {},
+      progress: 0
     };
   },
   mounted: function mounted() {
+    this.openLoading();
     this.getApplications();
     this.getRoles();
     this.getAgents();
   },
   methods: {
+    openLoading: function openLoading() {
+      var _this = this;
+
+      var loading = this.$vs.loading({
+        progress: 0
+      });
+      var interval = setInterval(function () {
+        if (_this.progress <= 100) {
+          loading.changeProgress(_this.progress++);
+        }
+      }, 40);
+      setTimeout(function () {
+        loading.close();
+        clearInterval(interval);
+        _this.progress = 0;
+      }, 4100);
+    },
     isquery: function isquery(query) {
       return this.query = query;
     },
-    loadingStart: function loadingStart(value) {
-      this.loading = value;
-    },
+    // loadingStart(value) {
+    //     this.loading = value;
+    //   },
     filterdata: function filterdata(data) {
       this.applications = data.applications.data;
     },
     getApplications: function getApplications() {
       var _arguments = arguments,
-          _this = this;
+          _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         var page, url;
@@ -325,20 +344,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
-                _this.loading = true;
-                _this.page_num = page;
-                url = "/customer/applications?page=" + page + "&query=" + _this.query;
+                _this2.loading = true;
+                _this2.page_num = page;
+                url = "/customer/applications?page=" + page + "&query=" + _this2.query;
                 _context.next = 6;
                 return axios.get(url).then(function (res) {
-                  _this.applications = res.data.applications.data;
-                  _this.total_application = res.data.total_applications;
-                  _this.process = res.data.process.data;
-                  _this.done = res.data.done.data; // this.roles=res.data.roles;
+                  _this2.applications = res.data.applications.data;
+                  _this2.total_application = res.data.total_applications;
+                  _this2.process = res.data.process.data;
+                  _this2.done = res.data.done.data; // this.roles=res.data.roles;
 
                   // this.roles=res.data.roles;
-                  _this.loading = false;
+                  _this2.loading = false;
                 })["catch"](function (err) {
-                  _this.$root.alertNotificationMessage(err.response.status, err.response.data);
+                  _this2.$root.alertNotificationMessage(err.response.status, err.response.data);
                 });
 
               case 6:
@@ -351,7 +370,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     getAgents: function getAgents() {
       var _arguments2 = arguments,
-          _this2 = this;
+          _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var page, url;
@@ -360,16 +379,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 page = _arguments2.length > 0 && _arguments2[0] !== undefined ? _arguments2[0] : 1;
-                _this2.loading = true;
-                _this2.page_num = page;
-                url = "/management/agents?page=" + page + "&query=" + _this2.query;
+                _this3.loading = true;
+                _this3.page_num = page;
+                url = "/management/agents?page=" + page + "&query=" + _this3.query;
                 _context2.next = 6;
                 return axios.get(url).then(function (res) {
-                  _this2.agents = res.data.agents;
+                  _this3.agents = res.data.agents;
                   console.log(res);
-                  _this2.loading = false;
+                  _this3.loading = false;
                 })["catch"](function (err) {
-                  _this2.$root.alertErrorMessage(err.response.status, err.response.data);
+                  _this3.$root.alertErrorMessage(err.response.status, err.response.data);
                 });
 
               case 6:
@@ -382,7 +401,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     getRoles: function getRoles() {
       var _arguments3 = arguments,
-          _this3 = this;
+          _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var page, url;
@@ -391,16 +410,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 page = _arguments3.length > 0 && _arguments3[0] !== undefined ? _arguments3[0] : 1;
-                _this3.loading = true;
-                _this3.page_num = page;
-                url = "/management/role?page=" + page + "&query=" + _this3.query;
+                _this4.loading = true;
+                _this4.page_num = page;
+                url = "/management/role?page=" + page + "&query=" + _this4.query;
                 _context3.next = 6;
                 return axios.get(url).then(function (res) {
-                  _this3.roles = res.data.roles.data;
+                  _this4.roles = res.data.roles.data;
                   console.log(res);
-                  _this3.loading = false;
+                  _this4.loading = false;
                 })["catch"](function (err) {
-                  _this3.$root.alertErrorMessage(err.response.status, err.response.data);
+                  _this4.$root.alertErrorMessage(err.response.status, err.response.data);
                 });
 
               case 6:
@@ -2267,59 +2286,122 @@ var render = function() {
     [
       _c("Breadcrumb", { attrs: { activename: "Applications" } }),
       _vm._v(" "),
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row project-cards" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "tab-content",
-                    attrs: { id: "top-tabContent" }
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade show active",
-                        attrs: {
-                          id: "top-home",
-                          role: "tabpanel",
-                          "aria-labelledby": "top-home-tab"
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "row" },
-                          [
-                            _c("SearchInput", {
-                              attrs: {
-                                apiurl:
-                                  "/customer/applications?page=" +
-                                  this.page_num,
-                                label: "Search Applications"
-                              },
-                              on: {
-                                query: function($event) {
-                                  return _vm.isquery($event)
+      _c(
+        "div",
+        {
+          ref: "target",
+          staticClass: "container-fluid center",
+          attrs: { id: "target" }
+        },
+        [
+          _c("div", { staticClass: "row project-cards" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-12" }, [
+              _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-content",
+                      attrs: { id: "top-tabContent" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane fade show active",
+                          attrs: {
+                            id: "top-home",
+                            role: "tabpanel",
+                            "aria-labelledby": "top-home-tab"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "row" },
+                            [
+                              _c("SearchInput", {
+                                attrs: {
+                                  apiurl:
+                                    "/customer/applications?page=" +
+                                    this.page_num,
+                                  label: "Search Applications"
                                 },
-                                loading: function($event) {
-                                  return _vm.loadingStart($event)
-                                },
-                                reload: function($event) {
-                                  return _vm.getApplications()
-                                },
-                                filterList: function($event) {
-                                  return _vm.filterdata($event)
+                                on: {
+                                  query: function($event) {
+                                    return _vm.isquery($event)
+                                  },
+                                  loading: function($event) {
+                                    return _vm.loadingStart($event)
+                                  },
+                                  reload: function($event) {
+                                    return _vm.getApplications()
+                                  },
+                                  filterList: function($event) {
+                                    return _vm.filterdata($event)
+                                  }
                                 }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm._l(_vm.applications, function(application) {
+                              }),
+                              _vm._v(" "),
+                              _vm._l(_vm.applications, function(application) {
+                                return _c(
+                                  "div",
+                                  {
+                                    key: application.id,
+                                    staticClass: "col-xxl-6 col-lg-6 "
+                                  },
+                                  [
+                                    _c("ApplicationCard", {
+                                      attrs: {
+                                        getRoles: _vm.getRoles,
+                                        roles: _vm.agents,
+                                        getApplications: _vm.getApplications,
+                                        application: application,
+                                        applications: _vm.applications
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              }),
+                              _vm._v(" "),
+                              _c("pagination", {
+                                attrs: { data: _vm.applications },
+                                on: {
+                                  "pagination-change-page": _vm.getApplications
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.applications.length < 1
+                                ? _c(
+                                    "h6",
+                                    { staticClass: "text-center text-warning" },
+                                    [_vm._v("No Application Found")]
+                                  )
+                                : _vm._e()
+                            ],
+                            2
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane fade",
+                          attrs: {
+                            id: "top-profile",
+                            role: "tabpanel",
+                            "aria-labelledby": "profile-top-tab"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "row" },
+                            _vm._l(_vm.process, function(application) {
                               return _c(
                                 "div",
                                 {
@@ -2329,10 +2411,9 @@ var render = function() {
                                 [
                                   _c("ApplicationCard", {
                                     attrs: {
-                                      getRoles: _vm.getRoles,
-                                      roles: _vm.agents,
                                       getApplications: _vm.getApplications,
                                       application: application,
+                                      roles: _vm.agents,
                                       applications: _vm.applications
                                     }
                                   })
@@ -2340,111 +2421,57 @@ var render = function() {
                                 1
                               )
                             }),
-                            _vm._v(" "),
-                            _c("pagination", {
-                              attrs: { data: _vm.applications },
-                              on: {
-                                "pagination-change-page": _vm.getApplications
-                              }
+                            0
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane fade",
+                          attrs: {
+                            id: "top-contact",
+                            role: "tabpanel",
+                            "aria-labelledby": "contact-top-tab"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "row" },
+                            _vm._l(_vm.done, function(application) {
+                              return _c(
+                                "div",
+                                {
+                                  key: application.id,
+                                  staticClass: "col-xxl-4 "
+                                },
+                                [
+                                  _c("ApplicationCard", {
+                                    attrs: {
+                                      getApplications: _vm.getApplications,
+                                      application: application,
+                                      roles: _vm.agents,
+                                      applications: _vm.applications
+                                    }
+                                  })
+                                ],
+                                1
+                              )
                             }),
-                            _vm._v(" "),
-                            _vm.applications.length < 1
-                              ? _c(
-                                  "h6",
-                                  { staticClass: "text-center text-warning" },
-                                  [_vm._v("No Application Found")]
-                                )
-                              : _vm._e()
-                          ],
-                          2
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade",
-                        attrs: {
-                          id: "top-profile",
-                          role: "tabpanel",
-                          "aria-labelledby": "profile-top-tab"
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "row" },
-                          _vm._l(_vm.process, function(application) {
-                            return _c(
-                              "div",
-                              {
-                                key: application.id,
-                                staticClass: "col-xxl-6 col-lg-6 "
-                              },
-                              [
-                                _c("ApplicationCard", {
-                                  attrs: {
-                                    getApplications: _vm.getApplications,
-                                    application: application,
-                                    roles: _vm.agents,
-                                    applications: _vm.applications
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          }),
-                          0
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane fade",
-                        attrs: {
-                          id: "top-contact",
-                          role: "tabpanel",
-                          "aria-labelledby": "contact-top-tab"
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "row" },
-                          _vm._l(_vm.done, function(application) {
-                            return _c(
-                              "div",
-                              {
-                                key: application.id,
-                                staticClass: "col-xxl-4 "
-                              },
-                              [
-                                _c("ApplicationCard", {
-                                  attrs: {
-                                    getApplications: _vm.getApplications,
-                                    application: application,
-                                    roles: _vm.agents,
-                                    applications: _vm.applications
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          }),
-                          0
-                        )
-                      ]
-                    )
-                  ]
-                )
+                            0
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ])
               ])
             ])
           ])
-        ])
-      ])
+        ]
+      )
     ],
     1
   )

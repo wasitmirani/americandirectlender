@@ -62,6 +62,7 @@
                      <div class="col-xl-6">
                            <fieldset class="mb-3">
                     <div class="row">
+
                         <label class="col-form-label">HOA?</label>
                         <div class="col-sm-9">
                             <div class="form-check radio radio-primary">
@@ -87,6 +88,7 @@
                 </div>
 
                 <div class="row mb-0">
+
                     <div class="col-xl-6">
                               <label class="col-sm-3 col-form-label pb-0">Cash Out</label>
                 <div class="col-sm-9">
@@ -132,8 +134,7 @@
                         </div>
                     </div>
                 </fieldset>
-
-                    </div>
+            </div>
                      <div class="col-xl-6">
                            <div class="col-auto">
                 <fieldset class="mb-3">
