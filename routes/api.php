@@ -47,8 +47,6 @@ Route::middleware('auth:api')->group(function () {
     // Route::get('/notification/{id}',[NotificationController::class,'']);
     Route::put('update/status/{id}',[AppFormController::class,'updateStatus']);
     Route::get('log/activities/',[SettingController::class,'logActivities']);
-
-
     Route::get('profile/setting',[SettingController::class,'index'])->name('profile.setting');
     Route::post('password/setting/{id}',[SettingController::class,'updatePassword'])->name('password.setting');
     Route::post('profile/setting/{id}',[SettingController::class,'update']);

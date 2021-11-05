@@ -24,8 +24,6 @@ class PermissionController extends Controller
 
         return response()->json(['permissions'=>$permissions,'roles'=>$roles,'users'=>$users]);
     }
-
-
     public function store(Request $request)
     {
 
