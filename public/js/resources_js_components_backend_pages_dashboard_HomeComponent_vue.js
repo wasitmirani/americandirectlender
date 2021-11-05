@@ -1037,11 +1037,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   _this.pieChart();
 
-                  _this.radialBar();
+                  _this.radialBar(); // this.donutChart();
+                  // this.userRoleChart();
 
-                  _this.donutChart();
-
-                  _this.userRoleChart();
                 });
 
               case 2:
@@ -2512,7 +2510,7 @@ var render = function() {
         _c("div", { staticClass: "col-xl-12 xl-50 box-col-12" }, [
           _c("div", { staticClass: "widget-joins card widget-arrow" }, [
             _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-sm-6 pe-0" }, [
+              _c("div", { staticClass: "col-sm-4 pe-0" }, [
                 _c("div", { staticClass: "media border-after-xs" }, [
                   _vm._m(4),
                   _vm._v(" "),
@@ -2559,7 +2557,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 ps-0" }, [
+              _c("div", { staticClass: "col-sm-4 ps-0" }, [
                 _c("div", { staticClass: "media" }, [
                   _vm._m(5),
                   _vm._v(" "),
@@ -2603,7 +2601,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 pe-0" }, [
+              _c("div", { staticClass: "col-sm-4 pe-0" }, [
                 _c("div", { staticClass: "media border-after-xs" }, [
                   _vm._m(6),
                   _vm._v(" "),
@@ -2649,31 +2647,6 @@ var render = function() {
                     _c("span", { staticClass: "mb-1" })
                   ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 ps-0" }, [
-                _vm.role == "ademin"
-                  ? _c("div", { staticClass: "media" }, [
-                      _vm._m(7),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "media-body ps-2" }, [
-                        _c(
-                          "h5",
-                          { staticClass: "mb-0" },
-                          _vm._l(_vm.roles, function(role) {
-                            return _c(
-                              "span",
-                              { key: role.id, staticClass: "counter" },
-                              [_vm._v(_vm._s(role.users_count))]
-                            )
-                          }),
-                          0
-                        ),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "mb-1" })
-                      ])
-                    ])
-                  : _vm._e()
               ])
             ])
           ])
@@ -2681,7 +2654,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(8),
+    _vm._m(7),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "card" }, [
@@ -2690,7 +2663,7 @@ var render = function() {
             _c("h5", [_vm._v("Recent Applications")]),
             _vm._v(" "),
             _c("table", { staticClass: "table table-bordernone" }, [
-              _vm._m(9),
+              _vm._m(8),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -2876,16 +2849,6 @@ var staticRenderFns = [
       _c("span", { staticClass: "widget-t mb-1" }),
       _vm._v(" "),
       _c("h5", { staticClass: "mb-0" }, [_vm._v("Pending Application")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "align-self-center me-3 text-start" }, [
-      _c("span", { staticClass: "widget-t mb-1" }),
-      _vm._v(" "),
-      _c("h5", { staticClass: "mb-0" }, [_vm._v("Agents")])
     ])
   },
   function() {

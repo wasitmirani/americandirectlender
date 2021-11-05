@@ -124,12 +124,10 @@ export default {
           isquery(query) {
             return (this.query = query);
           },
-
         // loadingStart(value) {
 
         //     this.loading = value;
         //   },
-
           filterdata(data){
             this.applications=data.applications.data;
           },
