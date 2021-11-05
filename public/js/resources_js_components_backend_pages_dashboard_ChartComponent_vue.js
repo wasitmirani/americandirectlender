@@ -20,7 +20,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['app_status'],
   data: function data() {
     return {
-      series: [2, 2],
+      series: [],
       chartOptions: {
         chart: {
           width: 380,

@@ -31,6 +31,7 @@
             </div>
 
           </div>
+
           <div class="box-col-12 col-xl-12 des-xl-100">
                 <div class="card">
                   <div class="card-header pb-0">
@@ -45,12 +46,14 @@
 
                 </div>
 
-                <div class="card">
+                <div class="card" v-if="role == 'Admin'">
                   <div class="card-header pb-0">
                     <h5>Prmissions Analytics</h5>
                   </div>
                   <div class="card-body">
-                    <div id="circlechart"></div>
+                    <div id="circlechart">
+
+                    </div>
                   </div>
                 </div>
 
@@ -71,7 +74,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="card">
+
+                <div class="card" v-if="role == 'Admin'">
                   <div class="card-header pb-0">
                     <h5>Users By Role</h5>
                   </div>
@@ -87,7 +91,7 @@
 
 
       </div>
-      <div class="row">
+      <div class="row" v-if="role == 'Admin'">
         <div class="col-sm-6 col-xl-3 col-lg-6">
           <div class="card o-hidden border-0">
             <div class="bg-primary b-r-4 card-body">
@@ -111,7 +115,7 @@
                     <line x1="23" y1="11" x2="17" y2="11"></line>
                   </svg>
                 </div>
-                <div class="media-body">
+                <div class="media-body" >
                   <span class="m-0">Total Users</span>
                   <h4 class="mb-0 counter">{{ total_users }}</h4>
                   <svg
@@ -141,7 +145,7 @@
           v-for="item in roles"
           :key="item.id"
         >
-          <div class="card o-hidden border-0">
+          <div class="card o-hidden border-0" >
             <div class="bg-primary b-r-4 card-body">
               <div class="media static-top-widget">
                 <div class="align-self-center text-center">
@@ -291,7 +295,7 @@
                 </div>
               </div>
               <div class="col-sm-6 ps-0">
-                <div class="media">
+                <div class="media" v-if="role == 'ademin'">
                   <div class="align-self-center me-3 text-start">
                     <span class="widget-t mb-1">
 
@@ -503,6 +507,7 @@ export default {
       total_roles: 0,
       assigned_apps: 0,
       roles: {},
+      role:"",
       apps: {},
       labels:[],
       chartOptions:{},
@@ -514,8 +519,7 @@ export default {
       userByPermission:[],
       userPermissionLabel:[],
       totalPermissions:0,
-      dates:[],
-
+      dates:[]
 
     }
 
@@ -680,6 +684,7 @@ async getDashboardData() {
         this.assigned_apps = res.data.assigned_apps;
         this.applications = res.data.total;
         let data=res.data.dateby_applications;
+        this.role = res.data.role;
         // console.log(data);
         this.dates=[];
         this.total_apps=[];

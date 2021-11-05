@@ -11,7 +11,7 @@
       data(){
           return{
 
-                series: [2,2],
+                series: [],
           chartOptions: {
             chart: {
               width: 380,

@@ -18,7 +18,7 @@
                 <input class="form-control @error('name') is-invalid @enderror" type="text" value="{{ old('name') }}"  placeholder="Name" name="name">
               </div>
               @error('name')
-              <div class="invalid-tooltip">
+              <div class="alert alert-danger">
               {{ $message }}
               </div>
              @enderror
@@ -31,7 +31,7 @@
                 <input class="form-control @error('email') is-invalid @enderror"  id="email" type="email" name="email" value="{{ old('email') }}"  autocomplete="email" placeholder="Enter Email Address">
             </div>
             @error('email')
-            <div class="invalid-tooltip">
+            <div class="alert alert-danger">
               {{ $message }}
               </div>
          @enderror
@@ -42,7 +42,7 @@
                 <input class="form-control" id="password" type="password" name="password" required="" autocomplete="new-password" placeholder="Enter Password">
               <div class="show-hide"><span class="show">                         </span></div>
               @error('password')
-              <div class="invalid-tooltip">
+              <div class="alert alert-danger">
                   <strong>{{ $message }}</strong>
               </div>
           @enderror

@@ -26,7 +26,6 @@ class PermissionController extends Controller
     }
     public function store(Request $request)
     {
-
         $request->validate([
             'name' => ['required', 'string', 'max:255','unique:permissions'],
         ]);
@@ -48,8 +47,6 @@ class PermissionController extends Controller
 
         $user_collection=User::WhereIn('id',  $request->users)->get();
         $role_collection=Role::WhereIn('id',  $request->roles)->get();
-
-
         $permission = Permission::find($request->id);
         $permission->name=$request->name;
         $permission->save();

@@ -169,10 +169,7 @@ window.appname={!! json_encode(config('app.name'),true)!!};
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="{{asset('assets/js/script.js')}}"></script>
     <script src="{{asset('assets/js/theme-customizer/customizer.js')}}"></script>
-    <script>
-        google.load('visualization', '1.0', {'packages':['corechart']});
-        google.setOnLoadCallback(drawChart);
-    </script>
+
   </body>
 
 
