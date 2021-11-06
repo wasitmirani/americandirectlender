@@ -20,12 +20,12 @@ class HelperComponent {
                         "sub_menu"=>[
                             setSubMenu(
                               "Users",
-                                null,
-                                "users-view",
-                                "/users"
+                               null,
+                               "users-view",
+                               "/users"
                             ),
                             setSubMenu(
-                                "Roles",
+                               "Roles",
                                 null,
                                 "roles-view",
                                 "/roles"

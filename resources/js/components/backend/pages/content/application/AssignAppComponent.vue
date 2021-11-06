@@ -78,6 +78,8 @@
 
                                     <ul class="list-group">
                                         <li class="list-group-item d-flex justify-content-between align-items-center"  v-for="comment in application_comments"  :key="comment.id" >
+
+
                                         <vs-alert shadow>
                                         <template #title>
                                              <p>{{comment.comment}}</p>
