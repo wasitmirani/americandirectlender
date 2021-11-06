@@ -24,10 +24,6 @@ class User extends Authenticatable
     // protected static $logName = '';
     protected $guarded = [];
 
-
-
-
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -58,14 +54,17 @@ class User extends Authenticatable
         else
         return asset('/img/users/default-profile.png');
     }
+
     public function userInfo()
     {
         return $this->belongsTo(UserInfo::class, 'id', 'user_id');
     }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
     public function userCreateOrUpdate($request,$type="create"){
 
         if($type == 'create'){

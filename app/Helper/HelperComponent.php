@@ -51,25 +51,25 @@ class HelperComponent {
                             setSubMenu(
                                 "New App",
                                   null,
-                                  null,
+                                  "create-app",
                                   "/create/app"
                               ),
                             setSubMenu(
                               "Apps List",
                                 null,
-                                null,
+                                'app-list-view',
                                 "/customer/applications"
                             ),
                             setSubMenu(
                                 "Approved Apps",
                                 null,
-                               null,
+                               'approved-app-view',
                                 "/assigned/apps"
                             ),
                             setSubMenu(
                                 "My Apps",
                                 null,
-                                "permissions-view",
+                                'my-app-view',
                                 "/my/application"
                               )
                         ]
@@ -103,9 +103,9 @@ class HelperComponent {
                 [
                     "single_link" => setSingleLink("Settings", "settings", null, "/password/setting"),
                 ],
-                [
-                    "single_link" => setSingleLink("Logs", "bullseye", null, "/logs/activities"),
-                ],
+                // [
+                //     "single_link" => setSingleLink("Logs", "bullseye", null, "/logs/activities"),
+                // ],
 
                 [
                     "heading"=>"Session",
