@@ -8,7 +8,7 @@
 
         @endif
         <h6 class="mt-3 f-14 f-w-600">{{ Auth::user()->name }}</h6>
-      <p class="mb-0 font-roboto"></p>
+      <p class="mb-0 font-roboto">{{ Auth::user()->roles->first()->name }}</p>
 
       </ul>
     </div>
@@ -33,7 +33,7 @@
                 </div>
               </li>
             @endif
-            
+
             @if(!empty($menu['menu']))
               <li class="dropdown" @if(isset($menu['v-can'])) v-can="'{{$menu['v-can']}}'" @endif><a class="nav-link menu-title" href="javascript:void(0)"> <i data-feather="{{$menu['menu']['icon']}}" ></i> <span>{{$menu['menu']['title']}}</span></a>
                 <ul class="nav-submenu menu-content">

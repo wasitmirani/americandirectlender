@@ -17,17 +17,14 @@ use Spatie\Permission\Models\Permission;
 class DashboardController extends Controller
 {
     public function index(){
-
-
         return view('backend.pages.dashboard');
     }
     public function getDashboard(Request $request){
         $user= $request->user()->load('roles');
-
         $id = $user->id;
-        $role = "";
+        $role = $user->roles->pluck('name');
         if($user->hasAnyRole(['Agent'])){
-              $role = "agent";
+
             $application = DB::table('applications')
             ->join('application_agents', 'application_agents.application_id', '=', 'applications.id')
             ->where('application_agents.agent_id','=',$id);
@@ -47,7 +44,7 @@ class DashboardController extends Controller
             $totalPermissions = $userByPermission->count();
 
         }else{
-            $role = "Admin";
+
                 $applications = Application::select(DB::raw('DATE_FORMAT(DATE(created_at), "%d %M %Y") as created_at'), DB::raw('COUNT(*) as total'))->
                 groupBy(DB::raw('DATE_FORMAT(DATE(created_at), "%d %M %Y")'))->
                 get();
@@ -69,9 +66,7 @@ class DashboardController extends Controller
         $apps_status,'userByRole'=>$userByRole,'totalPermissions'=>$totalPermissions]);
     }
 
-
-
-    public function recentApp(Request $request){
+public function recentApp(Request $request){
         $user= $request->user()->load('roles');
         $id = $user->id;
         if($user->hasAnyRole(['Agent'])){

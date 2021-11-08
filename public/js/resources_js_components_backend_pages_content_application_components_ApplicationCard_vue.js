@@ -432,7 +432,7 @@ var render = function() {
                       attrs: {
                         to: {
                           name: "show-application",
-                          params: { id: _vm.application.id }
+                          params: { id: _vm.application.application_id }
                         }
                       }
                     },
@@ -455,7 +455,7 @@ var render = function() {
                             icon: "",
                             to: {
                               name: "show-application",
-                              params: { id: _vm.application.id }
+                              params: { id: _vm.application.application_id }
                             }
                           }
                         },
@@ -470,7 +470,7 @@ var render = function() {
                             icon: "",
                             to: {
                               name: "update-application",
-                              params: { id: _vm.application.id }
+                              params: { id: _vm.application.application_id }
                             }
                           }
                         },
@@ -526,7 +526,7 @@ var render = function() {
                             success: "",
                             to: {
                               name: "assign-apps",
-                              params: { id: _vm.application.id }
+                              params: { id: _vm.application.application_id }
                             }
                           }
                         },

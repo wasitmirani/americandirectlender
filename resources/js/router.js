@@ -80,6 +80,10 @@ const routes = [
         name: "password-setting",
     },
     {
+        path: "/app/agent/file/:file",
+        name: "download-file",
+    },
+    {
         path: "/assign/apps/:id",
         component: () => setComponent("content/application/AssignApp"),
         name: "assign-apps",

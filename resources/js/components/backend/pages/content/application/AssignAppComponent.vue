@@ -17,7 +17,7 @@
             </ul>
             <div class="tab-content" id="top-tabContent">
                 <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
-                    <div class="col-sm-12 col-xl-12">
+                <div class="col-sm-12 col-xl-12">
                           <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                           </div>
-                    </div>
+                </div>
                 </div>
                 <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
                         <div class="col-sm-12 col-xl-12">
@@ -138,12 +138,15 @@
                                         <li class="list-group-item d-flex justify-content-between align-items-center" v-for="file in application_files" :key="file.id">
                                             <a v-bind:href="file.file">File No 1</a>
                                             <span class="badge badge-primary counter">{{file.created_at | timeformat}}</span>|
-                                            <span> <a role="button" @click="deleteFile(file.id)"
-                      ><i class="fa fa-trash text-danger"></i
-                    ></a></span>|<span> <vs-button role="button" @click="downloadFile(file.id)"
-                      >Download</vs-button></span>
-                                            </li>
-
+                                            <span>
+                                                <a role="button" @click="deleteFile(file.id)">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
+                                            </span>|
+                                            <span>
+                                                <a  :href="'app/agent/file/'+file.file" download> Download</a>
+                                            </span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -210,12 +213,10 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 const url="/customer/applications/?page=" + page + "&query=" + this.query;
 
                await axios.get(url).then((res)=>{
-
                    this.applications = res.data.applications.data;
                    this.loading =false;
                }).catch((err)=>{
                         this.$root.alertNotificationMessage(err.response.status,err.response.data);
-
                   });
             },
             async getRoles(page=1){
@@ -252,23 +253,26 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 
             },
             downloadFile(id){
-                  axios.post('/download/file/'+id,{
-
-                    responseType: 'blob',
-                    }).then((res)=>{
-                        var fileURL = window.URL.createObjectURL(new Blob([response.data], {type: 'application/pdf'}));
-                        var fileLink = document.createElement('a');
-                          fileLink.href = fileURL;
-                          fileLink.setAttribute('download', 'file.pdf');
-                          document.body.appendChild(fileLink);
-                          fileLink.click();
-                        }).catch((err)=>{
+                axios({
+                    url: '/download/file/'+id,
+                    method: 'GET',
+                    responseType: 'blob', // important
+                }).then((response) => {
+                    const url = window.URL.createObjectURL(new Blob([]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', "app/agent/file?file="+resp.data.filename);
+                    document.body.appendChild(link);
+                    link.click();
+                }).catch((err)=>{
                         if(err.response.status==422){
                             this.errors=err.response.data.errors;
                             return this.$root.alertNotificationMessage(err.response.status,err.response.data.errors);
                         }
                     this.$root.alertNotificationMessage(err.response.status,err.response.data);
                 });
+
+
             },
             uploadFile(){
                 let formData = new FormData();
@@ -391,6 +395,7 @@ mounted(){
                 this.app = res.data.application.id
                 this.application_agent = res.data.application.agents
                 this.agent =  this.application_agent['0'].agent_id
+
             }).catch((err)=>{
                      if(err.response.status==422){
                          this.errors=err.response.data.errors;

@@ -2473,6 +2473,9 @@ var routes = [{
   },
   name: "password-setting"
 }, {
+  path: "/app/agent/file/:file",
+  name: "download-file"
+}, {
   path: "/assign/apps/:id",
   component: function component() {
     return setComponent("content/application/AssignApp");

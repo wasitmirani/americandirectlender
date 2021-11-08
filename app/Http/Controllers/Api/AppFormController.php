@@ -72,6 +72,7 @@ class AppFormController extends Controller
 
     public function edit($id){
         $application = Application::with('agents')->find($id);
+
         if($application){
 
             return response()->json(['application' => $application]);
@@ -90,9 +91,9 @@ class AppFormController extends Controller
 
     public function getDownload($id)
 {
-
     $file = ApplicationAttachment::where('id', $id)->first();
     $path = public_path("/app/agent/file/".$file->file);
+
     return response()->download($path);
 
 }
@@ -100,6 +101,7 @@ class AppFormController extends Controller
 
     public function getAppFile($id){
         $files = ApplicationAttachment::where('application_id',$id)->get();
+        
         return response()->json(['files'=>$files]);
     }
 
@@ -202,6 +204,7 @@ class AppFormController extends Controller
 
     public function getAssignedApp(){
         $assignedApps = Application::where('status','1')->with('agent')->paginate((int)env('PER_PAGE'));
+
         return response()->json(['assignedApps'=>$assignedApps]);
     }
 

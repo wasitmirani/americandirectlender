@@ -166,11 +166,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -567,44 +562,6 @@ var render = function() {
                                       _vm.$set(
                                         _vm.user,
                                         "name",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "mb-3" }, [
-                                _c("h6", { staticClass: "form-label" }, [
-                                  _vm._v("Bio")
-                                ]),
-                                _vm._v(" "),
-                                _c("textarea", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.user.user_info.about_me,
-                                      expression: "user.user_info.about_me"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: {
-                                    rows: "5",
-                                    name: "bio",
-                                    required: ""
-                                  },
-                                  domProps: {
-                                    value: _vm.user.user_info.about_me
-                                  },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.user.user_info,
-                                        "about_me",
                                         $event.target.value
                                       )
                                     }

@@ -33,10 +33,10 @@
                           <h6 class="form-label">Name</h6>
                           <input class="form-control"  v-model="user.name" name="name" required>
                         </div>
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                           <h6 class="form-label">Bio</h6>
-                          <textarea class="form-control" rows="5" v-model="user.user_info.about_me" name="bio" required></textarea>
-                        </div>
+                          <textarea class="form-control" rows="5"  v-model="user.user_info.about_me" name="bio" required></textarea>
+                        </div> -->
                         <div class="mb-3">
                           <label class="form-label">Email-Address</label>
                           <input class="form-control" type="email" placeholder="your-email@domain.com" v-model="user.email" name="email" required>
@@ -55,8 +55,6 @@
                           <div class="tab-pane fade" id="pills-clrprofile1" role="tabpanel" aria-labelledby="pills-clrprofile-tab1">
                               <div class="card-body">
                       <form>
-
-
                         <div class="mb-3">
                           <label class="form-label">Enter Password</label>
                           <input class="form-control" type="password" placeholder="Enter Password" v-model="passwords.password">
@@ -65,10 +63,7 @@
                          <div class="mb-3">
                           <label class="form-label">Confirm Password</label>
                           <input class="form-control" type="password" placeholder="Confirm Password" v-model="passwords.password_confirmation">
-
                         </div>
-
-
                         <div class="form-footer">
                           <button class="btn btn-primary btn-block" @click="updatePassword">Update</button>
                         </div>

@@ -225,6 +225,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -350,17 +353,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     downloadFile: function downloadFile(id) {
       var _this4 = this;
 
-      axios.post('/download/file/' + id, {
-        responseType: 'blob'
-      }).then(function (res) {
-        var fileURL = window.URL.createObjectURL(new Blob([response.data], {
-          type: 'application/pdf'
-        }));
-        var fileLink = document.createElement('a');
-        fileLink.href = fileURL;
-        fileLink.setAttribute('download', 'file.pdf');
-        document.body.appendChild(fileLink);
-        fileLink.click();
+      axios({
+        url: '/download/file/' + id,
+        method: 'GET',
+        responseType: 'blob' // important
+
+      }).then(function (response) {
+        var url = window.URL.createObjectURL(new Blob([]));
+        var link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', "app/agent/file?file=" + resp.data.filename);
+        document.body.appendChild(link);
+        link.click();
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this4.errors = err.response.data.errors;
@@ -1976,25 +1980,21 @@ var render = function() {
                                         ]
                                       )
                                     ]),
-                                    _vm._v("|"),
-                                    _c(
-                                      "span",
-                                      [
-                                        _c(
-                                          "vs-button",
-                                          {
-                                            attrs: { role: "button" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.downloadFile(file.id)
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("Download")]
-                                        )
-                                      ],
-                                      1
-                                    )
+                                    _vm._v(
+                                      "|\n                                           "
+                                    ),
+                                    _c("span", [
+                                      _c(
+                                        "a",
+                                        {
+                                          attrs: {
+                                            href: "app/agent/file/" + file.file,
+                                            download: ""
+                                          }
+                                        },
+                                        [_vm._v(" Download")]
+                                      )
+                                    ])
                                   ]
                                 )
                               }),
