@@ -17,7 +17,7 @@
                                         v-on:filterList="filterdata($event)"
                                         label="Search Applications">
                             </SearchInput>
-                        <div class="col-xxl-12 col-lg-12" v-for="application in applications" :key="application.id">
+                        <div class="col-xxl-12 col-lg-12" >
                           <div class="table-responsive">
             <table class="table">
               <thead>

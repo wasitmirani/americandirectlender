@@ -2091,139 +2091,106 @@ var render = function() {
                               }
                             }),
                             _vm._v(" "),
-                            _vm._l(_vm.applications, function(application) {
-                              return _c(
-                                "div",
-                                {
-                                  key: application.id,
-                                  staticClass: "col-xxl-12 col-lg-12"
-                                },
-                                [
+                            _c("div", { staticClass: "col-xxl-12 col-lg-12" }, [
+                              _c("div", { staticClass: "table-responsive" }, [
+                                _c("table", { staticClass: "table" }, [
+                                  _vm._m(0),
+                                  _vm._v(" "),
                                   _c(
-                                    "div",
-                                    { staticClass: "table-responsive" },
-                                    [
-                                      _c("table", { staticClass: "table" }, [
-                                        _vm._m(0, true),
+                                    "tbody",
+                                    _vm._l(_vm.applications, function(
+                                      application
+                                    ) {
+                                      return _c("tr", { key: application.id }, [
+                                        _c("th", { attrs: { scope: "row" } }, [
+                                          _vm._v(_vm._s(application.id))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(_vm._s(application.name))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            _vm._s(application.property_type)
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            "$" +
+                                              _vm._s(application.property_value)
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          application.status == 1
+                                            ? _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "span badge rounded-pill pill-badge-success"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                Approved\n              "
+                                                  )
+                                                ]
+                                              )
+                                            : _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "span badge rounded-pill pill-badge-warning"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                Pending\n              "
+                                                  )
+                                                ]
+                                              )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(application.income_type)
+                                          )
+                                        ]),
                                         _vm._v(" "),
                                         _c(
-                                          "tbody",
-                                          _vm._l(_vm.applications, function(
-                                            application
-                                          ) {
-                                            return _c(
-                                              "tr",
-                                              { key: application.id },
+                                          "td",
+                                          [
+                                            _c(
+                                              "vs-button",
+                                              {
+                                                attrs: {
+                                                  success: "",
+                                                  icon: "",
+                                                  to: {
+                                                    name: "show-application",
+                                                    params: {
+                                                      id: application.id
+                                                    }
+                                                  }
+                                                }
+                                              },
                                               [
-                                                _c(
-                                                  "th",
-                                                  { attrs: { scope: "row" } },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(application.id)
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("td", [
-                                                  _vm._v(
-                                                    _vm._s(application.name)
-                                                  )
-                                                ]),
-                                                _vm._v(" "),
-                                                _c("td", [
-                                                  _vm._v(
-                                                    _vm._s(
-                                                      application.property_type
-                                                    )
-                                                  )
-                                                ]),
-                                                _vm._v(" "),
-                                                _c("td", [
-                                                  _vm._v(
-                                                    "$" +
-                                                      _vm._s(
-                                                        application.property_value
-                                                      )
-                                                  )
-                                                ]),
-                                                _vm._v(" "),
-                                                _c("td", [
-                                                  application.status == 1
-                                                    ? _c(
-                                                        "div",
-                                                        {
-                                                          staticClass:
-                                                            "span badge rounded-pill pill-badge-success"
-                                                        },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                Approved\n              "
-                                                          )
-                                                        ]
-                                                      )
-                                                    : _c(
-                                                        "div",
-                                                        {
-                                                          staticClass:
-                                                            "span badge rounded-pill pill-badge-warning"
-                                                        },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                Pending\n              "
-                                                          )
-                                                        ]
-                                                      )
-                                                ]),
-                                                _vm._v(" "),
-                                                _c("td", [
-                                                  _vm._v(
-                                                    " " +
-                                                      _vm._s(
-                                                        application.income_type
-                                                      )
-                                                  )
-                                                ]),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "td",
-                                                  [
-                                                    _c(
-                                                      "vs-button",
-                                                      {
-                                                        attrs: {
-                                                          success: "",
-                                                          icon: "",
-                                                          to: {
-                                                            name:
-                                                              "show-application",
-                                                            params: {
-                                                              id: application.id
-                                                            }
-                                                          }
-                                                        }
-                                                      },
-                                                      [
-                                                        _c("i", {
-                                                          staticClass:
-                                                            "fas fa-eye"
-                                                        })
-                                                      ]
-                                                    )
-                                                  ],
-                                                  1
-                                                )
+                                                _c("i", {
+                                                  staticClass: "fas fa-eye"
+                                                })
                                               ]
                                             )
-                                          }),
-                                          0
+                                          ],
+                                          1
                                         )
                                       ])
-                                    ]
+                                    }),
+                                    0
                                   )
-                                ]
-                              )
-                            }),
+                                ])
+                              ])
+                            ]),
                             _vm._v(" "),
                             _c("pagination", {
                               attrs: { data: _vm.applications },
@@ -2240,7 +2207,7 @@ var render = function() {
                                 )
                               : _vm._e()
                           ],
-                          2
+                          1
                         )
                       ]
                     )

@@ -316,10 +316,7 @@ class AppFormController extends Controller
     public function myApplications()
     {
         $id = Auth::user()->id;
-        $applications = DB::table('applications')
-        ->join('application_agents', 'application_agents.application_id', '=', 'applications.id')
-        ->where('application_agents.agent_id','=',$id)
-        ->get(['applications.*']);
+        $applications = Application::where('user_id','=',$id)->get();
 
         return response()->json(['applications'=>$applications]);
 

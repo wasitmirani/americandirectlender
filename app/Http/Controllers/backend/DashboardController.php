@@ -23,6 +23,7 @@ class DashboardController extends Controller
         $user= $request->user()->load('roles');
         $id = $user->id;
         $role = $user->roles->pluck('name');
+
         if($user->hasAnyRole(['Agent'])){
 
             $application = Application::where('user_id','=',$id);
@@ -30,7 +31,7 @@ class DashboardController extends Controller
             ->groupBy(DB::raw('DATE_FORMAT(DATE(applications.created_at), "%d %M %Y")'))
             ->get();
             $users = User::all()->count();
-            $total_applications = $application->count();
+            $total_applications = Application::where('user_id','=',$id)->count();
             $total_roles = Role::all()->count();
             $apps_status = $application->
             select( DB::raw('count(applications.status) as count, applications.status'))->
@@ -67,9 +68,7 @@ public function recentApp(Request $request){
         $user= $request->user()->load('roles');
         $id = $user->id;
         if($user->hasAnyRole(['Agent'])){
-            $application = DB::table('applications')
-            ->join('application_agents', 'application_agents.application_id', '=', 'applications.id')
-            ->where('application_agents.agent_id','=',$id);
+            $application = Application::where('user_id','=',$id);
             $recentApps =   $application->orderBy('applications.id','DESC')->limit(5)->get();
         }else{
             $recentApps = Application::orderBy('id','DESC')->limit(5)->get();
