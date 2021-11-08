@@ -25,9 +25,7 @@ class DashboardController extends Controller
         $role = $user->roles->pluck('name');
         if($user->hasAnyRole(['Agent'])){
 
-            $application = DB::table('applications')
-            ->join('application_agents', 'application_agents.application_id', '=', 'applications.id')
-            ->where('application_agents.agent_id','=',$id);
+            $application = Application::where('user_id','=',$id);
             $applications =  $application->select(DB::raw('DATE_FORMAT(DATE(applications.created_at), "%d %M %Y") as created_at'), DB::raw('COUNT(*) as total'))
             ->groupBy(DB::raw('DATE_FORMAT(DATE(applications.created_at), "%d %M %Y")'))
             ->get();
@@ -44,7 +42,6 @@ class DashboardController extends Controller
             $totalPermissions = $userByPermission->count();
 
         }else{
-
                 $applications = Application::select(DB::raw('DATE_FORMAT(DATE(created_at), "%d %M %Y") as created_at'), DB::raw('COUNT(*) as total'))->
                 groupBy(DB::raw('DATE_FORMAT(DATE(created_at), "%d %M %Y")'))->
                 get();

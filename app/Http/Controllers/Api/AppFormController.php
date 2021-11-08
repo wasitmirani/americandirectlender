@@ -29,21 +29,18 @@ class AppFormController extends Controller
         $role = "";
         if($user->hasAnyRole(['Agent'])){
               $role = "agent";
-              $applications = Application::join('application_agents', 'application_agents.application_id', '=', 'applications.id')
-              ->where('application_agents.agent_id','=',$id)
+              $applications = Application::where('user_id','=',$id)
               ->where('applications.name', 'like', '%' .$q. '%')
               ->orderBy('name','ASC')
               ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
-              $process = Application::join('application_agents', 'application_agents.application_id', '=', 'applications.id')
-              ->where('application_agents.agent_id','=',$id)
+              $process = Application::where('user_id','=',$id)
               ->where('applications.name', 'like', '%' .$q. '%')
               ->where('status','=','0')
               ->orderBy('name','ASC')
               ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
-              $done =  Application::join('application_agents', 'application_agents.application_id', '=', 'applications.id')
-              ->where('application_agents.agent_id','=',$id)
+              $done =  Application::where('user_id','=',$id)
               ->where('applications.name', 'like', '%' .$q. '%')
               ->where('status','=','1')
               ->orderBy('name','ASC')
@@ -148,6 +145,7 @@ class AppFormController extends Controller
         $application->is_business_partner = $request->is_business_partner;
         $application->financial_history = $request->financial_history;
         $application->monthly_rent = $request->monthly_rent;
+        $application->user_id = $request->user()->id;
         $application->renovation = $request->renovation;
         $application->mortgage_statement = $request->mortgage_statement;
         $application->property_insured = $request->property_insured;

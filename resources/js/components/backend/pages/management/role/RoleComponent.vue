@@ -10,15 +10,12 @@
                       <PrimaryButton icon="fas fa-plus"  label="Add Role"  v-on:activemodal="openModal($event)"></PrimaryButton>
                     </div>
                     </h5>
-
                     <div class="mb-3 col-4 mt-3">
-
                     <SearchInput :apiurl="'/management/role?page=' +this.page_num"
                         v-on:query="isquery($event)"
                         v-on:loading="loadingStart($event)"
                         v-on:reload="getRoles()"
                         v-on:filterList="filterdata($event)"
-
                         label="Search Roles">
                     </SearchInput>
                     </div>
