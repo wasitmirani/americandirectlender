@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Mail\AppAssignMail;
 use App\Models\Application;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\ApplicationAgents;
@@ -101,7 +102,7 @@ class AppFormController extends Controller
 
     public function getAppFile($id){
         $files = ApplicationAttachment::where('application_id',$id)->get();
-        
+
         return response()->json(['files'=>$files]);
     }
 
@@ -239,16 +240,22 @@ class AppFormController extends Controller
     }
     public function uploadFile(Request $request){
 
-        $file = singleImgUpload($request, '/app/agent/file');
-         ApplicationAttachment::create([
+        if ($request->hasfile('thumbnail')) {
+
+            $file = $request->file('thumbnail')->getClientOriginalName();
+            $filename = pathinfo($file, PATHINFO_FILENAME);
+            $name = Str::slug($filename, '-')  . "-" . time() . '.' . $request->thumbnail->extension();
+            $request->thumbnail->move(public_path('app/agent/file'), $name);
+        } else
+            $name = "";
+
+        ApplicationAttachment::create([
              'application_id' => $request->app,
              'agent_id' => $request->agent,
-             'file' => $file
-         ]);
+             'file' => $name
+        ]);
 
         return response()->json();
-
-
     }
 
     public function createApplications(Request $request){

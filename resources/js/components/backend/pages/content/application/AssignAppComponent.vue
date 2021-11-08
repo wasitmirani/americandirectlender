@@ -136,7 +136,7 @@
                                     <h6>Uploaded Files</h6>
                                     <ul class="list-group">
                                         <li class="list-group-item d-flex justify-content-between align-items-center" v-for="file in application_files" :key="file.id">
-                                            <a v-bind:href="file.file">File No 1</a>
+                                            <a v-bind:href="file.file">{{file.file}}</a>
                                             <span class="badge badge-primary counter">{{file.created_at | timeformat}}</span>|
                                             <span>
                                                 <a role="button" @click="deleteFile(file.id)">
@@ -282,9 +282,9 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 
                   axios.post('/upload/file',formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"File Uploaded Successfully");
-                            setTimeout(() => {
-                            this.$router.push({ name: 'assigned-apps' })
-                        }, 1000);
+                        //     setTimeout(() => {
+                        //     this.$router.push({ name: 'assigned-apps' })
+                        // }, 1000);
 
                     }).catch((err)=>{
                         if(err.response.status==422){

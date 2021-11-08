@@ -382,13 +382,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       formData.append('app', this.app);
       formData.append('agent', this.agent);
       axios.post('/upload/file', formData).then(function (res) {
-        _this5.$root.alertNotificationMessage(res.status, "File Uploaded Successfully");
+        _this5.$root.alertNotificationMessage(res.status, "File Uploaded Successfully"); //     setTimeout(() => {
+        //     this.$router.push({ name: 'assigned-apps' })
+        // }, 1000);
 
-        setTimeout(function () {
-          _this5.$router.push({
-            name: 'assigned-apps'
-          });
-        }, 1000);
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this5.errors = err.response.data.errors;
@@ -1939,7 +1936,7 @@ var render = function() {
                                   },
                                   [
                                     _c("a", { attrs: { href: file.file } }, [
-                                      _vm._v("File No 1")
+                                      _vm._v(_vm._s(file.file))
                                     ]),
                                     _vm._v(" "),
                                     _c(
