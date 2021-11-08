@@ -329,10 +329,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -2411,7 +2407,7 @@ var render = function() {
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-header pb-0" }, [
               _c("h5", [
-                _vm._v("Permissions Listing\n\n                   "),
+                _vm._v("Permissions Listing\n                  "),
                 _c(
                   "div",
                   { staticStyle: { float: "right" } },

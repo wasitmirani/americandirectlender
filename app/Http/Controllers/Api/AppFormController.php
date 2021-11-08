@@ -18,11 +18,37 @@ use Symfony\Component\Console\Input\Input;
 
 class AppFormController extends Controller
 {
-    public function getApplications(){
+    public function getApplications(Request $request){
 
          //
-        $q=request('query');
+         $user= $request->user()->load('roles');
 
+        $id = $user->id;
+        $q=request('query');
+        $role = "";
+        if($user->hasAnyRole(['Agent'])){
+              $role = "agent";
+              $applications = Application::join('application_agents', 'application_agents.application_id', '=', 'applications.id')
+              ->where('application_agents.agent_id','=',$id)
+              ->where('applications.name', 'like', '%' .$q. '%')
+              ->orderBy('name','ASC')
+              ->with('agents','attachments')->paginate(env('PAR_PAGE'));
+
+              $process = Application::join('application_agents', 'application_agents.application_id', '=', 'applications.id')
+              ->where('application_agents.agent_id','=',$id)
+              ->where('applications.name', 'like', '%' .$q. '%')
+              ->where('status','=','0')
+              ->orderBy('name','ASC')
+              ->with('agents','attachments')->paginate(env('PAR_PAGE'));
+
+              $done =  Application::join('application_agents', 'application_agents.application_id', '=', 'applications.id')
+              ->where('application_agents.agent_id','=',$id)
+              ->where('applications.name', 'like', '%' .$q. '%')
+              ->where('status','=','1')
+              ->orderBy('name','ASC')
+              ->with('agents','attachments')->paginate(env('PAR_PAGE'));
+
+            }else{
 
         $applications = Application::where('name', 'like', '%' .$q. '%')
         ->orderBy('name','ASC')
@@ -37,11 +63,9 @@ class AppFormController extends Controller
         ->orderBy('name','ASC')
         ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
-        if($applications){
-            return response()->json(['applications'=>$applications,'process'=>$process,'done'=>$done]);
-        }else{
-            return response()->json('No Application Found');
-        }
+            }
+        return response()->json(['applications'=>$applications,'process'=>$process,'done'=>$done]);
+
 
     }
 

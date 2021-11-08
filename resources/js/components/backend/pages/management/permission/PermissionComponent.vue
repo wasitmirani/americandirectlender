@@ -7,15 +7,11 @@
                    <div class="card">
                   <div class="card-header pb-0">
                     <h5>Permissions Listing
-
-                     <div style="float: right;">
-                    <PrimaryButton icon="fas fa-plus"  label="Permission"  v-on:activemodal="openModal($event)"></PrimaryButton>
-                        </div>
-
+                    <div style="float: right;">
+                        <PrimaryButton icon="fas fa-plus"  label="Permission"  v-on:activemodal="openModal($event)"></PrimaryButton>
+                    </div>
                     </h5>
-
                   <div class="mb-3 col-4 mt-3">
-
                         <SearchInput :apiurl="'/management/permission?page=' +this.page_num"
                         v-on:query="isquery($event)"
                         v-on:loading="loadingStart($event)"

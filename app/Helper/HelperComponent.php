@@ -14,6 +14,7 @@ class HelperComponent {
 
                 [
                     "heading"=>"Management",
+                    'v-can'=>'management-view',
                     "menu"=>[
                         "title"=>'User Management',
                         "icon"=>"user",

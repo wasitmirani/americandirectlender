@@ -1,7 +1,6 @@
 <template>
    <div>
         <Breadcrumb activename="Assign App" ></Breadcrumb>
-
  <div class="col-sm-12 col-xl-12 xl-100">
       <div class="card">
           <div class="card-header pb-0">
@@ -18,7 +17,7 @@
             </ul>
             <div class="tab-content" id="top-tabContent">
                 <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
-                        <div class="col-sm-12 col-xl-12">
+                    <div class="col-sm-12 col-xl-12">
                           <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
@@ -48,7 +47,7 @@
                                 </div>
                             </div>
                           </div>
-                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
                         <div class="col-sm-12 col-xl-12">
@@ -90,12 +89,10 @@
                                         </vs-alert>
                                         </li>
                                     </ul>
-
                                 </div>
                             </div>
                           </div>
                         </div>
-
                 </div>
                 <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
                          <div class="col-sm-12 col-xl-12">
