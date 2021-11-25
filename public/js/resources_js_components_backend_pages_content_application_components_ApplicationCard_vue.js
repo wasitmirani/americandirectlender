@@ -155,17 +155,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["application", "getApplications", "roles", "getRoles", "applications"],
+  props: ["application", "getApplications", "roles", "role", "getRoles", "applications"],
   data: function data() {
     return {
       app: "",
@@ -432,7 +423,7 @@ var render = function() {
                       attrs: {
                         to: {
                           name: "show-application",
-                          params: { id: _vm.application.application_id }
+                          params: { id: _vm.application.id }
                         }
                       }
                     },
@@ -455,27 +446,29 @@ var render = function() {
                             icon: "",
                             to: {
                               name: "show-application",
-                              params: { id: _vm.application.application_id }
+                              params: { id: _vm.application.id }
                             }
                           }
                         },
                         [_c("i", { staticClass: "fas fa-eye" })]
                       ),
                       _vm._v(" "),
-                      _c(
-                        "vs-button",
-                        {
-                          attrs: {
-                            primary: "",
-                            icon: "",
-                            to: {
-                              name: "update-application",
-                              params: { id: _vm.application.application_id }
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fas fa-edit" })]
-                      )
+                      _vm.role == "admin"
+                        ? _c(
+                            "vs-button",
+                            {
+                              attrs: {
+                                primary: "",
+                                icon: "",
+                                to: {
+                                  name: "update-application",
+                                  params: { id: _vm.application.id }
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-edit" })]
+                          )
+                        : _vm._e()
                     ],
                     1
                   )
@@ -500,37 +493,51 @@ var render = function() {
                     [_vm._v(" Cancel ")]
                   ),
                   _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      attrs: {
-                        to: {
-                          name: "assign-apps",
-                          params: { id: _vm.application.id }
-                        }
-                      }
-                    },
-                    [
-                      _vm.application.status == "0"
-                        ? _c("vs-button", [_vm._v(" Accept ")])
-                        : _vm._e()
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _vm.application.status == "1"
+                  _vm.role == "admin"
                     ? _c(
-                        "vs-button",
-                        {
-                          attrs: {
-                            success: "",
-                            to: {
-                              name: "assign-apps",
-                              params: { id: _vm.application.application_id }
-                            }
-                          }
-                        },
-                        [_vm._v(" Approved ")]
+                        "div",
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              attrs: {
+                                to: {
+                                  name: "assign-apps",
+                                  params: { id: _vm.application.id }
+                                }
+                              }
+                            },
+                            [
+                              _vm.application.status == "0"
+                                ? _c("vs-button", [_vm._v(" Accept ")])
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.role == "agent"
+                    ? _c(
+                        "div",
+                        [
+                          _c(
+                            "vs-button",
+                            {
+                              attrs: {
+                                success: "",
+                                to: {
+                                  name: "assign-apps",
+                                  params: { id: _vm.application.id }
+                                }
+                              }
+                            },
+                            [_vm._v(" Modify ")]
+                          )
+                        ],
+                        1
                       )
                     : _vm._e()
                 ]

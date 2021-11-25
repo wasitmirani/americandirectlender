@@ -1,7 +1,6 @@
 <template>
   <div >
           <Breadcrumb activename="Applications" ></Breadcrumb>
-
         <div class="container-fluid center" ref="target" id="target" >
             <div class="row project-cards">
               <div class="col-md-12 project-list">
@@ -37,7 +36,7 @@
                             </SearchInput>
                         <div class="col-xxl-6 col-lg-6 " v-for="application in applications" :key="application.id">
 
-                             <ApplicationCard :getRoles="getRoles" :roles="agents" :getApplications="getApplications" :application="application" :applications="applications"></ApplicationCard>
+                             <ApplicationCard :getRoles="getRoles" :role="role" :roles="agents" :getApplications="getApplications" :application="application" :applications="applications"></ApplicationCard>
                         </div>
                         <pagination :data="applications" @pagination-change-page=" getApplications"></pagination>
                         <h6 class="text-center text-warning" v-if="applications.length < 1">No Application Found</h6>
@@ -46,16 +45,15 @@
                     <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
                         <div class="row">
                             <div class="col-xxl-6 col-lg-6 "  v-for="application in process" :key="application.id">
-                                <ApplicationCard :getApplications="getApplications" :application="application"  :roles="agents" :applications="applications"></ApplicationCard>
+                                <ApplicationCard :getApplications="getApplications" :role="role" :application="application"  :roles="agents" :applications="applications"></ApplicationCard>
                             </div>
                         </div>
                     </div>
                       <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
                         <div class="row">
                              <div class="col-xxl-4 " v-for="application in done" :key="application.id">
-                                  <ApplicationCard :getApplications="getApplications" :application="application" :roles="agents" :applications="applications"></ApplicationCard>
+                                  <ApplicationCard :getApplications="getApplications" :role="role" :application="application" :roles="agents" :applications="applications"></ApplicationCard>
                              </div>
-
                         </div>
                       </div>
                     </div>
@@ -64,8 +62,6 @@
               </div>
             </div>
         </div>
-
-
   </div>
 </template>
 
@@ -92,7 +88,8 @@ export default {
             total_applications:0,
             page_num:1,
             roles:{},
-            progress: 0
+            progress: 0,
+            role:""
         };
     },
       mounted(){
@@ -143,6 +140,7 @@ export default {
                    this.total_application = res.data.total_applications;
                    this.process = res.data.process.data;
                    this.done = res.data.done.data;
+                   this.role = res.data.role;
                     // this.roles=res.data.roles;
                    this.loading =false;
                }).catch((err)=>{

@@ -63,27 +63,18 @@
       </template>
     </vs-alert> -->
     <strong>{{ application.created_at | dateformat }}</strong>
+
     <vs-alert shadow>
       <template #title>
-          <router-link :to="{ name: 'show-application', params: { id: application.application_id } }" class="name">
+          <router-link :to="{ name: 'show-application', params: { id: application.id } }" class="name">
         {{ application.name }}
         </router-link>
         <div style="float: right">
-
-             <vs-button success icon :to="{ name: 'show-application', params: { id: application.application_id } }">
-
-
+            <vs-button success icon :to="{ name: 'show-application', params: { id: application.id } }">
               <i class="fas fa-eye"></i>
-
             </vs-button>
-
-    <vs-button primary icon  :to="{ name: 'update-application', params: { id: application.application_id } }">
-
-
-
+            <vs-button primary icon  :to="{ name: 'update-application', params: { id: application.id } }" v-if="role == 'admin'">
               <i class="fas fa-edit"></i>
-
-
             </vs-button>
         </div>
       </template>
@@ -108,7 +99,8 @@
               </td>
               <td class="f-w-600">${{ application.property_value }}</td>
 
-              <td>
+              <td >
+
                 <div
                   class="span badge rounded-pill pill-badge-success"
                   v-if="application.status == 1"
@@ -131,14 +123,14 @@
       </div>
       <template #footer>
         <vs-button flat danger @click="deleteItem(application.id)"> Cancel </vs-button>
-        <router-link
-          :to="{ name: 'assign-apps', params: { id: application.id } }"
-        >
+        <div v-if="role == 'admin'">
+        <router-link :to="{ name: 'assign-apps', params: { id: application.id } }">
           <vs-button v-if="application.status == '0'"> Accept </vs-button>
         </router-link>
-
-          <vs-button success v-if="application.status == '1'" :to="{ name: 'assign-apps', params: { id: application.application_id } }"> Approved </vs-button>
-
+        </div>
+        <div v-if="role == 'agent'">
+             <vs-button success  :to="{ name: 'assign-apps', params: { id: application.id } }"> Modify </vs-button>
+        </div>
       </template>
     </vs-alert>
     <ul class="pagination pagination-primary mt-4">
@@ -150,13 +142,13 @@
     </ul>
   </div>
 </template>
-
 <script>
 export default {
   props: [
     "application",
     "getApplications",
     "roles",
+    "role",
     "getRoles",
     "applications",
   ],

@@ -592,6 +592,7 @@
                             <div class="form-check radio radio-primary">
                                 <input class="form-check-input" id="radio22" type="radio" name="property_insured" :selected="application.property_insured" value="no" v-model="application.property_insured">
                                 <label class="form-check-label" for="radio22">No</label>
+                         
                             </div>
                         </div>
                     </div>

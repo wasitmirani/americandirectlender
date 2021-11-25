@@ -28,7 +28,6 @@ const routes = [
         component: () => setComponent("management/user/UserForm"),
         name: "Create User",
     },
-
     {
         path: "/edit/user/:id",
         component: () => setComponent("management/user/UserForm"),
@@ -41,8 +40,6 @@ const routes = [
     { path: "/send/notify", component: () => setComponent("content/notification/SendNotify"), name: "SendNotify", },
     { path: "/show/notify", component: () => setComponent("content/notification/ShowNotification"), name: "ShowNotify", },
     { path: "/view/notify/:id", component: () => setComponent("content/notification/DetailNotification"), name: "ViewNotify", },
-
-
     {
         path: "/detail/notify:id",
         component: () => setComponent("content/notification/DetailNotification"),

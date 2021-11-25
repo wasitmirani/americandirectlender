@@ -132,6 +132,7 @@ class UserController extends Controller
         ];
         $new_user=$user->userCreateOrUpdate($request_array,"update");
 
+
         $user->userInfoCreateOrUpdate($user,$request);
         // $permission_collection=Permission::WhereIn('id',  json_decode($request->selected_permissions))->get();
         $roles_collection=Role::WhereIn('id', $request->roles)->get();

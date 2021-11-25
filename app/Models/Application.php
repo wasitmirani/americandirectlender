@@ -22,6 +22,11 @@ class Application extends Model
         return $this->hasMany(ApplicationAgents::class, 'application_id', 'id');
     }
 
+    public function customers()
+    {
+        return $this->hasMany(ApplicationCustomer::class, 'application_id', 'id');
+    }
+
     public function agent(){
            return $this->belongsToMany(User::class,'application_agents','application_id','agent_id');
     }

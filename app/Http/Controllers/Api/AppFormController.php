@@ -46,7 +46,29 @@ class AppFormController extends Controller
               ->orderBy('name','ASC')
               ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
+            }else if($user->hasAnyRole(['customer'])){
+                $role = "customer";
+                $applications = Application::where('user_id','=',$id)
+                ->where('applications.name', 'like', '%' .$q. '%')
+                ->orderBy('name','ASC')
+                ->with('agents','attachments')->paginate(env('PAR_PAGE'));
+
+                $process = Application::where('user_id','=',$id)
+                ->where('applications.name', 'like', '%' .$q. '%')
+                ->where('status','=','0')
+                ->orderBy('name','ASC')
+                ->with('agents','attachments')->paginate(env('PAR_PAGE'));
+
+                $done =  Application::where('user_id','=',$id)
+                ->where('applications.name', 'like', '%' .$q. '%')
+                ->where('status','=','1')
+                ->orderBy('name','ASC')
+                ->with('agents','attachments')->paginate(env('PAR_PAGE'));
+
             }else{
+
+
+                $role= "admin";
 
         $applications = Application::where('name', 'like', '%' .$q. '%')
         ->orderBy('name','ASC')
@@ -62,7 +84,7 @@ class AppFormController extends Controller
         ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
             }
-        return response()->json(['applications'=>$applications,'process'=>$process,'done'=>$done]);
+        return response()->json(['applications'=>$applications,'process'=>$process,'done'=>$done,'role'=>$role]);
 
 
     }
@@ -189,9 +211,6 @@ class AppFormController extends Controller
 
          return response()->json();
 
-
-
-
     }
     public function deleteApplication(Request $request){
          $application_agent =ApplicationAgents::where('application_id',$request->id)->delete();
@@ -231,10 +250,6 @@ class AppFormController extends Controller
             'comment' => $request->comment
         ]);
         return response()->json();
-
-
-
-
     }
     public function uploadFile(Request $request){
 
@@ -257,6 +272,13 @@ class AppFormController extends Controller
     }
 
     public function createApplications(Request $request){
+
+        $user = Auth::user();
+         $id = "";
+        if($user->hasAnyRole(['Agent']) || $user->hasAnyRole(['customer']) ){
+            $id = Auth::user()->id;
+        }
+
         $application = Application::Create([
             "date" => $request->date,
             "name" => $request->name,
@@ -297,6 +319,7 @@ class AppFormController extends Controller
             "monthly_rent" => $request->monthly_rent,
             "renovation" => $request->renovation,
             "mortgage_statement" => $request->mortgage_statement,
+            'user_id' => $id,
             "property_insured" => $request->property_insured,
             "liabilities_loans" => $request->liabilities_loans,
 

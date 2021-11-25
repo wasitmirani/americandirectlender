@@ -2,14 +2,13 @@
     <div class="sidebar-user text-center">
         @if(Auth::user()->thumbnail)
         <img class="img-90 rounded-circle" src="{{ Auth::user()->thumbnail  }}" alt="">
-
         @else
         <img class="img-90 rounded-circle" src="../assets/images/dashboard/1.png" alt="">
-
         @endif
         <h6 class="mt-3 f-14 f-w-600">{{ Auth::user()->name }}</h6>
+        @if(!empty(Auth::user()->roles->first()->name))
       <p class="mb-0 font-roboto">{{ Auth::user()->roles->first()->name }}</p>
-
+      @endif
       </ul>
     </div>
     @php
@@ -47,7 +46,6 @@
 
             @if(!empty($menu['single_link']))
             <li class="dropdown" @if(isset($menu['single_link']['v-can'])) v-can="'{{$menu['single_link']['v-can']}}'" @endif><router-link exact to="{{$menu['single_link']['v-route']}}" class="nav-link menu-title link-nav" > <i data-feather="{{$menu['single_link']['icon']}}" ></i>
-
                 <span>{{$menu['single_link']['title']}}</span></router-link>
             </li>
             @endif
@@ -60,10 +58,7 @@
                     @csrf
                 </form>
             </li>
-
-
           </ul>
-
         </div>
         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
       </div>

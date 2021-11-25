@@ -80,6 +80,7 @@
 
 
                                         <vs-alert shadow>
+
                                         <template #title>
                                              <p>{{comment.comment}}</p>
                                         </template>
@@ -137,15 +138,18 @@
                                     <ul class="list-group">
                                         <li class="list-group-item d-flex justify-content-between align-items-center" v-for="file in application_files" :key="file.id">
                                             <a v-bind:href="file.file">{{file.file}}</a>
-                                            <span class="badge badge-primary counter">{{file.created_at | timeformat}}</span>|
+                                            <div>
+                                                <span class="badge badge-primary counter">{{file.created_at | timeformat}}</span>|
                                             <span>
                                                 <a role="button" @click="deleteFile(file.id)">
                                                     <i class="fa fa-trash text-danger"></i>
                                                 </a>
                                             </span>|
                                             <span>
-                                                <a  :href="'app/agent/file/'+file.file" download> Download</a>
+                                                <a  :href="'app/agent/file/'+file.file" download>Download</a>
                                             </span>
+                                            </div>
+
                                         </li>
                                     </ul>
                                 </div>
@@ -170,7 +174,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
        },
        data(){
            return{
-                page: 1,
+            page: 1,
             applications:{},
             application:{},
             process:{},
@@ -239,7 +243,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                   axios.post('/add/comment',formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"Comment Added Successfully");
                               setTimeout(() => {
-                            this.$router.push({ name: 'assigned-apps' })
+                            this.$router.push({ name: 'assign-apps' })
                         }, 1000);
 
                     }).catch((err)=>{
@@ -282,9 +286,9 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
 
                   axios.post('/upload/file',formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"File Uploaded Successfully");
-                        //     setTimeout(() => {
-                        //     this.$router.push({ name: 'assigned-apps' })
-                        // }, 1000);
+                            setTimeout(() => {
+                            this.$router.push({ name: 'assign-apps' })
+                        }, 1000);
 
                     }).catch((err)=>{
                         if(err.response.status==422){
@@ -303,7 +307,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 axios.post('/assign/app',formData).then((res)=>{
                     this.$root.alertNotificationMessage(res.status,"Application Assigned To Agent successfully");
                     setTimeout(() => {
-                            this.$router.push({ name: 'assigned-apps' })
+                            this.$router.push({ name: 'assign-apps' })
                         }, 1000);
 
                     }).catch((err)=>{
@@ -421,6 +425,7 @@ mounted(){
    .vs-alert{
        color:#1e204fcc;
    }
+
 
 </style>
 

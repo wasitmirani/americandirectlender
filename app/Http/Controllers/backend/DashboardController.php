@@ -20,6 +20,7 @@ class DashboardController extends Controller
         return view('backend.pages.dashboard');
     }
     public function getDashboard(Request $request){
+
         $user= $request->user()->load('roles');
         $id = $user->id;
         $role = $user->roles->pluck('name');
@@ -42,7 +43,26 @@ class DashboardController extends Controller
             $userByPermission = Permission::select('name')->withCount('users')->get();
             $totalPermissions = $userByPermission->count();
 
+        }else if($user->hasAnyRole(['customer'])){
+
+            $application = Application::where('user_id','=',$id);
+            $applications =  $application->select(DB::raw('DATE_FORMAT(DATE(applications.created_at), "%d %M %Y") as created_at'), DB::raw('COUNT(*) as total'))
+            ->groupBy(DB::raw('DATE_FORMAT(DATE(applications.created_at), "%d %M %Y")'))
+            ->get();
+            $users = User::all()->count();
+            $total_applications = Application::where('user_id','=',$id)->count();
+            $total_roles = Role::all()->count();
+            $apps_status = $application->
+            select( DB::raw('count(applications.status) as count, applications.status'))->
+            groupBy('applications.status')->get();
+            $assigned_apps =  $application->where('status','1')->count();
+            $agents=Role::select('name')->where('name','=','customer')->withCount('users')->get();
+            $userByRole = Role::select('name')->withCount('users')->get();
+            $userByPermission = Permission::select('name')->withCount('users')->get();
+            $totalPermissions = $userByPermission->count();
+
         }else{
+
                 $applications = Application::select(DB::raw('DATE_FORMAT(DATE(created_at), "%d %M %Y") as created_at'), DB::raw('COUNT(*) as total'))->
                 groupBy(DB::raw('DATE_FORMAT(DATE(created_at), "%d %M %Y")'))->
                 get();
@@ -68,6 +88,9 @@ public function recentApp(Request $request){
         $user= $request->user()->load('roles');
         $id = $user->id;
         if($user->hasAnyRole(['Agent'])){
+            $application = Application::where('user_id','=',$id);
+            $recentApps =   $application->orderBy('applications.id','DESC')->limit(5)->get();
+        }else if($user->hasAnyRole(['customer'])){
             $application = Application::where('user_id','=',$id);
             $recentApps =   $application->orderBy('applications.id','DESC')->limit(5)->get();
         }else{

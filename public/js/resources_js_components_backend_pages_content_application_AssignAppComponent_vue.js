@@ -228,6 +228,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -338,7 +342,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
         setTimeout(function () {
           _this3.$router.push({
-            name: 'assigned-apps'
+            name: 'assign-apps'
           });
         }, 1000);
       })["catch"](function (err) {
@@ -382,10 +386,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       formData.append('app', this.app);
       formData.append('agent', this.agent);
       axios.post('/upload/file', formData).then(function (res) {
-        _this5.$root.alertNotificationMessage(res.status, "File Uploaded Successfully"); //     setTimeout(() => {
-        //     this.$router.push({ name: 'assigned-apps' })
-        // }, 1000);
+        _this5.$root.alertNotificationMessage(res.status, "File Uploaded Successfully");
 
+        setTimeout(function () {
+          _this5.$router.push({
+            name: 'assign-apps'
+          });
+        }, 1000);
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this5.errors = err.response.data.errors;
@@ -406,7 +413,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
         setTimeout(function () {
           _this6.$router.push({
-            name: 'assigned-apps'
+            name: 'assign-apps'
           });
         }, 1000);
       })["catch"](function (err) {
@@ -545,7 +552,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-input {\n width: 100%;\n}\n.vs-select-content {\n width: 100%;\n max-width: 100%;\n}\n.vs-alert{\n     color:#1e204fcc;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vs-input {\n width: 100%;\n}\n.vs-select-content {\n width: 100%;\n max-width: 100%;\n}\n.vs-alert{\n     color:#1e204fcc;\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1939,58 +1946,61 @@ var render = function() {
                                       _vm._v(_vm._s(file.file))
                                     ]),
                                     _vm._v(" "),
-                                    _c(
-                                      "span",
-                                      {
-                                        staticClass:
-                                          "badge badge-primary counter"
-                                      },
-                                      [
-                                        _vm._v(
-                                          _vm._s(
-                                            _vm._f("timeformat")(
-                                              file.created_at
-                                            )
-                                          )
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(
-                                      "|\n                                           "
-                                    ),
-                                    _c("span", [
+                                    _c("div", [
                                       _c(
-                                        "a",
+                                        "span",
                                         {
-                                          attrs: { role: "button" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.deleteFile(file.id)
-                                            }
-                                          }
+                                          staticClass:
+                                            "badge badge-primary counter"
                                         },
                                         [
-                                          _c("i", {
-                                            staticClass:
-                                              "fa fa-trash text-danger"
-                                          })
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("timeformat")(
+                                                file.created_at
+                                              )
+                                            )
+                                          )
                                         ]
-                                      )
-                                    ]),
-                                    _vm._v(
-                                      "|\n                                           "
-                                    ),
-                                    _c("span", [
-                                      _c(
-                                        "a",
-                                        {
-                                          attrs: {
-                                            href: "app/agent/file/" + file.file,
-                                            download: ""
-                                          }
-                                        },
-                                        [_vm._v(" Download")]
-                                      )
+                                      ),
+                                      _vm._v(
+                                        "|\n                                           "
+                                      ),
+                                      _c("span", [
+                                        _c(
+                                          "a",
+                                          {
+                                            attrs: { role: "button" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.deleteFile(file.id)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass:
+                                                "fa fa-trash text-danger"
+                                            })
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(
+                                        "|\n                                           "
+                                      ),
+                                      _c("span", [
+                                        _c(
+                                          "a",
+                                          {
+                                            attrs: {
+                                              href:
+                                                "app/agent/file/" + file.file,
+                                              download: ""
+                                            }
+                                          },
+                                          [_vm._v("Download")]
+                                        )
+                                      ])
                                     ])
                                   ]
                                 )
