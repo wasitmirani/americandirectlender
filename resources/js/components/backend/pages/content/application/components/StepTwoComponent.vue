@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-check radio radio-primary">
                                 <input class="form-check-input" id="hoa2" type="radio" :selected="application.hoa === 'no'" name="hoa" value="no" v-model="application.hoa">
-                                <label class="form-check-label" for="hoa2">Yes</label>
+                                <label class="form-check-label" for="hoa2">No</label>
                             </div>
                         </div>
                     </div>
