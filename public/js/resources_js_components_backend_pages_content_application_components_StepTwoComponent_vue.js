@@ -511,7 +511,7 @@ var render = function() {
                 _c(
                   "label",
                   { staticClass: "form-check-label", attrs: { for: "hoa2" } },
-                  [_vm._v("Yes")]
+                  [_vm._v("No")]
                 )
               ])
             ])

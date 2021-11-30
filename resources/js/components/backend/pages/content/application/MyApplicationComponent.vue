@@ -6,7 +6,9 @@
 
               <div class="col-sm-12">
                 <div class="card">
+
                   <div class="card-body">
+          
                     <div class="tab-content" id="top-tabContent">
                       <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
                         <div class="row">

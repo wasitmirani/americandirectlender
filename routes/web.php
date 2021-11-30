@@ -33,10 +33,8 @@ Route::post('/add/appform',[FrontendController::class,'storeAppForm'])->name('st
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/api/logout',[UserController::class,'logout']);
-
 Route::middleware('auth')->prefix('dashboard')->group(function(){
     Route::get('/',[DashboardController::class,'index'])->name('dashboard');
 });
-
 Route::get('/send/notifications',[NotificationController::class,'sendNotifyUser']);
 

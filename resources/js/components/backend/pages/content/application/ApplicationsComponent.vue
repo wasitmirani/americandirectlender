@@ -36,6 +36,7 @@
                             </SearchInput>
                         <div class="col-xxl-6 col-lg-6 " v-for="application in applications" :key="application.id">
 
+                 
                              <ApplicationCard :getRoles="getRoles" :role="role" :roles="agents" :getApplications="getApplications" :application="application" :applications="applications"></ApplicationCard>
                         </div>
                         <pagination :data="applications" @pagination-change-page=" getApplications"></pagination>

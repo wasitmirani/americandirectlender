@@ -31,38 +31,38 @@ class AppFormController extends Controller
               $role = "agent";
               $applications = Application::where('user_id','=',$id)
               ->where('applications.name', 'like', '%' .$q. '%')
-              ->orderBy('name','ASC')
+              ->orderBy('name','DESC')
               ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
               $process = Application::where('user_id','=',$id)
               ->where('applications.name', 'like', '%' .$q. '%')
               ->where('status','=','0')
-              ->orderBy('name','ASC')
+              ->orderBy('name','DESC')
               ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
               $done =  Application::where('user_id','=',$id)
               ->where('applications.name', 'like', '%' .$q. '%')
               ->where('status','=','1')
-              ->orderBy('name','ASC')
+              ->orderBy('name','DESC')
               ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
             }else if($user->hasAnyRole(['customer'])){
                 $role = "customer";
                 $applications = Application::where('user_id','=',$id)
                 ->where('applications.name', 'like', '%' .$q. '%')
-                ->orderBy('name','ASC')
+                ->orderBy('name','DESC')
                 ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
                 $process = Application::where('user_id','=',$id)
                 ->where('applications.name', 'like', '%' .$q. '%')
                 ->where('status','=','0')
-                ->orderBy('name','ASC')
+                ->orderBy('name','DESC')
                 ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
                 $done =  Application::where('user_id','=',$id)
                 ->where('applications.name', 'like', '%' .$q. '%')
                 ->where('status','=','1')
-                ->orderBy('name','ASC')
+                ->orderBy('name','DESC')
                 ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
             }else{
@@ -71,16 +71,16 @@ class AppFormController extends Controller
                 $role= "admin";
 
         $applications = Application::where('name', 'like', '%' .$q. '%')
-        ->orderBy('name','ASC')
+        ->orderBy('name','DESC')
         ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
 
         $process = Application::where('status','=','0')
-        ->orderBy('name','ASC')
+        ->orderBy('name','DESC')
         ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
         $done = Application::where('status','=','1')
-        ->orderBy('name','ASC')
+        ->orderBy('name','DESC')
         ->with('agents','attachments')->paginate(env('PAR_PAGE'));
 
             }
@@ -331,9 +331,6 @@ class AppFormController extends Controller
         }else{
              return response()->json('Something Went Wrong');
         }
-
-
-
     }
 
     public function myApplications()

@@ -39,7 +39,6 @@
                     @foreach ($menu['menu']['sub_menu'] as $item)
                       <li @if(isset($item['v-can'])) v-can="'{{$item['v-can']}}'" @endif><router-link exact to="{{$item['v-route']}}" >{{$item['title']}}</router-link></li>
                     @endforeach
-
                 </ul>
               </li>
             @endif

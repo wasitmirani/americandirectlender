@@ -111,16 +111,13 @@ export default {
      },
      mounted(){
        this.getRoles();
-
-
      },
-        methods:{
+    methods:{
           onChange(event){
             console.log("log",event);
           },
             editItem(item) {
             this.resetForm();
-
             this.edit_mode=true;
             this.active_modal=true;
             this.role=item;
@@ -175,19 +172,17 @@ export default {
                      this.$root.alertErrorMessage(err.response.status,err.response.data);
                });
             },
-           isquery(query) {
+        isquery(query) {
             return (this.query = query);
-          },
-
-          filterdata(data){
+        },
+        filterdata(data){
             this.roles=data.roles;
           },
         loadingStart(value) {
 
             this.loading = value;
-          },
-
-            onSubmit(){
+        },
+        onSubmit(){
                 let formData = new FormData();
                 formData=Object.assign(this.role,formData);
                 formData=Object.assign({users:this.selected_users},formData)
