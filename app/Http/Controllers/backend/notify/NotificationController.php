@@ -10,16 +10,17 @@ use App\Notifications\NotifyUser;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
 class NotificationController extends Controller
 {
-    //
 
     public function index(){
 
-        $notifications=DB::table('notifications')->latest()->get();
+        $notifications=DB::table('notifications')->where('notifiable_id',Auth::user()->id)->latest()->get();
+      
         $notContent = "";
         foreach($notifications as $notification){
              $notContent = json_decode($notification->data);
@@ -40,7 +41,7 @@ class NotificationController extends Controller
     }
     public function store(Request $request){
 
-        $users =User::WhereIn('id',  $request->users)->get();
+        $users = User::WhereIn('id',  $request->users)->get();
 
 
         $notificationdata =(object)[

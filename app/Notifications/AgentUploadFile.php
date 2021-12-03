@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ChangePasswordNotification extends Notification
+class AgentUploadFile extends Notification
 {
     use Queueable;
 
@@ -21,7 +21,6 @@ class ChangePasswordNotification extends Notification
         $this->data = $data;
     }
 
-
     /**
      * Get the notification's delivery channels.
      *
@@ -30,8 +29,6 @@ class ChangePasswordNotification extends Notification
      */
     public function via($notifiable)
     {
-        // return ['mail'];
-
         return ['database'];
     }
 
@@ -41,13 +38,13 @@ class ChangePasswordNotification extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    // public function toMail($notifiable)
-    // {
-    //     return (new MailMessage)
-    //                 ->line('The introduction to the notification.')
-    //                 ->action('Notification Action', url('/'))
-    //                 ->line('Thank you for using our application!');
-    // }
+    public function toMail($notifiable)
+    {
+        // return (new MailMessage)
+        //             ->line('The introduction to the notification.')
+        //             ->action('Notification Action', url('/'))
+        //             ->line('Thank you for using our application!');
+    }
 
     /**
      * Get the array representation of the notification.
@@ -58,8 +55,8 @@ class ChangePasswordNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'title' => 'Change Password',
-            'body' => $this->data['name'].' Updated Password'
+            'title' => 'Agent Posted A Comment On Your Application',
+            'body' =>   ''
         ];
     }
 }

@@ -57,7 +57,7 @@ class SettingController extends Controller
         $user = User::find($id);
         $user->password = Hash::make($request->password);
         $user->save();
-        Notification::send($user, new ChangePasswordNotification($user));
+        
         return response()->json();
     }
     public function logs(){

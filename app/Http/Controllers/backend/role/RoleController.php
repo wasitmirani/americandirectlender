@@ -50,11 +50,6 @@ class RoleController extends Controller
 
     }
 
-
-
-
-
-
     public function update(Request $request)
     {
         $request->validate([

@@ -81,6 +81,16 @@
 
       <span>{{ application.property_detail }}</span>
       <div class="user-status table-responsive">
+                 <content-placeholders v-if="loading">
+                     <content-placeholders-heading :img="true" />
+                     <content-placeholders-text :lines="1" />
+                     <content-placeholders-heading :img="true" />
+                     <content-placeholders-text :lines="1" />
+                     <content-placeholders-heading :img="true" />
+                     <content-placeholders-text :lines="1" />
+                     <content-placeholders-heading :img="true" />
+                     <content-placeholders-text :lines="1" />
+                  </content-placeholders>
         <table class="table table-bordernone">
           <thead>
             <tr>
@@ -124,13 +134,14 @@
       <template #footer>
         <vs-button flat danger @click="deleteItem(application.id)"> Cancel </vs-button>
         <div v-if="role == 'admin'">
-        <router-link :to="{ name: 'assign-apps', params: { id: application.id } }">
+        <router-link :to="{ name: 'assign-apps', params: { id: application.id ,role: role } }">
           <vs-button v-if="application.status == '0'"> Accept </vs-button>
         </router-link>
         </div>
-        <div v-if="role == 'agent'">
-             <vs-button success  :to="{ name: 'assign-apps', params: { id: application.id } }"> Modify </vs-button>
+        <div v-if="role == 'agent' || 'customer'" >
+            <vs-button success  :to="{ name: 'assign-apps', params: { id: application.id ,role: role  } }"> Modify </vs-button>
         </div>
+
       </template>
     </vs-alert>
     <ul class="pagination pagination-primary mt-4">
@@ -159,10 +170,11 @@ export default {
       agent: "",
       comment: "",
       active: false,
+      loading:false,
     };
   },
   methods: {
-               deleteItem: function (id) {
+    deleteItem: function (id) {
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -228,7 +240,6 @@ export default {
           );
         });
     },
-
     onSubmit() {
       let formData = new FormData();
 

@@ -9,9 +9,15 @@
 
                        <div class="media"><img class="img-40 img-fluid m-r-20" src="" alt="">
                         <div class="media-body"  >
-                          <vs-alert v-for="notie in noties" :key="notie.title">
+                            <div class="alert alert-primary alert-dismissible fade show" role="alert" v-for="notie in noties" :key="notie.title">
+                                <router-link  :to="{ name: 'ViewNotify', params: { id: cont.id } }"><span>{{ notie }}</span></router-link>
+
+                            </div>
+                            <!-- <vs-alert title="Lorem ipsum dolor sit amet" color="rgb(231, 154, 23)" active="true" v-for="notie in noties" :key="notie.title">
+                            </vs-alert> -->
+                          <!-- <vs-alert v-for="notie in noties" :key="notie.title">
                                <router-link  :to="{ name: 'ViewNotify', params: { id: cont.id } }"><span>{{ notie }}</span></router-link>
-                          </vs-alert>
+                          </vs-alert> -->
                        </div>
 
                     </div>

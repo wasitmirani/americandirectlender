@@ -37,10 +37,11 @@ import Swal from 'sweetalert2'
 // import vuesax css
 import 'vuesax/dist/vuesax.css'
 
+
 import VueApexCharts from 'vue-apexcharts'
 Vue.use(VueApexCharts)
-Vue.component('apexchart', VueApexCharts)
 
+Vue.component('apexchart', VueApexCharts)
 
 // swal initialization
 window.Swal = Swal;
@@ -153,6 +154,7 @@ const app = new Vue({
                 }
             });
         },
+       
     },
     created() {
         this.primary_color = primarycolor;

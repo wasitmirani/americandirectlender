@@ -239,6 +239,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2180,6 +2183,27 @@ var render = function() {
                                               [
                                                 _c("i", {
                                                   staticClass: "fas fa-eye"
+                                                })
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "vs-button",
+                                              {
+                                                attrs: {
+                                                  warning: "",
+                                                  icon: "",
+                                                  to: {
+                                                    name: "show-application",
+                                                    params: {
+                                                      id: application.id
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass: "fas fa-arraow"
                                                 })
                                               ]
                                             )

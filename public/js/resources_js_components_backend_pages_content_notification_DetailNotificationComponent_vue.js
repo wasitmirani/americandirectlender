@@ -70,6 +70,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -341,7 +342,10 @@ var render = function() {
                 return _c("span", { key: notify.title }, [
                   _vm._v("  " + _vm._s(notify))
                 ])
-              })
+              }),
+              _vm._v(
+                "\n                " + _vm._s(_vm.notify) + "\n            "
+              )
             ],
             2
           ),

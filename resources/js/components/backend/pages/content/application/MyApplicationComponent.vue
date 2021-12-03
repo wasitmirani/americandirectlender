@@ -8,7 +8,7 @@
                 <div class="card">
 
                   <div class="card-body">
-          
+
                     <div class="tab-content" id="top-tabContent">
                       <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
                         <div class="row">
@@ -55,6 +55,9 @@
               <td>
                 <vs-button success icon :to="{ name: 'show-application', params: { id: application.id } }">
                    <i class="fas fa-eye"></i>
+                </vs-button>
+                 <vs-button warning icon :to="{ name: 'show-application', params: { id: application.id } }">
+                   <i class="fas fa-arraow"></i>
                 </vs-button>
               </td>
                 </tr>

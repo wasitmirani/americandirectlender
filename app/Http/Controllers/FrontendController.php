@@ -124,7 +124,7 @@ class FrontendController extends Controller
         $application->investment_property = $request->investment_property;
 
          if($application->save()){
-            Mail::to('haseebhassan006@gmail.com')->send(new ApplicationMail);
+            
             return back()->with('message',"App Form Data Added Successfully");
 
         }else{

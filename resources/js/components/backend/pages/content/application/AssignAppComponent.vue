@@ -6,17 +6,17 @@
           <div class="card-header pb-0">
             <h5></h5><span> <code></code> </span>
           </div>
-          <div class="card-body">
+          <div class="card-body" v-if="role == 'admin'">
             <ul class="nav nav-tabs border-tab" id="top-tab" role="tablist">
-                <li class="nav-item"><a class="nav-link active" id="top-home-tab" data-bs-toggle="tab" href="#top-home" role="tab" aria-controls="top-home" aria-selected="true"><i class="icofont icofont-man-in-glasses"></i>Assign To Agent</a>
+                <li class="nav-item"  ><a class="nav-link active" id="top-home-tab" data-bs-toggle="tab" href="#top-home" role="tab" aria-controls="top-home" aria-selected="true"><i class="icofont icofont-man-in-glasses" ></i>Assign To Agent</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" id="profile-top-tab" data-bs-toggle="tab" href="#top-profile" role="tab" aria-controls="top-profile" aria-selected="false"><i class="icofont icofont-comment"></i>Comment</a>
+                <li class="nav-item"><a class="nav-link" id="profile-top-tab" data-bs-toggle="tab" href="#top-profile" role="tab" aria-controls="top-profile" aria-selected="false"><i class="icofont icofont-comment" ></i>Comment</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" id="contact-top-tab" data-bs-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="false"><i class="icofont icofont-upload"></i>Upload Attachment</a>
+                <li class="nav-item" ><a class="nav-link" id="contact-top-tab" data-bs-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="false"><i class="icofont icofont-upload"></i>Upload Attachment</a>
                 </li>
             </ul>
             <div class="tab-content" id="top-tabContent">
-                <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
+                <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab" >
                 <div class="col-sm-12 col-xl-12">
                           <div class="row">
                             <div class="col-sm-12">
@@ -49,7 +49,7 @@
                           </div>
                 </div>
                 </div>
-                <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
+                <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab" >
                         <div class="col-sm-12 col-xl-12">
                           <div class="row">
                             <div class="col-sm-12">
@@ -95,7 +95,197 @@
                           </div>
                         </div>
                 </div>
-                <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
+                <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab" >
+                         <div class="col-sm-12 col-xl-12">
+                          <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header pb-0">
+                                       <h5>Upload File</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form class="theme-form">
+                                                <div class="mb-3">
+                                               <!-- <label class="col-form-label" for="recipient-name">Application:</label>
+                                               <vs-input v-model="app"></vs-input> -->
+                                                <!-- <vs-select filter  color="primary" collapse-chips placeholder="Applications" v-model="app"   v-if="applications.length>0">
+                                                    <vs-option v-for="item in applications" :key="item.id" :value="item.id" :label="item.name">
+                                                           {{ item.name }}
+                                                    </vs-option>
+                                                </vs-select> -->
+                                            </div>
+                                            <div class="mb-3">
+                                                <!-- <label class="col-form-label" for="recipient-name">Agents:</label>
+                                                <vs-select filter  collapse-chips placeholder="Agents" v-model="agent"   v-if="agents.length>0">
+                                                <vs-option v-for="item in agents" :key="item.id" :label="item.name" :value="item.id" >
+                                                         {{ item.name }}
+                                                </vs-option>
+                                                </vs-select> -->
+                                            </div>
+                                            <div class="mb-3">
+                                              <label class="col-form-label">Attach File</label>
+                                             <input  class="form-control" type="file"  id="file" ref="file" v-on:change="handleFileUpload()">
+                                            </div>
+                                            <vs-button color="rgb(30, 32, 79)" gradient  @click="uploadFile">
+                                               Submit
+                                            </vs-button>
+                                        </form>
+
+
+
+                                    </div>
+                                    <h6>Uploaded Files</h6>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center" v-for="file in application_files" :key="file.id">
+                                            <a v-bind:href="file.file">{{file.file}}</a>
+                                            <div>
+                                                <span class="badge badge-primary counter">{{file.created_at | timeformat}}</span>|
+                                            <span>
+                                                <a role="button" @click="deleteFile(file.id)">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
+                                            </span>|
+                                            <span>
+                                                <a  :href="'app/agent/file/'+file.file" download>Download</a>
+                                            </span>
+                                            </div>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                </div>
+            </div>
+          </div>
+          <div class="card-body" v-if="role == 'agent'">
+            <ul class="nav nav-tabs border-tab" id="top-tab" role="tablist">
+
+                <li class="nav-item" ><a class="nav-link" id="profile-top-tab" data-bs-toggle="tab" href="#top-profile" role="tab" aria-controls="top-profile" aria-selected="false"><i class="icofont icofont-comment" ></i>Comment</a>
+                </li>
+                <li class="nav-item" ><a class="nav-link" id="contact-top-tab" data-bs-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="false"><i class="icofont icofont-upload"></i>Upload Attachment</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="top-tabContent">
+                <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab" >
+                        <div class="col-sm-12 col-xl-12">
+                          <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header pb-0">
+                                       <h5>Comment</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form class="theme-form">
+                                              <div class="mb-3">
+                                               <!-- <label class="col-form-label" for="recipient-name">Application:</label>
+                                               <vs-input v-model="app"></vs-input> -->
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="col-form-label" for="recipient-name">Comment:</label>
+                                                <textarea class="form-control" v-model="comment"></textarea>
+                                            </div>
+
+                                            <vs-button color="rgb(30, 32, 79)" gradient  @click="postComment">
+                                               Submit
+                                            </vs-button>
+                                        </form>
+
+                                    </div>
+
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center"  v-for="comment in application_comments"  :key="comment.id" >
+
+
+                                        <vs-alert shadow>
+
+                                        <template #title>
+                                             <p>{{comment.comment}}</p>
+                                        </template>
+                                        <template>
+                                            <span>{{comment.created_at | timeformat}}</span>
+                                        </template>
+                                        </vs-alert>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                </div>
+                <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab" >
+                         <div class="col-sm-12 col-xl-12">
+                          <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header pb-0">
+                                       <h5>Upload File</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form class="theme-form">
+                                                <div class="mb-3">
+                                               <!-- <label class="col-form-label" for="recipient-name">Application:</label>
+                                               <vs-input v-model="app"></vs-input> -->
+                                                <!-- <vs-select filter  color="primary" collapse-chips placeholder="Applications" v-model="app"   v-if="applications.length>0">
+                                                    <vs-option v-for="item in applications" :key="item.id" :value="item.id" :label="item.name">
+                                                           {{ item.name }}
+                                                    </vs-option>
+                                                </vs-select> -->
+                                            </div>
+                                            <div class="mb-3">
+                                                <!-- <label class="col-form-label" for="recipient-name">Agents:</label>
+                                                <vs-select filter  collapse-chips placeholder="Agents" v-model="agent"   v-if="agents.length>0">
+                                                <vs-option v-for="item in agents" :key="item.id" :label="item.name" :value="item.id" >
+                                                         {{ item.name }}
+                                                </vs-option>
+                                                </vs-select> -->
+                                            </div>
+                                            <div class="mb-3">
+                                              <label class="col-form-label">Attach File</label>
+                                             <input  class="form-control" type="file"  id="file" ref="file" v-on:change="handleFileUpload()">
+                                            </div>
+                                            <vs-button color="rgb(30, 32, 79)" gradient  @click="uploadFile">
+                                               Submit
+                                            </vs-button>
+                                        </form>
+
+
+
+                                    </div>
+                                    <h6>Uploaded Files</h6>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center" v-for="file in application_files" :key="file.id">
+                                            <a v-bind:href="file.file">{{file.file}}</a>
+                                            <div>
+                                                <span class="badge badge-primary counter">{{file.created_at | timeformat}}</span>|
+                                            <span>
+                                                <a role="button" @click="deleteFile(file.id)">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
+                                            </span>|
+                                            <span>
+                                                <a  :href="'app/agent/file/'+file.file" download>Download</a>
+                                            </span>
+                                            </div>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                </div>
+            </div>
+          </div>
+          <div class="card-body" v-if="role == 'customer'">
+            <ul class="nav nav-tabs border-tab" id="top-tab" role="tablist">
+                <li class="nav-item" ><a class="nav-link" id="contact-top-tab" data-bs-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="false"><i class="icofont icofont-upload"></i>Upload Attachment</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="top-tabContent">
+
+                <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab" >
                          <div class="col-sm-12 col-xl-12">
                           <div class="row">
                             <div class="col-sm-12">
@@ -188,6 +378,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
             total_applications:0,
             page_num:1,
             roles:{},
+            role:"",
             thumbnail:"",
             application_files:{},
             application_comments:{}
@@ -240,6 +431,7 @@ import Breadcrumb from "../../../components/BreadcrumbComponent.vue";
                 let formData = new FormData();
                 formData.append('comment', this.comment);
                 formData.append('app', this.app);
+                formData.append('user_id',this.application.user_id)
                   axios.post('/add/comment',formData).then((res)=>{
                         this.$root.alertNotificationMessage(res.status,"Comment Added Successfully");
                               setTimeout(() => {
@@ -393,6 +585,7 @@ mounted(){
            this.getAgents();
            this.getComments();
            this.getFiles();
+           this.role = this.$route.params.role;
            let url="/customer/applications/"+this.$route.params.id;
                 axios.get(url).then((res)=>{
                 // this.user=res.data.user;

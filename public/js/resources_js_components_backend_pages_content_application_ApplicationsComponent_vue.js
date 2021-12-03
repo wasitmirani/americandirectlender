@@ -290,7 +290,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       done: {},
       agents: {},
       query: "",
-      // loading:false,
+      loading: false,
       total_applications: 0,
       page_num: 1,
       roles: {},
@@ -589,6 +589,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["application", "getApplications", "roles", "role", "getRoles", "applications"],
   data: function data() {
@@ -596,7 +607,8 @@ __webpack_require__.r(__webpack_exports__);
       app: "",
       agent: "",
       comment: "",
-      active: false
+      active: false,
+      loading: false
     };
   },
   methods: {
@@ -2685,7 +2697,10 @@ var render = function() {
                               attrs: {
                                 to: {
                                   name: "assign-apps",
-                                  params: { id: _vm.application.id }
+                                  params: {
+                                    id: _vm.application.id,
+                                    role: _vm.role
+                                  }
                                 }
                               }
                             },
@@ -2701,7 +2716,7 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.role == "agent"
+                  _vm.role == "agent" || "customer"
                     ? _c(
                         "div",
                         [
@@ -2712,7 +2727,10 @@ var render = function() {
                                 success: "",
                                 to: {
                                   name: "assign-apps",
-                                  params: { id: _vm.application.id }
+                                  params: {
+                                    id: _vm.application.id,
+                                    role: _vm.role
+                                  }
                                 }
                               }
                             },
@@ -2732,87 +2750,134 @@ var render = function() {
           _vm._v(" "),
           _c("span", [_vm._v(_vm._s(_vm.application.property_detail))]),
           _vm._v(" "),
-          _c("div", { staticClass: "user-status table-responsive" }, [
-            _c("table", { staticClass: "table table-bordernone" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c("th", { attrs: { scope: "col" } }, [
-                    _vm._v("Property Type")
-                  ]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [
-                    _vm._v("Property Value")
-                  ]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Status")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Income Type")])
-                ])
-              ]),
+          _c(
+            "div",
+            { staticClass: "user-status table-responsive" },
+            [
+              _vm.loading
+                ? _c(
+                    "content-placeholders",
+                    [
+                      _c("content-placeholders-heading", {
+                        attrs: { img: true }
+                      }),
+                      _vm._v(" "),
+                      _c("content-placeholders-text", { attrs: { lines: 1 } }),
+                      _vm._v(" "),
+                      _c("content-placeholders-heading", {
+                        attrs: { img: true }
+                      }),
+                      _vm._v(" "),
+                      _c("content-placeholders-text", { attrs: { lines: 1 } }),
+                      _vm._v(" "),
+                      _c("content-placeholders-heading", {
+                        attrs: { img: true }
+                      }),
+                      _vm._v(" "),
+                      _c("content-placeholders-text", { attrs: { lines: 1 } }),
+                      _vm._v(" "),
+                      _c("content-placeholders-heading", {
+                        attrs: { img: true }
+                      }),
+                      _vm._v(" "),
+                      _c("content-placeholders-text", { attrs: { lines: 1 } })
+                    ],
+                    1
+                  )
+                : _vm._e(),
               _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "span badge rounded-pill pill-badge-primary"
-                      },
-                      [
-                        _vm._v(
-                          "\n                " +
-                            _vm._s(_vm.application.property_type) +
-                            "\n              "
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "f-w-600" }, [
-                    _vm._v("$" + _vm._s(_vm.application.property_value))
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm.application.status == 1
-                      ? _c(
-                          "div",
-                          {
-                            staticClass:
-                              "span badge rounded-pill pill-badge-success"
-                          },
-                          [_vm._v("\n                Approved\n              ")]
-                        )
-                      : _c(
-                          "div",
-                          {
-                            staticClass:
-                              "span badge rounded-pill pill-badge-warning"
-                          },
-                          [_vm._v("\n                Pending\n              ")]
-                        )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "span badge rounded-pill pill-badge-primary"
-                      },
-                      [
-                        _vm._v(
-                          "\n                " +
-                            _vm._s(_vm.application.income_type) +
-                            "\n              "
-                        )
-                      ]
-                    )
+              _c("table", { staticClass: "table table-bordernone" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Property Type")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Property Value")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Status")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Income Type")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "span badge rounded-pill pill-badge-primary"
+                        },
+                        [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(_vm.application.property_type) +
+                              "\n              "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "f-w-600" }, [
+                      _vm._v("$" + _vm._s(_vm.application.property_value))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm.application.status == 1
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "span badge rounded-pill pill-badge-success"
+                            },
+                            [
+                              _vm._v(
+                                "\n                Approved\n              "
+                              )
+                            ]
+                          )
+                        : _c(
+                            "div",
+                            {
+                              staticClass:
+                                "span badge rounded-pill pill-badge-warning"
+                            },
+                            [
+                              _vm._v(
+                                "\n                Pending\n              "
+                              )
+                            ]
+                          )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "span badge rounded-pill pill-badge-primary"
+                        },
+                        [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(_vm.application.income_type) +
+                              "\n              "
+                          )
+                        ]
+                      )
+                    ])
                   ])
                 ])
               ])
-            ])
-          ])
+            ],
+            1
+          )
         ]
       ),
       _vm._v(" "),

@@ -5,6 +5,7 @@
         <div class="card">
             <div class="card-header pb-0">
                 <h5></h5><span v-for="notify in this.body" :key="notify.title">  {{ notify }}</span>
+                {{  notify }}
             </div>
             <div class="card-body">
                 <div id="the-basics">

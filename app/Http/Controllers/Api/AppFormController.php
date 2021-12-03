@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\User;
 use App\Mail\AppAssignMail;
 use App\Models\Application;
 use Illuminate\Support\Str;
@@ -15,7 +16,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ApplicationAttachment;
+use App\Notifications\AgentUploadFile;
 use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Notification;
+
 
 class AppFormController extends Controller
 {
@@ -213,17 +217,18 @@ class AppFormController extends Controller
 
     }
     public function deleteApplication(Request $request){
-         $application_agent =ApplicationAgents::where('application_id',$request->id)->delete();
-         $application_attachment =ApplicationAttachment::where('application_id',$request->id)->delete();
-         $application_comment =ApplicationComment::where('application_id',$request->id)->delete();
+        $application_agent =ApplicationAgents::where('application_id',$request->id)->delete();
+        $application_attachment =ApplicationAttachment::where('application_id',$request->id)->delete();
+        $application_comment =ApplicationComment::where('application_id',$request->id)->delete();
         $application =  Application::destroy($request->id);
         return response()->json();
     }
 
     public function getAssignedApp(){
-        $assignedApps = Application::where('status','1')->with('agent')->paginate((int)env('PER_PAGE'));
 
+        $assignedApps = Application::where('status','1')->with('agent')->paginate((int)env('PER_PAGE'));
         return response()->json(['assignedApps'=>$assignedApps]);
+
     }
 
     public function deleteAssignedApp(Request $request){
@@ -245,10 +250,13 @@ class AppFormController extends Controller
 
 
     public function postComment(Request $request){
-        $comment = ApplicationComment::create([
-            'application_id' => $request->app,
-            'comment' => $request->comment
-        ]);
+        $comment = new ApplicationComment;
+        $comment->application_id = $request->app;
+        $comment->comment = $request->comment;
+        $comment->save();
+        // $user = User::find($id);
+        $com = ApplicationComment::find($comment->id);
+        Notification::send($com, new AgentUploadFile($com));
         return response()->json();
     }
     public function uploadFile(Request $request){
@@ -262,12 +270,11 @@ class AppFormController extends Controller
         } else
             $name = "";
 
-        ApplicationAttachment::create([
+       $app =  ApplicationAttachment::create([
              'application_id' => $request->app,
              'agent_id' => $request->agent,
              'file' => $name
         ]);
-
         return response()->json();
     }
 
@@ -322,8 +329,6 @@ class AppFormController extends Controller
             'user_id' => $id,
             "property_insured" => $request->property_insured,
             "liabilities_loans" => $request->liabilities_loans,
-
-
         ]);
         if($application){
             return response()->json();

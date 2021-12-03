@@ -81,7 +81,7 @@ const routes = [
         name: "download-file",
     },
     {
-        path: "/assign/apps/:id",
+        path: "/assign/apps/:id/:role",
         component: () => setComponent("content/application/AssignApp"),
         name: "assign-apps",
     },
@@ -99,7 +99,14 @@ const routes = [
         path: "/logs/activities",
         component: () => setComponent("setting/Log"),
         name: "LogActivities"
-    }
+    },
+    {
+        path: "/upload/files/:id",
+        component: () => setComponent("content/application/UploadFile"),
+        name: "upload-file"
+    },
+
+
 
 
 
@@ -112,6 +119,8 @@ const router = new VueRouter({
     linkActiveClass: "active",
     linkExactActiveClass: "exact-active" // short for `
 });
+
+
 
 router.beforeResolve((to, from, next) => {
     //

@@ -36,7 +36,7 @@
                             </SearchInput>
                         <div class="col-xxl-6 col-lg-6 " v-for="application in applications" :key="application.id">
 
-                 
+
                              <ApplicationCard :getRoles="getRoles" :role="role" :roles="agents" :getApplications="getApplications" :application="application" :applications="applications"></ApplicationCard>
                         </div>
                         <pagination :data="applications" @pagination-change-page=" getApplications"></pagination>
@@ -80,12 +80,13 @@ export default {
     },
       data(){
         return {
+
             applications:{},
             process:{},
             done:{},
             agents:{},
             query:"",
-            // loading:false,
+            loading:false,
             total_applications:0,
             page_num:1,
             roles:{},

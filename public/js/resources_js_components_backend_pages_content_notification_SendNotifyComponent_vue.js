@@ -508,6 +508,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['cont', 'getNotifications'],
   data: function data() {
@@ -2474,8 +2480,13 @@ var render = function() {
               { staticClass: "media-body" },
               _vm._l(_vm.noties, function(notie) {
                 return _c(
-                  "vs-alert",
-                  { key: notie.title },
+                  "div",
+                  {
+                    key: notie.title,
+                    staticClass:
+                      "alert alert-primary alert-dismissible fade show",
+                    attrs: { role: "alert" }
+                  },
                   [
                     _c(
                       "router-link",
@@ -2493,7 +2504,7 @@ var render = function() {
                   1
                 )
               }),
-              1
+              0
             )
           ])
         ])

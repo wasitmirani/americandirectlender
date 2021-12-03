@@ -51,10 +51,7 @@
                         label="Search Users"></SearchInput>
                     </div>
                     </h5>
-
                   </div>
-
-
                   <div class="card-body">
                     <content-placeholders v-if="loading">
                         <content-placeholders-heading :img="true" />
